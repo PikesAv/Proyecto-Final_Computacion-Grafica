@@ -352,7 +352,7 @@ int main()
 	//luz direccional, sólo 1 y siempre debe de existir
 	//Sera la luz que ilumine al mundo que tengamos
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-		0.1f, 0.1f,//Va a servir para manejar el ciclo dia y noche
+		0.5f, 0.5f,//Va a servir para manejar el ciclo dia y noche
 		1.0f, 0.0f, -1.0f);
 
 	//contador de luces puntuales
