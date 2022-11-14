@@ -321,19 +321,19 @@ int main()
 	//skyboxFaces.push_back("Textures/Skybox/cupertin-lake-night_bk.tga");//Back
 	//skyboxFaces.push_back("Textures/Skybox/cupertin-lake-night_ft.tga");//Front
 
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_right.tga");//Right
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_left.tga");//Left
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_bottom.tga");//Top
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_top.tga");//Bottom
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_front.tga");//Back
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_back.tga");//Front
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_right.tga");//Right
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_left.tga");//Left
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_bottom.tga");//Top
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_top.tga");//Bottom
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_front.tga");//Back
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_back.tga");//Front
 
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_right.tga");//Right
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_left.tga");//Left
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_bottom.tga");//Top
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_top.tga");//Bottom
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_front.tga");//Back
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_back.tga");//Front
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_right.tga");//Right
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_left.tga");//Left
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_bottom.tga");//Top
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_top.tga");//Bottom
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_front.tga");//Back
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_back.tga");//Front
 
 	//skyboxFaces.push_back("Textures/Skybox/Night/Night_sky_right.tga");//Right
 	//skyboxFaces.push_back("Textures/Skybox/Night/Night_sky_left.tga");//Left
