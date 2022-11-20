@@ -460,11 +460,9 @@ int main()
 		//DadoTexture.UseTexture();
 		//meshList[4]->RenderMesh();
 
-
-
-//Agave ¿qué sucede si lo renderizan antes del coche y de la pista?
-//Los elementos que vayan a tener transparencia se deben de poner hasta el final del codigo para evitar problemas
-//con la visualizacion de otros modelos
+		//Agave ¿qué sucede si lo renderizan antes del coche y de la pista?
+		//Los elementos que vayan a tener transparencia se deben de poner hasta el final del codigo para evitar problemas
+		//con la visualizacion de otros modelos
 		color = glm::vec3(1.0f, 1.0f, 1.0f);
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.5f, -2.0f));
