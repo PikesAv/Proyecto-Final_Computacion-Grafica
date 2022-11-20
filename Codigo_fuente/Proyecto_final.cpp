@@ -60,7 +60,6 @@ std::vector<Shader> shaderList;
 
 Camera camera;
 
-
 //Texturas
 Texture brickTexture;
 Texture dirtTexture;
@@ -80,7 +79,6 @@ Skybox skybox;
 //materiales
 Material Material_brillante;
 Material Material_opaco;
-
 
 //Sphere cabeza = Sphere(0.5, 20, 20);
 GLfloat deltaTime = 0.0f;
@@ -179,8 +177,7 @@ void CreateObjects()
 
 	};
 
-
-	
+		
 	Mesh *obj1 = new Mesh();
 	obj1->CreateMesh(vertices, indices, 32, 12);
 	meshList.push_back(obj1);

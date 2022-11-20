@@ -1,0 +1,10 @@
+
+*.db
+*.db
+*.opendb
+*.ipch
+*.db
+*.db-shm
+*.db-wal
+*.db
+Codigo_fuente/.vs/Proyecto_final/v16/Browse.VC.db
