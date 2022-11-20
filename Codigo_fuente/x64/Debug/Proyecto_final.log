@@ -1,0 +1,176 @@
+﻿  Camera.cpp
+  DirectionalLight.cpp
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\DirectionalLight.cpp(18,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\DirectionalLight.cpp(19,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\DirectionalLight.cpp(21,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\DirectionalLight.cpp(22,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
+  Light.cpp
+  Material.cpp
+  Mesh_tn.cpp
+  Model.cpp
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Model.cpp(16,10): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'const std::string'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Model.cpp(16,80): warning C4474: "printf": se pasaron demasiados argumentos para la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Model.cpp(16,80): message : los marcadores de posición y sus parámetros esperan 1 argumentos variádicos, pero se proporcionaron 2
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Model.cpp(51,7): warning C4804: '<': uso no seguro del tipo 'bool' en la operación
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Model.cpp(109,80): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Model.cpp(126,49): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Model.cpp(138,14): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'std::string'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Model.cpp(147,14): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'std::string'
+  PointLight.cpp
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\PointLight.cpp(28,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\PointLight.cpp(29,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\PointLight.cpp(30,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\PointLight.cpp(32,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\PointLight.cpp(33,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\PointLight.cpp(34,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\PointLight.cpp(35,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
+  Proyecto_final.cpp
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(12,36): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(131,52): warning C4267: 'inicializando': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(427,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(429,43): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  Shader_light.cpp
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(101,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(101,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(104,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(104,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(107,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(107,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(110,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(110,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(113,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(113,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(116,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(116,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(119,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(119,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(129,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(129,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(132,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(132,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(135,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(135,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(138,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(138,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(141,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(141,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(144,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(144,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(147,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(147,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(150,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(150,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(153,38): warning C4477: 'snprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(153,38): message : considere el uso de ' %zd' en la cadena de formato
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(207,75): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(207,26): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(206,91): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(206,42): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(220,98): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(220,62): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(220,24): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(219,70): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(219,24): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(218,88): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(218,42): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Shader_light.cpp(269,36): warning C4267: '=': conversión de 'size_t' a 'GLint'; posible pérdida de datos
+  Skybox.cpp
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Skybox.cpp(30,113): warning C4267: 'argumento': conversión de 'size_t' a 'GLenum'; posible pérdida de datos
+  Sphere.cpp
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Sphere.cpp(39,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Sphere.cpp(43,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Sphere.cpp(91,74): warning C4267: 'argumento': conversión de 'size_t' a 'GLsizei'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Sphere.cpp(95,19): warning C4267: 'argumento': conversión de 'size_t' a 'GLsizei'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Sphere.cpp(98,74): warning C4267: 'argumento': conversión de 'size_t' a 'GLsizei'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Sphere.cpp(109,34): warning C4267: 'argumento': conversión de 'size_t' a 'GLsizei'; posible pérdida de datos
+  SpotLight.cpp
+  Texture.cpp
+  Window.cpp
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(12,36): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.cpp(186,22): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.cpp(187,22): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.cpp(191,28): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.cpp(192,40): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.cpp(194,21): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.cpp(195,21): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  Generando código...
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.cpp(83): warning C4715: 'Window::Initialise': no todas las rutas de acceso de control devuelven un valor
+DirectionalLight.obj : error LNK2019: símbolo externo __imp___glewUniform1f sin resolver al que se hace referencia en la función "public: void __cdecl DirectionalLight::UseLight(float,float,float,float)" (?UseLight@DirectionalLight@@QEAAXMMMM@Z)
+Material.obj : error LNK2001: símbolo externo __imp___glewUniform1f sin resolver
+PointLight.obj : error LNK2001: símbolo externo __imp___glewUniform1f sin resolver
+SpotLight.obj : error LNK2001: símbolo externo __imp___glewUniform1f sin resolver
+DirectionalLight.obj : error LNK2019: símbolo externo __imp___glewUniform3f sin resolver al que se hace referencia en la función "public: void __cdecl DirectionalLight::UseLight(float,float,float,float)" (?UseLight@DirectionalLight@@QEAAXMMMM@Z)
+PointLight.obj : error LNK2001: símbolo externo __imp___glewUniform3f sin resolver
+Proyecto_final.obj : error LNK2001: símbolo externo __imp___glewUniform3f sin resolver
+SpotLight.obj : error LNK2001: símbolo externo __imp___glewUniform3f sin resolver
+Mesh_tn.obj : error LNK2019: símbolo externo __imp___glewBindBuffer sin resolver al que se hace referencia en la función "public: void __cdecl Mesh::CreateMesh(float *,unsigned int *,unsigned int,unsigned int)" (?CreateMesh@Mesh@@QEAAXPEAMPEAIII@Z)
+Sphere.obj : error LNK2001: símbolo externo __imp___glewBindBuffer sin resolver
+Mesh_tn.obj : error LNK2019: símbolo externo __imp___glewBufferData sin resolver al que se hace referencia en la función "public: void __cdecl Mesh::CreateMesh(float *,unsigned int *,unsigned int,unsigned int)" (?CreateMesh@Mesh@@QEAAXPEAMPEAIII@Z)
+Sphere.obj : error LNK2001: símbolo externo __imp___glewBufferData sin resolver
+Mesh_tn.obj : error LNK2019: símbolo externo __imp___glewDeleteBuffers sin resolver al que se hace referencia en la función "public: void __cdecl Mesh::ClearMesh(void)" (?ClearMesh@Mesh@@QEAAXXZ)
+Sphere.obj : error LNK2001: símbolo externo __imp___glewDeleteBuffers sin resolver
+Mesh_tn.obj : error LNK2019: símbolo externo __imp___glewGenBuffers sin resolver al que se hace referencia en la función "public: void __cdecl Mesh::CreateMesh(float *,unsigned int *,unsigned int,unsigned int)" (?CreateMesh@Mesh@@QEAAXPEAMPEAIII@Z)
+Sphere.obj : error LNK2001: símbolo externo __imp___glewGenBuffers sin resolver
+Mesh_tn.obj : error LNK2019: símbolo externo __imp___glewEnableVertexAttribArray sin resolver al que se hace referencia en la función "public: void __cdecl Mesh::CreateMesh(float *,unsigned int *,unsigned int,unsigned int)" (?CreateMesh@Mesh@@QEAAXPEAMPEAIII@Z)
+Sphere.obj : error LNK2001: símbolo externo __imp___glewEnableVertexAttribArray sin resolver
+Mesh_tn.obj : error LNK2019: símbolo externo __imp___glewVertexAttribPointer sin resolver al que se hace referencia en la función "public: void __cdecl Mesh::CreateMesh(float *,unsigned int *,unsigned int,unsigned int)" (?CreateMesh@Mesh@@QEAAXPEAMPEAIII@Z)
+Sphere.obj : error LNK2001: símbolo externo __imp___glewVertexAttribPointer sin resolver
+Mesh_tn.obj : error LNK2019: símbolo externo __imp___glewBindVertexArray sin resolver al que se hace referencia en la función "public: void __cdecl Mesh::CreateMesh(float *,unsigned int *,unsigned int,unsigned int)" (?CreateMesh@Mesh@@QEAAXPEAMPEAIII@Z)
+Sphere.obj : error LNK2001: símbolo externo __imp___glewBindVertexArray sin resolver
+Mesh_tn.obj : error LNK2019: símbolo externo __imp___glewDeleteVertexArrays sin resolver al que se hace referencia en la función "public: void __cdecl Mesh::ClearMesh(void)" (?ClearMesh@Mesh@@QEAAXXZ)
+Sphere.obj : error LNK2001: símbolo externo __imp___glewDeleteVertexArrays sin resolver
+Mesh_tn.obj : error LNK2019: símbolo externo __imp___glewGenVertexArrays sin resolver al que se hace referencia en la función "public: void __cdecl Mesh::CreateMesh(float *,unsigned int *,unsigned int,unsigned int)" (?CreateMesh@Mesh@@QEAAXPEAMPEAIII@Z)
+Sphere.obj : error LNK2001: símbolo externo __imp___glewGenVertexArrays sin resolver
+Model.obj : error LNK2019: símbolo externo "public: __cdecl Assimp::Importer::Importer(void)" (??0Importer@Assimp@@QEAA@XZ) sin resolver al que se hace referencia en la función "public: void __cdecl Model::LoadModel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?LoadModel@Model@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Model.obj : error LNK2019: símbolo externo "public: __cdecl Assimp::Importer::~Importer(void)" (??1Importer@Assimp@@QEAA@XZ) sin resolver al que se hace referencia en la función "public: void __cdecl Model::LoadModel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?LoadModel@Model@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Model.obj : error LNK2019: símbolo externo "public: struct aiScene const * __cdecl Assimp::Importer::ReadFile(char const *,unsigned int)" (?ReadFile@Importer@Assimp@@QEAAPEBUaiScene@@PEBDI@Z) sin resolver al que se hace referencia en la función "public: struct aiScene const * __cdecl Assimp::Importer::ReadFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,unsigned int)" (?ReadFile@Importer@Assimp@@QEAAPEBUaiScene@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z)
+Model.obj : error LNK2019: símbolo externo "public: char const * __cdecl Assimp::Importer::GetErrorString(void)const " (?GetErrorString@Importer@Assimp@@QEBAPEBDXZ) sin resolver al que se hace referencia en la función "public: void __cdecl Model::LoadModel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?LoadModel@Model@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Model.obj : error LNK2019: símbolo externo aiGetMaterialTextureCount sin resolver al que se hace referencia en la función "public: unsigned int __cdecl aiMaterial::GetTextureCount(enum aiTextureType)const " (?GetTextureCount@aiMaterial@@QEBAIW4aiTextureType@@@Z)
+Model.obj : error LNK2019: símbolo externo aiGetMaterialTexture sin resolver al que se hace referencia en la función "public: enum aiReturn __cdecl aiMaterial::GetTexture(enum aiTextureType,unsigned int,struct aiString *,enum aiTextureMapping *,unsigned int *,float *,enum aiTextureOp *,enum aiTextureMapMode *)const " (?GetTexture@aiMaterial@@QEBA?AW4aiReturn@@W4aiTextureType@@IPEAUaiString@@PEAW4aiTextureMapping@@PEAIPEAMPEAW4aiTextureOp@@PEAW4aiTextureMapMode@@@Z)
+Proyecto_final.obj : error LNK2019: símbolo externo glfwWindowShouldClose sin resolver al que se hace referencia en la función "public: bool __cdecl Window::getShouldClose(void)" (?getShouldClose@Window@@QEAA_NXZ)
+Proyecto_final.obj : error LNK2019: símbolo externo glfwPollEvents sin resolver al que se hace referencia en la función main
+Proyecto_final.obj : error LNK2019: símbolo externo glfwGetTime sin resolver al que se hace referencia en la función main
+Proyecto_final.obj : error LNK2019: símbolo externo glfwSwapBuffers sin resolver al que se hace referencia en la función "public: void __cdecl Window::swapBuffers(void)" (?swapBuffers@Window@@QEAAXXZ)
+Proyecto_final.obj : error LNK2019: símbolo externo __imp___glewUniform3fv sin resolver al que se hace referencia en la función main
+Proyecto_final.obj : error LNK2019: símbolo externo __imp___glewUniformMatrix4fv sin resolver al que se hace referencia en la función main
+Skybox.obj : error LNK2001: símbolo externo __imp___glewUniformMatrix4fv sin resolver
+Proyecto_final.obj : error LNK2019: símbolo externo __imp___glewUseProgram sin resolver al que se hace referencia en la función main
+Shader_light.obj : error LNK2001: símbolo externo __imp___glewUseProgram sin resolver
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewAttachShader sin resolver al que se hace referencia en la función "private: void __cdecl Shader::AddShader(unsigned int,char const *,unsigned int)" (?AddShader@Shader@@AEAAXIPEBDI@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewCompileShader sin resolver al que se hace referencia en la función "private: void __cdecl Shader::AddShader(unsigned int,char const *,unsigned int)" (?AddShader@Shader@@AEAAXIPEBDI@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewCreateProgram sin resolver al que se hace referencia en la función "private: void __cdecl Shader::CompileShader(char const *,char const *)" (?CompileShader@Shader@@AEAAXPEBD0@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewCreateShader sin resolver al que se hace referencia en la función "private: void __cdecl Shader::AddShader(unsigned int,char const *,unsigned int)" (?AddShader@Shader@@AEAAXIPEBDI@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewDeleteProgram sin resolver al que se hace referencia en la función "public: void __cdecl Shader::ClearShader(void)" (?ClearShader@Shader@@QEAAXXZ)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewGetProgramInfoLog sin resolver al que se hace referencia en la función "private: void __cdecl Shader::CompileShader(char const *,char const *)" (?CompileShader@Shader@@AEAAXPEBD0@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewGetProgramiv sin resolver al que se hace referencia en la función "private: void __cdecl Shader::CompileShader(char const *,char const *)" (?CompileShader@Shader@@AEAAXPEBD0@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewGetShaderInfoLog sin resolver al que se hace referencia en la función "private: void __cdecl Shader::AddShader(unsigned int,char const *,unsigned int)" (?AddShader@Shader@@AEAAXIPEBDI@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewGetShaderiv sin resolver al que se hace referencia en la función "private: void __cdecl Shader::AddShader(unsigned int,char const *,unsigned int)" (?AddShader@Shader@@AEAAXIPEBDI@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewGetUniformLocation sin resolver al que se hace referencia en la función "private: void __cdecl Shader::CompileShader(char const *,char const *)" (?CompileShader@Shader@@AEAAXPEBD0@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewLinkProgram sin resolver al que se hace referencia en la función "private: void __cdecl Shader::CompileShader(char const *,char const *)" (?CompileShader@Shader@@AEAAXPEBD0@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewShaderSource sin resolver al que se hace referencia en la función "private: void __cdecl Shader::AddShader(unsigned int,char const *,unsigned int)" (?AddShader@Shader@@AEAAXIPEBDI@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewUniform1i sin resolver al que se hace referencia en la función "public: void __cdecl Shader::SetPointLights(class PointLight *,unsigned int)" (?SetPointLights@Shader@@QEAAXPEAVPointLight@@I@Z)
+Shader_light.obj : error LNK2019: símbolo externo __imp___glewValidateProgram sin resolver al que se hace referencia en la función "private: void __cdecl Shader::CompileShader(char const *,char const *)" (?CompileShader@Shader@@AEAAXPEBD0@Z)
+Skybox.obj : error LNK2019: símbolo externo __imp___glewActiveTexture sin resolver al que se hace referencia en la función "public: void __cdecl Skybox::DrawSkybox(struct glm::mat<4,4,float,0>,struct glm::mat<4,4,float,0>)" (?DrawSkybox@Skybox@@QEAAXU?$mat@$03$03M$0A@@glm@@0@Z)
+Texture.obj : error LNK2001: símbolo externo __imp___glewActiveTexture sin resolver
+Sphere.obj : error LNK2019: símbolo externo __imp___glewDisableVertexAttribArray sin resolver al que se hace referencia en la función "public: virtual __cdecl Sphere::~Sphere(void)" (??1Sphere@@UEAA@XZ)
+Texture.obj : error LNK2019: símbolo externo __imp___glewGenerateMipmap sin resolver al que se hace referencia en la función "public: bool __cdecl Texture::LoadTexture(void)" (?LoadTexture@Texture@@QEAA_NXZ)
+Window.obj : error LNK2019: símbolo externo __imp_glewInit sin resolver al que se hace referencia en la función "public: int __cdecl Window::Initialise(void)" (?Initialise@Window@@QEAAHXZ)
+Window.obj : error LNK2019: símbolo externo glfwInit sin resolver al que se hace referencia en la función "public: int __cdecl Window::Initialise(void)" (?Initialise@Window@@QEAAHXZ)
+Window.obj : error LNK2019: símbolo externo glfwTerminate sin resolver al que se hace referencia en la función "public: __cdecl Window::~Window(void)" (??1Window@@QEAA@XZ)
+Window.obj : error LNK2019: símbolo externo glfwWindowHint sin resolver al que se hace referencia en la función "public: int __cdecl Window::Initialise(void)" (?Initialise@Window@@QEAAHXZ)
+Window.obj : error LNK2019: símbolo externo glfwCreateWindow sin resolver al que se hace referencia en la función "public: int __cdecl Window::Initialise(void)" (?Initialise@Window@@QEAAHXZ)
+Window.obj : error LNK2019: símbolo externo glfwDestroyWindow sin resolver al que se hace referencia en la función "public: __cdecl Window::~Window(void)" (??1Window@@QEAA@XZ)
+Window.obj : error LNK2019: símbolo externo glfwSetWindowShouldClose sin resolver al que se hace referencia en la función "private: static void __cdecl Window::ManejaTeclado(struct GLFWwindow *,int,int,int,int)" (?ManejaTeclado@Window@@CAXPEAUGLFWwindow@@HHHH@Z)
+Window.obj : error LNK2019: símbolo externo glfwGetFramebufferSize sin resolver al que se hace referencia en la función "public: int __cdecl Window::Initialise(void)" (?Initialise@Window@@QEAAHXZ)
+Window.obj : error LNK2019: símbolo externo glfwSetWindowUserPointer sin resolver al que se hace referencia en la función "public: int __cdecl Window::Initialise(void)" (?Initialise@Window@@QEAAHXZ)
+Window.obj : error LNK2019: símbolo externo glfwGetWindowUserPointer sin resolver al que se hace referencia en la función "private: static void __cdecl Window::ManejaMouse(struct GLFWwindow *,double,double)" (?ManejaMouse@Window@@CAXPEAUGLFWwindow@@NN@Z)
+Window.obj : error LNK2019: símbolo externo glfwSetKeyCallback sin resolver al que se hace referencia en la función "private: void __cdecl Window::createCallbacks(void)" (?createCallbacks@Window@@AEAAXXZ)
+Window.obj : error LNK2019: símbolo externo glfwSetCursorPosCallback sin resolver al que se hace referencia en la función "private: void __cdecl Window::createCallbacks(void)" (?createCallbacks@Window@@AEAAXXZ)
+Window.obj : error LNK2019: símbolo externo glfwMakeContextCurrent sin resolver al que se hace referencia en la función "public: int __cdecl Window::Initialise(void)" (?Initialise@Window@@QEAAHXZ)
+Window.obj : error LNK2019: símbolo externo __imp_glewExperimental sin resolver al que se hace referencia en la función "public: int __cdecl Window::Initialise(void)" (?Initialise@Window@@QEAAHXZ)
+lib\assimp-vc140-mt.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+lib\glew32.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+lib\glfw3.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\x64\Debug\Proyecto_final.exe : fatal error LNK1120: 55 externos sin resolver
