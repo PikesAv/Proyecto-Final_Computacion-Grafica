@@ -60,28 +60,20 @@ std::vector<Shader> shaderList;
 
 Camera camera;
 
+
+//Texturas
 Texture brickTexture;
 Texture dirtTexture;
 Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
-Texture DadoTexture;
+
 
 Texture dado_8_texture;
 
-Model Kitt_M;
-Model Llanta_M;
+//Modelos
 Model Camino_M;
-Model Blackhawk_M;
-Model Dado_M;
-
-//Modelo correspondiente a la pista de carreras
-Model Race_track;
-
-//Modelos con el modelo del previo 3
-Model Carro_Previo;
-Model Cofre_Previo;
-Model Rueda_Previo;
+Model cartel_M;
 
 Skybox skybox;
 
@@ -312,6 +304,10 @@ int main()
 	plainTexture.LoadTextureA();
 	pisoTexture = Texture("Textures/piso.tga");
 	pisoTexture.LoadTextureA();
+	cartel_M = Model();
+	cartel_M.LoadModel("Models/Construccion/maistro.obj");
+
+
 
 	std::vector<std::string> skyboxFaces;
 	//skyboxFaces.push_back("Textures/Skybox/cupertin-lake-night_rt.tga");//Right
@@ -383,39 +379,7 @@ int main()
 	//	1.0f, 0.0f, 0.0f,
 	//	5.0f);
 	//spotLightCount++;
-
-	//luz de helicóptero
-	spotLights[0] = SpotLight(0.5f, 0.0f, 0.5f,
-		1.0f, 2.0f,
-		5.0f, 10.0f, 0.0f,
-		0.0f, 1.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		15.0f);
-	spotLightCount++;
-
-	//luz del coche
-	//Cuando los valores lineales y cuadrito son cercanos a uno, el alcance sera muy corto.
-	//Por el contrario, cuando sean cercanos a 0, el alcance se incrementará
-	//Faro delantero
-	spotLights[1] = SpotLight(0.0f, 0.5f, 0.0f,
-		1.0f, 2.0f,
-		5.0f, 10.0f, 0.0f,
-		-15.0f, -5.0f, -1.0f,
-		//Constante,linear y cuadratico
-		1.0f, 0.001f, 0.001f,
-		15.0f);
-	spotLightCount++;
-
-	//Faro trasero
-	spotLights[2] = SpotLight(1.0f, 0.0f, 0.0f,
-		1.0f, 2.0f,
-		5.0f, 10.0f, 0.0f,
-		15.0f, 5.0f, 1.0f,
-		//Constante,linear y cuadratico
-		1.0f, 0.005f, 0.005f,
-		15.0f);
-	spotLightCount++;
-
+	
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
 		uniformSpecularIntensity = 0, uniformShininess = 0;
 	GLuint uniformColor = 0;
@@ -458,47 +422,6 @@ int main()
 		//lowerLight.y -= 0.3f;
 		//spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
-		//Luz del helicoptero con temporizador
-		glm::vec3 faro_helicoptero;
-
-		if (encender <= 75) {
-			faro_helicoptero = glm::vec3(0.0f + mainWindow.getmuevex(), 0.0f + mainWindow.getmuevey(), -15.0);
-			faro_helicoptero.y -= 0.0f;
-			spotLights[0].SetFlash(faro_helicoptero, glm::vec3(0.0f, 0.0f, 0.0f));
-		}
-		else {
-			faro_helicoptero = glm::vec3(0.0f + mainWindow.getmuevex(), 0.0f + mainWindow.getmuevey(), -15.0);
-			faro_helicoptero.y -= 0.0f;
-			spotLights[0].SetFlash(faro_helicoptero, glm::vec3(0.0f, -1.0f, 0.0f));
-			if (encender == 150) {
-				encender = 0;
-			}
-		}
-		encender += 1;
-
-
-		//Luz del coche, la cual va a tener un switch case para los casos
-		//en que la luz estara en el frente o en la parte trasera
-		glm::vec3 faro_coche;
-
-		switch (bandera) {
-		case 0:
-			faro_coche = glm::vec3(-17.5 + mainWindow.getmuevex2(), 0.3f, -2.1 + mainWindow.getmuevez2());
-			faro_coche.y -= 0.0f;
-			spotLights[1].SetFlash(faro_coche, glm::vec3(-1.0f, 0.0f, 0.0f));
-			spotLights[2].SetFlash(faro_coche, glm::vec3(0.0f, 0.0f, 0.0f));
-			break;
-		case 1:
-			faro_coche = glm::vec3(-8.0 + mainWindow.getmuevex2(), 0.3f, -2.4 + mainWindow.getmuevez2());
-			faro_coche.y -= 0.0f;
-			spotLights[1].SetFlash(faro_coche, glm::vec3(0.0f, 0.0f, 0.0f));
-			spotLights[2].SetFlash(faro_coche, glm::vec3(1.0f, 0.0f, 0.0f));
-			break;
-		default:
-			break;
-		}
-		
-
 		//información al shader de fuentes de iluminación
 		shaderList[0].SetDirectionalLight(&mainLight);
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
@@ -533,6 +456,7 @@ int main()
 		model = glm::translate(model, glm::vec3(-5.0f, 6.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		cartel_M.RenderModel();
 		//DadoTexture.UseTexture();
 		//meshList[4]->RenderMesh();
 
