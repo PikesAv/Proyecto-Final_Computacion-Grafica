@@ -69,9 +69,8 @@ Texture dirtTexture;
 Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
+Texture Edificio;
 
-
-Texture dado_8_texture;
 
 //Modelos
 Model Camino_M;
@@ -233,10 +232,10 @@ void CrearDado()
 	GLfloat cubo_vertices[] = {
 		// front
 		//x		y		z		S		T			NX		NY		NZ
-		-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	-1.0f,	//0
-		0.5f, -0.5f,  0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	-1.0f,	//1
-		0.5f,  0.5f,  0.5f,		1.0f,	1.0f,		0.0f,	0.0f,	-1.0f,	//2
-		-0.5f,  0.5f,  0.5f,	0.0f,	1.0f,		0.0f,	0.0f,	-1.0f,	//3
+		-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,	//0
+		0.5f, -0.5f,  0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//1
+		0.5f,  0.5f,  0.5f,		1.0f,	1.0f,		0.0f,	0.0f,	1.0f,	//2
+		-0.5f,  0.5f,  0.5f,	0.0f,	1.0f,		0.0f,	0.0f,	1.0f,	//3
 		// right
 		//x		y		z		S		T
 		0.5f, -0.5f,  0.5f,	    0.0f,  0.0f,		-1.0f,	0.0f,	0.0f,
@@ -251,17 +250,17 @@ void CrearDado()
 
 		// left
 		//x		y		z		S		T
-		-0.5f, -0.5f,  -0.5f,	0.0f,  0.0f,		1.0f,	0.0f,	0.0f,
-		-0.5f, -0.5f,  0.5f,	1.0f,	0.0f,		1.0f,	0.0f,	0.0f,
-		-0.5f,  0.5f,  0.5f,	1.0f,	1.0f,		1.0f,	0.0f,	0.0f,
-		-0.5f,  0.5f,  -0.5f,	0.0f,	1.0f,		1.0f,	0.0f,	0.0f,
+		-0.5f, -0.5f,  -0.5f,	0.0f,  0.0f,		-1.0f,	0.0f,	0.0f,
+		-0.5f, -0.5f,  0.5f,	1.0f,	0.0f,		-1.0f,	0.0f,	0.0f,
+		-0.5f,  0.5f,  0.5f,	1.0f,	1.0f,		-1.0f,	0.0f,	0.0f,
+		-0.5f,  0.5f,  -0.5f,	0.0f,	1.0f,		-1.0f,	0.0f,	0.0f,
 
 		// bottom
 		//x		y		z		S		T
-		-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	1.0f,	0.0f,
-		0.5f,  -0.5f,  0.5f,	1.0f,	0.0f,		0.0f,	1.0f,	0.0f,
-		 0.5f,  -0.5f,  -0.5f,	1.0f,	1.0f,		0.0f,	1.0f,	0.0f,
-		-0.5f, -0.5f,  -0.5f,	0.0f,	1.0f,		0.0f,	1.0f,	0.0f,
+		-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	-1.0f,	0.0f,
+		0.5f,  -0.5f,  0.5f,	1.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
+		 0.5f,  -0.5f,  -0.5f,	1.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
+		-0.5f, -0.5f,  -0.5f,	0.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
 
 		//UP
 		 //x		y		z		S		T
@@ -302,7 +301,7 @@ int main()
 	dirtTexture.LoadTextureA();
 	plainTexture = Texture("Textures/plain.png");
 	plainTexture.LoadTextureA();
-	pisoTexture = Texture("Textures/piso.tga");
+	pisoTexture = Texture("Textures/Piso_concreto.tga");
 	pisoTexture.LoadTextureA();
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
@@ -317,19 +316,19 @@ int main()
 	//skyboxFaces.push_back("Textures/Skybox/cupertin-lake-night_bk.tga");//Back
 	//skyboxFaces.push_back("Textures/Skybox/cupertin-lake-night_ft.tga");//Front
 
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_right.tga");//Right
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_left.tga");//Left
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_bottom.tga");//Top
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_top.tga");//Bottom
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_front.tga");//Back
-	skyboxFaces.push_back("Textures/Skybox/Day/Day_back.tga");//Front
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_right.tga");//Right
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_left.tga");//Left
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_bottom.tga");//Top
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_top.tga");//Bottom
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_front.tga");//Back
+	//skyboxFaces.push_back("Textures/Skybox/Day/Day_back.tga");//Front
 
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_right.tga");//Right
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_left.tga");//Left
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_bottom.tga");//Top
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_top.tga");//Bottom
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_front.tga");//Back
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_back.tga");//Front
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_right.tga");//Right
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_left.tga");//Left
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_bottom.tga");//Top
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_top.tga");//Bottom
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_front.tga");//Back
+	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_back.tga");//Front
 
 	//skyboxFaces.push_back("Textures/Skybox/Night/Night_sky_right.tga");//Right
 	//skyboxFaces.push_back("Textures/Skybox/Night/Night_sky_left.tga");//Left
@@ -470,18 +469,23 @@ int main()
 
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
+		//Codigo para la creación del recinto que tendrá el festival de comida
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 13.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(200.0f, 30.0f, 150.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshList[4]->RenderMesh();
+
 		//blending: transparencia o traslucidez
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-5.0f, 6.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-100.0f, 6.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		cartel_M.RenderModel();
-		//DadoTexture.UseTexture();
-		//meshList[4]->RenderMesh();
-
+		
 		//Agave ¿qué sucede si lo renderizan antes del coche y de la pista?
 		//Los elementos que vayan a tener transparencia se deben de poner hasta el final del codigo para evitar problemas
 		//con la visualizacion de otros modelos
