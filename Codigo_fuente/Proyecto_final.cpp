@@ -52,7 +52,10 @@ extern int bandera;
 
 //Variable correspondiente para encender y
 //apagar la luz del helicoptero
-int encender = 0;
+int conta_dia,encender = 0;
+
+//Variable responsable del ciclo de dia y noche
+float ciclo_dia;
 
 Window mainWindow;
 std::vector<Mesh*> meshList;
@@ -341,13 +344,6 @@ int main()
 	Material_brillante = Material(4.0f, 256);
 	Material_opaco = Material(0.3f, 4);
 
-
-	//luz direccional, sólo 1 y siempre debe de existir
-	//Sera la luz que ilumine al mundo que tengamos
-	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-		0.5f, 0.5f,//Va a servir para manejar el ciclo dia y noche
-		1.0f, 0.0f, -1.0f);
-
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
 	//Declaración de primer luz puntual
@@ -385,6 +381,35 @@ int main()
 	////Loop mientras no se cierra la ventana
 	while (!mainWindow.getShouldClose())
 	{
+
+		//luz direccional, sólo 1 y siempre debe de existir
+		//Sera la luz que ilumine al mundo que tengamos
+		mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
+			ciclo_dia, 1.0,//Va a servir para manejar el ciclo dia y noche
+			1.0f, 0.0f, -1.0f);
+
+		if (conta_dia < 6000) {
+			if (ciclo_dia <= 1.0) {
+				ciclo_dia += 0.001;
+			}
+			//if (ciclo_dia == 0.69) {
+			//	skybox = Skybox(skyboxFaces);
+			//}
+		}
+		else {
+			if (ciclo_dia >= 0.085) {
+				ciclo_dia -= 0.001;
+			}
+			if (conta_dia == 12000) {
+				conta_dia = 0;
+			}
+			//if (ciclo_dia == 0.5) {
+			//	skybox = Skybox(skyboxFacesNight);
+			//}
+		}
+
+		conta_dia += 1;
+
 		GLfloat now = glfwGetTime();
 		deltaTime = now - lastTime;
 		deltaTime += (now - lastTime) / limitFPS;
