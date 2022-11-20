@@ -1,0 +1,4 @@
+C:/Users/drago/Documents/GitHub/Proyecto-Final_Computacion-Grafica/Codigo_fuente/glm/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/drago/Documents/GitHub/Proyecto-Final_Computacion-Grafica/Codigo_fuente/glm/out/build/x64-Debug/CMakeFiles/glm_static.dir
+C:/Users/drago/Documents/GitHub/Proyecto-Final_Computacion-Grafica/Codigo_fuente/glm/out/build/x64-Debug/CMakeFiles/glm_shared.dir
+C:/Users/drago/Documents/GitHub/Proyecto-Final_Computacion-Grafica/Codigo_fuente/glm/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
