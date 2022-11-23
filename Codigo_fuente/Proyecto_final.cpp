@@ -6,9 +6,9 @@ Semestre 2023-1
 Grupo 3.
 Equipo 1.
 Integrantes del equipo.
-	-Chavez GarcÌa Jes˙s ¡ngel
-	-Hern·ndez Hern·ndez Pedro Daniel
-	-MarÌn Barrera Jorge Jair
+	-Chavez Garc√≠a Jes√∫s √Ångel
+	-Hern√°ndez Hern√°ndez Pedro Daniel
+	-Mar√≠n Barrera Jorge Jair
 */
 //para cargar imagen
 #define STB_IMAGE_IMPLEMENTATION
@@ -38,7 +38,7 @@ Integrantes del equipo.
 #include"Model.h"
 #include "Skybox.h"
 
-//para iluminaciÛn
+//para iluminaci√≥n
 #include "CommonValues.h"
 #include "DirectionalLight.h"
 #include "PointLight.h"
@@ -46,6 +46,8 @@ Integrantes del equipo.
 #include "Material.h"
 const float toRadians = 3.14159265f / 180.0f;
 
+float MrotABrazo , MrotBrazo , MrotPierna, MrotPie;
+float rotlilitOffset;
 //Variable externa para la eleccion del caso
 //de la luz del coche
 extern int bandera;
@@ -75,6 +77,17 @@ Texture Edificio;
 //Modelos
 Model Camino_M;
 Model cartel_M;
+//lilit
+Model Lilit_AnteBrazo;
+Model Lilit_AnteBrazo_2;
+Model Lilit_Brazo;
+Model Lilit_Brazo_2;
+Model Lilit_Pierna;
+Model Lilit_Pierna_2;
+Model Lilit_Pie;
+Model Lilit_Pie_2;
+Model Lilit_Cabeza;
+Model Lilit_Cuerpo;
 
 Skybox skybox;
 
@@ -305,6 +318,28 @@ int main()
 	pisoTexture.LoadTextureA();
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
+	
+	//lilit
+	Lilit_AnteBrazo = Model();
+	Lilit_AnteBrazo.LoadModel("Models/Lilit_AnteBrazo.obj");
+	Lilit_AnteBrazo_2 = Model();
+	Lilit_AnteBrazo_2.LoadModel("Models/Lilit_AnteBrazo_2.obj");
+	Lilit_Brazo = Model();
+	Lilit_Brazo.LoadModel("Models/Lilit_Brazo.obj");
+	Lilit_Brazo_2 = Model();
+	Lilit_Brazo_2.LoadModel("Models/Lilit_Brazo_2.obj");
+	Lilit_Pierna = Model();
+	Lilit_Pierna.LoadModel("Models/Lilit_Pierna.obj");
+	Lilit_Pierna_2 = Model();
+	Lilit_Pierna_2.LoadModel("Models/Lilit_Pierna_2.obj");
+	Lilit_Pie = Model();
+	Lilit_Pie.LoadModel("Models/Lilit_Pie.obj");
+	Lilit_Pie_2 = Model();
+	Lilit_Pie_2.LoadModel("Models/Lilit_Pie_2.obj");
+	Lilit_Cabeza = Model();
+	Lilit_Cabeza.LoadModel("Models/Lilit_Cabeza.obj");
+	Lilit_Cuerpo = Model();
+	Lilit_Cuerpo.LoadModel("Models/Lilit_Cuerpo.obj");
 
 
 
@@ -345,7 +380,7 @@ int main()
 
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
-	//DeclaraciÛn de primer luz puntual
+	//Declaraci√≥n de primer luz puntual
 	//pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
 	//	0.5f, 0.5f,
 	//	20.0f, 1.5f, 1.5f,
@@ -376,12 +411,23 @@ int main()
 		uniformSpecularIntensity = 0, uniformShininess = 0;
 	GLuint uniformColor = 0;
 	glm::mat4 projection = glm::perspective(45.0f, (GLfloat)mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 1000.0f);
+	//lilit
+	MrotABrazo = 0.0f;
+	MrotBrazo = 0.0f;
+	MrotPierna = 0.0f;
+	rotPie = 0.0f;
+	rotlilitOffset = 1.0f;
+	rotAB = true;
+	rotB = true;
+	rotP = true;
+	rotPie = true;
+	//lilit cierre 
 	
 	////Loop mientras no se cierra la ventana
 	while (!mainWindow.getShouldClose())
 	{
 
-		//luz direccional, sÛlo 1 y siempre debe de existir
+		//luz direccional, s√≥lo 1 y siempre debe de existir
 		//Sera la luz que ilumine al mundo que tengamos
 		mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 			ciclo_dia, 1.0,//Va a servir para manejar el ciclo dia y noche
@@ -406,6 +452,101 @@ int main()
 			//	skybox = Skybox(skyboxFacesNight);
 			//}
 		}
+		
+		//lilit
+		//antebrazos
+		if (rotAB)
+		{
+			if (MrotABrazo < 40.0f)
+			{
+				MrotABrazo += rotlilitOffset * deltaTime;
+			}
+			else
+			{
+				rotAB = false;
+			}
+		}
+		if (!rotAB)
+		{
+			if (MrotABrazo > -40.0f)
+			{
+				MrotABrazo -= rotlilitOffset * deltaTime;
+			}
+			else
+			{
+				rotAB = true;
+			}
+		}
+		//brazos
+		if (rotB)
+		{
+			if (MrotBrazo < 20.0f)
+			{
+				MrotBrazo += rotlilitOffset/2 * deltaTime;
+			}
+			else
+			{
+				rotB = false;
+			}
+		}
+		if (!rotB)
+		{
+			if (MrotBrazo > -20.0f)
+			{
+				MrotBrazo -= rotlilitOffset/2 * deltaTime;
+			}
+			else
+			{
+				rotB = true;
+			}
+		}
+		//piernas
+		if (rotP)
+		{
+			if (MrotPierna < 25.0f)
+			{
+				MrotPierna += rotlilitOffset * deltaTime;
+			}
+			else
+			{
+				rotP = false;
+			}
+		}
+		if (!rotP)
+		{
+			if (MrotPierna > -25.0f)
+			{
+				MrotPierna -= rotlilitOffset * deltaTime;
+			}
+			else
+			{
+				rotP = true;
+			}
+		}
+		// pies
+		if (rotPie)
+		{
+			if (MrotPie < 0.0f)
+			{
+				MrotPie += rotlilitOffset/2 * deltaTime;
+			}
+			else
+			{
+				rotPie = false;
+			}
+		}
+		if (!rotAB)
+		{
+			if (MrotPie > 25.0f)
+			{
+				MrotPie -= rotlilitOffset/2 * deltaTime;
+			}
+			else
+			{
+				rotPie = true;
+			}
+		}
+		//cierre lilit
 
 		conta_dia += 1;
 
@@ -430,7 +571,7 @@ int main()
 		uniformEyePosition = shaderList[0].GetEyePositionLocation();
 		uniformColor = shaderList[0].getColorLocation();
 		
-		//informaciÛn en el shader de intensidad especular y brillo
+		//informaci√≥n en el shader de intensidad especular y brillo
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
 		uniformShininess = shaderList[0].GetShininessLocation();
 
@@ -438,12 +579,12 @@ int main()
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
 
-		// luz ligada a la c·mara de tipo flash
+		// luz ligada a la c√°mara de tipo flash
 		//glm::vec3 lowerLight = camera.getCameraPosition();
 		//lowerLight.y -= 0.3f;
 		//spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
-		//informaciÛn al shader de fuentes de iluminaciÛn
+		//informaci√≥n al shader de fuentes de iluminaci√≥n
 		shaderList[0].SetDirectionalLight(&mainLight);
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
@@ -469,12 +610,97 @@ int main()
 
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
-		//Codigo para la creaciÛn del recinto que tendr· el festival de comida
+		//Codigo para la creaci√≥n del recinto que tendr√° el festival de comida
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 13.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(200.0f, 30.0f, 150.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		meshList[4]->RenderMesh();
+		
+		//Codigo para la creaci√≥n de lilit
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		model = glm::translate(model, glm::vec3(0.0f, 5.0f, 0.0f + mainWindow.getmuevexcarroP()));
+		modelaux_cuerpo = model;
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lilit_Cuerpo.RenderModel();
+
+		//brazo Izq completo
+		model = modelaux_cuerpo; 
+		model = glm::translate(model, glm::vec3(0.49f , 1.61f  , -0.1f));
+		model = glm::rotate(model, glm::radians(MrotABrazo), glm::vec3(-1.0f, 0.0f, 0.0f));
+		modelaux_brazo = model;
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lilit_AnteBrazo.RenderModel();
+
+		model = modelaux_brazo;
+		model = glm::translate(model, glm::vec3(0.77f, -1.02f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians((MrotBrazo)), glm::vec3(-1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lilit_Brazo.RenderModel();
+
+		//brazo Der completo
+
+		model = modelaux_cuerpo;
+		model = glm::translate(model, glm::vec3(-0.49f, 1.61f, -0.1f));
+		model = glm::rotate(model, glm::radians(MrotABrazo), glm::vec3(1.0f, 0.0f, 0.0f));
+		modelaux_brazo2 = model;
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lilit_AnteBrazo_2.RenderModel();
+
+		model = modelaux_brazo2;
+		model = glm::translate(model, glm::vec3(-0.77f, -1.02f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians((MrotBrazo)), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lilit_Brazo_2.RenderModel();
+
+
+		//Pie Izq
+		model = modelaux_cuerpo;
+		model = glm::translate(model, glm::vec3(0.3f, -0.4f, 0.0f));
+		model = glm::rotate(model, glm::radians((MrotPierna)), glm::vec3(-1.0f, 0.0f, 0.0f));
+		modelaux_pierna= model;
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lilit_Pierna.RenderModel();
+
+		model = modelaux_pierna; 
+		model = glm::translate(model, glm::vec3(0.0f, -1.5f, 0.0f));
+		model = glm::rotate(model, glm::radians((MrotPie)), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lilit_Pie.RenderModel();
+
+		//Pie Der
+		model = modelaux_cuerpo;
+		model = glm::translate(model, glm::vec3(-0.3f, -0.4f, 0.0f));
+		model = glm::rotate(model, glm::radians((MrotPierna)), glm::vec3(1.0f, 0.0f, 0.0f));
+		modelaux_pierna2 = model;
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lilit_Pierna_2.RenderModel();
+
+		model = modelaux_pierna2;
+		//model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -1.5f, 0.0f));
+		model = glm::rotate(model, glm::radians((MrotPie)), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//LilitTexture.UseTexture();
+		Lilit_Pie_2.RenderModel();
+		
+		//lilit cabeza
+		model = modelaux_cuerpo;
+		model = glm::translate(model, glm::vec3(0.0f, 2.49f, 0.02f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lilit_Cabeza.RenderModel();
+		//Codigo para fin de la creaci√≥n de lilit
 
 		//blending: transparencia o traslucidez
 		glEnable(GL_BLEND);
@@ -486,7 +712,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		cartel_M.RenderModel();
 		
-		//Agave øquÈ sucede si lo renderizan antes del coche y de la pista?
+		//Agave ¬øqu√© sucede si lo renderizan antes del coche y de la pista?
 		//Los elementos que vayan a tener transparencia se deben de poner hasta el final del codigo para evitar problemas
 		//con la visualizacion de otros modelos
 		color = glm::vec3(1.0f, 1.0f, 1.0f);
