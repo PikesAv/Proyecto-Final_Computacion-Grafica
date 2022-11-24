@@ -46,7 +46,9 @@ Integrantes del equipo.
 #include "Material.h"
 const float toRadians = 3.14159265f / 180.0f;
 
-float MrotABrazo , MrotBrazo , MrotPierna, MrotPie;
+//Variables globales para el movimiento del personaje principal
+float MrotABrazo , MrotBrazo , MrotPierna, MrotPie, rotPie;
+bool rotAB, rotB,rotP;
 float rotlilitOffset;
 //Variable externa para la eleccion del caso
 //de la luz del coche
@@ -593,6 +595,13 @@ int main()
 		glm::mat4 modelCoche_previo(1.0);
 		glm::mat4 modelCofre_previo(1.0);
 
+		//Matrices para el persona principal
+		glm::mat4 modelaux_cuerpo(1.0);
+		glm::mat4 modelaux_brazo(1.0);
+		glm::mat4 modelaux_brazo2(1.0);
+		glm::mat4 modelaux_pierna(1.0);
+		glm::mat4 modelaux_pierna2(1.0);
+
 		glm::mat4 model(1.0);
 		glm::mat4 modelaux(1.0);
 		glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
@@ -620,7 +629,7 @@ int main()
 		//Codigo para la creación de lilit
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
-		model = glm::translate(model, glm::vec3(0.0f, 5.0f, 0.0f + mainWindow.getmuevexcarroP()));
+		model = glm::translate(model, glm::vec3(0.0f, 5.0f, 0.0f));
 		modelaux_cuerpo = model;
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
