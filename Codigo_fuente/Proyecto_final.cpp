@@ -92,6 +92,7 @@ Model Lilit_Cabeza;
 Model Lilit_Cuerpo;
 
 Skybox skybox;
+Skybox skyboxNight;
 
 //materiales
 Material Material_brillante;
@@ -346,19 +347,7 @@ int main()
 
 
 	std::vector<std::string> skyboxFaces;
-	//skyboxFaces.push_back("Textures/Skybox/cupertin-lake-night_rt.tga");//Right
-	//skyboxFaces.push_back("Textures/Skybox/cupertin-lake-night_lf.tga");//Left
-	//skyboxFaces.push_back("Textures/Skybox/cupertin-lake-night_dn.tga");//Bottom
-	//skyboxFaces.push_back("Textures/Skybox/cupertin-lake-night_up.tga");//Top
-	//skyboxFaces.push_back("Textures/Skybox/cupertin-lake-night_bk.tga");//Back
-	//skyboxFaces.push_back("Textures/Skybox/cupertin-lake-night_ft.tga");//Front
-
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_right.tga");//Right
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_left.tga");//Left
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_bottom.tga");//Top
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_top.tga");//Bottom
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_front.tga");//Back
-	//skyboxFaces.push_back("Textures/Skybox/Day/Day_back.tga");//Front
+	std::vector<std::string> skyboxFacesNight;
 
 	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_right.tga");//Right
 	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_left.tga");//Left
@@ -367,15 +356,15 @@ int main()
 	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_front.tga");//Back
 	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_back.tga");//Front
 
-	//skyboxFaces.push_back("Textures/Skybox/Night/Night_sky_right.tga");//Right
-	//skyboxFaces.push_back("Textures/Skybox/Night/Night_sky_left.tga");//Left
-	//skyboxFaces.push_back("Textures/Skybox/Night/Night_sky_bottom.tga");//Top
-	//skyboxFaces.push_back("Textures/Skybox/Night/Night_sky_top.tga");//Bottom
-	//skyboxFaces.push_back("Textures/Skybox/Night/Night_sky_front.tga");//Back
-	//skyboxFaces.push_back("Textures/Skybox/Night/Night_sky_back.tga");//Front
-
+	skyboxFacesNight.push_back("Textures/Skybox/Night/Night_sky_right.tga");//Right
+	skyboxFacesNight.push_back("Textures/Skybox/Night/Night_sky_left.tga");//Left
+	skyboxFacesNight.push_back("Textures/Skybox/Night/Night_sky_bottom.tga");//Top
+	skyboxFacesNight.push_back("Textures/Skybox/Night/Night_sky_top.tga");//Bottom
+	skyboxFacesNight.push_back("Textures/Skybox/Night/Night_sky_front.tga");//Back
+	skyboxFacesNight.push_back("Textures/Skybox/Night/Night_sky_back.tga");//Front
 
 	skybox = Skybox(skyboxFaces);
+	skyboxNight = Skybox(skyboxFacesNight);
 
 	Material_brillante = Material(4.0f, 256);
 	Material_opaco = Material(0.3f, 4);
@@ -428,20 +417,20 @@ int main()
 	////Loop mientras no se cierra la ventana
 	while (!mainWindow.getShouldClose())
 	{
-
-		//luz direccional, sólo 1 y siempre debe de existir
-		//Sera la luz que ilumine al mundo que tengamos
-		mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-			ciclo_dia, 1.0,//Va a servir para manejar el ciclo dia y noche
-			1.0f, 0.0f, -1.0f);
+		// Clear the window
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		if (conta_dia < 6000) {
 			if (ciclo_dia <= 1.0) {
 				ciclo_dia += 0.001;
 			}
-			//if (ciclo_dia == 0.69) {
-			//	skybox = Skybox(skyboxFaces);
-			//}
+			if (ciclo_dia > 0.55) {
+				skybox.DrawSkybox(camera.calculateViewMatrix(), projection);
+			}
+			else {
+				skyboxNight.DrawSkybox(camera.calculateViewMatrix(), projection);
+			}
 		}
 		else {
 			if (ciclo_dia >= 0.085) {
@@ -450,11 +439,28 @@ int main()
 			if (conta_dia == 12000) {
 				conta_dia = 0;
 			}
-			//if (ciclo_dia == 0.5) {
-			//	skybox = Skybox(skyboxFacesNight);
-			//}
+			if (ciclo_dia < 0.55) {
+				skyboxNight.DrawSkybox(camera.calculateViewMatrix(), projection);
+			}
+			else {
+				skybox.DrawSkybox(camera.calculateViewMatrix(), projection);
+			}
 		}
-		
+		conta_dia += 1;
+
+		shaderList[0].UseShader();
+		uniformModel = shaderList[0].GetModelLocation();
+		uniformProjection = shaderList[0].GetProjectionLocation();
+		uniformView = shaderList[0].GetViewLocation();
+		uniformEyePosition = shaderList[0].GetEyePositionLocation();
+		uniformColor = shaderList[0].getColorLocation();
+
+		//luz direccional, sólo 1 y siempre debe de existir
+		//Sera la luz que ilumine al mundo que tengamos
+		mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
+			ciclo_dia, 1.0,//Va a servir para manejar el ciclo dia y noche
+			1.0f, 0.0f, -1.0f);
+
 		//lilit
 		//antebrazos
 		if (rotAB)
@@ -550,7 +556,6 @@ int main()
 		}
 		//cierre lilit
 
-		conta_dia += 1;
 
 		GLfloat now = glfwGetTime();
 		deltaTime = now - lastTime;
@@ -562,16 +567,6 @@ int main()
 		camera.keyControl(mainWindow.getsKeys(), deltaTime);
 		camera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange());
 
-		// Clear the window
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		skybox.DrawSkybox(camera.calculateViewMatrix(), projection);
-		shaderList[0].UseShader();
-		uniformModel = shaderList[0].GetModelLocation();
-		uniformProjection = shaderList[0].GetProjectionLocation();
-		uniformView = shaderList[0].GetViewLocation();
-		uniformEyePosition = shaderList[0].GetEyePositionLocation();
-		uniformColor = shaderList[0].getColorLocation();
 		
 		//información en el shader de intensidad especular y brillo
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
