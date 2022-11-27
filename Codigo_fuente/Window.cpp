@@ -16,11 +16,7 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 	width = windowWidth;
 	height = windowHeight;
 
-	muevex = 2.0f;
-	muevex2 = 2.0f;
-	muevez2 = 2.0f;
-	muevey = 2.0f;
-	rotaCofre2 = 0.0f;
+	movlily = 0.0f;
 
 	for (size_t i = 0; i < 1024; i++)
 	{
@@ -110,58 +106,12 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
 
-	//Las teclas correspondientes para mover el coche
-	if (key == GLFW_KEY_Y)
-	{
-		theWindow-> muevez2 += 1.0;
-	}
-	if (key == GLFW_KEY_U)
-	{
-		theWindow-> muevez2 -= 1.0;
-	}
-
-	if (key == GLFW_KEY_P)
-	{
-		theWindow->muevex2 += 1.0;
-		bandera = 1;
-	}
-	if (key == GLFW_KEY_O)
-	{
-		theWindow->muevex2 -= 1.0;
-		bandera = 0;
-	}
-	
-	if (key == GLFW_KEY_R)
-	{
-		theWindow->rotaCofre2 -= 5.0;
-	}
-	if (key == GLFW_KEY_T)
-	{
-		theWindow->rotaCofre2 += 5.0;
-	}
-
-	//Las teclas correspondientes al helicoptero
-	if (key == GLFW_KEY_C)
-	{
-		theWindow->muevey -= 1.0;
-	}
+	//Tecla del movimiento de Lily
 	if (key == GLFW_KEY_V)
 	{
-		theWindow->muevey += 1.0;
+		theWindow->movlily += 0.25;
 	}
-
-	if (key == GLFW_KEY_L)
-	{
-		theWindow->muevex -= 1.0;
-	}
-	if (key == GLFW_KEY_K)
-	{
-		theWindow->muevex += 1.0;
-	}
-
-
-
-
+	
 	if (key >= 0 && key < 1024)
 	{
 		if (action == GLFW_PRESS)

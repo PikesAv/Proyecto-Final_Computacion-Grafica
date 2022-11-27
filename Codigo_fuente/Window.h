@@ -15,13 +15,8 @@ public:
 	GLfloat getYChange();
 
 	//Corresponden al modelo del helicoptero
-	GLfloat getmuevex() { return muevex; }
-	GLfloat getmuevey() { return muevey; }
-	//Corresponden al modelo del coche elegido
-	GLfloat getmuevex2() { return muevex2; }
-	GLfloat getmuevez2() { return muevez2; }
-	GLfloat getCofre2() { return rotaCofre2; }
-
+	GLfloat getmovlily() { return movlily; }
+	
 	bool getShouldClose() {
 		return  glfwWindowShouldClose(mainWindow);}
 	bool* getsKeys() { return keys; }
@@ -41,13 +36,8 @@ private:
 	GLfloat yChange;
 
 	//Corresponden al modelo del helicoptero
-	GLfloat muevex;
-	GLfloat muevey;
-	//Corresponden al modelo del coche elegido
-	GLfloat muevex2;
-	GLfloat muevez2;
-	GLfloat rotaCofre2;
-
+	GLfloat movlily;
+	
 	bool mouseFirstMoved;
 	static void ManejaTeclado(GLFWwindow* window, int key, int code, int action, int mode);
 	static void ManejaMouse(GLFWwindow* window, double xPos, double yPos);

@@ -54,11 +54,9 @@ float rotlilitOffset;
 //de la luz del coche
 extern int bandera;
 
-//Variable correspondiente para encender y
-//apagar la luz del helicoptero
-int conta_dia,encender = 0;
+//Variable correspondiente para el ciclo del día y noche
+int conta_dia;
 
-//Variable responsable del ciclo de dia y noche
 float ciclo_dia;
 
 Window mainWindow;
@@ -73,6 +71,8 @@ Texture dirtTexture;
 Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
+
+//Texturas utilizadas
 Texture Edificio;
 Texture marmol;
 
@@ -80,7 +80,8 @@ Texture marmol;
 //Modelos
 Model Camino_M;
 Model cartel_M;
-//lilit
+
+//Arturia Pendragon (Lily)
 Model Lilit_AnteBrazo;
 Model Lilit_AnteBrazo_2;
 Model Lilit_Brazo;
@@ -92,6 +93,7 @@ Model Lilit_Pie_2;
 Model Lilit_Cabeza;
 Model Lilit_Cuerpo;
 
+//Skybox
 Skybox skybox;
 Skybox skyboxNight;
 
@@ -321,25 +323,23 @@ int main()
 	CrearDado();
 	CreateShaders();
 
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 2.5f, 1.5f, 0.5f);
+	//Camara
+	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.5f, 0.5f);
 
-	brickTexture = Texture("Textures/brick.png");
-	brickTexture.LoadTextureA();
-	dirtTexture = Texture("Textures/dirt.png");
-	dirtTexture.LoadTextureA();
-	plainTexture = Texture("Textures/plain.png");
-	plainTexture.LoadTextureA();
+	//Declaracion de texturas
 	pisoTexture = Texture("Textures/Pisos/Floor_texture.tga");
 	pisoTexture.LoadTextureA();
-	Edificio = Texture("Textures/Build_texture.tga");
-	Edificio.LoadTextureA();
-	cartel_M = Model();
-	cartel_M.LoadModel("Models/Construccion/maistro.obj");
-	marmol = Texture("Textures/marmol.tga");
+	marmol = Texture("Textures/Pisos/marmol.tga");
 	marmol.LoadTextureA();
 
+	Edificio = Texture("Textures/Build_texture.tga");
+	Edificio.LoadTextureA();
+	
+	//Declaracion de modelos utilizados 
+	cartel_M = Model();
+	cartel_M.LoadModel("Models/Construccion/maistro.obj");
 
-	//lilit
+	//Artoria Pendragon (Lily)
 	Lilit_AnteBrazo = Model();
 	Lilit_AnteBrazo.LoadModel("Models/Lilit_AnteBrazo.obj");
 	Lilit_AnteBrazo_2 = Model();
@@ -366,6 +366,8 @@ int main()
 	std::vector<std::string> skyboxFaces;
 	std::vector<std::string> skyboxFacesNight;
 
+
+	//Skybox utilizados
 	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_right.tga");//Right
 	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_left.tga");//Left
 	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_bottom.tga");//Top
@@ -419,7 +421,10 @@ int main()
 		uniformSpecularIntensity = 0, uniformShininess = 0;
 	GLuint uniformColor = 0;
 	glm::mat4 projection = glm::perspective(45.0f, (GLfloat)mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 1000.0f);
-	//lilit
+	
+	//Animaciones
+	
+	//Lily
 	MrotABrazo = 0.0f;
 	MrotBrazo = 0.0f;
 	MrotPierna = 0.0f;
@@ -429,15 +434,16 @@ int main()
 	rotB = true;
 	rotP = true;
 	rotPie = true;
-	//lilit cierre 
+	//
 	
-	////Loop mientras no se cierra la ventana
+	//Loop mientras no se cierra la ventana
 	while (!mainWindow.getShouldClose())
 	{
 		// Clear the window
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+	
+	//Cambio de Skybox para el ciclo de día y noche
 		if (conta_dia < 6000) {
 			if (ciclo_dia <= 1.0) {
 				ciclo_dia += 0.001;
@@ -472,13 +478,14 @@ int main()
 		uniformEyePosition = shaderList[0].GetEyePositionLocation();
 		uniformColor = shaderList[0].getColorLocation();
 
+		//Ciclo de Día y Noche
 		//luz direccional, sólo 1 y siempre debe de existir
 		//Sera la luz que ilumine al mundo que tengamos
 		mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 			ciclo_dia, 1.0,//Va a servir para manejar el ciclo dia y noche
 			1.0f, 0.0f, -1.0f);
 
-		//lilit
+		//Lily
 		//antebrazos
 		if (rotAB)
 		{
@@ -571,7 +578,7 @@ int main()
 				rotPie = true;
 			}
 		}
-		//cierre lilit
+		//
 
 
 		GLfloat now = glfwGetTime();
@@ -668,16 +675,18 @@ int main()
 		//Edificio.UseTexture();
 		//meshList[4]->RenderMesh();
 
-		//Codigo para la creación de lilit
+		//------------Personajes-----------//
+		// Arturia Pendragon (Lily)
+		//Cuerpo
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
-		model = glm::translate(model, glm::vec3(0.0f, 5.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 2.7f, 0.0f + mainWindow.getmovlily()));
 		modelaux_cuerpo = model;
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Lilit_Cuerpo.RenderModel();
 
-		//brazo Izq completo
+		//Brazo Izquierdo
 		model = modelaux_cuerpo; 
 		model = glm::translate(model, glm::vec3(0.49f , 1.61f  , -0.1f));
 		model = glm::rotate(model, glm::radians(MrotABrazo), glm::vec3(-1.0f, 0.0f, 0.0f));
@@ -693,8 +702,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Lilit_Brazo.RenderModel();
 
-		//brazo Der completo
-
+		//Brazo Derecho
 		model = modelaux_cuerpo;
 		model = glm::translate(model, glm::vec3(-0.49f, 1.61f, -0.1f));
 		model = glm::rotate(model, glm::radians(MrotABrazo), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -710,8 +718,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Lilit_Brazo_2.RenderModel();
 
-
-		//Pie Izq
+		//Pie Izquierdo
 		model = modelaux_cuerpo;
 		model = glm::translate(model, glm::vec3(0.3f, -0.4f, 0.0f));
 		model = glm::rotate(model, glm::radians((MrotPierna)), glm::vec3(-1.0f, 0.0f, 0.0f));
@@ -727,7 +734,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Lilit_Pie.RenderModel();
 
-		//Pie Der
+		//Pie Derecho
 		model = modelaux_cuerpo;
 		model = glm::translate(model, glm::vec3(-0.3f, -0.4f, 0.0f));
 		model = glm::rotate(model, glm::radians((MrotPierna)), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -745,15 +752,14 @@ int main()
 		//LilitTexture.UseTexture();
 		Lilit_Pie_2.RenderModel();
 		
-		//lilit cabeza
+		//Cabeza
 		model = modelaux_cuerpo;
 		model = glm::translate(model, glm::vec3(0.0f, 2.49f, 0.02f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Lilit_Cabeza.RenderModel();
-		//Codigo para fin de la creación de lilit
-
-		//blending: transparencia o traslucidez
+		
+		//BLENDING: Util para la tranparencia o Traslucidez
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -762,20 +768,7 @@ int main()
 		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		cartel_M.RenderModel();
-		
-		//Agave ¿qué sucede si lo renderizan antes del coche y de la pista?
-		//Los elementos que vayan a tener transparencia se deben de poner hasta el final del codigo para evitar problemas
-		//con la visualizacion de otros modelos
-		color = glm::vec3(1.0f, 1.0f, 1.0f);
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.5f, -2.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		
-		AgaveTexture.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		//meshList[3]->RenderMesh();
-		
+				
 		glDisable(GL_BLEND);
 
 		glUseProgram(0);
