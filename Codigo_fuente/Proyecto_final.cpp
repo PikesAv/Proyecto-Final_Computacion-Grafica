@@ -193,19 +193,6 @@ void CreateObjects()
 
 	};
 
-	unsigned int Acuariopiso_Indices[] = {
-	0, 2, 1,
-	1, 2, 3
-	};
-
-	GLfloat Acuariopiso_Vertices[] = {
-		-10.0f, 0.0f, -10.0f,	0.0f, 0.0f,			0.0f, -1.0f, 0.0f,
-		10.0f, 0.0f, -10.0f,	120.0f, 0.0f,		0.0f, -1.0f, 0.0f,
-		-10.0f, 0.0f, 10.0f,	0.0f, 120.0f,		0.0f, -1.0f, 0.0f,
-		10.0f, 0.0f, 10.0f,		120.0f, 120.0f,		0.0f, -1.0f, 0.0f
-	};
-
-
 	Mesh *obj1 = new Mesh();
 	obj1->CreateMesh(vertices, indices, 32, 12);
 	meshList.push_back(obj1);
@@ -221,11 +208,6 @@ void CreateObjects()
 	Mesh* obj4 = new Mesh();
 	obj4->CreateMesh(vegetacionVertices, vegetacionIndices, 64, 12);
 	meshList.push_back(obj4);
-
-	Mesh *obj5 = new Mesh();
-	obj5->CreateMesh(Acuariopiso_Vertices, Acuariopiso_Indices, 32, 6);
-	meshList.push_back(obj5);
-
 
 	calcAverageNormals(indices, 12, vertices, 32, 8, 5);
 
@@ -635,19 +617,6 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Edificio.UseTexture();
 		meshList[4]->RenderMesh();
-
-		//Codigo que va a cargar la textura correspondiente al piso del acuario
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		pisoTexture.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[5]->RenderMesh();
-
 
 		//Codigo para la creación de lilit
 		model = glm::mat4(1.0);
