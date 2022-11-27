@@ -1,0 +1,14 @@
+# Blender MTL File: 'Nero_Padoru.blend'
+# Material Count: 1
+
+newmtl wire_176026026
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.690200 0.102000 0.102000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 9
+map_Kd C:\\Users\\jorge\\Desktop\\LAB-COMPU\\Models Proecyto\\model\\textures\\wire_176026026_albedo.jpg
+map_d C:\\Users\\jorge\\Desktop\\LAB-COMPU\\Models Proecyto\\model\\textures\\wire_176026026_AO.jpg
