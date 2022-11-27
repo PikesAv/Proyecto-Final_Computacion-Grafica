@@ -74,6 +74,7 @@ Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
 Texture Edificio;
+Texture marmol;
 
 
 //Modelos
@@ -172,6 +173,18 @@ void CreateObjects()
 		10.0f, 0.0f, 10.0f,		120.0f, 120.0f,		0.0f, -1.0f, 0.0f
 	};
 
+	unsigned int floorIndices2[] = {
+		0, 2, 1,
+		1, 2, 3
+	};
+
+	GLfloat floorVertices2[] = {
+		-10.0f, 0.0f, -10.0f,	0.0f, 0.0f,			0.0f, -1.0f, 0.0f,
+		10.0f, 0.0f, -10.0f,	120.0f, 0.0f,		0.0f, -1.0f, 0.0f,
+		-10.0f, 0.0f, 10.0f,	0.0f, 120.0f,		0.0f, -1.0f, 0.0f,
+		10.0f, 0.0f, 10.0f,		120.0f, 120.0f,		0.0f, -1.0f, 0.0f
+	};
+
 	unsigned int vegetacionIndices[] = {
 	   0, 1, 2,
 	   0, 2, 3,
@@ -206,13 +219,18 @@ void CreateObjects()
 	meshList.push_back(obj3);
 
 	Mesh* obj4 = new Mesh();
-	obj4->CreateMesh(vegetacionVertices, vegetacionIndices, 64, 12);
+	obj4->CreateMesh(floorVertices, floorIndices, 32, 6);
 	meshList.push_back(obj4);
+
+	Mesh* obj5 = new Mesh();
+	obj5->CreateMesh(vegetacionVertices, vegetacionIndices, 64, 12);
+	meshList.push_back(obj5);
 
 	calcAverageNormals(indices, 12, vertices, 32, 8, 5);
 
 	calcAverageNormals(vegetacionIndices, 12, vegetacionVertices, 64, 8, 5);
 }
+
 
 void CrearDado()
 {
@@ -303,7 +321,7 @@ int main()
 	CrearDado();
 	CreateShaders();
 
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.5f, 0.5f);
+	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 2.5f, 1.5f, 0.5f);
 
 	brickTexture = Texture("Textures/brick.png");
 	brickTexture.LoadTextureA();
@@ -317,7 +335,10 @@ int main()
 	Edificio.LoadTextureA();
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
-	
+	marmol = Texture("Textures/marmol.tga");
+	marmol.LoadTextureA();
+
+
 	//lilit
 	Lilit_AnteBrazo = Model();
 	Lilit_AnteBrazo.LoadModel("Models/Lilit_AnteBrazo.obj");
@@ -611,12 +632,41 @@ int main()
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		//Codigo para la creación del recinto que tendrá el festival de comida
+		
+		//--------------------------------------------Acuario-----------------------------------------//
+		//Recepcion
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 13.1f, 0.0f));
-		model = glm::scale(model, glm::vec3(200.0f, 30.0f, 150.0f));
+		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 150.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Edificio.UseTexture();
-		meshList[4]->RenderMesh();
+		meshList[5]->RenderMesh();
+		//Piso de la recepcion
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -1.8f, 0.0f));
+		model = glm::scale(model, glm::vec3(7.5f, 0.0f, 7.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		marmol.UseTexture();
+		meshList[2]->RenderMesh();
+			
+
+		//Acuario parte de l
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -18.01f, 0.0f));
+		model = glm::scale(model, glm::vec3(300.0f, 30.0f, 250.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Edificio.UseTexture();
+		meshList[5]->RenderMesh();
+
+		
+		//Cubo para el NP Nero
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -60.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(60.0f, 60.0f, 60.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//marmol.UseTexture();
+		//Edificio.UseTexture();
+		//meshList[4]->RenderMesh();
 
 		//Codigo para la creación de lilit
 		model = glm::mat4(1.0);
@@ -708,7 +758,7 @@ int main()
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-100.0f, 6.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-75.0f, 6.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		cartel_M.RenderModel();
