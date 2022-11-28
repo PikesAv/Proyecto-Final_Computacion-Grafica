@@ -71,6 +71,7 @@ Texture dirtTexture;
 Texture plainTexture;
 Texture pisoTexture;
 Texture Recepcion;
+Texture Ventanal;
 
 //Texturas utilizadas
 Texture Edificio;
@@ -261,10 +262,10 @@ void CrearDado()
 	GLfloat cubo_vertices[] = {
 		// front
 		//x		y		z		S		T			NX		NY		NZ
-		-0.5f, -0.5f,  0.5f,	0.02f,  0.26f,		0.0f,	0.0f,	1.0f,	//0
-		0.5f, -0.5f,  0.5f,		0.33f,	0.26f,		0.0f,	0.0f,	1.0f,	//1
-		0.5f,  0.5f,  0.5f,		0.33f,	0.72f,		0.0f,	0.0f,	1.0f,	//2
-		-0.5f,  0.5f,  0.5f,	0.02f,	0.72f,		0.0f,	0.0f,	1.0f,	//3
+		//-0.5f, -0.5f,  0.5f,	0.02f,  0.26f,		0.0f,	0.0f,	1.0f,	//0
+		//0.5f, -0.5f,  0.5f,		0.33f,	0.26f,		0.0f,	0.0f,	1.0f,	//1
+		//0.5f,  0.5f,  0.5f,		0.33f,	0.72f,		0.0f,	0.0f,	1.0f,	//2
+		//-0.5f,  0.5f,  0.5f,	0.02f,	0.72f,		0.0f,	0.0f,	1.0f,	//3
 		// right
 		//x		y		z		S		T
 		0.5f, -0.5f,  0.5f,	    0.02f,  0.26f,		-1.0f,	0.0f,	0.0f,
@@ -333,10 +334,10 @@ void CrearRecepcion()
 	GLfloat cubo_vertices[] = {
 		// front
 		//x		y		z		S		T			NX		NY		NZ
-		-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,	//0
-		0.5f, -0.5f,  0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//1
-		0.5f,  0.5f,  0.5f,		1.0f,	0.5f,		0.0f,	0.0f,	1.0f,	//2
-		-0.5f,  0.5f,  0.5f,	0.0f,	0.5f,		0.0f,	0.0f,	1.0f,	//3
+		//-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,	//0
+		//0.5f, -0.5f,  0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//1
+		//0.5f,  0.5f,  0.5f,		1.0f,	0.5f,		0.0f,	0.0f,	1.0f,	//2
+		//-0.5f,  0.5f,  0.5f,	0.0f,	0.5f,		0.0f,	0.0f,	1.0f,	//3
 		// right
 		//x		y		z		S		T
 		0.5f, -0.5f,  0.5f,	    0.0f,  0.0f,		-1.0f,	0.0f,	0.0f,
@@ -406,9 +407,9 @@ void CrearEntrada()
 		// front
 		//x		y		z		S		T			NX		NY		NZ
 		-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,	//0
-		0.5f, -0.5f,  0.5f,		0.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//1
-		0.5f,  0.5f,  0.5f,		0.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//2
-		-0.5f,  0.5f,  0.5f,	0.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//3
+		0.5f, -0.5f,  0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//1
+		0.5f,  0.5f,  0.5f,		1.0f,	1.0f,		0.0f,	0.0f,	1.0f,	//2
+		-0.5f,  0.5f,  0.5f,	0.0f,	1.0f,		0.0f,	0.0f,	1.0f,	//3
 		// right
 		//x		y		z		S		T
 		0.5f, -0.5f,  0.5f,	    0.0f,  0.0f,		-1.0f,	0.0f,	0.0f,
@@ -417,9 +418,9 @@ void CrearEntrada()
 		0.5f,  0.5f,  0.5f,	    0.0f,	0.0f,		-1.0f,	0.0f,	0.0f,
 		// back
 		-0.5f, -0.5f, -0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,
-		0.5f, -0.5f, -0.5f,		0.0f,	0.0f,		0.0f,	0.0f,	1.0f,
-		0.5f,  0.5f, -0.5f,		0.0f,	0.0f,		0.0f,	0.0f,	1.0f,
-		-0.5f,  0.5f, -0.5f,	0.0f,	0.0f,		0.0f,	0.0f,	1.0f,
+		0.5f, -0.5f, -0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,
+		0.5f,  0.5f, -0.5f,		1.0f,	1.0f,		0.0f,	0.0f,	1.0f,
+		-0.5f,  0.5f, -0.5f,	0.0f,	1.0f,		0.0f,	0.0f,	1.0f,
 
 		// left
 		//x		y		z		S		T
@@ -479,6 +480,8 @@ int main()
 	marmol.LoadTextureA();
 	Recepcion = Texture("Textures/Paredes/Recepcion_textura.tga");
 	Recepcion.LoadTextureA();
+	Ventanal = Texture("Textures/Paredes/Ventana.tga");
+	Ventanal.LoadTextureA();
 
 	Edificio = Texture("Textures/Build_texture.tga");
 	Edificio.LoadTextureA();
@@ -783,66 +786,11 @@ int main()
 
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
-		//Codigo para la creación del recinto que tendrá el festival de comida
-		
-		//--------------------------------------------Acuario-----------------------------------------//
-		//Recepcion
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 13.1f, 0.0f));
-		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 150.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Edificio.UseTexture();
-		meshList[5]->RenderMesh();
-
-		//Paredes de la recepcion
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 12.8f, 0.0f));
-		model = glm::scale(model, glm::vec3(149.0f, 29.5f, 149.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Recepcion.UseTexture();
-		meshList[6]->RenderMesh();
-
-		//Entrada principal
+		//Para poder hacer adecuadamente la transparencia de un objeto, se debe de poner
+		//primero los modelos a utilizar y despues colocar el mesh en numérico
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 5.2f, 74.8f));
-		model = glm::scale(model, glm::vec3(10.0f, 14.0f, 1.2f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Recepcion.UseTexture();
-		meshList[7]->RenderMesh();
-
-		glDisable(GL_BLEND);
-
-		//Piso de la recepcion
-		color = glm::vec3(1.0f, 1.0f, 1.0f);
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -1.8f, 0.0f));
-		model = glm::scale(model, glm::vec3(7.5f, 0.0f, 7.5f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		marmol.UseTexture();
-		meshList[2]->RenderMesh();
-			
-
-		//Acuario parte de la planta blaja
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -18.01f, 0.0f));
-		model = glm::scale(model, glm::vec3(300.0f, 30.0f, 250.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Edificio.UseTexture();
-		meshList[5]->RenderMesh();
-
 		
-		//Cubo para el NP Nero
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -60.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(60.0f, 60.0f, 60.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//marmol.UseTexture();
-		//Edificio.UseTexture();
-		//meshList[4]->RenderMesh();
-
 		//------------Personajes-----------//
 		// Arturia Pendragon (Lily)
 		//Cuerpo
@@ -855,8 +803,8 @@ int main()
 		Lilit_Cuerpo.RenderModel();
 
 		//Brazo Izquierdo
-		model = modelaux_cuerpo; 
-		model = glm::translate(model, glm::vec3(0.49f , 1.61f  , -0.1f));
+		model = modelaux_cuerpo;
+		model = glm::translate(model, glm::vec3(0.49f, 1.61f, -0.1f));
 		model = glm::rotate(model, glm::radians(MrotABrazo), glm::vec3(-1.0f, 0.0f, 0.0f));
 		modelaux_brazo = model;
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
@@ -890,12 +838,12 @@ int main()
 		model = modelaux_cuerpo;
 		model = glm::translate(model, glm::vec3(0.3f, -0.4f, 0.0f));
 		model = glm::rotate(model, glm::radians((MrotPierna)), glm::vec3(-1.0f, 0.0f, 0.0f));
-		modelaux_pierna= model;
+		modelaux_pierna = model;
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Lilit_Pierna.RenderModel();
 
-		model = modelaux_pierna; 
+		model = modelaux_pierna;
 		model = glm::translate(model, glm::vec3(0.0f, -1.5f, 0.0f));
 		model = glm::rotate(model, glm::radians((MrotPie)), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
@@ -919,17 +867,75 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//LilitTexture.UseTexture();
 		Lilit_Pie_2.RenderModel();
-		
+
 		//Cabeza
 		model = modelaux_cuerpo;
 		model = glm::translate(model, glm::vec3(0.0f, 2.49f, 0.02f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Lilit_Cabeza.RenderModel();
+
+		//Codigo para la creación del recinto que tendrá el festival de comida
+		//--------------------------------------------Acuario-----------------------------------------//
+		//Piso de la recepcion
+		color = glm::vec3(1.0f, 1.0f, 1.0f);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -1.8f, 0.0f));
+		model = glm::scale(model, glm::vec3(7.5f, 0.0f, 7.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		marmol.UseTexture();
+		meshList[2]->RenderMesh();
+
+		//Recepcion
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 13.1f, 0.0f));
+		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 150.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Edificio.UseTexture();
+		meshList[5]->RenderMesh();
+
+		//Paredes de la recepcion
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 12.8f, 0.0f));
+		model = glm::scale(model, glm::vec3(149.0f, 29.5f, 149.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Recepcion.UseTexture();
+		meshList[6]->RenderMesh();
+
+		//Entrada principal (ventanal)
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 13.14f, 74.9f));
+		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ventanal.UseTexture();
+		meshList[7]->RenderMesh();
+
+
+		//Acuario parte de la planta blaja
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -18.01f, 0.0f));
+		model = glm::scale(model, glm::vec3(300.0f, 30.0f, 250.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Edificio.UseTexture();
+		meshList[5]->RenderMesh();
+
+		
+		//Cubo para el NP Nero
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -60.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(60.0f, 60.0f, 60.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//marmol.UseTexture();
+		//Edificio.UseTexture();
+		//meshList[4]->RenderMesh();
+
+
 		
 		//BLENDING: Util para la tranparencia o Traslucidez
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+
+		//glEnable(GL_BLEND);
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-75.0f, 6.0f, 0.0f));
