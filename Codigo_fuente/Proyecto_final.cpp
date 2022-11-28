@@ -70,7 +70,7 @@ Texture brickTexture;
 Texture dirtTexture;
 Texture plainTexture;
 Texture pisoTexture;
-Texture AgaveTexture;
+Texture Recepcion;
 
 //Texturas utilizadas
 Texture Edificio;
@@ -233,7 +233,6 @@ void CreateObjects()
 	calcAverageNormals(vegetacionIndices, 12, vegetacionVertices, 64, 8, 5);
 }
 
-
 void CrearDado()
 {
 	unsigned int cubo_indices[] = {
@@ -306,12 +305,157 @@ void CrearDado()
 	meshList.push_back(dado);
 }
 
+void CrearRecepcion()
+{
+	unsigned int cubo_indices[] = {
+		// front
+		0, 1, 2,
+		2, 3, 0,
+		// right
+		4, 5, 6,
+		6, 7, 4,
+		// back
+		8, 9, 10,
+		10, 11, 8,
+
+		// left
+		12, 13, 14,
+		14, 15, 12,
+		// bottom
+		16, 17, 18,
+		18, 19, 16,
+		// top
+		20, 21, 22,
+		22, 23, 20,
+	};
+	//Ejercicio 1: reemplazar con sus dados de 6 caras texturizados, agregar normales
+// average normals
+	GLfloat cubo_vertices[] = {
+		// front
+		//x		y		z		S		T			NX		NY		NZ
+		-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,	//0
+		0.5f, -0.5f,  0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//1
+		0.5f,  0.5f,  0.5f,		1.0f,	0.5f,		0.0f,	0.0f,	1.0f,	//2
+		-0.5f,  0.5f,  0.5f,	0.0f,	0.5f,		0.0f,	0.0f,	1.0f,	//3
+		// right
+		//x		y		z		S		T
+		0.5f, -0.5f,  0.5f,	    0.0f,  0.0f,		-1.0f,	0.0f,	0.0f,
+		0.5f, -0.5f,  -0.5f,	1.0f,	0.0f,		-1.0f,	0.0f,	0.0f,
+		0.5f,  0.5f,  -0.5f,	1.0f,	0.5f,		-1.0f,	0.0f,	0.0f,
+		0.5f,  0.5f,  0.5f,	    0.0f,	0.5f,		-1.0f,	0.0f,	0.0f,
+		// back
+		-0.5f, -0.5f, -0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,
+		0.5f, -0.5f, -0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,
+		0.5f,  0.5f, -0.5f,		1.0f,	0.5f,		0.0f,	0.0f,	1.0f,
+		-0.5f,  0.5f, -0.5f,	0.0f,	0.5f,		0.0f,	0.0f,	1.0f,
+
+		// left
+		//x		y		z		S		T
+		-0.5f, -0.5f,  -0.5f,	0.0f,  0.0f,		-1.0f,	0.0f,	0.0f,
+		-0.5f, -0.5f,  0.5f,	1.0f,	0.0f,		-1.0f,	0.0f,	0.0f,
+		-0.5f,  0.5f,  0.5f,	1.0f,	0.5f,		-1.0f,	0.0f,	0.0f,
+		-0.5f,  0.5f,  -0.5f,	0.0f,	0.5f,		-1.0f,	0.0f,	0.0f,
+
+		// bottom
+		//x		y		z		S		T
+		-0.5f, -0.5f,  0.5f,	0.5f,  1.0f,		0.0f,	-1.0f,	0.0f,
+		0.5f,  -0.5f,  0.5f,	0.83f,	1.0f,		0.0f,	-1.0f,	0.0f,
+		 0.5f,  -0.5f,  -0.5f,	0.83f,	0.74f,		0.0f,	-1.0f,	0.0f,
+		-0.5f, -0.5f,  -0.5f,	0.5f,	0.74f,		0.0f,	-1.0f,	0.0f,
+
+		//UP
+		 //x		y		z		S		T
+		 -0.5f, 0.5f,  0.5f,	0.0f,  0.5f,		0.0f,	-1.0f,	0.0f,
+		 0.5f,  0.5f,  0.5f,	1.0f,	0.5f,		0.0f,	-1.0f,	0.0f,
+		  0.5f, 0.5f,  -0.5f,	1.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
+		 -0.5f, 0.5f,  -0.5f,	0.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
+
+	};
+
+	Mesh* dado = new Mesh();
+	dado->CreateMesh(cubo_vertices, cubo_indices, 192, 36);
+	meshList.push_back(dado);
+}
+
+void CrearEntrada()
+{
+	unsigned int cubo_indices[] = {
+		// front
+		0, 1, 2,
+		2, 3, 0,
+		// right
+		4, 5, 6,
+		6, 7, 4,
+		// back
+		8, 9, 10,
+		10, 11, 8,
+
+		// left
+		12, 13, 14,
+		14, 15, 12,
+		// bottom
+		16, 17, 18,
+		18, 19, 16,
+		// top
+		20, 21, 22,
+		22, 23, 20,
+	};
+	//Ejercicio 1: reemplazar con sus dados de 6 caras texturizados, agregar normales
+// average normals
+	GLfloat cubo_vertices[] = {
+		// front
+		//x		y		z		S		T			NX		NY		NZ
+		-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,	//0
+		0.5f, -0.5f,  0.5f,		0.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//1
+		0.5f,  0.5f,  0.5f,		0.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//2
+		-0.5f,  0.5f,  0.5f,	0.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//3
+		// right
+		//x		y		z		S		T
+		0.5f, -0.5f,  0.5f,	    0.0f,  0.0f,		-1.0f,	0.0f,	0.0f,
+		0.5f, -0.5f,  -0.5f,	0.0f,	0.0f,		-1.0f,	0.0f,	0.0f,
+		0.5f,  0.5f,  -0.5f,	0.0f,	0.0f,		-1.0f,	0.0f,	0.0f,
+		0.5f,  0.5f,  0.5f,	    0.0f,	0.0f,		-1.0f,	0.0f,	0.0f,
+		// back
+		-0.5f, -0.5f, -0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,
+		0.5f, -0.5f, -0.5f,		0.0f,	0.0f,		0.0f,	0.0f,	1.0f,
+		0.5f,  0.5f, -0.5f,		0.0f,	0.0f,		0.0f,	0.0f,	1.0f,
+		-0.5f,  0.5f, -0.5f,	0.0f,	0.0f,		0.0f,	0.0f,	1.0f,
+
+		// left
+		//x		y		z		S		T
+		-0.5f, -0.5f,  -0.5f,	0.0f,  0.0f,		-1.0f,	0.0f,	0.0f,
+		-0.5f, -0.5f,  0.5f,	0.0f,	0.0f,		-1.0f,	0.0f,	0.0f,
+		-0.5f,  0.5f,  0.5f,	0.0f,	0.0f,		-1.0f,	0.0f,	0.0f,
+		-0.5f,  0.5f,  -0.5f,	0.0f,	0.f,		-1.0f,	0.0f,	0.0f,
+
+		// bottom
+		//x		y		z		S		T
+		-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	-1.0f,	0.0f,
+		0.5f,  -0.5f,  0.5f,	0.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
+		 0.5f,  -0.5f,  -0.5f,	0.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
+		-0.5f, -0.5f,  -0.5f,	0.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
+
+		//UP
+		 //x		y		z		S		T
+		 -0.5f, 0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	-1.0f,	0.0f,
+		 0.5f,  0.5f,  0.5f,	0.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
+		  0.5f, 0.5f,  -0.5f,	0.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
+		 -0.5f, 0.5f,  -0.5f,	0.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
+
+	};
+
+	Mesh* dado = new Mesh();
+	dado->CreateMesh(cubo_vertices, cubo_indices, 192, 36);
+	meshList.push_back(dado);
+}
+
 void CreateShaders()
 {
 	Shader *shader1 = new Shader();
 	shader1->CreateFromFiles(vShader, fShader);
 	shaderList.push_back(*shader1);
 }
+
 
 
 int main()
@@ -322,6 +466,8 @@ int main()
 	CreateObjects();
 	CrearDado();
 	CreateShaders();
+	CrearRecepcion();
+	CrearEntrada();
 
 	//Camara
 	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.5f, 0.5f);
@@ -331,6 +477,8 @@ int main()
 	pisoTexture.LoadTextureA();
 	marmol = Texture("Textures/Pisos/marmol.tga");
 	marmol.LoadTextureA();
+	Recepcion = Texture("Textures/Paredes/Recepcion_textura.tga");
+	Recepcion.LoadTextureA();
 
 	Edificio = Texture("Textures/Build_texture.tga");
 	Edificio.LoadTextureA();
@@ -361,11 +509,8 @@ int main()
 	Lilit_Cuerpo = Model();
 	Lilit_Cuerpo.LoadModel("Models/Lilit_Cuerpo.obj");
 
-
-
 	std::vector<std::string> skyboxFaces;
 	std::vector<std::string> skyboxFacesNight;
-
 
 	//Skybox utilizados
 	skyboxFaces.push_back("Textures/Skybox/Day/Day_sky_right.tga");//Right
@@ -443,7 +588,7 @@ int main()
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-	//Cambio de Skybox para el ciclo de día y noche
+		//Cambio de Skybox para el ciclo de día y noche
 		if (conta_dia < 6000) {
 			if (ciclo_dia <= 1.0) {
 				ciclo_dia += 0.001;
@@ -648,7 +793,30 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Edificio.UseTexture();
 		meshList[5]->RenderMesh();
+
+		//Paredes de la recepcion
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 12.8f, 0.0f));
+		model = glm::scale(model, glm::vec3(149.0f, 29.5f, 149.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Recepcion.UseTexture();
+		meshList[6]->RenderMesh();
+
+		//Entrada principal
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 5.2f, 74.8f));
+		model = glm::scale(model, glm::vec3(10.0f, 14.0f, 1.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Recepcion.UseTexture();
+		meshList[7]->RenderMesh();
+
+		glDisable(GL_BLEND);
+
 		//Piso de la recepcion
+		color = glm::vec3(1.0f, 1.0f, 1.0f);
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -1.8f, 0.0f));
 		model = glm::scale(model, glm::vec3(7.5f, 0.0f, 7.5f));
@@ -657,7 +825,7 @@ int main()
 		meshList[2]->RenderMesh();
 			
 
-		//Acuario parte de l
+		//Acuario parte de la planta blaja
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -18.01f, 0.0f));
 		model = glm::scale(model, glm::vec3(300.0f, 30.0f, 250.0f));
