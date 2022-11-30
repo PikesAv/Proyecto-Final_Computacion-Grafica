@@ -72,6 +72,11 @@ Texture plainTexture;
 Texture pisoTexture;
 Texture Recepcion;
 Texture Ventanal;
+Texture Piso_madera;
+Texture Piso_madera_2;
+Texture Piso_madera_3;
+Texture Piso_madera_4;
+Texture pasto;
 
 //Texturas utilizadas
 Texture Edificio;
@@ -81,6 +86,8 @@ Texture marmol;
 //Modelos
 Model Camino_M;
 Model cartel_M;
+Model Farola;
+Model Carpa;
 
 //Arturia Pendragon (Lily)
 Model Lilit_AnteBrazo;
@@ -171,9 +178,9 @@ void CreateObjects()
 
 	GLfloat floorVertices[] = {
 		-10.0f, 0.0f, -10.0f,	0.0f, 0.0f,			0.0f, -1.0f, 0.0f,
-		10.0f, 0.0f, -10.0f,	120.0f, 0.0f,		0.0f, -1.0f, 0.0f,
-		-10.0f, 0.0f, 10.0f,	0.0f, 120.0f,		0.0f, -1.0f, 0.0f,
-		10.0f, 0.0f, 10.0f,		120.0f, 120.0f,		0.0f, -1.0f, 0.0f
+		10.0f, 0.0f, -10.0f,	115.0f, 0.0f,		0.0f, -1.0f, 0.0f,
+		-10.0f, 0.0f, 10.0f,	0.0f, 115.0f,		0.0f, -1.0f, 0.0f,
+		10.0f, 0.0f, 10.0f,		115.0f, 115.0f,		0.0f, -1.0f, 0.0f
 	};
 
 	unsigned int floorIndices2[] = {
@@ -183,9 +190,9 @@ void CreateObjects()
 
 	GLfloat floorVertices2[] = {
 		-10.0f, 0.0f, -10.0f,	0.0f, 0.0f,			0.0f, -1.0f, 0.0f,
-		10.0f, 0.0f, -10.0f,	120.0f, 0.0f,		0.0f, -1.0f, 0.0f,
-		-10.0f, 0.0f, 10.0f,	0.0f, 120.0f,		0.0f, -1.0f, 0.0f,
-		10.0f, 0.0f, 10.0f,		120.0f, 120.0f,		0.0f, -1.0f, 0.0f
+		10.0f, 0.0f, -10.0f,	60.0f, 0.0f,		0.0f, -1.0f, 0.0f,
+		-10.0f, 0.0f, 10.0f,	0.0f, 60.0f,		0.0f, -1.0f, 0.0f,
+		10.0f, 0.0f, 10.0f,		60.0f, 60.0f,		0.0f, -1.0f, 0.0f
 	};
 
 	unsigned int vegetacionIndices[] = {
@@ -222,7 +229,7 @@ void CreateObjects()
 	meshList.push_back(obj3);
 
 	Mesh* obj4 = new Mesh();
-	obj4->CreateMesh(floorVertices, floorIndices, 32, 6);
+	obj4->CreateMesh(floorVertices2, floorIndices2, 32, 6);
 	meshList.push_back(obj4);
 
 	Mesh* obj5 = new Mesh();
@@ -485,10 +492,24 @@ int main()
 
 	Edificio = Texture("Textures/Build_texture.tga");
 	Edificio.LoadTextureA();
-	
+	Piso_madera = Texture("Textures/Pisos/Wood_floor.tga");
+	Piso_madera.LoadTextureA();
+	Piso_madera_2 = Texture("Textures/Pisos/Wood_floor_2.tga");
+	Piso_madera_2.LoadTextureA();
+	Piso_madera_3 = Texture("Textures/Pisos/Wood_floor_3.tga");
+	Piso_madera_3.LoadTextureA();
+	Piso_madera_4 = Texture("Textures/Pisos/Wood_floor_4.tga");
+	Piso_madera_4.LoadTextureA();
+	pasto = Texture("Textures/Pisos/grass-lawn-texture.tga");
+	pasto.LoadTextureA();
+
 	//Declaracion de modelos utilizados 
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
+	Farola = Model();
+	Farola.LoadModel("Models/Farola_2/Farola_2.obj");
+	Carpa = Model();
+	Carpa.LoadModel("Models/Carpa/Carpa.obj");
 
 	//Artoria Pendragon (Lily)
 	Lilit_AnteBrazo = Model();
@@ -775,17 +796,15 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 30.0f));
+		model = glm::scale(model, glm::vec3(25.0f, 1.0f, 25.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
 		pisoTexture.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
 		meshList[2]->RenderMesh();
-
-		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
+		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		
+		//BLENDING: Util para la tranparencia o Traslucidez
 		//Para poder hacer adecuadamente la transparencia de un objeto, se debe de poner
 		//primero los modelos a utilizar y despues colocar el mesh en numérico
 		glEnable(GL_BLEND);
@@ -875,6 +894,117 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Lilit_Cabeza.RenderModel();
 
+		//--------------------------------------------Festival-----------------------------------------//
+		//Codigo para las carpas a utilizar
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-65.0f, -5.8f, 145.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.18f, 0.2f, 0.18f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Carpa.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(52.0f, -5.8f, 122.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 0.0f, -1.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.2f, 0.35f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Carpa.RenderModel();
+
+		//Codigo para la carga de los modelos de las farolas a utilizar en el festival
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, -1.95f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Farola.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, -1.95f, 167.0f));
+		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Farola.RenderModel();
+
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(75.0f, -1.95f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Farola.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(75.0f, -1.95f, 167.0f));
+		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Farola.RenderModel();
+
+		//Piso de cada una de las secciones del festival
+		//Seccion de comida nacional
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(52.0f, -1.8f, -30.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera.UseTexture();
+		meshList[3]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(52.0f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera.UseTexture();
+		meshList[3]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(52.0f, -1.8f, 30.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		pasto.UseTexture();
+		meshList[3]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(17.0f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera_2.UseTexture();
+		meshList[3]->RenderMesh();
+
+		//Seccion de comida internacional
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-13.0f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera_3.UseTexture();
+		meshList[3]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera_4.UseTexture();
+		meshList[3]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, 77.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		pasto.UseTexture();
+		meshList[3]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, -43.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera.UseTexture();
+		meshList[3]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, 17.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera_2.UseTexture();
+		meshList[3]->RenderMesh();
+
 		//Codigo para la creación del recinto que tendrá el festival de comida
 		//--------------------------------------------Acuario-----------------------------------------//
 		//Piso de la recepcion
@@ -884,7 +1014,7 @@ int main()
 		model = glm::scale(model, glm::vec3(7.5f, 0.0f, 7.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		marmol.UseTexture();
-		meshList[2]->RenderMesh();
+		//meshList[2]->RenderMesh();
 
 		//Recepcion
 		model = glm::mat4(1.0);
@@ -892,7 +1022,7 @@ int main()
 		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 150.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Edificio.UseTexture();
-		meshList[5]->RenderMesh();
+		//meshList[5]->RenderMesh();
 
 		//Paredes de la recepcion
 		model = glm::mat4(1.0);
@@ -900,7 +1030,7 @@ int main()
 		model = glm::scale(model, glm::vec3(149.0f, 29.5f, 149.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Recepcion.UseTexture();
-		meshList[6]->RenderMesh();
+		//meshList[6]->RenderMesh();
 
 		//Entrada principal (ventanal)
 		model = glm::mat4(1.0);
@@ -908,8 +1038,7 @@ int main()
 		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 0.1f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ventanal.UseTexture();
-		meshList[7]->RenderMesh();
-
+		//meshList[7]->RenderMesh();
 
 		//Acuario parte de la planta blaja
 		model = glm::mat4(1.0);
@@ -930,15 +1059,8 @@ int main()
 		//meshList[4]->RenderMesh();
 
 
-		
-		//BLENDING: Util para la tranparencia o Traslucidez
-
-
-		//glEnable(GL_BLEND);
-		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-75.0f, 6.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(75.5f, 6.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		cartel_M.RenderModel();
