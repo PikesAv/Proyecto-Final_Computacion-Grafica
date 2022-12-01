@@ -1087,20 +1087,20 @@ int main()
 				//textura con movimiento
 		//Importantes porque la variable uniform no podemos modificarla directamente
 		toffsetu += 0.001;
-		toffsetv += 0.001;
+		toffsetv -= 0.001;
 		//para que no se desborde la variable
 		//Movimiento en el eje x
 		if (toffsetu > 1.0)
 			toffsetu = 0.0;
 		//Movimiento en el eje y
-		if (toffsetv > 1.0)
-			toffsetv = 0;
+		if (toffsetv < 0.0)
+			toffsetv = 1;
 
 		//Carga de la textura del agua
 		toffset = glm::vec2(0.0f, toffsetv);
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(10.0f, 2.0f, -6.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -1111,7 +1111,7 @@ int main()
 		toffset = glm::vec2(0.0f, toffsetv);
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(20.0f, 2.0f, -6.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -1122,7 +1122,7 @@ int main()
 		toffset = glm::vec2(0.0f, toffsetv);
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(30.0f, 2.0f, -6.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -1133,7 +1133,7 @@ int main()
 		toffset = glm::vec2(0.0f, toffsetv);
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(40.0f, 2.0f, -6.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
