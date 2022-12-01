@@ -557,35 +557,69 @@ int main()
 	Material_brillante = Material(4.0f, 256);
 	Material_opaco = Material(0.3f, 4);
 
-	//contador de luces puntuales
+	//contador de luces del tipo pointlight
 	unsigned int pointLightCount = 0;
-	//Declaración de primer luz puntual
-	//pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
-	//	0.5f, 0.5f,
-	//	20.0f, 1.5f, 1.5f,
-	//	0.3f, 0.2f, 0.1f);
-	//pointLightCount++;
+	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
+		0.5f, 0.5f,
+		20.0f, 1.5f, -30.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCount++;
+
+	pointLights[1] = PointLight(0.5f, 0.0f, 0.5f,
+		0.5f, 0.5f,
+		0.0f, 1.5f, -30.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCount++;
+
+	pointLights[2] = PointLight(0.0f, 0.5f, 0.5f,
+		0.5f, 0.5f,
+		-20.0f, 1.5f, -30.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCount++;
+
 
 	unsigned int spotLightCount = 0;
+	//Contador de luces del tipo spotlight
+	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
+		0.1f, 1.0f,
+		5.0f, 10.0f, 0.0f,
+		0.0f, -5.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+		15.0f);
+	spotLightCount++;
 
-	//luz fija
-	//spotLights[0] = SpotLight(0.0f, 0.0f, 1.0f,
-	//	0.1f, 1.0f,
-	//	5.0f, 10.0f, 0.0f,
-	//	0.0f, -5.0f, 0.0f,
-	//	1.0f, 0.0f, 0.0f,
-	//	15.0f);
-	//spotLightCount++;
+	spotLights[1] = SpotLight(1.0f, 0.0f, 1.0f,
+		0.1f, 1.0f,
+		5.0f, 10.0f, 0.0f,
+		0.0f, -5.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+		15.0f);
+	spotLightCount++;
 
-	//linterna
-	//spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
-	//	0.0f, 2.0f,
-	//	0.0f, 0.0f, 0.0f,
-	//	0.0f, -1.0f, 0.0f,
-	//	1.0f, 0.0f, 0.0f,
-	//	5.0f);
-	//spotLightCount++;
-	
+	spotLights[2] = SpotLight(0.0f, 0.5f, 0.5f,
+		0.1f, 1.0f,
+		5.0f, 10.0f, 0.0f,
+		0.0f, -5.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+		15.0f);
+	spotLightCount++;
+
+	spotLights[3] = SpotLight(0.5f, 0.5f, 0.0f,
+		0.1f, 1.0f,
+		5.0f, 10.0f, 0.0f,
+		0.0f, -5.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+		15.0f);
+	spotLightCount++;
+
+	spotLights[4] = SpotLight(0.0f, 0.0f, 0.5f,
+		0.1f, 1.0f,
+		5.0f, 10.0f, 0.0f,
+		0.0f, -5.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+		15.0f);
+	spotLightCount++;
+
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
 		uniformSpecularIntensity = 0, uniformShininess = 0;
 	GLuint uniformColor = 0;
@@ -769,10 +803,16 @@ int main()
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
 
-		// luz ligada a la cámara de tipo flash
-		//glm::vec3 lowerLight = camera.getCameraPosition();
-		//lowerLight.y -= 0.3f;
-		//spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
+		//Inicializacion de las luces de tipo spotlight
+		spotLights[0].SetFlash(glm::vec3(40.0f, 15.0f, -50.0f), glm::vec3(0.0f, -1.0f, 0.0f));
+
+		spotLights[1].SetFlash(glm::vec3(20.0f, 15.0f, -50.0f), glm::vec3(0.0f, -1.0f, 0.0f));
+		
+		spotLights[2].SetFlash(glm::vec3(0.0f, 15.0f, -50.0f), glm::vec3(0.0f, -1.0f, 0.0f));
+
+		spotLights[3].SetFlash(glm::vec3(-20.0f, 15.0f, -50.0f), glm::vec3(0.0f, -1.0f, 0.0f));
+
+		spotLights[4].SetFlash(glm::vec3(-40.0f, 15.0f, -50.0f), glm::vec3(0.0f, -1.0f, 0.0f));
 
 		//información al shader de fuentes de iluminación
 		shaderList[0].SetDirectionalLight(&mainLight);
