@@ -676,6 +676,11 @@ int main()
 	//Loop mientras no se cierra la ventana
 	while (!mainWindow.getShouldClose())
 	{
+		//Recibir eventos del usuario
+		glfwPollEvents();
+		camera.keyControl(mainWindow.getsKeys(), deltaTime);
+		camera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange());
+
 		// Clear the window
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -825,11 +830,6 @@ int main()
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
 
-		//Recibir eventos del usuario
-		glfwPollEvents();
-		camera.keyControl(mainWindow.getsKeys(), deltaTime);
-		camera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange());
-
 		
 		//información en el shader de intensidad especular y brillo
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
@@ -877,6 +877,7 @@ int main()
 		model = glm::scale(model, glm::vec3(25.0f, 1.0f, 25.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		pisoTexture.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[2]->RenderMesh();
@@ -984,7 +985,6 @@ int main()
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(52.0f, -5.8f, 122.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 0.0f, -1.0f));
 		model = glm::scale(model, glm::vec3(0.4f, 0.2f, 0.35f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Carpa.RenderModel();
@@ -1001,7 +1001,6 @@ int main()
 		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
-
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(75.0f, -1.95f, 0.0f));
@@ -1083,8 +1082,70 @@ int main()
 		Piso_madera_2.UseTexture();
 		meshList[3]->RenderMesh();
 
+
+
+
+		//Codigo para la creación del recinto que tendrá el festival de comida
+		//--------------------------------------------Acuario-----------------------------------------//
+		//Piso de la recepcion
+		color = glm::vec3(1.0f, 1.0f, 1.0f);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -1.8f, 0.0f));
+		model = glm::scale(model, glm::vec3(7.5f, 0.0f, 7.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		marmol.UseTexture();
+		//meshList[2]->RenderMesh();
+
+		//Recepcion
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 13.1f, 0.0f));
+		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 150.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Edificio.UseTexture();
+		//meshList[5]->RenderMesh();
+
+		//Paredes de la recepcion
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 12.8f, 0.0f));
+		model = glm::scale(model, glm::vec3(149.0f, 29.5f, 149.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Recepcion.UseTexture();
+		//meshList[6]->RenderMesh();
+
+		//Entrada principal (ventanal)
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 13.14f, 74.9f));
+		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ventanal.UseTexture();
+		//meshList[7]->RenderMesh();
+
+		//Acuario parte de la planta blaja
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -18.01f, 0.0f));
+		model = glm::scale(model, glm::vec3(300.0f, 30.0f, 250.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Edificio.UseTexture();
+		//meshList[5]->RenderMesh();
+
+		
+		//Cubo para el NP Nero
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -60.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(60.0f, 60.0f, 60.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//marmol.UseTexture();
+		//Edificio.UseTexture();
+		//meshList[4]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(75.5f, 6.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		cartel_M.RenderModel();
+
 		//Textura animada de los fuegos artificiales
-				//textura con movimiento
+		//textura con movimiento
 		//Importantes porque la variable uniform no podemos modificarla directamente
 		toffsetu += 0.001;
 		toffsetv -= 0.001;
@@ -1141,67 +1202,6 @@ int main()
 		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[8]->RenderMesh();
 
-
-
-		//Codigo para la creación del recinto que tendrá el festival de comida
-		//--------------------------------------------Acuario-----------------------------------------//
-		//Piso de la recepcion
-		color = glm::vec3(1.0f, 1.0f, 1.0f);
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -1.8f, 0.0f));
-		model = glm::scale(model, glm::vec3(7.5f, 0.0f, 7.5f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		marmol.UseTexture();
-		//meshList[2]->RenderMesh();
-
-		//Recepcion
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 13.1f, 0.0f));
-		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 150.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Edificio.UseTexture();
-		//meshList[5]->RenderMesh();
-
-		//Paredes de la recepcion
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 12.8f, 0.0f));
-		model = glm::scale(model, glm::vec3(149.0f, 29.5f, 149.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Recepcion.UseTexture();
-		//meshList[6]->RenderMesh();
-
-		//Entrada principal (ventanal)
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 13.14f, 74.9f));
-		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 0.1f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Ventanal.UseTexture();
-		//meshList[7]->RenderMesh();
-
-		//Acuario parte de la planta blaja
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -18.01f, 0.0f));
-		model = glm::scale(model, glm::vec3(300.0f, 30.0f, 250.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Edificio.UseTexture();
-		meshList[5]->RenderMesh();
-
-		
-		//Cubo para el NP Nero
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -60.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(60.0f, 60.0f, 60.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//marmol.UseTexture();
-		//Edificio.UseTexture();
-		//meshList[4]->RenderMesh();
-
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(75.5f, 6.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		cartel_M.RenderModel();
 				
 		glDisable(GL_BLEND);
 
