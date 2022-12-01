@@ -46,6 +46,10 @@ Integrantes del equipo.
 #include "Material.h"
 const float toRadians = 3.14159265f / 180.0f;
 
+//Variables para poder animar la textura
+float toffsetu = 0.0f;
+float toffsetv = 0.0f;
+
 //Variables globales para el movimiento del personaje principal
 float MrotABrazo , MrotBrazo , MrotPierna, MrotPie, rotPie;
 bool rotAB, rotB,rotP;
@@ -56,7 +60,6 @@ extern int bandera;
 
 //Variable correspondiente para el ciclo del día y noche
 int conta_dia;
-
 float ciclo_dia;
 
 Window mainWindow;
@@ -82,6 +85,11 @@ Texture pasto;
 Texture Edificio;
 Texture marmol;
 
+//Texturas animadas
+Texture Firework_O;
+Texture Firework_P;
+Texture Firework_R;
+Texture Firework_G;
 
 //Modelos
 Model Camino_M;
@@ -212,8 +220,6 @@ void CreateObjects()
 		0.0f, -0.5f, 0.5f,		1.0f, 0.0f,		0.0f, 0.0f, 0.0f,
 		0.0f, 0.5f, 0.5f,		1.0f, 1.0f,		0.0f, 0.0f, 0.0f,
 		0.0f, 0.5f, -0.5f,		0.0f, 1.0f,		0.0f, 0.0f, 0.0f,
-
-
 	};
 
 	Mesh *obj1 = new Mesh();
@@ -464,7 +470,23 @@ void CreateShaders()
 	shaderList.push_back(*shader1);
 }
 
+void CreaTextura() {
+	unsigned int texturaIndices[] = {
+	0, 1, 2,
+	0, 2, 3,
+	};
 
+	GLfloat texturaVertices[] = {
+		-0.5f, 0.0f, 0.5f,		0.0f, 0.0f,		0.0f, -1.0f, 0.0f,
+		0.5f, 0.0f, 0.5f,		1.0f, 0.0f,		0.0f, -1.0f, 0.0f,
+		0.5f, 0.0f, -0.5f,		1.0f, 1.0f,		0.0f, -1.0f, 0.0f,
+		-0.5f, 0.0f, -0.5f,		0.0f, 1.0f,		0.0f, -1.0f, 0.0f,
+	};
+
+	Mesh* obj6 = new Mesh();
+	obj6->CreateMesh(texturaVertices, texturaIndices, 32, 6);
+	meshList.push_back(obj6);
+}
 
 int main()
 {
@@ -476,6 +498,7 @@ int main()
 	CreateShaders();
 	CrearRecepcion();
 	CrearEntrada();
+	CreaTextura();
 
 	//Camara
 	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.5f, 0.5f);
@@ -502,6 +525,17 @@ int main()
 	Piso_madera_4.LoadTextureA();
 	pasto = Texture("Textures/Pisos/grass-lawn-texture.tga");
 	pasto.LoadTextureA();
+
+	//Texturas animadas
+	Firework_G = Texture("Textures/Animadas/Firework_green.tga");
+	Firework_G.LoadTextureA();
+	Firework_O = Texture("Textures/Animadas/Firework_orange.tga");
+	Firework_O.LoadTextureA();
+	Firework_P = Texture("Textures/Animadas/Firework_purple.tga");
+	Firework_P.LoadTextureA();
+	Firework_R = Texture("Textures/Animadas/Firework_red.tga");
+	Firework_R.LoadTextureA();
+
 
 	//Declaracion de modelos utilizados 
 	cartel_M = Model();
@@ -621,7 +655,7 @@ int main()
 	spotLightCount++;
 
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
-		uniformSpecularIntensity = 0, uniformShininess = 0;
+		uniformSpecularIntensity = 0, uniformShininess = 0, uniformTextureOffset = 0;;
 	GLuint uniformColor = 0;
 	glm::mat4 projection = glm::perspective(45.0f, (GLfloat)mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 1000.0f);
 	
@@ -680,6 +714,8 @@ int main()
 		uniformView = shaderList[0].GetViewLocation();
 		uniformEyePosition = shaderList[0].GetEyePositionLocation();
 		uniformColor = shaderList[0].getColorLocation();
+		uniformTextureOffset = shaderList[0].getOffsetLocation();
+
 
 		//Ciclo de Día y Noche
 		//luz direccional, sólo 1 y siempre debe de existir
@@ -833,6 +869,8 @@ int main()
 		glm::mat4 model(1.0);
 		glm::mat4 modelaux(1.0);
 		glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
+		glm::vec2 toffset = glm::vec2(0.0f, 0.0f);
+
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
@@ -1044,6 +1082,66 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera_2.UseTexture();
 		meshList[3]->RenderMesh();
+
+		//Textura animada de los fuegos artificiales
+				//textura con movimiento
+		//Importantes porque la variable uniform no podemos modificarla directamente
+		toffsetu += 0.001;
+		toffsetv += 0.001;
+		//para que no se desborde la variable
+		//Movimiento en el eje x
+		if (toffsetu > 1.0)
+			toffsetu = 0.0;
+		//Movimiento en el eje y
+		if (toffsetv > 1.0)
+			toffsetv = 0;
+
+		//Carga de la textura del agua
+		toffset = glm::vec2(0.0f, toffsetv);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(10.0f, 2.0f, -6.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Firework_G.UseTexture();
+		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[8]->RenderMesh();
+
+		toffset = glm::vec2(0.0f, toffsetv);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(20.0f, 2.0f, -6.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Firework_O.UseTexture();
+		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[8]->RenderMesh();
+
+		toffset = glm::vec2(0.0f, toffsetv);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(30.0f, 2.0f, -6.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Firework_R.UseTexture();
+		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[8]->RenderMesh();
+
+		toffset = glm::vec2(0.0f, toffsetv);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(40.0f, 2.0f, -6.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Firework_P.UseTexture();
+		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[8]->RenderMesh();
+
+
 
 		//Codigo para la creación del recinto que tendrá el festival de comida
 		//--------------------------------------------Acuario-----------------------------------------//
