@@ -80,6 +80,7 @@ Texture Piso_madera_2;
 Texture Piso_madera_3;
 Texture Piso_madera_4;
 Texture pasto;
+Texture faro;
 
 //Texturas utilizadas
 Texture Edificio;
@@ -96,6 +97,7 @@ Model Camino_M;
 Model cartel_M;
 Model Farola;
 Model Carpa;
+Model Farola1;
 
 //Arturia Pendragon (Lily)
 Model Lilit_AnteBrazo;
@@ -523,6 +525,8 @@ int main()
 	Piso_madera_4.LoadTextureA();
 	pasto = Texture("Textures/Pisos/grass-lawn-texture.tga");
 	pasto.LoadTextureA();
+	faro = Texture("Textures/tlamp.tga");
+	faro.LoadTextureA();
 
 	//Texturas animadas
 	Firework_G = Texture("Textures/Animadas/Firework_green.tga");
@@ -542,6 +546,8 @@ int main()
 	Farola.LoadModel("Models/Farola_2/Farola_2.obj");
 	Carpa = Model();
 	Carpa.LoadModel("Models/Carpa/Carpa.obj");
+	Farola1 = Model();
+	Farola1.LoadModel("Models/Farola_3/farola_3.obj");
 
 	//Artoria Pendragon (Lily)
 	Lilit_AnteBrazo = Model();
@@ -1013,6 +1019,14 @@ int main()
 		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(10.0f, -3.95f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 4.0f, 2.5f));
+		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Farola1.RenderModel();
+		faro.UseTexture();
 
 		//Piso de cada una de las secciones del festival
 		//Seccion de comida nacional
