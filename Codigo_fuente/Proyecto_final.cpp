@@ -342,8 +342,7 @@ void CrearRecepcion()
 		20, 21, 22,
 		22, 23, 20,
 	};
-	//Ejercicio 1: reemplazar con sus dados de 6 caras texturizados, agregar normales
-// average normals
+	//average normals
 	GLfloat cubo_vertices[] = {
 		// front
 		//x		y		z		S		T			NX		NY		NZ
@@ -414,8 +413,7 @@ void CrearEntrada()
 		20, 21, 22,
 		22, 23, 20,
 	};
-	//Ejercicio 1: reemplazar con sus dados de 6 caras texturizados, agregar normales
-// average normals
+	//average normals
 	GLfloat cubo_vertices[] = {
 		// front
 		//x		y		z		S		T			NX		NY		NZ
@@ -501,7 +499,7 @@ int main()
 	CreaTextura();
 
 	//Camara
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.5f, 0.5f);
+	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 1.5f, 0.5f);
 
 	//Declaracion de texturas
 	pisoTexture = Texture("Textures/Pisos/Floor_texture.tga");
@@ -873,8 +871,8 @@ int main()
 
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(25.0f, 1.0f, 25.0f));
+		model = glm::translate(model, glm::vec3(-5.0f, -2.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 1.0f, 20.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -976,16 +974,16 @@ int main()
 		//--------------------------------------------Festival-----------------------------------------//
 		//Codigo para las carpas a utilizar
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-65.0f, -5.8f, 145.0f));
+		model = glm::translate(model, glm::vec3(-60.0f, -8.5f, 140.0f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.18f, 0.2f, 0.18f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.3f, 0.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Carpa.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(52.0f, -5.8f, 122.0f));
+		model = glm::translate(model, glm::vec3(80.0f, -8.0f, 122.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.2f, 0.35f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.3f, 0.35f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Carpa.RenderModel();
 
@@ -1003,14 +1001,14 @@ int main()
 		Farola.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(75.0f, -1.95f, 0.0f));
+		model = glm::translate(model, glm::vec3(102.0f, -1.95f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(75.0f, -1.95f, 167.0f));
+		model = glm::translate(model, glm::vec3(102.0f, -1.95f, 170.0f));
 		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
 		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -1019,37 +1017,37 @@ int main()
 		//Piso de cada una de las secciones del festival
 		//Seccion de comida nacional
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(52.0f, -1.8f, -30.0f));
+		model = glm::translate(model, glm::vec3(80.0f, -1.8f, -30.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera.UseTexture();
 		meshList[3]->RenderMesh();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(52.0f, -1.8f, 137.0f));
+		model = glm::translate(model, glm::vec3(80.0f, -1.8f, 137.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera.UseTexture();
 		meshList[3]->RenderMesh();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(52.0f, -1.8f, 30.0f));
+		model = glm::translate(model, glm::vec3(80.0f, -1.8f, 30.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pasto.UseTexture();
 		meshList[3]->RenderMesh();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(17.0f, -1.8f, 137.0f));
-		model = glm::scale(model, glm::vec3(1.5f, 0.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(40.0f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera_2.UseTexture();
 		meshList[3]->RenderMesh();
 
 		//Seccion de comida internacional
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-13.0f, -1.8f, 137.0f));
-		model = glm::scale(model, glm::vec3(1.5f, 0.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera_3.UseTexture();
 		meshList[3]->RenderMesh();
