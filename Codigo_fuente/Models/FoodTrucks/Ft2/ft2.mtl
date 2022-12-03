@@ -1,31 +1,63 @@
 # 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
-# File Created: 02.12.2022 18:33:20
+# File Created: 03.12.2022 04:06:51
 
-newmtl wire_141007058
-	Ns 32
-	d 1
-	Tr 0
-	Tf 1 1 1
-	illum 2
-	Ka 0.5529 0.0275 0.2275
-	Kd 0.5529 0.0275 0.2275
-	Ks 0.3500 0.3500 0.3500
-
-newmtl Material__40
-	Kd 0.4431 0.0549 0.0000
-	Ks 0.6588 0.6588 0.6588
-	Tr 0.0000
+newmtl 13___Default
+	Ns 10.0000
+	Ni 1.5000
 	d 1.0000
-	Tf 1.0000 1.0000 1.0000
-	Pr 0.2000
-	Pm 0.0000
-	Pc 0.0000
-	Pcr 0.0000
-	Ni 1.5200
-	Ke 0.0000 0.0000 0.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
 	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\textures.tga
+	map_Kd C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\textures.tga
 
-newmtl Material__41
+newmtl 20___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\mesa.tga
+	map_Kd C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\mesa.tga
+
+newmtl 21___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\coci.tga
+	map_Kd C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\coci.tga
+
+newmtl 14___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\textures.tga
+	map_Kd C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\textures.tga
+
+newmtl ft2_Material__41
 	Kd 0.7451 0.7451 0.7451
 	Ks 0.6588 0.6588 0.6588
 	Tr 0.0000
@@ -35,25 +67,81 @@ newmtl Material__41
 	Pm 0.0000
 	Pc 0.0000
 	Pcr 0.0000
-	Ni 1.5200
+	Ni 1.5000
 	Ke 0.0000 0.0000 0.0000
 	illum 2
 
-newmtl Material__38
-	Kd 0.2157 0.2157 0.2157
-	Ks 0.2235 0.2235 0.2235
-	Tr 0.0000
+newmtl 15___Default
+	Ns 10.0000
+	Ni 1.5000
 	d 1.0000
-	Tf 1.0000 1.0000 1.0000
-	Pr 0.3000
-	Pm 0.0000
-	Pc 0.0000
-	Pcr 0.0000
-	Ni 1.5200
-	Ke 0.0000 0.0000 0.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
 	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\textures.tga
+	map_Kd C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\textures.tga
 
-newmtl Material__39
+newmtl ft2_Material__40
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\textures.tga
+	map_Kd C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\textures.tga
+
+newmtl ft2_Material__44
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\acAs.tga
+	map_Kd C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\acAs.tga
+
+newmtl ft2_Material__45
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\logo.tga
+	map_Kd C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\logo.tga
+
+newmtl 22___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\band.tga
+	map_Kd C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\band.tga
+
+newmtl ft2_Material__39
 	Kd 0.2157 0.2157 0.2157
 	Ks 0.6196 0.6196 0.6196
 	Tr 0.0000
@@ -63,76 +151,34 @@ newmtl Material__39
 	Pm 0.0000
 	Pc 0.0000
 	Pcr 0.0000
-	Ni 1.5200
+	Ni 1.5000
 	Ke 0.0000 0.0000 0.0000
 	illum 2
 
-newmtl Material__42
-	Kd 0.0000 0.0000 0.0000
+newmtl 19___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
-	Tr 0.0000
-	d 1.0000
-	Tf 1.0000 1.0000 1.0000
-	Pr 1.0000
-	Pm 0.0000
-	Pc 0.0000
-	Pcr 0.0000
-	Ni 1.5200
 	Ke 0.0000 0.0000 0.0000
-	illum 2
+	map_Ka C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\pisom.tga
+	map_Kd C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\pisom.tga
 
-newmtl Material__43
-	Kd 0.0000 0.0000 0.0000
+newmtl ft2_Material__43
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
-	Tr 0.0000
-	d 1.0000
-	Tf 1.0000 1.0000 1.0000
-	Pr 1.0000
-	Pm 0.0000
-	Pc 0.0000
-	Pcr 0.0000
-	Ni 1.5200
 	Ke 0.0000 0.0000 0.0000
-	illum 2
-
-newmtl Material__44
-	Kd 0.0000 0.0000 0.0000
-	Ks 0.0000 0.0000 0.0000
-	Tr 0.0000
-	d 1.0000
-	Tf 1.0000 1.0000 1.0000
-	Pr 1.0000
-	Pm 0.0000
-	Pc 0.0000
-	Pcr 0.0000
-	Ni 1.5200
-	Ke 0.0000 0.0000 0.0000
-	illum 2
-
-newmtl Material__45
-	Kd 0.0000 0.0000 0.0000
-	Ks 0.0000 0.0000 0.0000
-	Tr 0.0000
-	d 1.0000
-	Tf 1.0000 1.0000 1.0000
-	Pr 1.0000
-	Pm 0.0000
-	Pc 0.0000
-	Pcr 0.0000
-	Ni 1.5200
-	Ke 0.0000 0.0000 0.0000
-	illum 2
-
-newmtl Material__77
-	Kd 0.0549 0.0549 0.0549
-	Ks 0.7255 0.7255 0.7255
-	Tr 0.0000
-	d 1.0000
-	Tf 1.0000 1.0000 1.0000
-	Pr 0.0000
-	Pm 0.0000
-	Pc 0.0000
-	Pcr 0.0000
-	Ni 1.5200
-	Ke 0.0000 0.0000 0.0000
-	illum 2
+	map_Ka C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\asiento.tga
+	map_Kd C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Models\FoodTrucks\Ft2\Texturas\asiento.tga

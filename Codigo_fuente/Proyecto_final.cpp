@@ -1135,7 +1135,7 @@ int main()
 		Ftruck1.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-110.0f, 8.0f, 20.0f));
+		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 20.0f));
 		model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
