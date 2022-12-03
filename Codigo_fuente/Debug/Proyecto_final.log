@@ -1,11 +1,10 @@
 ﻿  Proyecto_final.cpp
 C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(12,36): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
 C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(695,23): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(706,23): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(832,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(834,43): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1162,20): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1163,20): warning C4305: '-=': truncamiento de 'double' a 'float'
-LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(727,23): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(738,23): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(864,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(866,43): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1236,20): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1237,20): warning C4305: '-=': truncamiento de 'double' a 'float'
   Proyecto_final.vcxproj -> C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Debug\Proyecto_final.exe

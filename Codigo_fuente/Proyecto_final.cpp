@@ -92,13 +92,15 @@ Texture Firework_P;
 Texture Firework_R;
 Texture Firework_G;
 
-//Modelos
+//Modelos entorno
 Model Camino_M;
 Model cartel_M;
 Model Farola;
 Model Carpa;
 Model Farola1;
 
+//Modelos personajes
+//
 //Arturia Pendragon (Lily)
 Model Lilit_AnteBrazo;
 Model Lilit_AnteBrazo_2;
@@ -110,6 +112,16 @@ Model Lilit_Pie;
 Model Lilit_Pie_2;
 Model Lilit_Cabeza;
 Model Lilit_Cuerpo;
+
+//Modelos FoodTrucks
+Model Ftruck1;
+Model Ftruck2;
+Model Ftruck3;
+Model Ftruck4;
+Model Ftruck5;
+
+//Modelos Comida Mexicana
+Model Comex1;
 
 //Skybox
 Skybox skybox;
@@ -539,7 +551,9 @@ int main()
 	Firework_R.LoadTextureA();
 
 
-	//Declaracion de modelos utilizados 
+	//Declaracion de modelos utilizados
+	//
+	
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
 	Farola = Model();
@@ -570,6 +584,24 @@ int main()
 	Lilit_Cabeza.LoadModel("Models/Lilit_Cabeza.obj");
 	Lilit_Cuerpo = Model();
 	Lilit_Cuerpo.LoadModel("Models/Lilit_Cuerpo.obj");
+
+	//FoodTrucks
+	Ftruck1 = Model();
+	Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft_tres.obj");
+	Ftruck2 = Model();
+	Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
+	Ftruck3 = Model();
+	Ftruck3.LoadModel("Models/FoodTrucks/Ft3/yatai.obj");
+	Ftruck4 = Model();
+	Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
+	Ftruck5 = Model();
+	Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
+
+
+	//Comida Mexicana
+	Comex1 = Model();
+	Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
+
 
 	std::vector<std::string> skyboxFaces;
 	std::vector<std::string> skyboxFacesNight;
@@ -877,8 +909,8 @@ int main()
 
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-5.0f, -2.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(15.0f, 1.0f, 20.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 40.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -1094,7 +1126,49 @@ int main()
 		Piso_madera_2.UseTexture();
 		meshList[3]->RenderMesh();
 
+		//FoodTrucks
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 60.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck1.RenderModel();
 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-110.0f, 8.0f, 20.0f));
+		model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck2.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 150.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck3.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, 80.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck4.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, -20.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck5.RenderModel();
+
+		//Comida Mexicana
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(65.0f, -1.95f, -10.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Comex1.RenderModel();
 
 
 		//Codigo para la creación del recinto que tendrá el festival de comida
