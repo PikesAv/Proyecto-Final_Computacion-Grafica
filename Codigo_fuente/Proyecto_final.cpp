@@ -587,7 +587,7 @@ int main()
 
 	//FoodTrucks
 	Ftruck1 = Model();
-	Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft_tres.obj");
+	Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
 	Ftruck2 = Model();
 	Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
 	Ftruck3 = Model();
@@ -1128,9 +1128,9 @@ int main()
 
 		//FoodTrucks
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 60.0f));
+		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 80.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck1.RenderModel();
 
@@ -1156,7 +1156,7 @@ int main()
 		Ftruck4.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, -20.0f));
+		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, -40.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
