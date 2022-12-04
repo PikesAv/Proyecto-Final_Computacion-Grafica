@@ -115,16 +115,16 @@ Model Farola1;
 //Modelos personajes
 //
 //Arturia Pendragon (Lily)
-Model Lilit_AnteBrazo;
-Model Lilit_AnteBrazo_2;
-Model Lilit_Brazo;
-Model Lilit_Brazo_2;
-Model Lilit_Pierna;
-Model Lilit_Pierna_2;
-Model Lilit_Pie;
-Model Lilit_Pie_2;
-Model Lilit_Cabeza;
-Model Lilit_Cuerpo;
+Model Lily_AnteBrazo;
+Model Lily_AnteBrazo_2;
+Model Lily_Brazo;
+Model Lily_Brazo_2;
+Model Lily_Pierna;
+Model Lily_Pierna_2;
+Model Lily_Pie;
+Model Lily_Pie_2;
+Model Lily_Cabeza;
+Model Lily_Cuerpo;
 
 //Nero 
 Model Nero_Cuerpo;
@@ -609,26 +609,28 @@ int main()
 	Farola1.LoadModel("Models/Farola_3/farola_3.obj");
 
 	//Artoria Pendragon (Lily)
-	Lilit_AnteBrazo = Model();
-	Lilit_AnteBrazo.LoadModel("Models/Lilit_AnteBrazo.obj");
-	Lilit_AnteBrazo_2 = Model();
-	Lilit_AnteBrazo_2.LoadModel("Models/Lilit_AnteBrazo_2.obj");
-	Lilit_Brazo = Model();
-	Lilit_Brazo.LoadModel("Models/Lilit_Brazo.obj");
-	Lilit_Brazo_2 = Model();
-	Lilit_Brazo_2.LoadModel("Models/Lilit_Brazo_2.obj");
-	Lilit_Pierna = Model();
-	Lilit_Pierna.LoadModel("Models/Lilit_Pierna.obj");
-	Lilit_Pierna_2 = Model();
-	Lilit_Pierna_2.LoadModel("Models/Lilit_Pierna_2.obj");
-	Lilit_Pie = Model();
-	Lilit_Pie.LoadModel("Models/Lilit_Pie.obj");
-	Lilit_Pie_2 = Model();
-	Lilit_Pie_2.LoadModel("Models/Lilit_Pie_2.obj");
-	Lilit_Cabeza = Model();
-	Lilit_Cabeza.LoadModel("Models/Lilit_Cabeza.obj");
-	Lilit_Cuerpo = Model();
-	Lilit_Cuerpo.LoadModel("Models/Lilit_Cuerpo.obj");
+	Lily_AnteBrazo = Model();
+	Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
+	Lily_AnteBrazo_2 = Model();
+	Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
+	Lily_Brazo = Model();
+	Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
+	Lily_Brazo_2 = Model();
+	Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
+	Lily_Pierna = Model();
+	Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
+	Lily_Pierna_2 = Model();
+	Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
+	Lily_Pie = Model();
+	Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
+	Lily_Pie_2 = Model();
+	Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
+	Lily_Cabeza = Model();
+	Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
+	Lily_Cuerpo = Model();
+	Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
+
+
 	
 	//nero
 	Nero_Cuerpo = Model();
@@ -1163,11 +1165,31 @@ int main()
 		glm::mat4 modelCofre_previo(1.0);
 
 		//Matrices para el persona principal
-		glm::mat4 modelaux_cuerpo(1.0);
-		glm::mat4 modelaux_brazo(1.0);
-		glm::mat4 modelaux_brazo2(1.0);
-		glm::mat4 modelaux_pierna(1.0);
-		glm::mat4 modelaux_pierna2(1.0);
+		//lily
+		glm::mat4 modelaux_cuerpoL(1.0);
+		glm::mat4 modelaux_brazoL(1.0);
+		glm::mat4 modelaux_brazo2L(1.0);
+		glm::mat4 modelaux_piernaL(1.0);
+		glm::mat4 modelaux_pierna2L(1.0);
+		//------------------------------
+		//nero
+		glm::mat4 modelaux_cuerpoN(1.0);
+		glm::mat4 modelaux_brazoN(1.0);
+		glm::mat4 modelaux_brazo2N(1.0);
+		//-----------------------------
+		//koharu
+		glm::mat4 modelaux_cuerpoK(1.0);
+		glm::mat4 modelaux_brazoK(1.0);
+		glm::mat4 modelaux_brazo2K(1.0);
+		glm::mat4 modelaux_piernaK(1.0);
+		glm::mat4 modelaux_pierna2K(1.0);
+		//-----------------------------
+		//koshiro
+		glm::mat4 modelaux_cuerpoKS(1.0);
+		glm::mat4 modelaux_brazoKS(1.0);
+		glm::mat4 modelaux_brazo2KS(1.0);
+		glm::mat4 modelaux_piernaKS(1.0);
+		glm::mat4 modelaux_pierna2KS(1.0);
 
 		glm::mat4 model(1.0);
 		glm::mat4 modelaux(1.0);
