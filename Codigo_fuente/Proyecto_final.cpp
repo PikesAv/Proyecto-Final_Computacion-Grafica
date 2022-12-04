@@ -19,6 +19,7 @@ Integrantes del equipo.
 #include <vector>
 #include <math.h>
 #include <Windows.h>
+#include <random>
 
 #include <glew.h>
 #include <glfw3.h>
@@ -70,12 +71,14 @@ float MrotABrazoKS, MrotBrazoKS, MrotPiernaKS, MrotPieKS;//movimientos
 bool rotABKS, rotBKS, rotPKS, rotPiesKS; //banderas
 float rotKoshiroOffset;
 //Variable externa para la eleccion del caso
-//de la luz del coche
 extern int bandera;
-extern bool ActivadorRL, ActivadorML, ActivadorN, ActivadorKS, ActivadorK;
+extern bool ActivadorRL, ActivadorML, ActivadorN, ActivadorKS, ActivadorK, luces;
 //Variable correspondiente para el ciclo del día y noche
 int conta_dia;
 float ciclo_dia;
+//Variable correspondiente al show de luces
+int conta_show;
+float show = 0.0f;
 
 //variables para animación Key
 //float toffsetu = 0.0f;
@@ -121,6 +124,7 @@ Model Carpa;
 Model Farola1;
 Model Mesa_B;
 Model Silla_R;
+Model Reflector;
 
 //Modelos personajes
 //
@@ -668,7 +672,6 @@ void interpolation(void)
 
 }
 
-
 void animate(void)
 {
 	//Movimiento del objeto
@@ -806,120 +809,121 @@ int main()
 	Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
 	Mesa_B = Model();
 	Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
+	Reflector = Model();
+	Reflector.LoadModel("Models/Reflector/Reflector.obj");
 
 	//Artoria Pendragon (Lily)
-	Lily_AnteBrazo = Model();
-	Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
-	Lily_AnteBrazo_2 = Model();
-	Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
-	Lily_Brazo = Model();
-	Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
-	Lily_Brazo_2 = Model();
-	Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
-	Lily_Pierna = Model();
-	Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
-	Lily_Pierna_2 = Model();
-	Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
-	Lily_Pie = Model();
-	Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
-	Lily_Pie_2 = Model();
-	Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
-	Lily_Cabeza = Model();
-	Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
-	Lily_Cuerpo = Model();
-	Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
+	//Lily_AnteBrazo = Model();
+	//Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
+	//Lily_AnteBrazo_2 = Model();
+	//Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
+	//Lily_Brazo = Model();
+	//Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
+	//Lily_Brazo_2 = Model();
+	//Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
+	//Lily_Pierna = Model();
+	//Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
+	//Lily_Pierna_2 = Model();
+	//Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
+	//Lily_Pie = Model();
+	//Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
+	//Lily_Pie_2 = Model();
+	//Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
+	//Lily_Cabeza = Model();
+	//Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
+	//Lily_Cuerpo = Model();
+	//Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
 
-	//nero
-	Nero_Cuerpo = Model();
-	Nero_Cuerpo.LoadModel("Models/Nero/nero_cuerpo.obj");
-	Nero_AnteBrazo = Model();
-	Nero_AnteBrazo.LoadModel("Models/Nero/nero_antebrazo_1.obj");
-	Nero_AnteBrazo_2 = Model();
-	Nero_AnteBrazo_2.LoadModel("Models/Nero/nero_antebrazo_2.obj");
-	Nero_Brazo = Model();
-	Nero_Brazo.LoadModel("Models/Nero/nero_brazo_1.obj");
-	Nero_Brazo_2 = Model();
-	Nero_Brazo_2.LoadModel("Models/Nero/nero_brazo_2.obj");
+	////nero
+	//Nero_Cuerpo = Model();
+	//Nero_Cuerpo.LoadModel("Models/Nero/nero_cuerpo.obj");
+	//Nero_AnteBrazo = Model();
+	//Nero_AnteBrazo.LoadModel("Models/Nero/nero_antebrazo_1.obj");
+	//Nero_AnteBrazo_2 = Model();
+	//Nero_AnteBrazo_2.LoadModel("Models/Nero/nero_antebrazo_2.obj");
+	//Nero_Brazo = Model();
+	//Nero_Brazo.LoadModel("Models/Nero/nero_brazo_1.obj");
+	//Nero_Brazo_2 = Model();
+	//Nero_Brazo_2.LoadModel("Models/Nero/nero_brazo_2.obj");
 
-	//koshiro
-	koshiro_AnteBrazo = Model();
-	koshiro_AnteBrazo.LoadModel("Models/koshiro/Koshiro_ABrazo_1.obj");
-	koshiro_AnteBrazo_2 = Model();
-	koshiro_AnteBrazo_2.LoadModel("Models/koshiro/Koshiro_ABrazo_2.obj");
-	koshiro_Brazo = Model();
-	koshiro_Brazo.LoadModel("Models/koshiro/Koshiro_Brazo_1.obj");
-	koshiro_Brazo_2 = Model();
-	koshiro_Brazo_2.LoadModel("Models/koshiro/Koshiro_Brazo_2.obj");
-	koshiro_Pierna = Model();
-	koshiro_Pierna.LoadModel("Models/koshiro/Koshiro_Pierna_1.obj");
-	koshiro_Pierna_2 = Model();
-	koshiro_Pierna_2.LoadModel("Models/koshiro/Koshiro_Pierna_2.obj");
-	koshiro_Pie = Model();
-	koshiro_Pie.LoadModel("Models/koshiro/Koshiro_Pie_1.obj");
-	koshiro_Pie_2 = Model();
-	koshiro_Pie_2.LoadModel("Models/koshiro/Koshiro_Pie_2.obj");
-	koshiro_Cuerpo = Model();
-	koshiro_Cuerpo.LoadModel("Models/koshiro/Koshiro_Cuerpo.obj");
+	////koshiro
+	//koshiro_AnteBrazo = Model();
+	//koshiro_AnteBrazo.LoadModel("Models/koshiro/Koshiro_ABrazo_1.obj");
+	//koshiro_AnteBrazo_2 = Model();
+	//koshiro_AnteBrazo_2.LoadModel("Models/koshiro/Koshiro_ABrazo_2.obj");
+	//koshiro_Brazo = Model();
+	//koshiro_Brazo.LoadModel("Models/koshiro/Koshiro_Brazo_1.obj");
+	//koshiro_Brazo_2 = Model();
+	//koshiro_Brazo_2.LoadModel("Models/koshiro/Koshiro_Brazo_2.obj");
+	//koshiro_Pierna = Model();
+	//koshiro_Pierna.LoadModel("Models/koshiro/Koshiro_Pierna_1.obj");
+	//koshiro_Pierna_2 = Model();
+	//koshiro_Pierna_2.LoadModel("Models/koshiro/Koshiro_Pierna_2.obj");
+	//koshiro_Pie = Model();
+	//koshiro_Pie.LoadModel("Models/koshiro/Koshiro_Pie_1.obj");
+	//koshiro_Pie_2 = Model();
+	//koshiro_Pie_2.LoadModel("Models/koshiro/Koshiro_Pie_2.obj");
+	//koshiro_Cuerpo = Model();
+	//koshiro_Cuerpo.LoadModel("Models/koshiro/Koshiro_Cuerpo.obj");
 
-	//Koharu
-	Koharu_AnteBrazo = Model();
-	Koharu_AnteBrazo.LoadModel("Models/Koharu/Koharu_AnteBrazo_1.obj");
-	Koharu_AnteBrazo_2 = Model();
-	Koharu_AnteBrazo_2.LoadModel("Models/Koharu/Koharu_AnteBrazo_2.obj");
-	Koharu_Brazo = Model();
-	Koharu_Brazo.LoadModel("Models/Koharu/Koharu_Brazo_1.obj");
-	Koharu_Brazo_2 = Model();
-	Koharu_Brazo_2.LoadModel("Models/Koharu/Koharu_Brazo_2.obj");
-	Koharu_Pierna = Model();
-	Koharu_Pierna.LoadModel("Models/Koharu/Koharu_Pierna_1.obj");
-	Koharu_Pierna_2 = Model();
-	Koharu_Pierna_2.LoadModel("Models/Koharu/Koharu_Pierna_2.obj");
-	Koharu_Pie = Model();
-	Koharu_Pie.LoadModel("Models/Koharu/Koharu_Pie_1.obj");
-	Koharu_Pie_2 = Model();
-	Koharu_Pie_2.LoadModel("Models/Koharu/Koharu_Pie_2.obj");
-	Koharu_Cuerpo = Model();
-	Koharu_Cuerpo.LoadModel("Models/Koharu/Koharu_Cuerpo.obj");
-	//padoru
-	Padoru = Model();
-	Padoru.LoadModel("Models/PAdoru/Nero_Padoru.obj");
+	////Koharu
+	//Koharu_AnteBrazo = Model();
+	//Koharu_AnteBrazo.LoadModel("Models/Koharu/Koharu_AnteBrazo_1.obj");
+	//Koharu_AnteBrazo_2 = Model();
+	//Koharu_AnteBrazo_2.LoadModel("Models/Koharu/Koharu_AnteBrazo_2.obj");
+	//Koharu_Brazo = Model();
+	//Koharu_Brazo.LoadModel("Models/Koharu/Koharu_Brazo_1.obj");
+	//Koharu_Brazo_2 = Model();
+	//Koharu_Brazo_2.LoadModel("Models/Koharu/Koharu_Brazo_2.obj");
+	//Koharu_Pierna = Model();
+	//Koharu_Pierna.LoadModel("Models/Koharu/Koharu_Pierna_1.obj");
+	//Koharu_Pierna_2 = Model();
+	//Koharu_Pierna_2.LoadModel("Models/Koharu/Koharu_Pierna_2.obj");
+	//Koharu_Pie = Model();
+	//Koharu_Pie.LoadModel("Models/Koharu/Koharu_Pie_1.obj");
+	//Koharu_Pie_2 = Model();
+	//Koharu_Pie_2.LoadModel("Models/Koharu/Koharu_Pie_2.obj");
+	//Koharu_Cuerpo = Model();
+	//Koharu_Cuerpo.LoadModel("Models/Koharu/Koharu_Cuerpo.obj");
+	////padoru
+	//Padoru = Model();
+	//Padoru.LoadModel("Models/PAdoru/Nero_Padoru.obj");
 
-	//Extras
-	
+	////Extras
+	//
+	////FoodTrucks
+	//Ftruck1 = Model();
+	//Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
+	//Ftruck2 = Model();
+	//Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
+	//Ftruck3 = Model();
+	//Ftruck3.LoadModel("Models/FoodTrucks/Ft3/yatai.obj");
+	//Ftruck4 = Model();
+	//Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
+	//Ftruck5 = Model();
+	//Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
 
-	//FoodTrucks
-	Ftruck1 = Model();
-	Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
-	Ftruck2 = Model();
-	Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
-	Ftruck3 = Model();
-	Ftruck3.LoadModel("Models/FoodTrucks/Ft3/yatai.obj");
-	Ftruck4 = Model();
-	Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
-	Ftruck5 = Model();
-	Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
-
-	//Comida Mexicana
-	Comex1 = Model();
-	Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
+	////Comida Mexicana
+	//Comex1 = Model();
+	//Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
 
 	//Escenario
 	escenario = Model();
 	escenario.LoadModel("Models/Escenario/Escenario.obj");
-	Bateria = Model();
-	Bateria.LoadModel("Models/Escenario/Bateria.obj");
-	Guitarra = Model();
-	Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
-	Micro = Model();
+	//Bateria = Model();
+	//Bateria.LoadModel("Models/Escenario/Bateria.obj");
+	//Guitarra = Model();
+	//Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
+	//Micro = Model();
 	Micro.LoadModel("Models/Escenario/Micro.obj");
 
 	//extras
-	Lucy = Model();
-	Lucy.LoadModel("Models/Lucy/Lucy.obj");
-	vik = Model();
-	vik.LoadModel("Models/vik/vik.obj");
-	elf = Model();
-	elf.LoadModel("Models/elf/elf.obj");
+	//Lucy = Model();
+	//Lucy.LoadModel("Models/Lucy/Lucy.obj");
+	//vik = Model();
+	//vik.LoadModel("Models/vik/vik.obj");
+	//elf = Model();
+	//elf.LoadModel("Models/elf/elf.obj");
 
 	std::vector<std::string> skyboxFaces;
 	std::vector<std::string> skyboxFacesNight;
@@ -969,42 +973,34 @@ int main()
 	unsigned int spotLightCount = 0;
 	//Contador de luces del tipo spotlight
 	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
-		0.1f, 1.0f,
+		0.2f, 1.0f,
 		5.0f, 10.0f, 0.0f,
-		0.0f, -5.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
+		-15.0f, -5.0f, -1.0f,
+		1.0f, 0.01f, 0.01f,
 		15.0f);
 	spotLightCount++;
 
 	spotLights[1] = SpotLight(1.0f, 0.0f, 1.0f,
-		0.1f, 1.0f,
+		0.2f, 1.0f,
 		5.0f, 10.0f, 0.0f,
-		0.0f, -5.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
+		-15.0f, -5.0f, -1.0f,
+		1.0f, 0.01f, 0.01f,
 		15.0f);
 	spotLightCount++;
 
 	spotLights[2] = SpotLight(0.0f, 0.5f, 0.5f,
-		0.1f, 1.0f,
+		0.2f, 1.0f,
 		5.0f, 10.0f, 0.0f,
-		0.0f, -5.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
+		-15.0f, -5.0f, -1.0f,
+		1.0f, 0.01f, 0.01f,
 		15.0f);
 	spotLightCount++;
 
 	spotLights[3] = SpotLight(0.5f, 0.5f, 0.0f,
-		0.1f, 1.0f,
+		0.2f, 1.0f,
 		5.0f, 10.0f, 0.0f,
-		0.0f, -5.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		15.0f);
-	spotLightCount++;
-
-	spotLights[4] = SpotLight(0.0f, 0.0f, 0.5f,
-		0.1f, 1.0f,
-		5.0f, 10.0f, 0.0f,
-		0.0f, -5.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
+		-15.0f, -5.0f, -1.0f,
+		1.0f, 0.01f, 0.01f,
 		15.0f);
 	spotLightCount++;
 
@@ -1242,10 +1238,6 @@ int main()
 	KeyFrameK[24].movkoshiro_y = 0.0f;
 	KeyFrameK[24].movkoshiro_z = 0.0f;
 	KeyFrameK[24].giroNero = 0.0f;
-
-
-
-
 
 
 	//Loop mientras no se cierra la ventana
@@ -1777,16 +1769,45 @@ int main()
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
 
-		//Inicializacion de las luces de tipo spotlight
-		//spotLights[0].SetFlash(glm::vec3(40.0f, 15.0f, -50.0f), glm::vec3(0.0f, -1.0f, 0.0f));
-
-		//spotLights[1].SetFlash(glm::vec3(20.0f, 15.0f, -50.0f), glm::vec3(0.0f, -1.0f, 0.0f));
-		//
-		//spotLights[2].SetFlash(glm::vec3(0.0f, 15.0f, -50.0f), glm::vec3(0.0f, -1.0f, 0.0f));
-
-		//spotLights[3].SetFlash(glm::vec3(-20.0f, 15.0f, -50.0f), glm::vec3(0.0f, -1.0f, 0.0f));
-
-		//spotLights[4].SetFlash(glm::vec3(-40.0f, 15.0f, -50.0f), glm::vec3(0.0f, -1.0f, 0.0f));
+		//Inicializacion de las luces de tipo spotlight para hacer el show de luces
+		if (luces) {
+			if (conta_show == 1) {
+				show = static_cast <float> (rand() % 24) / 4;
+				if (show <= 1.0f) {
+					shaderList[0].SetSpotLights(spotLights, spotLightCount - 2);
+					spotLights[0].SetFlash(glm::vec3(10.0f, 7.7f, 10.0f), glm::vec3(-0.8f, 0.0f, -0.8f));
+				}
+				else if (show > 1.0f && show <= 2.0f) {
+					shaderList[0].SetSpotLights(spotLights, spotLightCount - 2);
+					spotLights[1].SetFlash(glm::vec3(-10.0f, 7.7f, 10.0f), glm::vec3(0.8f, 0.0f, -0.8f));
+				}
+				else if (show > 2.0f && show <= 3.0f) {
+					shaderList[0].SetSpotLights(spotLights, spotLightCount - 2);
+					spotLights[2].SetFlash(glm::vec3(10.0f, 6.7f, -10.0f), glm::vec3(-0.8f, 0.0f, 0.8f));
+				}
+				else if (show > 3.0f && show <= 4.0f) {
+					shaderList[0].SetSpotLights(spotLights, spotLightCount - 2);
+					spotLights[3].SetFlash(glm::vec3(-10.0f, 6.7f, -12.0f), glm::vec3(0.8f, 0.0f, 0.8f));
+				}
+				else if (show > 4.0f && show <= 5.0f) {
+					shaderList[0].SetSpotLights(spotLights, spotLightCount - 1);
+					spotLights[1].SetFlash(glm::vec3(-10.0f, 7.7f, 10.0f), glm::vec3(0.8f, 0.0f, -0.8f));
+					spotLights[3].SetFlash(glm::vec3(-10.0f, 6.7f, -12.0f), glm::vec3(0.8f, 0.0f, 0.8f));
+				}
+				else if (show > 5.0f && show <= 6.0f) {
+					shaderList[0].SetSpotLights(spotLights, spotLightCount - 1);
+					spotLights[0].SetFlash(glm::vec3(10.0f, 7.7f, 10.0f), glm::vec3(-0.8f, 0.0f, -0.8f));
+					spotLights[2].SetFlash(glm::vec3(10.0f, 6.7f, -10.0f), glm::vec3(-0.8f, 0.0f, 0.8f));
+				}
+			}
+			if (conta_show == 35) {
+				conta_show = 0;
+			}
+			conta_show += 1;
+		}
+		if (!luces) {
+			shaderList[0].SetSpotLights(spotLights, 0);
+		}
 
 		//información al shader de fuentes de iluminación
 		shaderList[0].SetDirectionalLight(&mainLight);
@@ -2642,6 +2663,39 @@ int main()
 		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		escenario.RenderModel();
+
+		//Codigo para los modelos de los reflectores
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(10.0f, 6.7f, 10.0f));
+		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::rotate(model, 10 * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.3f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Reflector.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-10.0f, 6.7f, 10.0f));
+		model = glm::rotate(model, 225 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::rotate(model, 10 * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.3f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Reflector.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(10.0f, 6.7f, -10.0f));
+		model = glm::rotate(model, 45 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::rotate(model, 10 * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.3f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Reflector.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-10.0f, 6.7f, -12.0f));
+		model = glm::rotate(model, -45 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::rotate(model, 10 * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.3f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Reflector.RenderModel();
 
 		//Textura animada de los fuegos artificiales
 		//textura con movimiento

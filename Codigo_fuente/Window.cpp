@@ -6,6 +6,7 @@ bool ActivadorML = false;
 bool ActivadorN = false;
 bool ActivadorKS = false;
 bool ActivadorK = false;
+bool luces = false;
 
 Window::Window()
 {
@@ -109,6 +110,18 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 	{
 		glfwSetWindowShouldClose(window, GL_TRUE);
+	}
+
+	//Teclas para iniciar el show de luces
+	if (key == GLFW_KEY_P)
+	{
+		luces = true;
+
+	}
+	if (key == GLFW_KEY_U)
+	{
+		luces = false;
+
 	}
 
 	//Tecla del movimiento de Lily
