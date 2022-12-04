@@ -620,106 +620,106 @@ int main()
 	Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
 
 	//Artoria Pendragon (Lily)
-	Lily_AnteBrazo = Model();
-	Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
-	Lily_AnteBrazo_2 = Model();
-	Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
-	Lily_Brazo = Model();
-	Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
-	Lily_Brazo_2 = Model();
-	Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
-	Lily_Pierna = Model();
-	Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
-	Lily_Pierna_2 = Model();
-	Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
-	Lily_Pie = Model();
-	Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
-	Lily_Pie_2 = Model();
-	Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
-	Lily_Cabeza = Model();
-	Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
-	Lily_Cuerpo = Model();
-	Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
+	//Lily_AnteBrazo = Model();
+	//Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
+	//Lily_AnteBrazo_2 = Model();
+	//Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
+	//Lily_Brazo = Model();
+	//Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
+	//Lily_Brazo_2 = Model();
+	//Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
+	//Lily_Pierna = Model();
+	//Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
+	//Lily_Pierna_2 = Model();
+	//Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
+	//Lily_Pie = Model();
+	//Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
+	//Lily_Pie_2 = Model();
+	//Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
+	//Lily_Cabeza = Model();
+	//Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
+	//Lily_Cuerpo = Model();
+	//Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
 
 	//nero
-	Nero_Cuerpo = Model();
-	Nero_Cuerpo.LoadModel("Models/Nero/nero_cuerpo.obj");
-	Nero_AnteBrazo = Model();
-	Nero_AnteBrazo.LoadModel("Models/Nero/nero_antebrazo_1.obj");
-	Nero_AnteBrazo_2 = Model();
-	Nero_AnteBrazo_2.LoadModel("Models/Nero/nero_antebrazo_2.obj");
-	Nero_Brazo = Model();
-	Nero_Brazo.LoadModel("Models/Nero/nero_brazo_1.obj");
-	Nero_Brazo_2 = Model();
-	Nero_Brazo_2.LoadModel("Models/Nero/nero_brazo_2.obj");
+	//Nero_Cuerpo = Model();
+	//Nero_Cuerpo.LoadModel("Models/Nero/nero_cuerpo.obj");
+	//Nero_AnteBrazo = Model();
+	//Nero_AnteBrazo.LoadModel("Models/Nero/nero_antebrazo_1.obj");
+	//Nero_AnteBrazo_2 = Model();
+	//Nero_AnteBrazo_2.LoadModel("Models/Nero/nero_antebrazo_2.obj");
+	//Nero_Brazo = Model();
+	//Nero_Brazo.LoadModel("Models/Nero/nero_brazo_1.obj");
+	//Nero_Brazo_2 = Model();
+	//Nero_Brazo_2.LoadModel("Models/Nero/nero_brazo_2.obj");
 
 	//koshiro
-	koshiro_AnteBrazo = Model();
-	koshiro_AnteBrazo.LoadModel("Models/koshiro/Koshiro_ABrazo_1.obj");
-	koshiro_AnteBrazo_2 = Model();
-	koshiro_AnteBrazo_2.LoadModel("Models/koshiro/Koshiro_ABrazo_2.obj");
-	koshiro_Brazo = Model();
-	koshiro_Brazo.LoadModel("Models/koshiro/Koshiro_Brazo_1.obj");
-	koshiro_Brazo_2 = Model();
-	koshiro_Brazo_2.LoadModel("Models/koshiro/Koshiro_Brazo_2.obj");
-	koshiro_Pierna = Model();
-	koshiro_Pierna.LoadModel("Models/koshiro/Koshiro_Pierna_1.obj");
-	koshiro_Pierna_2 = Model();
-	koshiro_Pierna_2.LoadModel("Models/koshiro/Koshiro_Pierna_2.obj");
-	koshiro_Pie = Model();
-	koshiro_Pie.LoadModel("Models/koshiro/Koshiro_Pie_1.obj");
-	koshiro_Pie_2 = Model();
-	koshiro_Pie_2.LoadModel("Models/koshiro/Koshiro_Pie_2.obj");
-	koshiro_Cuerpo = Model();
-	koshiro_Cuerpo.LoadModel("Models/koshiro/Koshiro_Cuerpo.obj");
+	//koshiro_AnteBrazo = Model();
+	//koshiro_AnteBrazo.LoadModel("Models/koshiro/Koshiro_ABrazo_1.obj");
+	//koshiro_AnteBrazo_2 = Model();
+	//koshiro_AnteBrazo_2.LoadModel("Models/koshiro/Koshiro_ABrazo_2.obj");
+	//koshiro_Brazo = Model();
+	//koshiro_Brazo.LoadModel("Models/koshiro/Koshiro_Brazo_1.obj");
+	//koshiro_Brazo_2 = Model();
+	//koshiro_Brazo_2.LoadModel("Models/koshiro/Koshiro_Brazo_2.obj");
+	//koshiro_Pierna = Model();
+	//koshiro_Pierna.LoadModel("Models/koshiro/Koshiro_Pierna_1.obj");
+	//koshiro_Pierna_2 = Model();
+	//koshiro_Pierna_2.LoadModel("Models/koshiro/Koshiro_Pierna_2.obj");
+	//koshiro_Pie = Model();
+	//koshiro_Pie.LoadModel("Models/koshiro/Koshiro_Pie_1.obj");
+	//koshiro_Pie_2 = Model();
+	//koshiro_Pie_2.LoadModel("Models/koshiro/Koshiro_Pie_2.obj");
+	//koshiro_Cuerpo = Model();
+	//koshiro_Cuerpo.LoadModel("Models/koshiro/Koshiro_Cuerpo.obj");
 
 	//Koharu
-	Koharu_AnteBrazo = Model();
-	Koharu_AnteBrazo.LoadModel("Models/Koharu/Koharu_AnteBrazo_1.obj");
-	Koharu_AnteBrazo_2 = Model();
-	Koharu_AnteBrazo_2.LoadModel("Models/Koharu/Koharu_AnteBrazo_2.obj");
-	Koharu_Brazo = Model();
-	Koharu_Brazo.LoadModel("Models/Koharu/Koharu_Brazo_1.obj");
-	Koharu_Brazo_2 = Model();
-	Koharu_Brazo_2.LoadModel("Models/Koharu/Koharu_Brazo_2.obj");
-	Koharu_Pierna = Model();
-	Koharu_Pierna.LoadModel("Models/Koharu/Koharu_Pierna_1.obj");
-	Koharu_Pierna_2 = Model();
-	Koharu_Pierna_2.LoadModel("Models/Koharu/Koharu_Pierna_2.obj");
-	Koharu_Pie = Model();
-	Koharu_Pie.LoadModel("Models/Koharu/Koharu_Pie_1.obj");
-	Koharu_Pie_2 = Model();
-	Koharu_Pie_2.LoadModel("Models/Koharu/Koharu_Pie_2.obj");
-	Koharu_Cuerpo = Model();
-	Koharu_Cuerpo.LoadModel("Models/Koharu/Koharu_Cuerpo.obj");
+	//Koharu_AnteBrazo = Model();
+	//Koharu_AnteBrazo.LoadModel("Models/Koharu/Koharu_AnteBrazo_1.obj");
+	//Koharu_AnteBrazo_2 = Model();
+	//Koharu_AnteBrazo_2.LoadModel("Models/Koharu/Koharu_AnteBrazo_2.obj");
+	//Koharu_Brazo = Model();
+	//Koharu_Brazo.LoadModel("Models/Koharu/Koharu_Brazo_1.obj");
+	//Koharu_Brazo_2 = Model();
+	//Koharu_Brazo_2.LoadModel("Models/Koharu/Koharu_Brazo_2.obj");
+	//Koharu_Pierna = Model();
+	//Koharu_Pierna.LoadModel("Models/Koharu/Koharu_Pierna_1.obj");
+	//Koharu_Pierna_2 = Model();
+	//Koharu_Pierna_2.LoadModel("Models/Koharu/Koharu_Pierna_2.obj");
+	//Koharu_Pie = Model();
+	//Koharu_Pie.LoadModel("Models/Koharu/Koharu_Pie_1.obj");
+	//Koharu_Pie_2 = Model();
+	//Koharu_Pie_2.LoadModel("Models/Koharu/Koharu_Pie_2.obj");
+	//Koharu_Cuerpo = Model();
+	//Koharu_Cuerpo.LoadModel("Models/Koharu/Koharu_Cuerpo.obj");
 
 	//FoodTrucks
-	Ftruck1 = Model();
-	Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
-	Ftruck2 = Model();
-	Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
-	Ftruck3 = Model();
-	Ftruck3.LoadModel("Models/FoodTrucks/Ft3/yatai.obj");
-	Ftruck4 = Model();
-	Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
-	Ftruck5 = Model();
-	Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
-	FtruckSP = Model();
-	FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
+	//Ftruck1 = Model();
+	//Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
+	//Ftruck2 = Model();
+	//Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
+	//Ftruck3 = Model();
+	//Ftruck3.LoadModel("Models/FoodTrucks/Ft3/yatai.obj");
+	//Ftruck4 = Model();
+	//Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
+	//Ftruck5 = Model();
+	//Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
+	//FtruckSP = Model();
+	//FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
 
 	//Comida Mexicana
-	Comex1 = Model();
-	Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
+	//Comex1 = Model();
+	//Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
 
 	//Escenario
 	escenario = Model();
 	escenario.LoadModel("Models/Escenario/Escenario.obj");
-	Bateria = Model();
-	Bateria.LoadModel("Models/Escenario/Bateria.obj");
-	Guitarra = Model();
-	Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
-	Micro = Model();
-	Micro.LoadModel("Models/Escenario/Micro.obj");
+	//Bateria = Model();
+	//Bateria.LoadModel("Models/Escenario/Bateria.obj");
+	//Guitarra = Model();
+	//Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
+	//Micro = Model();
+	//Micro.LoadModel("Models/Escenario/Micro.obj");
 
 	std::vector<std::string> skyboxFaces;
 	std::vector<std::string> skyboxFacesNight;
@@ -747,22 +747,22 @@ int main()
 
 	//contador de luces del tipo pointlight
 	unsigned int pointLightCount = 0;
-	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
-		0.5f, 0.5f,
-		20.0f, 1.5f, -30.0f,
-		0.3f, 0.2f, 0.1f);
+	pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
+		1.7f, 1.7f,
+		96.0f, 7.0f, 0.0f,
+		0.25f, 0.01f, 0.01f);
 	pointLightCount++;
 
-	pointLights[1] = PointLight(0.5f, 0.0f, 0.5f,
-		0.5f, 0.5f,
-		0.0f, 1.5f, -30.0f,
-		0.3f, 0.2f, 0.1f);
+	pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
+		2.0f, 2.0f,
+		19.8f, 17.0f, 107.0f,
+		0.25f, 0.01f, 0.009f);
 	pointLightCount++;
 
-	pointLights[2] = PointLight(0.0f, 0.5f, 0.5f,
-		0.5f, 0.5f,
-		-20.0f, 1.5f, -30.0f,
-		0.3f, 0.2f, 0.1f);
+	pointLights[2] = PointLight(1.0f, 1.0f, 1.0f,
+		1.6f, 1.6f,
+		-124.0f, 7.0f, -13.0f,
+		0.25f, 0.01f, 0.01f);
 	pointLightCount++;
 
 
@@ -910,6 +910,16 @@ int main()
 		mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 			ciclo_dia, 1.0,//Va a servir para manejar el ciclo dia y noche
 			1.0f, 0.0f, -1.0f);
+
+		//Las luces se apagaran cuando inicie el dia, de noche se prenderan
+		if (ciclo_dia < 0.55) {
+			//shaderList[0].SetPointLights(pointLights, pointLightCount);
+			shaderList[0].SetSpotLights(spotLights, spotLightCount);
+		}
+		else {
+			shaderList[0].SetPointLights(pointLights, 0);
+			shaderList[0].SetSpotLights(spotLights, 0);
+		}
 
 		//Lily
 		// movimiento
@@ -1759,38 +1769,38 @@ int main()
 
 		//Codigo para la carga de los modelos de las farolas a utilizar en el festival
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-150.0f, -1.95f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Farola.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-150.0f, -1.95f, 167.0f));
-		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Farola.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(102.0f, -1.95f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		model = glm::translate(model, glm::vec3(100.0f, -1.95f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.83f, 1.03f, 0.83f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(102.0f, -1.95f, 170.0f));
-		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
-		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(19.8f, -1.95f, 107.0f));
+		model = glm::scale(model, glm::vec3(3.8f, 7.8f, 4.8f));
+		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		faro.UseTexture();
+		Farola1.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-130.0f, -1.95f, -13.0f));
+		model = glm::scale(model, glm::vec3(0.83f, 1.03f, 0.83f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(10.0f, -3.95f, 0.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 4.0f, 2.5f));
-		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(90.0f, -1.95f, 150.0f));
+		model = glm::scale(model, glm::vec3(0.83f, 1.03f, 0.83f));
+		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Farola1.RenderModel();
-		//faro.UseTexture();
+		//Farola.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, -1.95f, 167.0f));
+		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Farola.RenderModel();
 
 		//Piso de cada una de las secciones del festival
 		//Modelos correspondientes al puesto de tortas
@@ -1821,40 +1831,40 @@ int main()
 		model = glm::translate(model, glm::vec3(67.0f, -1.8f, 12.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(60.0f, -1.8f, 30.0f));
 		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Silla_R.RenderModel();
+		//Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(67.0f, -1.8f, 30.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(60.0f, -1.8f, 12.0f));
 		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Silla_R.RenderModel();
+		//Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(67.0f, -1.8f, 48.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(60.0f, -1.8f, 48.0f));
 		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Silla_R.RenderModel();
+		//Silla_R.RenderModel();
 
 		//Modelos correspondientes al puesto de bebidas nacionales
 		model = glm::mat4(1.0);
@@ -1862,32 +1872,32 @@ int main()
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(67.0f, -1.8f, 102.5f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(85.0f, -1.8f, 99.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(85.0f, -1.8f, 86.9f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(85.0f, -1.8f, 74.6f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		//Modelos correspondientes al puesto de mariscos
 		model = glm::mat4(1.0);
@@ -1901,53 +1911,53 @@ int main()
 		model = glm::translate(model, glm::vec3(87.0f, -1.8f, 113.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(80.0f, -1.8f, 113.0f));
 		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Silla_R.RenderModel();
+		//Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(68.0f, -1.8f, 113.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(60.0f, -1.8f, 113.0f));
 		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Silla_R.RenderModel();
+		//Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(87.0f, -1.8f, 133.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(79.0f, -1.8f, 133.0f));
 		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Silla_R.RenderModel();
+		//Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(87.0f, -1.8f, 153.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(79.0f, -1.8f, 153.0f));
 		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Silla_R.RenderModel();
+		//Silla_R.RenderModel();
 
 		//Seccion de comida internacional
 		//Modelos correspondientes a la seccion de comida española
@@ -1962,45 +1972,88 @@ int main()
 		model = glm::translate(model, glm::vec3(25.0f, -1.8f, 117.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(28.3f, -1.8f, 117.0f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(25.0f, -1.8f, 137.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(28.3f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(25.0f, -1.8f, 157.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(28.3f, -1.8f, 157.0f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Silla_R.RenderModel();
 
 		//Modelos correspondientes al seccion del pozole
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-15.0f, -1.8f, 117.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-11.7f, -1.8f, 117.0f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-15.0f, -1.8f, 137.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-11.7f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-15.0f, -1.8f, 157.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-11.7f, -1.8f, 157.0f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(3.0f, -1.8f, 110.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(3.0f, -1.8f, 113.3f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::rotate(model, -180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Silla_R.RenderModel();
+
 
 		//Modelos correspondientes a las bebidas internacionales
 		model = glm::mat4(1.0);
@@ -2008,70 +2061,70 @@ int main()
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-28.0f, -1.8f, 133.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-28.0f, -1.8f, 153.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-41.0f, -1.8f, 162.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-54.0f, -1.8f, 162.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-67.0f, -1.8f, 162.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-80.0f, -1.8f, 162.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-82.0f, -1.8f, 113.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-82.0f, -1.8f, 133.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-82.0f, -1.8f, 153.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
+		//Mesa_B.RenderModel();
 
 		//Modelos correspondientes a la cocina japonesa
 		model = glm::mat4(1.0);
