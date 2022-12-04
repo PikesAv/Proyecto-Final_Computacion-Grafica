@@ -113,6 +113,9 @@ Model Lilit_Pie_2;
 Model Lilit_Cabeza;
 Model Lilit_Cuerpo;
 
+//Escenario
+Model escenario;
+
 //Modelos FoodTrucks
 Model Ftruck1;
 Model Ftruck2;
@@ -122,6 +125,7 @@ Model Ftruck5;
 
 //Modelos Comida Mexicana
 Model Comex1;
+
 
 //Skybox
 Skybox skybox;
@@ -601,6 +605,10 @@ int main()
 	//Comida Mexicana
 	Comex1 = Model();
 	Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
+
+	//Escenario
+	escenario = Model();
+	escenario.LoadModel("Models/Escenario/escenario.obj");
 
 
 	std::vector<std::string> skyboxFaces;
@@ -1169,6 +1177,14 @@ int main()
 		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Comex1.RenderModel();
+
+		//Escenario
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 30.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		escenario.RenderModel();
 
 
 		//Codigo para la creación del recinto que tendrá el festival de comida
