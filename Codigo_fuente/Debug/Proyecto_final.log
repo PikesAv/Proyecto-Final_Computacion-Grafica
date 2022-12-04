@@ -1,10 +1,10 @@
 ﻿  Proyecto_final.cpp
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(12,36): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(860,23): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(871,23): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1141,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1143,43): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1749,20): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1750,20): warning C4305: '-=': truncamiento de 'double' a 'float'
-  Proyecto_final.vcxproj -> C:\Users\drago\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Debug\Proyecto_final.exe
+C:\Users\jorge\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(12,36): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+C:\Users\jorge\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+C:\Users\jorge\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(860,23): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\jorge\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(871,23): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\jorge\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1141,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\jorge\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1143,43): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\jorge\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1758,20): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\jorge\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1759,20): warning C4305: '-=': truncamiento de 'double' a 'float'
+  Proyecto_final.vcxproj -> C:\Users\jorge\Documents\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Debug\Proyecto_final.exe
