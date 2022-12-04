@@ -1,0 +1,66 @@
+# Blender MTL File: 'None'
+# Material Count: 6
+
+newmtl Koharu_Body
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\jorge\\Desktop\\LAB-COMPU\\Practica05\\Practica05\\Practica05\\Textures\\Body.png
+
+newmtl Koharu_Costume
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\jorge\\Desktop\\LAB-COMPU\\Practica05\\Practica05\\Practica05\\Textures\\costume.png
+
+newmtl Koharu_Hair
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\jorge\\Desktop\\LAB-COMPU\\Practica05\\Practica05\\Practica05\\Textures\\Hair.png
+
+newmtl Koharu_Other
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\jorge\\Desktop\\LAB-COMPU\\Practica05\\Practica05\\Practica05\\Textures\\Other.png
+
+newmtl Koharu_Tear
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Megane_transparent
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
