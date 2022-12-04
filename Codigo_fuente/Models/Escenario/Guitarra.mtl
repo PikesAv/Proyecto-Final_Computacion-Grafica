@@ -1,24 +1,12 @@
-# Blender MTL File: 'None'
-# Material Count: 2
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 03.12.2022 20:02:54
 
-newmtl knob1.002
-Ns 225.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd C:\\Users\\jorge\\Desktop\\19589_open3dmodel\\open3dmodel.com\\Models_E0403A057\\texture\\Texture_cuerda.jpg
-
-newmtl wire_088199225.002
-Ns 225.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd C:\\Users\\jorge\\Desktop\\19589_open3dmodel\\open3dmodel.com\\Models_E0403A057\\texture\\Texture_cuerpo.jpg
+newmtl wire_087224198
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.3412 0.8784 0.7765
+	Kd 0.3412 0.8784 0.7765
+	Ks 0.3500 0.3500 0.3500
