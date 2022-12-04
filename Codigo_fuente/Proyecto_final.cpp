@@ -170,6 +170,7 @@ Model Ftruck2;
 Model Ftruck3;
 Model Ftruck4;
 Model Ftruck5;
+Model FtruckSP;
 
 //Modelos Comida Mexicana
 Model Comex1;
@@ -703,6 +704,8 @@ int main()
 	Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
 	Ftruck5 = Model();
 	Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
+	FtruckSP = Model();
+	FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
 
 	//Comida Mexicana
 	Comex1 = Model();
@@ -2134,6 +2137,13 @@ int main()
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck5.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 50.0f));
+		model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		FtruckSP.RenderModel();
 
 		//Comida Mexicana
 		model = glm::mat4(1.0);
