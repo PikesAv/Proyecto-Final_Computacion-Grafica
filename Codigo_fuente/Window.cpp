@@ -1,6 +1,11 @@
 #include "Window.h"
 
 int bandera;
+bool ActivadorRL=false;
+bool ActivadorML = false;
+bool ActivadorN = false;
+bool ActivadorKS = false;
+bool ActivadorK = false;
 
 Window::Window()
 {
@@ -107,9 +112,26 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	}
 
 	//Tecla del movimiento de Lily
-	if (key == GLFW_KEY_V)
+	if (key == GLFW_KEY_V)// movimiento lily
 	{
-		theWindow->movlily += 0.25;
+		ActivadorML = true;
+		ActivadorRL = true;
+
+	}
+	if (key == GLFW_KEY_B)// activador Nero
+	{
+		ActivadorN = true;
+
+	}
+	if (key == GLFW_KEY_N)// activador koshiro
+	{
+		ActivadorKS = true;
+
+	}
+	if (key == GLFW_KEY_M)// activador koharu
+	{
+		ActivadorK = true;
+
 	}
 	
 	if (key >= 0 && key < 1024)
