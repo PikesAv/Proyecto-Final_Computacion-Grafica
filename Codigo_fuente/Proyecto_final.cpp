@@ -77,6 +77,12 @@ extern bool ActivadorRL, ActivadorML, ActivadorN, ActivadorKS, ActivadorK;
 int conta_dia;
 float ciclo_dia;
 
+//variables para animación Key
+//float toffsetu = 0.0f;
+//float toffsetv = 0.0f;
+float reproduciranimacionN, habilitaranimacionN, reproduciranimacionK, habilitaranimacionK,
+guardoFrame, reinicioFrame, ciclo, ciclo2, contador = 0;
+
 Window mainWindow;
 std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
@@ -157,6 +163,12 @@ Model Koharu_Pierna_2;
 Model Koharu_Pie;
 Model Koharu_Pie_2;
 Model Koharu_Cuerpo;
+//padoru
+Model Padoru;
+//extras
+Model Lucy;
+Model vik;
+Model elf;
 
 //Escenario
 Model escenario;
@@ -199,6 +211,9 @@ static const char* vShader = "shaders/shader_light.vert";
 
 // Fragment Shader
 static const char* fShader = "shaders/shader_light.frag";
+
+//PARA INPUT CON KEYFRAMES 
+void inputKeyframes(bool* keys);
 
 void calcAverageNormals(unsigned int* indices, unsigned int indiceCount, GLfloat* vertices, unsigned int verticeCount,
 	unsigned int vLength, unsigned int normalOffset)
@@ -552,6 +567,180 @@ void CreaTextura() {
 	meshList.push_back(obj6);
 }
 
+///////////////////////////////KEYFRAMES/////////////////////Nero
+
+
+bool animacion = false;
+
+
+//NEW// Keyframes nero
+float posXNero = 2.0, posYNero = 5.0, posZNero = -3.0;
+float	movNero_x = 0.0f, movNero_y = 0.0f, movNero_z = 0.0f;
+float giroNero = 0;
+
+//NEW// Keyframes koshiro
+float posXkoshiro = 2.0, posYkoshiro = 5.0, posZkoshiro = -3.0;
+float	movkoshiro_x = 0.0f, movkoshiro_y = 0.0f, movkoshiro_z = 0.0f;
+float girokoshiro = 0;
+
+#define MAX_FRAMES 30
+int i_max_steps = 90;
+int i_curr_steps_N = 10;
+int i_curr_steps_K = 30;
+typedef struct _frame
+{
+	//Variables para GUARDAR Key Frames
+	float movNero_x;		//Variable para PosicionX
+	float movNero_y;		//Variable para PosicionY
+	float movNero_z;		//Variable para PosicionZ
+	float movNero_xInc;		//Variable para IncrementoX
+	float movNero_yInc;		//Variable para IncrementoY
+	float movNero_zInc;		//Variable para IncrementoZ
+	float giroNero;
+	float giroNeroInc;
+	//koshiro
+	float movkoshiro_x;		//Variable para PosicionX
+	float movkoshiro_y;		//Variable para PosicionY
+	float movkoshiro_z;		//Variable para PosicionZ
+	float movkoshiro_xInc;		//Variable para IncrementoX
+	float movkoshiro_yInc;		//Variable para IncrementoY
+	float movkoshiro_zInc;		//Variable para IncrementoZ
+	float girokoshiro;
+	float girokoshiroInc;
+}FRAME;
+
+FRAME KeyFrameN[MAX_FRAMES];
+FRAME KeyFrameK[MAX_FRAMES];
+int FrameIndexN = 10;			//introducir datos
+int FrameIndexK =25;
+bool play = false;
+//bool playK = false;
+int playIndexN = 0;
+int playIndexK = 0;
+
+void saveFrame(void)
+{
+
+	printf("frameindex %d\n", FrameIndexN);
+	printf("frameindex %d\n", FrameIndexK);
+
+
+	KeyFrameN[FrameIndexN].movNero_x = movNero_x;
+	KeyFrameN[FrameIndexN].movNero_y = movNero_y;
+	KeyFrameN[FrameIndexN].movNero_z = movNero_z;
+	KeyFrameN[FrameIndexN].giroNero = giroNero;
+
+	KeyFrameK[FrameIndexK].movkoshiro_x = movkoshiro_x;
+	KeyFrameK[FrameIndexK].movkoshiro_y = movkoshiro_y;
+	KeyFrameK[FrameIndexK].movkoshiro_z = movkoshiro_z;
+	KeyFrameK[FrameIndexK].girokoshiro = girokoshiro;
+
+	FrameIndexN++;
+	FrameIndexK++;
+}
+
+void resetElements(void)
+{
+	//nero
+	movNero_x = KeyFrameN[0].movNero_x;
+	movNero_y = KeyFrameN[0].movNero_y;
+	movNero_z = KeyFrameN[0].movNero_z;
+	giroNero = KeyFrameN[0].giroNero;
+	//koshiro
+	movkoshiro_x = KeyFrameK[0].movkoshiro_x;
+	movkoshiro_y = KeyFrameK[0].movkoshiro_y;
+	movkoshiro_z = KeyFrameK[0].movkoshiro_z;
+	giroNero = KeyFrameK[0].giroNero;
+}
+
+void interpolation(void)
+{
+	KeyFrameN[playIndexN].movNero_xInc = (KeyFrameN[playIndexN + 1].movNero_x - KeyFrameN[playIndexN].movNero_x) / i_max_steps;
+	KeyFrameN[playIndexN].movNero_yInc = (KeyFrameN[playIndexN + 1].movNero_y - KeyFrameN[playIndexN].movNero_y) / i_max_steps;
+	KeyFrameN[playIndexN].movNero_zInc = (KeyFrameN[playIndexN + 1].movNero_z - KeyFrameN[playIndexN].movNero_z) / i_max_steps;
+	KeyFrameN[playIndexN].giroNeroInc = (KeyFrameN[playIndexN + 1].giroNero - KeyFrameN[playIndexN].giroNero) / i_max_steps;
+
+	//koshiro
+	KeyFrameK[playIndexK].movkoshiro_xInc = (KeyFrameK[playIndexK + 1].movkoshiro_x - KeyFrameK[playIndexK].movkoshiro_x) / i_max_steps;
+	KeyFrameK[playIndexK].movkoshiro_yInc = (KeyFrameK[playIndexK + 1].movkoshiro_y - KeyFrameK[playIndexK].movkoshiro_y) / i_max_steps;
+	KeyFrameK[playIndexK].movkoshiro_zInc = (KeyFrameK[playIndexK + 1].movkoshiro_z - KeyFrameK[playIndexK].movkoshiro_z) / i_max_steps;
+	KeyFrameK[playIndexK].girokoshiroInc = (KeyFrameK[playIndexK + 1].girokoshiro - KeyFrameK[playIndexK].girokoshiro) / i_max_steps;
+
+}
+
+
+void animate(void)
+{
+	//Movimiento del objeto
+	if (play)
+	{
+		if (i_curr_steps_N >= i_max_steps) //end of animation between frames?
+		{
+			playIndexN++;
+			printf("playindexN : %d\n", playIndexN);
+			if (playIndexN > FrameIndexN - 2)	//end of total animation?
+			{
+				printf("Frame indexN= %d\n", FrameIndexN);
+				printf("termina anim\n");
+				playIndexN = 0;
+				//play = false;
+			}
+			else //Next frame interpolations
+			{
+				//printf("entro aquí\n");
+				i_curr_steps_N = 0; //Reset counter
+				//Interpolation
+				interpolation();
+			}
+		}
+		else
+		{
+			//printf("se quedó aqui\n");
+			//printf("max steps: %f", i_max_steps);
+			//Draw animation Nero
+			movNero_x += KeyFrameN[playIndexN].movNero_xInc;
+			movNero_y += KeyFrameN[playIndexN].movNero_yInc;
+			movNero_z += KeyFrameN[playIndexN].movNero_zInc;
+			giroNero += KeyFrameN[playIndexN].giroNeroInc;
+			i_curr_steps_N++;
+		}
+
+		if (i_curr_steps_K >= i_max_steps) //end of animation between frames?
+		{
+			playIndexK++;
+			printf("playindexK : %d\n", playIndexK);
+			if (playIndexK > FrameIndexK - 2)	//end of total animation?
+			{
+				printf("Frame indexK= %d\n", FrameIndexK);
+				printf("termina anim\n");
+				playIndexK = 0;
+				play = false;
+			}
+			else //Next frame interpolations
+			{
+				//printf("entro aquí\n");
+				i_curr_steps_K = 0; //Reset counter
+				//Interpolation
+				interpolation();
+			}
+		}
+		else
+		{
+			//printf("se quedó aqui\n");
+			//printf("max steps: %f", i_max_steps);
+			//Draw animation koshiro
+			movkoshiro_x += KeyFrameK[playIndexK].movkoshiro_xInc;
+			movkoshiro_y += KeyFrameK[playIndexK].movkoshiro_yInc;
+			movkoshiro_z += KeyFrameK[playIndexK].movkoshiro_zInc;
+			girokoshiro += KeyFrameK[playIndexK].girokoshiroInc;
+			i_curr_steps_K++;
+		}
+
+	}
+}
+
+/* FIN KEYFRAMES Nero*/
+
 int main()
 {
 	mainWindow = Window(1366, 768); // 1280, 1024 or 1024, 768
@@ -691,6 +880,12 @@ int main()
 	Koharu_Pie_2.LoadModel("Models/Koharu/Koharu_Pie_2.obj");
 	Koharu_Cuerpo = Model();
 	Koharu_Cuerpo.LoadModel("Models/Koharu/Koharu_Cuerpo.obj");
+	//padoru
+	Padoru = Model();
+	Padoru.LoadModel("Models/PAdoru/Nero_Padoru.obj");
+
+	//Extras
+	
 
 	//FoodTrucks
 	Ftruck1 = Model();
@@ -717,6 +912,14 @@ int main()
 	Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
 	Micro = Model();
 	Micro.LoadModel("Models/Escenario/Micro.obj");
+
+	//extras
+	Lucy = Model();
+	Lucy.LoadModel("Models/Lucy/Lucy.obj");
+	vik = Model();
+	vik.LoadModel("Models/vik/vik.obj");
+	elf = Model();
+	elf.LoadModel("Models/elf/elf.obj");
 
 	std::vector<std::string> skyboxFaces;
 	std::vector<std::string> skyboxFacesNight;
@@ -852,6 +1055,199 @@ int main()
 	rotPKS = true;
 	//---------------------------------------//
 
+	glm::vec3 posNero = glm::vec3(2.0f, 0.0f, 0.0f);
+	//glm::vec3 poskoshiro = glm::vec3(-4.0f, 5.0f + 3.55f, -5.0f);kjh
+	
+	//KEYFRAMES Nero
+
+	KeyFrameN[0].movNero_x = 0.0f;
+	KeyFrameN[0].movNero_y = 0.0f;
+	KeyFrameN[0].movNero_z = 0.0f;
+	KeyFrameN[0].giroNero = 0.0f;
+
+
+	KeyFrameN[1].movNero_x = 1.0f;
+	KeyFrameN[1].movNero_y = 0.0f;
+	KeyFrameN[1].movNero_z = 2.0f;
+	KeyFrameN[1].giroNero = 0.0f;
+
+
+	KeyFrameN[2].movNero_x = 2.0f;
+	KeyFrameN[2].movNero_y = 0.0f;
+	KeyFrameN[2].movNero_z = 0.0f;
+	KeyFrameN[2].giroNero = 0.0f;
+
+
+	KeyFrameN[3].movNero_x = 3.0f;
+	KeyFrameN[3].movNero_y = 0.0f;
+	KeyFrameN[3].movNero_z = -2.0f;
+	KeyFrameN[3].giroNero = -180.0f;
+
+	KeyFrameN[4].movNero_x = 3.0f;
+	KeyFrameN[4].movNero_y = 2.0f;
+	KeyFrameN[4].movNero_z = 0.0f;
+	KeyFrameN[4].giroNero = -180;
+
+	KeyFrameN[5].movNero_x = 3.0f;
+	KeyFrameN[5].movNero_y = 0.0f;
+	KeyFrameN[5].movNero_z = 0.0f;
+	KeyFrameN[5].giroNero = 180.0f;
+
+	KeyFrameN[6].movNero_x = 3.0f;
+	KeyFrameN[6].movNero_y = 0.0f;
+	KeyFrameN[6].movNero_z = -2.0f;
+	KeyFrameN[6].giroNero = 180.0f;
+
+	KeyFrameN[7].movNero_x = 2.0f;
+	KeyFrameN[7].movNero_y = 0.0f;
+	KeyFrameN[7].movNero_z = 0.0f;
+	KeyFrameN[7].giroNero = 0.f;
+
+	KeyFrameN[8].movNero_x = 1.0f;
+	KeyFrameN[8].movNero_y = 0.0f;
+	KeyFrameN[8].movNero_z = 2.0f;
+	KeyFrameN[8].giroNero = 0.0f;
+
+	KeyFrameN[9].movNero_x = 0.0f;
+	KeyFrameN[9].movNero_y = 0.0f;
+	KeyFrameN[9].movNero_z = 0.0f;
+	KeyFrameN[9].giroNero = 0.0f;
+
+	//KEYFRAMES koshiro
+
+	KeyFrameK[0].movkoshiro_x = 0.0f;
+	KeyFrameK[0].movkoshiro_y = 0.0f;
+	KeyFrameK[0].movkoshiro_z = 0.0f;
+	KeyFrameK[0].girokoshiro = 0.0f;
+
+
+	KeyFrameK[1].movkoshiro_x = 0.0f;
+	KeyFrameK[1].movkoshiro_y = 0.0f;
+	KeyFrameK[1].movkoshiro_z = 1.0f;
+	KeyFrameK[1].girokoshiro = 0.0f;
+
+
+	KeyFrameK[2].movkoshiro_x = 0.0f;
+	KeyFrameK[2].movkoshiro_y = 0.0f;
+	KeyFrameK[2].movkoshiro_z = 2.0f;
+	KeyFrameK[2].girokoshiro = 0.0f;
+
+
+	KeyFrameK[3].movkoshiro_x = 0.0f;
+	KeyFrameK[3].movkoshiro_y = 0.0f;
+	KeyFrameK[3].movkoshiro_z = 3.0f;
+	KeyFrameK[3].girokoshiro = 0.0f;
+
+	KeyFrameK[4].movkoshiro_x = 0.0f;
+	KeyFrameK[4].movkoshiro_y = 0.0f;
+	KeyFrameK[4].movkoshiro_z = 4.0f;
+	KeyFrameK[4].girokoshiro = 0;
+
+	KeyFrameK[5].movkoshiro_x = 0.0f;
+	KeyFrameK[5].movkoshiro_y = 0.0f;
+	KeyFrameK[5].movkoshiro_z = 6.0f;
+	KeyFrameK[5].girokoshiro = 0.0f;
+
+	KeyFrameK[6].movkoshiro_x = 0.0f;
+	KeyFrameK[6].movkoshiro_y = 0.0f;
+	KeyFrameK[6].movkoshiro_z = 8.0f;
+	KeyFrameK[6].girokoshiro = 0.0f;
+
+	KeyFrameK[7].movkoshiro_x = 0.0f;
+	KeyFrameK[7].movkoshiro_y = 0.0f;
+	KeyFrameK[7].movkoshiro_z =8.0f;
+	KeyFrameK[7].girokoshiro = 90.0f;
+
+	KeyFrameK[8].movkoshiro_x = 1.0f;
+	KeyFrameK[8].movkoshiro_y = 1.0f;
+	KeyFrameK[8].movkoshiro_z = 8.0f;
+	KeyFrameK[8].girokoshiro = 90.0f;
+
+	KeyFrameK[9].movkoshiro_x = 2.0f;
+	KeyFrameK[9].movkoshiro_y = 0.0f;
+	KeyFrameK[9].movkoshiro_z = 8.0f;
+	KeyFrameK[9].giroNero = 90.0f;
+
+	KeyFrameK[10].movkoshiro_x = 3.0f;
+	KeyFrameK[10].movkoshiro_y = 0.0f;
+	KeyFrameK[10].movkoshiro_z = 8.0f;
+	KeyFrameK[10].giroNero = 90.0f;
+
+	KeyFrameK[11].movkoshiro_x = 4.0f;
+	KeyFrameK[11].movkoshiro_y = 0.0f;
+	KeyFrameK[11].movkoshiro_z = 8.0f;
+	KeyFrameK[11].giroNero = 90.0f;
+
+	KeyFrameK[12].movkoshiro_x = 5.0f;
+	KeyFrameK[12].movkoshiro_y = 0.0f;
+	KeyFrameK[12].movkoshiro_z = 8.0f;
+	KeyFrameK[12].giroNero = 90.0f;
+
+	KeyFrameK[13].movkoshiro_x = 6.0f;
+	KeyFrameK[13].movkoshiro_y = 0.0f;
+	KeyFrameK[13].movkoshiro_z = 8.0f;
+	KeyFrameK[13].giroNero = 90.0f;
+
+	KeyFrameK[14].movkoshiro_x = 7.0f;
+	KeyFrameK[14].movkoshiro_y = 1.0f;
+	KeyFrameK[14].movkoshiro_z = 8.0f;
+	KeyFrameK[14].giroNero = -180.0f;
+
+	KeyFrameK[15].movkoshiro_x = 6.0f;
+	KeyFrameK[15].movkoshiro_y = 0.0f;
+	KeyFrameK[15].movkoshiro_z = 8.0f;
+	KeyFrameK[15].giroNero = -180.0f;
+
+	KeyFrameK[16].movkoshiro_x = 5.0f;
+	KeyFrameK[16].movkoshiro_y = 0.0f;
+	KeyFrameK[16].movkoshiro_z = 8.0f;
+	KeyFrameK[16].giroNero = -180.0f;
+
+	KeyFrameK[17].movkoshiro_x = 4.0f;
+	KeyFrameK[17].movkoshiro_y = 0.0f;
+	KeyFrameK[17].movkoshiro_z = 8.0f;
+	KeyFrameK[17].giroNero = -180.0f;
+
+	KeyFrameK[18].movkoshiro_x = 3.0f;
+	KeyFrameK[18].movkoshiro_y = 0.0f;
+	KeyFrameK[18].movkoshiro_z = 8.0f;
+	KeyFrameK[18].giroNero = -180.0f;
+
+	KeyFrameK[19].movkoshiro_x = 2.0f;
+	KeyFrameK[19].movkoshiro_y = 0.0f;
+	KeyFrameK[19].movkoshiro_z = 8.0f;
+	KeyFrameK[19].giroNero = -180.0f;
+
+	KeyFrameK[20].movkoshiro_x = 1.0f;
+	KeyFrameK[20].movkoshiro_y = 1.0f;
+	KeyFrameK[20].movkoshiro_z = 8.0f;
+	KeyFrameK[20].giroNero = -180.0f;
+
+	KeyFrameK[21].movkoshiro_x = 0.0f;
+	KeyFrameK[21].movkoshiro_y = 0.0f;
+	KeyFrameK[21].movkoshiro_z = 8.0f;
+	KeyFrameK[21].giroNero = -180.0f;
+
+	KeyFrameK[22].movkoshiro_x = 0.0f;
+	KeyFrameK[22].movkoshiro_y = 0.0f;
+	KeyFrameK[22].movkoshiro_z = 8.0f;
+	KeyFrameK[22].giroNero = 90.0f;
+
+	KeyFrameK[23].movkoshiro_x = 0.0f;
+	KeyFrameK[23].movkoshiro_y = 0.0f;
+	KeyFrameK[23].movkoshiro_z = 4.0f;
+	KeyFrameK[23].giroNero = 0.0f;
+
+	KeyFrameK[24].movkoshiro_x = 0.0f;
+	KeyFrameK[24].movkoshiro_y = 0.0f;
+	KeyFrameK[24].movkoshiro_z = 0.0f;
+	KeyFrameK[24].giroNero = 0.0f;
+
+
+
+
+
+
 	//Loop mientras no se cierra la ventana
 	while (!mainWindow.getShouldClose())
 	{
@@ -859,6 +1255,10 @@ int main()
 		glfwPollEvents();
 		camera.keyControl(mainWindow.getsKeys(), deltaTime);
 		camera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange());
+		
+		//para keyframes
+		inputKeyframes(mainWindow.getsKeys());
+		animate();
 
 		// Clear the window
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -1314,6 +1714,52 @@ int main()
 				rotBKS = true;
 			}
 		}
+		//piernas
+		if (rotPKS && ActivadorKS)
+		{
+			if (MrotPiernaKS < 20.0f)
+			{
+				MrotPiernaKS += rotKoshiroOffset * deltaTime;
+			}
+			else
+			{
+				rotPKS = false;
+			}
+		}
+		if (!rotPKS && ActivadorKS)
+		{
+			if (MrotPiernaKS > -20.0f)
+			{
+				MrotPiernaKS -= rotKoshiroOffset * deltaTime;
+			}
+			else
+			{
+				rotPKS = true;
+			}
+		}
+		// pies
+		if (rotPiesKS && ActivadorKS)
+		{
+			if (MrotPieKS < 20.0f)
+			{
+				MrotPieKS += rotKoshiroOffset / 2 * deltaTime;
+			}
+			else
+			{
+				rotPiesKS = false;
+			}
+		}
+		if (!rotPiesKS && ActivadorKS)
+		{
+			if (MrotPieKS > 0.0f)
+			{
+				MrotPieKS -= rotKoshiroOffset / 2 * deltaTime;
+			}
+			else
+			{
+				rotPiesKS = true;
+			}
+		}
 		//
 
 
@@ -1401,8 +1847,8 @@ int main()
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		////------------Personajes-----------//
-		// Arturia Pendragon (Lily)
+		//------------Personajes-----------//
+		 //Arturia Pendragon (Lily)
 		//Cuerpo
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
@@ -1563,6 +2009,14 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Bateria.RenderModel();
 
+		//silla humilde
+		model = modelaux_cuerpoK;
+		model = glm::translate(model, glm::vec3(0.0f, -4.5f, -0.5f));
+		model = glm::scale(model, glm::vec3(0.09f, 0.09f, 0.09f));
+		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Silla_R.RenderModel();
+
 
 		//Brazo Izquierdo
 		model = modelaux_cuerpoK;
@@ -1647,8 +2101,10 @@ int main()
 		//Koshiro
 		// ------------------------------------------------------------------------------------------//
 		model = glm::mat4(1.0);
-		//color = glm::vec3(0.0f, 0.0f, 0.3f);
-		model = glm::translate(model, glm::vec3(-4.0f, 5.0f + 3.55f, -5.0f));
+		//poskoshiro = glm::vec3(posXkoshiro + movkoshiro_x, posYkoshiro + movkoshiro_y, posZkoshiro + movkoshiro_z);
+		//model = glm::translate(model, poskoshiro);
+		model = glm::translate(model, glm::vec3(-4.0f+ movkoshiro_x, 5.0f + 3.55f + movkoshiro_y, -5.0f + movkoshiro_z));
+		model = glm::rotate(model, girokoshiro * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		modelaux_cuerpoKS = model;
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -1707,7 +2163,7 @@ int main()
 		//Pie Izquierdo
 		model = modelaux_cuerpoKS;
 		model = glm::translate(model, glm::vec3(0.37f, -2.35f, -0.05f));
-		//model = glm::rotate(model, glm::radians((MrotPierna)), glm::vec3(-1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians((MrotPiernaKS)), glm::vec3(-1.0f, 0.0f, 0.0f));
 		modelaux_piernaKS = model;
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -1715,7 +2171,7 @@ int main()
 
 		model = modelaux_piernaKS;
 		model = glm::translate(model, glm::vec3(-0.02f, -0.85f, 0.0f));
-		//model = glm::rotate(model, glm::radians((MrotPie)), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians((MrotPieKS)), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		koshiro_Pie.RenderModel();
@@ -1723,7 +2179,7 @@ int main()
 		//Pie Derecho
 		model = modelaux_cuerpoKS;
 		model = glm::translate(model, glm::vec3(-0.37f, -2.35f, -0.05f));
-		//model = glm::rotate(model, glm::radians((MrotPierna)), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians((MrotPiernaKS)), glm::vec3(1.0f, 0.0f, 0.0f));
 		modelaux_pierna2KS = model;
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -1732,11 +2188,47 @@ int main()
 		model = modelaux_pierna2KS;
 		//model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.02f, -0.85f, 0.0f));
-		//model = glm::rotate(model, glm::radians((MrotPie)), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians((MrotPieKS)), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		koshiro_Pie_2.RenderModel();
 
+
+
+		//keynero padoru
+		model = glm::mat4(1.0);
+		posNero = glm::vec3(posXNero + movNero_x, posYNero + movNero_y, posZNero + movNero_z);
+		model = glm::translate(model, posNero);
+		model = glm::scale(model, glm::vec3(50.0f, 50.0f, 50.0f));
+		model = glm::rotate(model, giroNero * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		Padoru.RenderModel();
+
+
+		//Extras
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(5.0f, 5.0f + 4.5f, 20.0f));
+		modelaux_cuerpoN = model;
+		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lucy.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-5.0f, 5.0f + 4.5f, 20.0f));
+		modelaux_cuerpoN = model;
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		vik.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 5.0f + 4.5f, 20.0f));
+		modelaux_cuerpoN = model;
+		model = glm::scale(model, glm::vec3(0.15f, 0.15f, 0.15f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		elf.RenderModel();
 
 		//--------------------------------------------Festival-----------------------------------------//
 		//Codigo para las carpas a utilizar
@@ -2261,4 +2753,107 @@ int main()
 	}
 
 	return 0;
+}
+
+void inputKeyframes(bool* keys)
+{
+	if (keys[GLFW_KEY_SPACE])
+	{
+		if (reproduciranimacionN < 1)
+		{
+			if (play == false && (FrameIndexN > 1))
+			{
+				resetElements();
+				//First Interpolation				
+				interpolation();
+				play = true;
+				playIndexN = 0;
+				i_curr_steps_N = 0;
+				reproduciranimacionN++;
+				printf("\n presiona 0 para habilitar reproducir de nuevo la animación'\n");
+				habilitaranimacionN = 0;
+
+			}
+			else
+			{
+				play = false;
+			}
+		}
+
+		if (reproduciranimacionK < 1)
+		{
+			if (play == false && (FrameIndexK > 1))
+			{
+				resetElements();
+				//First Interpolation				
+				interpolation();
+				play = true;
+				playIndexK = 0;
+				i_curr_steps_K = 0;
+				reproduciranimacionK++;
+				printf("\n presiona 0 para habilitar reproducir de nuevo la animación'\n");
+				habilitaranimacionK = 0;
+
+			}
+			else
+			{
+				play = false;
+			}
+		}
+	}
+	if (keys[GLFW_KEY_0])
+	{
+		if (habilitaranimacionN < 1)
+		{
+			reproduciranimacionN = 0;
+		}
+
+		if (habilitaranimacionK < 1)
+		{
+			reproduciranimacionK = 0;
+		}
+	}
+
+	if (keys[GLFW_KEY_L])
+	{
+		if (guardoFrame < 1)
+		{
+			saveFrame();
+			printf("movAvion_x es: %f\n", movNero_x);
+			//printf("movAvion_y es: %f\n", movAvion_y);
+			printf(" \npresiona P para habilitar guardar otro frame'\n");
+			guardoFrame++;
+			reinicioFrame = 0;
+		}
+	}
+	if (keys[GLFW_KEY_P])
+	{
+		if (reinicioFrame < 1)
+		{
+			guardoFrame = 0;
+		}
+	}
+
+
+	if (keys[GLFW_KEY_1])
+	{
+		if (ciclo < 1)
+		{
+			//printf("movAvion_x es: %f\n", movAvion_x);
+			movNero_x += 1.0f;
+			printf("\n movAvion_x es: %f\n", movNero_x);
+			ciclo++;
+			ciclo2 = 0;
+			printf("\n reinicia con 2\n");
+		}
+
+	}
+	if (keys[GLFW_KEY_2])
+	{
+		if (ciclo2 < 1)
+		{
+			ciclo = 0;
+		}
+	}
+
 }

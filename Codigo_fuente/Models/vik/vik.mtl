@@ -1,0 +1,50 @@
+# Blender MTL File: 'None'
+# Material Count: 4
+
+newmtl Accessory_CatEar_01_CLOTH_(Instance)
+Ns 900.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Annie - without clothes.fbm\\Image7.001.png
+map_d Annie - without clothes.fbm\\Image7.001.png
+
+newmtl N00_000_00_EyeHighlight_00_EYE_(Instance)
+Ns 900.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Annie - without clothes.fbm\\Image0.001.png
+map_d Annie - without clothes.fbm\\Image0.001.png
+
+newmtl N00_000_00_FaceBrow_00_FACE_(Instance)
+Ns 900.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Annie - without clothes.fbm\\Image0.001.png
+map_d Annie - without clothes.fbm\\Image0.001.png
+
+newmtl N00_000_Hair_00_HAIR_(Instance)
+Ns 900.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Annie - without clothes.fbm\\Image7.001.png
+map_d Annie - without clothes.fbm\\Image7.001.png
