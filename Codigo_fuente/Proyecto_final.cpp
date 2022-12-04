@@ -52,9 +52,11 @@ float toffsetv = 0.0f;
 
 //Variables globales para el movimiento del personaje principal
 //Lily
-float MrotABrazoL , MrotBrazoL , MrotPiernaL, MrotPieL;//movimientos
-bool rotABL, rotBL,rotPL,rotPiesL;//banderas
+float MrotABrazoL , MrotBrazoL , MrotPiernaL, MrotPieL, MAvanzaLX, MAvanzaLZ,Mrota;//movimientos
+int Cgiros;
+bool rotABL, rotBL,rotPL,rotPiesL,AvanzaLX, AvanzaLZ;//banderas
 float rotLilyOffset;
+float rotLilyOffsetM;
 //Nero
 float MrotABrazoN, MrotBrazoN, MrotPiernaN;
 bool rotABN, rotBN;//banderas
@@ -813,10 +815,17 @@ int main()
 	MrotABrazoL = 0.0f;
 	MrotBrazoL = 0.0f;
 	MrotPiernaL = 0.0f;
+	Mrota = 0.0f;
 	rotLilyOffset = 1.0f;
+	rotLilyOffsetM = 0.1f;
+	MAvanzaLX = 0.0f;
+	MAvanzaLZ = 0.0f;
+	AvanzaLX =true;
+	AvanzaLZ = false;
 	rotABL = true;
 	rotBL = true;
 	rotPL = true;
+	Cgiros = 0;
 	//rotPieL = true;
 	//Nero
 	MrotABrazoN = 0.0f;
@@ -899,6 +908,105 @@ int main()
 			1.0f, 0.0f, -1.0f);
 
 		//Lily
+		// movimiento
+		if (AvanzaLX && !AvanzaLZ && Cgiros==0)
+		{
+			if (MAvanzaLX < 40.0f)
+			{
+				MAvanzaLX += rotLilyOffsetM * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 1;
+			}
+		}
+		if (!AvanzaLX && !AvanzaLZ && Cgiros==1)
+		{
+			if (Mrota < 90.0f)
+			{
+				Mrota += rotLilyOffsetM * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+		if (!AvanzaLX && AvanzaLZ && Cgiros==1)
+		{
+			if (MAvanzaLZ < 40.0f)
+			{
+				MAvanzaLZ += rotLilyOffsetM * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 2;
+			}
+		}
+		if (!AvanzaLX && !AvanzaLZ && Cgiros==2)
+		{
+			if (Mrota < 180.0f)
+			{
+				Mrota += rotLilyOffsetM * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+			}
+		}
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 2)
+		{
+			if (MAvanzaLX > 0.0f)
+			{
+				MAvanzaLX -= rotLilyOffsetM * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 3;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 3)
+		{
+			if (Mrota < 270.0f)
+			{
+				Mrota += rotLilyOffsetM * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 3)
+		{
+			if (MAvanzaLZ > 0.0f)
+			{
+				MAvanzaLZ -= rotLilyOffsetM * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 4;
+			}
+		}
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 4)
+		{
+			if (Mrota < 360.0f)
+			{
+				Mrota += rotLilyOffsetM * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+				Cgiros = 0;
+				Mrota = 0.0f;
+			}
+		}
+
+
 		//antebrazos
 		if (rotABL)
 		{
@@ -1227,7 +1335,8 @@ int main()
 		//Cuerpo
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
-		model = glm::translate(model, glm::vec3(0.0f, 2.7f, 20.0f + mainWindow.getmovlily()));
+		model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
 		modelaux_cuerpoL = model;
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
