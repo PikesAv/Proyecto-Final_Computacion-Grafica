@@ -6,6 +6,8 @@ bool ActivadorML = false;
 bool ActivadorN = false;
 bool ActivadorKS = false;
 bool ActivadorK = false;
+bool change = false;
+bool esce = false;
 bool luces = false;
 
 Window::Window()
@@ -111,6 +113,16 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	{
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
+
+	//Camaras
+	if (key == GLFW_KEY_L) {
+		change = true;
+	}
+
+	if (key == GLFW_KEY_K) {
+		change = false;
+	}
+	
 
 	//Teclas para iniciar el show de luces
 	if (key == GLFW_KEY_P)

@@ -72,7 +72,7 @@ bool rotABKS, rotBKS, rotPKS, rotPiesKS; //banderas
 float rotKoshiroOffset;
 //Variable externa para la eleccion del caso
 extern int bandera;
-extern bool ActivadorRL, ActivadorML, ActivadorN, ActivadorKS, ActivadorK, luces;
+extern bool ActivadorRL, ActivadorML, ActivadorN, ActivadorKS, ActivadorK,change, luces, esce;
 //Variable correspondiente para el ciclo del día y noche
 int conta_dia;
 float ciclo_dia;
@@ -187,6 +187,7 @@ Model Ftruck2;
 Model Ftruck3;
 Model Ftruck4;
 Model Ftruck5;
+Model FtruckSP;
 
 //Modelos Comida Mexicana
 Model Comex1;
@@ -903,6 +904,8 @@ int main()
 	Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
 	Ftruck5 = Model();
 	Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
+	FtruckSP = Model();
+	FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
 
 	//Comida Mexicana
 	Comex1 = Model();
@@ -1258,6 +1261,27 @@ int main()
 		// Clear the window
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		//Camaras
+		/*if (change) {
+			if (Mrota < 90.0f) {
+				camera = Camera(glm::vec3(MAvanzaLZ, 8.0f, 10.5f + MAvanzaLX), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f - Mrota, -35.0f, 3.0f, 0.5f);
+			}
+			else if (Mrota > 90.0f && Mrota < 180.0f) {
+				camera = Camera(glm::vec3(-10.0f + MAvanzaLZ, 8.0f, 20.0f + MAvanzaLX), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f - Mrota, -35.0f, 3.0f, 0.5f);
+			}
+			else if (Mrota > 180.0f && Mrota <270.0f) {
+				camera = Camera(glm::vec3(0.0f + MAvanzaLZ, 8.0f, 30.0f + MAvanzaLX), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f - Mrota, -35.0f, 3.0f, 0.5f);
+			}
+			else if (Mrota > 270.0f && Mrota < 360.0f) {
+				camera = Camera(glm::vec3(10.0f + MAvanzaLZ, 8.0f, 20.0f + MAvanzaLX), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f - Mrota, -35.0f, 3.0f, 0.5f);
+			}
+
+		}
+		if (!change) {
+				camera = Camera(glm::vec3(-150.0f, 150.0f, -150.0f), glm::vec3(0.0f, 1.0f, 0.0f), 55.0f, -45.0f, 1.5f, 0.5f);
+		}*/
+		
 
 		//Cambio de Skybox para el ciclo de día y noche
 		if (conta_dia < 6000) {
@@ -1773,6 +1797,14 @@ int main()
 		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
 
 		//Inicializacion de las luces de tipo spotlight para hacer el show de luces
+		//Inicialización de las luces de tipo pointlghts
+		if (ciclo_dia < 0.55) {
+			shaderList[0].SetPointLights(pointLights, pointLightCount);
+		}
+		else {
+			shaderList[0].SetPointLights(pointLights, 0);
+		}
+
 		if (luces) {
 			if (conta_show == 1) {
 				show = static_cast <float> (rand() % 24) / 4;
@@ -2380,16 +2412,17 @@ int main()
 		//--------------------------------------------Festival-----------------------------------------//
 		//Codigo para las carpas a utilizar
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-60.0f, -8.5f, 140.0f));
+		model = glm::translate(model, glm::vec3(-54.0f, -2.0f, 148.0f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.25f, 0.3f, 0.5f));
+		model = glm::scale(model, glm::vec3(0.8f, 1.0f, 1.6f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Carpa.RenderModel();
 
+		//Mariscos
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(80.0f, -8.0f, 122.0f));
+		model = glm::translate(model, glm::vec3(80.0f, -2.0f, 110.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.3f, 0.35f));
+		model = glm::scale(model, glm::vec3(1.1f, 1.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Carpa.RenderModel();
 
@@ -2739,48 +2772,151 @@ int main()
 		meshList[3]->RenderMesh();
 
 		//FoodTrucks
+		//Comida Peruana Lista!
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 80.0f));
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-120.0f, -1.95f, 80.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck1.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 20.0f));
-		model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
+		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, 80.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck4.RenderModel();
+
+		//Mesas adicionales y sillas adicionales
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 60.0f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Mesa_B.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-113.0f, -1.95f, 65.0f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::rotate(model, -180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Silla_R.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-107.0f, -1.95f, 65.0f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::rotate(model, -180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Silla_R.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 55.0f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Silla_R.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 95.0f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Mesa_B.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 100.0f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::rotate(model, -180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Silla_R.RenderModel();
+
+
+		//Comida Italiana Lista!
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-112.0f, -1.6f, 20.0f));
+		model = glm::scale(model, glm::vec3(0.9f, 0.9f, 0.9f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck2.RenderModel();
 
+		//Comida Japonesa Lista!
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 150.0f));
+		model = glm::translate(model, glm::vec3(-120.0f, -1.95f, 150.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck3.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, 80.0f));
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::translate(model, glm::vec3(-120.0f, -1.95f, 125.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Ftruck4.RenderModel();
+		Ftruck3.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, -40.0f));
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::translate(model, glm::vec3(-105.0f, -1.95f, 150.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		model = glm::rotate(model, 270 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck3.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-105.0f, -1.95f, 125.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		model = glm::rotate(model, 270 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck3.RenderModel();
+
+
+		//Comida alemana Lista!
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, -60.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck5.RenderModel();
 
-		//Comida Mexicana
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(65.0f, -1.95f, -10.0f));
+		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, -30.0f));
+		model = glm::scale(model, glm::vec3(2.3f, 2.3f, 2.3f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		FtruckSP.RenderModel();
+
+		//Comida Española Lista!
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(45.0f, -1.95f, 155.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, -35 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck4.RenderModel();
+
+		//Comida Mexicana
+		//Tacos
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(85.0f, -1.95f, 25.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Comex1.RenderModel();
+
+		//Tortas
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(85.0f, -1.95f, -30.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Comex1.RenderModel();
+
+		//Mariscos
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(65.0f, -1.95f, 155.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck5.RenderModel();
 
 		//Escenario
 		model = glm::mat4(1.0);
