@@ -45,6 +45,11 @@ Integrantes del equipo.
 #include "PointLight.h"
 #include "SpotLight.h"
 #include "Material.h"
+
+//para el sonido
+#include <Irrklang/irrKlang.h>
+using namespace irrklang;
+
 const float toRadians = 3.14159265f / 180.0f;
 
 //Variables para poder animar la textura
@@ -109,6 +114,7 @@ Texture faro;
 //Texturas utilizadas
 Texture Edificio;
 Texture marmol;
+Texture Pared_blanca;
 
 //Texturas animadas
 Texture Firework_O;
@@ -191,6 +197,13 @@ Model FtruckSP;
 
 //Modelos Comida Mexicana
 Model Comex1;
+
+//Modelos infografias
+Model Pinguino_inf;
+Model Peces_inf;
+Model Cangrejo_inf;
+Model Orca_inf;
+Model Tiburon_inf;
 
 
 //Skybox
@@ -751,6 +764,13 @@ int main()
 	mainWindow = Window(1366, 768); // 1280, 1024 or 1024, 768
 	mainWindow.Initialise();
 
+	ISoundEngine* engine = createIrrKlangDevice();
+
+	if (!engine) {
+		printf("XD");
+	}
+	engine->play2D("Gucci Bucket Hat.mp3", true);
+
 	CreateObjects();
 	CrearDado();
 	CreateShaders();
@@ -785,151 +805,166 @@ int main()
 	pasto.LoadTextureA();
 	faro = Texture("Textures/tlamp.tga");
 	faro.LoadTextureA();
+	Pared_blanca = Texture("Textures/Pared_blanca.tga");
+	Pared_blanca.LoadTextureA();
 
 	//Texturas animadas
-	Firework_G = Texture("Textures/Animadas/Firework_green.tga");
-	Firework_G.LoadTextureA();
-	Firework_O = Texture("Textures/Animadas/Firework_orange.tga");
-	Firework_O.LoadTextureA();
-	Firework_P = Texture("Textures/Animadas/Firework_purple.tga");
-	Firework_P.LoadTextureA();
-	Firework_R = Texture("Textures/Animadas/Firework_red.tga");
-	Firework_R.LoadTextureA();
+	//Firework_G = Texture("Textures/Animadas/Firework_green.tga");
+	//Firework_G.LoadTextureA();
+	//Firework_O = Texture("Textures/Animadas/Firework_orange.tga");
+	//Firework_O.LoadTextureA();
+	//Firework_P = Texture("Textures/Animadas/Firework_purple.tga");
+	//Firework_P.LoadTextureA();
+	//Firework_R = Texture("Textures/Animadas/Firework_red.tga");
+	//Firework_R.LoadTextureA();
 
 
 	//Declaracion de modelos utilizados
 	//
+
+	//Infografias
+	Pinguino_inf = Model();
+	Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
+	Cangrejo_inf = Model();
+	Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
+	Orca_inf = Model();
+	Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
+	Tiburon_inf = Model();
+	Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
+	Peces_inf = Model();
+	Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
+
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
-	Farola = Model();
-	Farola.LoadModel("Models/Farola_2/Farola_2.obj");
-	Carpa = Model();
-	Carpa.LoadModel("Models/Carpa/Carpa.obj");
-	Farola1 = Model();
-	Farola1.LoadModel("Models/Farola_3/farola_3.obj");
-	Silla_R = Model();
-	Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
-	Mesa_B = Model();
-	Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
+	//Farola = Model();
+	//Farola.LoadModel("Models/Farola_2/Farola_2.obj");
+	//Carpa = Model();
+	//Carpa.LoadModel("Models/Carpa/Carpa.obj");
+	//Farola1 = Model();
+	//Farola1.LoadModel("Models/Farola_3/farola_3.obj");
+	//Silla_R = Model();
+	//Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
+	//Mesa_B = Model();
+	//Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
 	Reflector = Model();
 	Reflector.LoadModel("Models/Reflector/Reflector.obj");
 
-	//Artoria Pendragon (Lily)
-	Lily_AnteBrazo = Model();
-	Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
-	Lily_AnteBrazo_2 = Model();
-	Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
-	Lily_Brazo = Model();
-	Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
-	Lily_Brazo_2 = Model();
-	Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
-	Lily_Pierna = Model();
-	Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
-	Lily_Pierna_2 = Model();
-	Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
-	Lily_Pie = Model();
-	Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
-	Lily_Pie_2 = Model();
-	Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
-	Lily_Cabeza = Model();
-	Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
-	Lily_Cuerpo = Model();
-	Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
+	////Artoria Pendragon (Lily)
+	//Lily_AnteBrazo = Model();
+	//Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
+	//Lily_AnteBrazo_2 = Model();
+	//Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
+	//Lily_Brazo = Model();
+	//Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
+	//Lily_Brazo_2 = Model();
+	//Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
+	//Lily_Pierna = Model();
+	//Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
+	//Lily_Pierna_2 = Model();
+	//Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
+	//Lily_Pie = Model();
+	//Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
+	//Lily_Pie_2 = Model();
+	//Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
+	//Lily_Cabeza = Model();
+	//Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
+	//Lily_Cuerpo = Model();
+	//Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
 
-	//nero
-	Nero_Cuerpo = Model();
-	Nero_Cuerpo.LoadModel("Models/Nero/nero_cuerpo.obj");
-	Nero_AnteBrazo = Model();
-	Nero_AnteBrazo.LoadModel("Models/Nero/nero_antebrazo_1.obj");
-	Nero_AnteBrazo_2 = Model();
-	Nero_AnteBrazo_2.LoadModel("Models/Nero/nero_antebrazo_2.obj");
-	Nero_Brazo = Model();
-	Nero_Brazo.LoadModel("Models/Nero/nero_brazo_1.obj");
-	Nero_Brazo_2 = Model();
-	Nero_Brazo_2.LoadModel("Models/Nero/nero_brazo_2.obj");
+	////nero
+	//Nero_Cuerpo = Model();
+	//Nero_Cuerpo.LoadModel("Models/Nero/nero_cuerpo.obj");
+	//Nero_AnteBrazo = Model();
+	//Nero_AnteBrazo.LoadModel("Models/Nero/nero_antebrazo_1.obj");
+	//Nero_AnteBrazo_2 = Model();
+	//Nero_AnteBrazo_2.LoadModel("Models/Nero/nero_antebrazo_2.obj");
+	//Nero_Brazo = Model();
+	//Nero_Brazo.LoadModel("Models/Nero/nero_brazo_1.obj");
+	//Nero_Brazo_2 = Model();
+	//Nero_Brazo_2.LoadModel("Models/Nero/nero_brazo_2.obj");
 
-	//koshiro
-	koshiro_AnteBrazo = Model();
-	koshiro_AnteBrazo.LoadModel("Models/koshiro/Koshiro_ABrazo_1.obj");
-	koshiro_AnteBrazo_2 = Model();
-	koshiro_AnteBrazo_2.LoadModel("Models/koshiro/Koshiro_ABrazo_2.obj");
-	koshiro_Brazo = Model();
-	koshiro_Brazo.LoadModel("Models/koshiro/Koshiro_Brazo_1.obj");
-	koshiro_Brazo_2 = Model();
-	koshiro_Brazo_2.LoadModel("Models/koshiro/Koshiro_Brazo_2.obj");
-	koshiro_Pierna = Model();
-	koshiro_Pierna.LoadModel("Models/koshiro/Koshiro_Pierna_1.obj");
-	koshiro_Pierna_2 = Model();
-	koshiro_Pierna_2.LoadModel("Models/koshiro/Koshiro_Pierna_2.obj");
-	koshiro_Pie = Model();
-	koshiro_Pie.LoadModel("Models/koshiro/Koshiro_Pie_1.obj");
-	koshiro_Pie_2 = Model();
-	koshiro_Pie_2.LoadModel("Models/koshiro/Koshiro_Pie_2.obj");
-	koshiro_Cuerpo = Model();
-	koshiro_Cuerpo.LoadModel("Models/koshiro/Koshiro_Cuerpo.obj");
+	////koshiro
+	//koshiro_AnteBrazo = Model();
+	//koshiro_AnteBrazo.LoadModel("Models/koshiro/Koshiro_ABrazo_1.obj");
+	//koshiro_AnteBrazo_2 = Model();
+	//koshiro_AnteBrazo_2.LoadModel("Models/koshiro/Koshiro_ABrazo_2.obj");
+	//koshiro_Brazo = Model();
+	//koshiro_Brazo.LoadModel("Models/koshiro/Koshiro_Brazo_1.obj");
+	//koshiro_Brazo_2 = Model();
+	//koshiro_Brazo_2.LoadModel("Models/koshiro/Koshiro_Brazo_2.obj");
+	//koshiro_Pierna = Model();
+	//koshiro_Pierna.LoadModel("Models/koshiro/Koshiro_Pierna_1.obj");
+	//koshiro_Pierna_2 = Model();
+	//koshiro_Pierna_2.LoadModel("Models/koshiro/Koshiro_Pierna_2.obj");
+	//koshiro_Pie = Model();
+	//koshiro_Pie.LoadModel("Models/koshiro/Koshiro_Pie_1.obj");
+	//koshiro_Pie_2 = Model();
+	//koshiro_Pie_2.LoadModel("Models/koshiro/Koshiro_Pie_2.obj");
+	//koshiro_Cuerpo = Model();
+	//koshiro_Cuerpo.LoadModel("Models/koshiro/Koshiro_Cuerpo.obj");
 
-	//Koharu
-	Koharu_AnteBrazo = Model();
-	Koharu_AnteBrazo.LoadModel("Models/Koharu/Koharu_AnteBrazo_1.obj");
-	Koharu_AnteBrazo_2 = Model();
-	Koharu_AnteBrazo_2.LoadModel("Models/Koharu/Koharu_AnteBrazo_2.obj");
-	Koharu_Brazo = Model();
-	Koharu_Brazo.LoadModel("Models/Koharu/Koharu_Brazo_1.obj");
-	Koharu_Brazo_2 = Model();
-	Koharu_Brazo_2.LoadModel("Models/Koharu/Koharu_Brazo_2.obj");
-	Koharu_Pierna = Model();
-	Koharu_Pierna.LoadModel("Models/Koharu/Koharu_Pierna_1.obj");
-	Koharu_Pierna_2 = Model();
-	Koharu_Pierna_2.LoadModel("Models/Koharu/Koharu_Pierna_2.obj");
-	Koharu_Pie = Model();
-	Koharu_Pie.LoadModel("Models/Koharu/Koharu_Pie_1.obj");
-	Koharu_Pie_2 = Model();
-	Koharu_Pie_2.LoadModel("Models/Koharu/Koharu_Pie_2.obj");
-	Koharu_Cuerpo = Model();
-	Koharu_Cuerpo.LoadModel("Models/Koharu/Koharu_Cuerpo.obj");
-	//padoru
-	Padoru = Model();
-	Padoru.LoadModel("Models/PAdoru/Nero_Padoru.obj");
+	////Koharu
+	//Koharu_AnteBrazo = Model();
+	//Koharu_AnteBrazo.LoadModel("Models/Koharu/Koharu_AnteBrazo_1.obj");
+	//Koharu_AnteBrazo_2 = Model();
+	//Koharu_AnteBrazo_2.LoadModel("Models/Koharu/Koharu_AnteBrazo_2.obj");
+	//Koharu_Brazo = Model();
+	//Koharu_Brazo.LoadModel("Models/Koharu/Koharu_Brazo_1.obj");
+	//Koharu_Brazo_2 = Model();
+	//Koharu_Brazo_2.LoadModel("Models/Koharu/Koharu_Brazo_2.obj");
+	//Koharu_Pierna = Model();
+	//Koharu_Pierna.LoadModel("Models/Koharu/Koharu_Pierna_1.obj");
+	//Koharu_Pierna_2 = Model();
+	//Koharu_Pierna_2.LoadModel("Models/Koharu/Koharu_Pierna_2.obj");
+	//Koharu_Pie = Model();
+	//Koharu_Pie.LoadModel("Models/Koharu/Koharu_Pie_1.obj");
+	//Koharu_Pie_2 = Model();
+	//Koharu_Pie_2.LoadModel("Models/Koharu/Koharu_Pie_2.obj");
+	//Koharu_Cuerpo = Model();
+	//Koharu_Cuerpo.LoadModel("Models/Koharu/Koharu_Cuerpo.obj");
+	////padoru
+	//Padoru = Model();
+	//Padoru.LoadModel("Models/PAdoru/Nero_Padoru.obj");
 
-	//Extras
-	
-	//FoodTrucks
-	Ftruck1 = Model();
-	Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
-	Ftruck2 = Model();
-	Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
-	Ftruck3 = Model();
-	Ftruck3.LoadModel("Models/FoodTrucks/Ft3/yatai.obj");
-	Ftruck4 = Model();
-	Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
-	Ftruck5 = Model();
-	Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
-	FtruckSP = Model();
-	FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
+	////Extras
+	//
+	////FoodTrucks
+	//Ftruck1 = Model();
+	//Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
+	//Ftruck2 = Model();
+	//Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
+	//Ftruck3 = Model();
+	//Ftruck3.LoadModel("Models/FoodTrucks/Ft3/yatai.obj");
+	//Ftruck4 = Model();
+	//Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
+	//Ftruck5 = Model();
+	//Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
+	//FtruckSP = Model();
+	//FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
 
-	//Comida Mexicana
-	Comex1 = Model();
-	Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
+	////Comida Mexicana
+	//Comex1 = Model();
+	//Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
 
-	//Escenario
+	////Escenario
 	escenario = Model();
 	escenario.LoadModel("Models/Escenario/Escenario.obj");
-	Bateria = Model();
-	Bateria.LoadModel("Models/Escenario/Bateria.obj");
-	Guitarra = Model();
-	Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
-	Micro = Model();
-	Micro.LoadModel("Models/Escenario/Micro.obj");
+	//Bateria = Model();
+	//Bateria.LoadModel("Models/Escenario/Bateria.obj");
+	//Guitarra = Model();
+	//Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
+	//Micro = Model();
+	//Micro.LoadModel("Models/Escenario/Micro.obj");
 
-	//extras
-	Lucy = Model();
-	Lucy.LoadModel("Models/Lucy/Lucy.obj");
-	vik = Model();
-	vik.LoadModel("Models/vik/vik.obj");
-	elf = Model();
-	elf.LoadModel("Models/elf/elf.obj");
-	Shrek = Model();
-	Shrek.LoadModel("Models/Shrek/Shrek.obj");
+	////extras
+	//Lucy = Model();
+	//Lucy.LoadModel("Models/Lucy/Lucy.obj");
+	//vik = Model();
+	//vik.LoadModel("Models/vik/vik.obj");
+	//elf = Model();
+	//elf.LoadModel("Models/elf/elf.obj");
+	//Shrek = Model();
+	//Shrek.LoadModel("Models/Shrek/Shrek.obj");
 
 	std::vector<std::string> skyboxFaces;
 	std::vector<std::string> skyboxFacesNight;
@@ -1245,6 +1280,9 @@ int main()
 	KeyFrameK[24].movkoshiro_z = 0.0f;
 	KeyFrameK[24].giroNero = 0.0f;
 
+	
+
+	//PlaySound("Gucci Bucket Hat.wav", NULL, SND_SYNC);
 
 	//Loop mientras no se cierra la ventana
 	while (!mainWindow.getShouldClose())
@@ -1888,7 +1926,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 40.0f));
+		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 38.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -2409,6 +2447,8 @@ int main()
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Shrek.RenderModel();
+
+
 		//--------------------------------------------Festival-----------------------------------------//
 		//Codigo para las carpas a utilizar
 		model = glm::mat4(1.0);
@@ -3061,6 +3101,191 @@ int main()
 		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[8]->RenderMesh();
 
+		//--------------------------------------------Acuario-----------------------------------------//
+		//Codigo para la creacion del acuario
+		//Piso de la recepcion
+		toffset = glm::vec2(0.0f, 0.0);
+		color = glm::vec3(1.0f, 1.0f, 1.0f);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -1.8f, -230.0f));
+		model = glm::scale(model, glm::vec3(7.5f, 0.0f, 7.5f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		marmol.UseTexture();
+		meshList[2]->RenderMesh();
+
+		//Recepcion
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 13.1f, -230.0f));
+		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 150.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Edificio.UseTexture();
+		meshList[5]->RenderMesh();
+
+		//Paredes de la recepcion
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 12.8f, -230.0f));
+		model = glm::scale(model, glm::vec3(149.0f, 29.5f, 149.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Recepcion.UseTexture();
+		meshList[6]->RenderMesh();
+
+		//Entrada principal (ventanal)
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 13.14f, -155.1f));
+		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ventanal.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Acuario parte de la planta blaja
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -18.01f, -50.0f));
+		model = glm::scale(model, glm::vec3(300.0f, 30.0f, 250.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Edificio.UseTexture();
+		meshList[5]->RenderMesh();
+
+		//Paredes de la planta baja
+		//Paredes principales
+		//Division a
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, -18.03f, 0.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Division e
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-40.0f, -18.03f, 0.0f));
+		model = glm::scale(model, glm::vec3(40.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Division b
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-90.0f, -18.03f, 12.5f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(25.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Division c
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-79.6f, -18.03f, 24.91f));
+		model = glm::scale(model, glm::vec3(20.9f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Division d
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-64.5f, -18.03f, 12.5f));
+		model = glm::rotate(model, 70 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(26.6f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Division f
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-60.0f, -18.03f, -40.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(80.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Division j
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-20.0f, -18.03f, 7.5f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Division k
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-15.8f, -18.03f, -6.0f));
+		model = glm::rotate(model, 55 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Division f
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-11.5f, -18.03f, -43.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(62.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Cubo para el NP Nero
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -60.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(60.0f, 60.0f, 60.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//marmol.UseTexture();
+		//Edificio.UseTexture();
+		//meshList[4]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(75.5f, 6.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		cartel_M.RenderModel();
+
+		//Carga de las infografias
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(60.0f, 0.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pinguino_inf.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(20.0f, 0.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Cangrejo_inf.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-20.0f, 0.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_inf.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(40.0f, 0.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Peces_inf.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-40.0f, 0.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Orca_inf.RenderModel();
+
+
 		glDisable(GL_BLEND);
 
 		glUseProgram(0);
@@ -3068,6 +3293,7 @@ int main()
 		mainWindow.swapBuffers();
 	}
 
+	engine->drop();
 	return 0;
 }
 
