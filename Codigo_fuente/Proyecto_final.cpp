@@ -131,9 +131,9 @@ Model Farola1;
 Model Mesa_B;
 Model Silla_R;
 Model Reflector;
+Model Escalera;
 
 //Modelos personajes
-//
 //Arturia Pendragon (Lily)
 Model Lily_AnteBrazo;
 Model Lily_AnteBrazo_2;
@@ -836,6 +836,10 @@ int main()
 
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
+
+	//Escaleras
+	Escalera = Model();
+	Escalera.LoadModel("Models/Escaleras/Escaleras.obj");
 	//Farola = Model();
 	//Farola.LoadModel("Models/Farola_2/Farola_2.obj");
 	//Carpa = Model();
@@ -3131,6 +3135,15 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Recepcion.UseTexture();
 		meshList[6]->RenderMesh();
+
+		//Escaleras que conectan a la recepcion con el acuario
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(100.0f, -32.0f, -360.0f));
+		//model = glm::rotate(model, -45 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		//model = glm::rotate(model, 10 * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(0.f, 0.3f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Escalera.RenderModel();
 
 		//Entrada principal (ventanal)
 		model = glm::mat4(1.0);
