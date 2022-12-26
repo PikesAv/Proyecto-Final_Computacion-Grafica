@@ -115,6 +115,7 @@ Texture faro;
 Texture Edificio;
 Texture marmol;
 Texture Pared_blanca;
+Texture Cristal;
 
 //Texturas animadas
 Texture Firework_O;
@@ -198,13 +199,20 @@ Model FtruckSP;
 //Modelos Comida Mexicana
 Model Comex1;
 
-//Modelos infografias
+//Modelos infografias e imagenes
 Model Pinguino_inf;
 Model Peces_inf;
 Model Cangrejo_inf;
 Model Orca_inf;
 Model Tiburon_inf;
 
+Model Escudo_img;
+Model Ballena_img;
+Model Pinguino_img;
+Model Orca_img;
+Model Tiburon_img;
+Model Pez_img;
+Model No_flash;
 
 //Skybox
 Skybox skybox;
@@ -790,6 +798,8 @@ int main()
 	Recepcion.LoadTextureA();
 	Ventanal = Texture("Textures/Paredes/Ventana.tga");
 	Ventanal.LoadTextureA();
+	Cristal = Texture("Textures/blue-texture.tga");
+	Cristal.LoadTextureA();
 
 	Edificio = Texture("Textures/Build_texture.tga");
 	Edificio.LoadTextureA();
@@ -822,7 +832,7 @@ int main()
 	//Declaracion de modelos utilizados
 	//
 
-	//Infografias
+	//Infografias e imagenes
 	Pinguino_inf = Model();
 	Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
 	Cangrejo_inf = Model();
@@ -833,6 +843,21 @@ int main()
 	Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
 	Peces_inf = Model();
 	Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
+
+	//Escudo_img = Model();
+	//Escudo_img.LoadModel("Models/Carteles/Escudo/Escudo_pez.obj");
+	Pinguino_img = Model();
+	Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
+	Ballena_img = Model();
+	Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
+	Orca_img = Model();
+	Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
+	Tiburon_img = Model();
+	Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
+	Pez_img = Model();
+	Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
+	No_flash = Model();
+	No_flash.LoadModel("Models/Carteles/No_fotos.obj");
 
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
@@ -1283,10 +1308,6 @@ int main()
 	KeyFrameK[24].movkoshiro_y = 0.0f;
 	KeyFrameK[24].movkoshiro_z = 0.0f;
 	KeyFrameK[24].giroNero = 0.0f;
-
-	
-
-	//PlaySound("Gucci Bucket Hat.wav", NULL, SND_SYNC);
 
 	//Loop mientras no se cierra la ventana
 	while (!mainWindow.getShouldClose())
@@ -3337,6 +3358,67 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Orca_inf.RenderModel();
 
+		//Carga de las imagenes
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(60.0f, 0.0f, -40.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Escudo_img.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(40.0f, 0.0f, -40.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ballena_img.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(20.0f, 0.0f, -40.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pinguino_img.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -40.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Orca_img.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-20.0f, 0.0f, -40.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_img.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-40.0f, 0.0f, -40.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pez_img.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-60.0f, 0.0f, -40.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		No_flash.RenderModel();
+
+		//Carga de las peceras
+		//Peces pequeños
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-142.5f, -18.01f, -250.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 249.f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Cristal.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Tiburones
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-86.0f, -18.01f, -258.6f));
+		model = glm::scale(model, glm::vec3(48.0f, 30.0f, 112.4f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Cristal.UseTexture();
+		meshList[7]->RenderMesh();
 
 		glDisable(GL_BLEND);
 
