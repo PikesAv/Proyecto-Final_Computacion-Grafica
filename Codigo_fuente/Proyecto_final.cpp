@@ -58,34 +58,47 @@ float toffsetv = 0.0f;
 
 //Variables globales para el movimiento del personaje principal
 //Lily
-float MrotABrazoL, MrotBrazoL, MrotPiernaL, MrotPieL, MAvanzaLX, MAvanzaLZ, Mrota;//movimientos
+//Movimientos
+float MrotABrazoL, MrotBrazoL, MrotPiernaL, MrotPieL, MAvanzaLX, MAvanzaLZ, Mrota;
 int Cgiros;
-bool rotABL, rotBL, rotPL, rotPiesL, AvanzaLX, AvanzaLZ;//banderas
+//Banderas
+bool rotABL, rotBL, rotPL, rotPiesL, AvanzaLX, AvanzaLZ;
 float rotLilyOffset;
 float rotLilyOffsetM;
+
+//Variables globales para el movimiento de los demás personajes
 //Nero
+//Movimientos
 float MrotABrazoN, MrotBrazoN, MrotPiernaN;
-bool rotABN, rotBN;//banderas
+//Banderas
+bool rotABN, rotBN;
 float rotNeroOffset;
 //Koharu
-float MrotABrazoK, MrotBrazoK, MrotPiernaK, MrotPieK;//movimientos
-bool rotABK, rotBK, rotPK, rotPiesK; //banderas
+//Movmientos
+float MrotABrazoK, MrotBrazoK, MrotPiernaK, MrotPieK;
+//Banderas
+bool rotABK, rotBK, rotPK, rotPiesK;
 float rotKoharuOffset;
 //koshiro
-float MrotABrazoKS, MrotBrazoKS, MrotPiernaKS, MrotPieKS;//movimientos
-bool rotABKS, rotBKS, rotPKS, rotPiesKS; //banderas
+//Movimientos
+float MrotABrazoKS, MrotBrazoKS, MrotPiernaKS, MrotPieKS;
+//Banderas
+bool rotABKS, rotBKS, rotPKS, rotPiesKS;
 float rotKoshiroOffset;
-//Variable externa para la eleccion del caso
+
+//Variables externas para la seleccion de cada opcion
 extern int bandera;
 extern bool ActivadorRL, ActivadorML, ActivadorN, ActivadorKS, ActivadorK,change, luces, esce;
-//Variable correspondiente para el ciclo del día y noche
+
+//Variables correspondientes para el ciclo del día y noche
 int conta_dia;
 float ciclo_dia;
-//Variable correspondiente al show de luces
+
+//Variable correspondiente al show de luces en el escenario
 int conta_show;
 float show = 0.0f;
 
-//variables para animación Key
+//Variables para la animación por KeyFrame
 //float toffsetu = 0.0f;
 //float toffsetv = 0.0f;
 float reproduciranimacionN, habilitaranimacionN, reproduciranimacionK, habilitaranimacionK,
@@ -97,13 +110,11 @@ std::vector<Shader> shaderList;
 
 Camera camera;
 
-//Texturas
+//Texturas utilizadas en el festival
 Texture brickTexture;
 Texture dirtTexture;
 Texture plainTexture;
 Texture pisoTexture;
-Texture Recepcion;
-Texture Ventanal;
 Texture Piso_madera;
 Texture Piso_madera_2;
 Texture Piso_madera_3;
@@ -111,8 +122,10 @@ Texture Piso_madera_4;
 Texture pasto;
 Texture faro;
 
-//Texturas utilizadas
+//Texturas utilizadas en el acuario
 Texture Edificio;
+Texture Recepcion;
+Texture Ventanal;
 Texture marmol;
 Texture Pared_blanca;
 Texture Cristal;
@@ -124,20 +137,55 @@ Texture Firework_P;
 Texture Firework_R;
 Texture Firework_G;
 
-//Modelos entorno
+//----------------------------------------------Modelos para el Festival---------------------------------------//
 Model Camino_M;
 Model cartel_M;
+//Faros
 Model Farola;
-Model Carpa;
 Model Farola1;
+//Carpas
+Model Carpa;
+//Mobiliario
 Model Mesa_B;
 Model Silla_R;
 Model Reflector;
+//Escenario
+Model escenario;
+Model Bateria;
+Model Guitarra;
+Model Micro;
+//Modelos FoodTrucks
+Model Ftruck1;
+Model Ftruck2;
+Model Ftruck3;
+Model Ftruck4;
+Model Ftruck5;
+Model FtruckSP;
+//Modelos Comida Mexicana
+Model Comex1;
+
+//----------------------------------------------Modelos para el Acuario---------------------------------------//
+//Modelos de Estructuras
 Model Escalera;
 Model Acuario_cilindro;
 Model Medio_cilindro;
+//Modelos infografias e imagenes
+Model Pinguino_inf;
+Model Peces_inf;
+Model Cangrejo_inf;
+Model Orca_inf;
+Model Tiburon_inf;
+//Modelos de peces utilizados
 
-//Modelos personajes
+//Modelos de Decoración
+Model Calendario_azt;
+Model Ballena_img;
+Model Pinguino_img;
+Model Orca_img;
+Model Tiburon_img;
+Model Pez_img;
+Model No_flash;
+//----------------------------------------------Modelos de personajes----------------------------------------//
 //Arturia Pendragon (Lily)
 Model Lily_AnteBrazo;
 Model Lily_AnteBrazo_2;
@@ -149,7 +197,6 @@ Model Lily_Pie;
 Model Lily_Pie_2;
 Model Lily_Cabeza;
 Model Lily_Cuerpo;
-
 //Nero 
 Model Nero_Cuerpo;
 Model Nero_AnteBrazo;
@@ -166,7 +213,6 @@ Model koshiro_Pierna_2;
 Model koshiro_Pie;
 Model koshiro_Pie_2;
 Model koshiro_Cuerpo;
-
 //koharu
 Model Koharu_AnteBrazo;
 Model Koharu_AnteBrazo_2;
@@ -184,38 +230,6 @@ Model Lucy;
 Model vik;
 Model elf;
 Model Shrek;
-
-//Escenario
-Model escenario;
-Model Bateria;
-Model Guitarra;
-Model Micro;
-
-//Modelos FoodTrucks
-Model Ftruck1;
-Model Ftruck2;
-Model Ftruck3;
-Model Ftruck4;
-Model Ftruck5;
-Model FtruckSP;
-
-//Modelos Comida Mexicana
-Model Comex1;
-
-//Modelos infografias e imagenes
-Model Pinguino_inf;
-Model Peces_inf;
-Model Cangrejo_inf;
-Model Orca_inf;
-Model Tiburon_inf;
-
-Model Calendario_azt;
-Model Ballena_img;
-Model Pinguino_img;
-Model Orca_img;
-Model Tiburon_img;
-Model Pez_img;
-Model No_flash;
 
 //Skybox
 Skybox skybox;
@@ -381,8 +395,6 @@ void CrearDado()
 		20, 21, 22,
 		22, 23, 20,
 	};
-	//Ejercicio 1: reemplazar con sus dados de 6 caras texturizados, agregar normales
-// average normals
 	GLfloat cubo_vertices[] = {
 		// front
 		//x		y		z		S		T			NX		NY		NZ
@@ -453,7 +465,6 @@ void CrearRecepcion()
 		20, 21, 22,
 		22, 23, 20,
 	};
-	//average normals
 	GLfloat cubo_vertices[] = {
 		// front
 		//x		y		z		S		T			NX		NY		NZ
@@ -524,7 +535,6 @@ void CrearEntrada()
 		20, 21, 22,
 		22, 23, 20,
 	};
-	//average normals
 	GLfloat cubo_vertices[] = {
 		// front
 		//x		y		z		S		T			NX		NY		NZ
@@ -597,18 +607,13 @@ void CreaTextura() {
 	meshList.push_back(obj6);
 }
 
-///////////////////////////////KEYFRAMES/////////////////////Nero
-
-
+//----------------------------------------------KeyFrames----------------------------------------//
 bool animacion = false;
-
-
-//NEW// Keyframes nero
+//Keyframes nero
 float posXNero = 2.0, posYNero = 5.0, posZNero = -3.0;
 float	movNero_x = 0.0f, movNero_y = 0.0f, movNero_z = 0.0f;
 float giroNero = 0;
-
-//NEW// Keyframes koshiro
+//Keyframes koshiro
 float posXkoshiro = 2.0, posYkoshiro = 5.0, posZkoshiro = -3.0;
 float	movkoshiro_x = 0.0f, movkoshiro_y = 0.0f, movkoshiro_z = 0.0f;
 float girokoshiro = 0;
@@ -768,7 +773,6 @@ void animate(void)
 	}
 }
 
-/* FIN KEYFRAMES Nero*/
 
 int main()
 {
@@ -793,22 +797,7 @@ int main()
 	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 1.5f, 0.5f);
 
 	//Declaracion de texturas
-	pisoTexture = Texture("Textures/Pisos/Floor_texture.tga");
-	pisoTexture.LoadTextureA();
-	marmol = Texture("Textures/Pisos/marmol.tga");
-	marmol.LoadTextureA();
-	Recepcion = Texture("Textures/Paredes/Recepcion_textura.tga");
-	Recepcion.LoadTextureA();
-	Ventanal = Texture("Textures/Paredes/Ventana.tga");
-	Ventanal.LoadTextureA();
-	Cristal = Texture("Textures/blue-texture.tga");
-	Cristal.LoadTextureA();
-	Entradas = Texture("Textures/Entradas.tga");
-	Entradas.LoadTextureA();
-
-
-	Edificio = Texture("Textures/Build_texture.tga");
-	Edificio.LoadTextureA();
+	//Festival
 	Piso_madera = Texture("Textures/Pisos/Wood_floor.tga");
 	Piso_madera.LoadTextureA();
 	Piso_madera_2 = Texture("Textures/Pisos/Wood_floor_2.tga");
@@ -821,6 +810,21 @@ int main()
 	pasto.LoadTextureA();
 	faro = Texture("Textures/tlamp.tga");
 	faro.LoadTextureA();
+	//Acuario
+	pisoTexture = Texture("Textures/Pisos/Floor_texture.tga");
+	pisoTexture.LoadTextureA();
+	marmol = Texture("Textures/Pisos/marmol.tga");
+	marmol.LoadTextureA();
+	Recepcion = Texture("Textures/Paredes/Recepcion_textura.tga");
+	Recepcion.LoadTextureA();
+	Ventanal = Texture("Textures/Paredes/Ventana.tga");
+	Ventanal.LoadTextureA();
+	Cristal = Texture("Textures/blue-texture.tga");
+	Cristal.LoadTextureA();
+	Entradas = Texture("Textures/Entradas.tga");
+	Entradas.LoadTextureA();
+	Edificio = Texture("Textures/Build_texture.tga");
+	Edificio.LoadTextureA();
 	Pared_blanca = Texture("Textures/Pared_blanca.tga");
 	Pared_blanca.LoadTextureA();
 
@@ -836,8 +840,50 @@ int main()
 
 
 	//Declaracion de modelos utilizados
-	//
+	//Festival
+	cartel_M = Model();
+	cartel_M.LoadModel("Models/Construccion/maistro.obj");
+	//Farola = Model();
+	//Farola.LoadModel("Models/Farola_2/Farola_2.obj");
+	//Carpa = Model();
+	//Carpa.LoadModel("Models/Carpa/Carpa.obj");
+	//Farola1 = Model();
+	//Farola1.LoadModel("Models/Farola_3/farola_3.obj");
+	//Silla_R = Model();
+	//Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
+	//Mesa_B = Model();
+	//Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
+	Reflector = Model();
+	Reflector.LoadModel("Models/Reflector/Reflector.obj");
 
+	//FoodTrucks/Comida Mex
+	//Comida Mexicana
+	//Comex1 = Model();
+	//Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
+	//Ftruck1 = Model();
+	//Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
+	//Ftruck2 = Model();
+	//Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
+	//Ftruck3 = Model();
+	//Ftruck3.LoadModel("Models/FoodTrucks/Ft3/yatai.obj");
+	//Ftruck4 = Model();
+	//Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
+	//Ftruck5 = Model();
+	//Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
+	//FtruckSP = Model();
+	//FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
+
+	//Escenario
+	escenario = Model();
+	escenario.LoadModel("Models/Escenario/Escenario.obj");
+	//Bateria = Model();
+	//Bateria.LoadModel("Models/Escenario/Bateria.obj");
+	//Guitarra = Model();
+	//Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
+	//Micro = Model();
+	//Micro.LoadModel("Models/Escenario/Micro.obj");
+
+	//Acuario
 	//Infografias e imagenes
 	//Pinguino_inf = Model();
 	//Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
@@ -865,31 +911,15 @@ int main()
 	//No_flash = Model();
 	//No_flash.LoadModel("Models/Carteles/No_fotos.obj");
 
-	cartel_M = Model();
-	cartel_M.LoadModel("Models/Construccion/maistro.obj");
-
 	Acuario_cilindro = Model();
 	Acuario_cilindro.LoadModel("Models/Acuario_cilindro/Acuario_cilindro.obj");
 	Medio_cilindro = Model();
 	Medio_cilindro.LoadModel("Models/Acuario_cilindro/Medio_cilindro.obj");
 
-
 	//Escaleras
 	Escalera = Model();
 	Escalera.LoadModel("Models/Escaleras/Escaleras.obj");
-	//Farola = Model();
-	//Farola.LoadModel("Models/Farola_2/Farola_2.obj");
-	//Carpa = Model();
-	//Carpa.LoadModel("Models/Carpa/Carpa.obj");
-	//Farola1 = Model();
-	//Farola1.LoadModel("Models/Farola_3/farola_3.obj");
-	//Silla_R = Model();
-	//Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
-	//Mesa_B = Model();
-	//Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
-	Reflector = Model();
-	Reflector.LoadModel("Models/Reflector/Reflector.obj");
-
+	
 	////Artoria Pendragon (Lily)
 	//Lily_AnteBrazo = Model();
 	//Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
@@ -966,36 +996,6 @@ int main()
 	////padoru
 	//Padoru = Model();
 	//Padoru.LoadModel("Models/PAdoru/Nero_Padoru.obj");
-
-	////Extras
-	//
-	////FoodTrucks
-	//Ftruck1 = Model();
-	//Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
-	//Ftruck2 = Model();
-	//Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
-	//Ftruck3 = Model();
-	//Ftruck3.LoadModel("Models/FoodTrucks/Ft3/yatai.obj");
-	//Ftruck4 = Model();
-	//Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
-	//Ftruck5 = Model();
-	//Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
-	//FtruckSP = Model();
-	//FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
-
-	////Comida Mexicana
-	//Comex1 = Model();
-	//Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
-
-	////Escenario
-	escenario = Model();
-	escenario.LoadModel("Models/Escenario/Escenario.obj");
-	//Bateria = Model();
-	//Bateria.LoadModel("Models/Escenario/Bateria.obj");
-	//Guitarra = Model();
-	//Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
-	//Micro = Model();
-	//Micro.LoadModel("Models/Escenario/Micro.obj");
 
 	////extras
 	//Lucy = Model();
@@ -1136,8 +1136,8 @@ int main()
 	glm::vec3 posNero = glm::vec3(2.0f, 0.0f, 0.0f);
 	//glm::vec3 poskoshiro = glm::vec3(-4.0f, 5.0f + 3.55f, -5.0f);kjh
 	
-	//KEYFRAMES Nero
-
+	//----------------------------------------------KeyFrames de los personajes----------------------------------------//
+	//Nero
 	KeyFrameN[0].movNero_x = 0.0f;
 	KeyFrameN[0].movNero_y = 0.0f;
 	KeyFrameN[0].movNero_z = 0.0f;
@@ -1191,7 +1191,7 @@ int main()
 	KeyFrameN[9].movNero_z = 0.0f;
 	KeyFrameN[9].giroNero = 0.0f;
 
-	//KEYFRAMES koshiro
+	//Koshiro
 
 	KeyFrameK[0].movkoshiro_x = 0.0f;
 	KeyFrameK[0].movkoshiro_y = 0.0f;
@@ -1401,9 +1401,8 @@ int main()
 		mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 			ciclo_dia, 1.0,//Va a servir para manejar el ciclo dia y noche
 			1.0f, 0.0f, -1.0f);
-
-		//Lily
-		// movimiento
+		//----------------------------------------------Animaciones----------------------------------------//
+		//Recorrido de Lily por el festival
 		if (AvanzaLX && !AvanzaLZ && Cgiros == 0 && ActivadorRL)
 		{
 			if (MAvanzaLX < 80.0f)
@@ -1572,7 +1571,7 @@ int main()
 				ActivadorML = false;
 			}
 		}
-		//antebrazos
+		//movimiento en antebrazos
 		if (rotABL && ActivadorML)
 		{
 			if (MrotABrazoL < 40.0f)
@@ -1595,7 +1594,7 @@ int main()
 				rotABL = true;
 			}
 		}
-		//brazos
+		//Movimiento en brazos
 		if (rotBL && ActivadorML)
 		{
 			if (MrotBrazoL < 30.0f)
@@ -1618,7 +1617,7 @@ int main()
 				rotBL = true;
 			}
 		}
-		//piernas
+		//Movimiento en piernas
 		if (rotPL && ActivadorML)
 		{
 			if (MrotPiernaL < 25.0f)
@@ -1641,7 +1640,7 @@ int main()
 				rotPL = true;
 			}
 		}
-		// pies
+		//Movimiento en pies
 		if (rotPiesL && ActivadorML)
 		{
 			if (MrotPieL < 20.0f)
@@ -1664,9 +1663,8 @@ int main()
 				rotPiesL = true;
 			}
 		}
-		//
-		//Nero
-		//Antebrazo
+		//Animación de Nero
+		//Movimiento en el Antebrazo
 		if (rotABN && ActivadorN)
 		{
 			if (MrotABrazoN < 50.0f)
@@ -1689,7 +1687,7 @@ int main()
 				rotABN = true;
 			}
 		}
-		//Brazo
+		//Movimiento en el Brazo
 		if (rotBN && ActivadorN)
 		{
 			if (MrotBrazoN < 40.0f)
@@ -1712,9 +1710,8 @@ int main()
 				rotBN = true;
 			}
 		}
-		//---------------------------------------------------------------//
-		//Koharu
-		//Antebrazo
+		//Animación de Koharu
+		//Movmiento en el Antebrazo
 		if (rotABK && ActivadorK)
 		{
 			if (MrotABrazoK < 50.0f)
@@ -1737,7 +1734,7 @@ int main()
 				rotABK = true;
 			}
 		}
-		//Brazo
+		//Movimiento en el Brazo
 		if (rotBK && ActivadorK)
 		{
 			if (MrotBrazoK < 40.0f)
@@ -1760,9 +1757,8 @@ int main()
 				rotBK = true;
 			}
 		}
-		//----------------------------------------------------------//
-		//Koshiro
-		//Antebrazo
+		//Animación Koshiro
+		//Movimiento en el Antebrazo
 		if (rotABKS && ActivadorKS)
 		{
 			if (MrotABrazoKS < 30.0f)
@@ -1785,7 +1781,7 @@ int main()
 				rotABKS = true;
 			}
 		}
-		//Brazo
+		//Movimiento en el Brazo
 		if (rotBKS && ActivadorKS)
 		{
 			if (MrotBrazoKS < 40.0f)
@@ -1808,7 +1804,7 @@ int main()
 				rotBKS = true;
 			}
 		}
-		//piernas
+		//Movimiento en las piernas
 		if (rotPKS && ActivadorKS)
 		{
 			if (MrotPiernaKS < 20.0f)
@@ -1831,7 +1827,7 @@ int main()
 				rotPKS = true;
 			}
 		}
-		// pies
+		//Movimineto en los pies
 		if (rotPiesKS && ActivadorKS)
 		{
 			if (MrotPieKS < 20.0f)
@@ -1854,8 +1850,6 @@ int main()
 				rotPiesKS = true;
 			}
 		}
-		//
-
 
 		GLfloat now = glfwGetTime();
 		deltaTime = now - lastTime;
@@ -1873,13 +1867,14 @@ int main()
 
 		//Inicializacion de las luces de tipo spotlight para hacer el show de luces
 		//Inicialización de las luces de tipo pointlghts
+		//----------------------------------------------Ciclo Día y Noche----------------------------------------//
 		if (ciclo_dia < 0.55) {
 			shaderList[0].SetPointLights(pointLights, pointLightCount);
 		}
 		else {
 			shaderList[0].SetPointLights(pointLights, 0);
 		}
-
+		//----------------------------------------------Luces en el Festival----------------------------------------//
 		if (luces) {
 			if (conta_show == 1) {
 				show = static_cast <float> (rand() % 24) / 4;
@@ -1923,10 +1918,6 @@ int main()
 		shaderList[0].SetDirectionalLight(&mainLight);
 		//shaderList[0].SetPointLights(pointLights, pointLightCount);
 		//shaderList[0].SetSpotLights(spotLights, spotLightCount);
-
-		//Matrices para el coche del previo
-		glm::mat4 modelCoche_previo(1.0);
-		glm::mat4 modelCofre_previo(1.0);
 
 		//Matrices para el persona principal
 		//lily
@@ -1978,7 +1969,7 @@ int main()
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		//------------Personajes-----------//
+		//--------------------Instanciamiento de Personajes en el escenario (Festival)--------------------------//
 		 //Arturia Pendragon (Lily)
 		//Cuerpo
 		model = glm::mat4(1.0);
@@ -2061,27 +2052,21 @@ int main()
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Lily_Cabeza.RenderModel();
-		/* Arturia Pendragon (Lily) final*/
-		// -------------------------------------------------------------------------------------------//
 		
-		// Nero saber
-		// ------------------------------------------------------------------------------------------//
+		//Nero
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 5.0f+4.5f, 0.0f));
 		modelaux_cuerpoN = model;
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Nero_Cuerpo.RenderModel();
-
-		////Micro
+		//Micro
 		model = modelaux_cuerpoN;
 		model = glm::translate(model, glm::vec3(0.0f, -4.0f, 1.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
 		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Micro.RenderModel();
-
-
 		//brazo der
 		model = modelaux_cuerpoN;
 		model = glm::translate(model, glm::vec3(0.65f, 0.35f, -0.02f));
@@ -2117,13 +2102,9 @@ int main()
 		model = glm::rotate(model, glm::radians((MrotBrazoN/2)), glm::vec3(0.0f, -1.0f, -1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Nero_Brazo_2.RenderModel();
-		// Nero saber 
-		// ------------------------------------------------------------------------------------------//
 
 		//koharu
-		// ------------------------------------------------------------------------------------------//
-
-		////Cuerpo
+		//Cuerpo
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
 		model = glm::translate(model, glm::vec3(4.0f, 5.0f + 3.0f, -5.0f));
@@ -2131,23 +2112,20 @@ int main()
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Koharu_Cuerpo.RenderModel();
-
-		////Bateria
+		//Bateria
 		model = modelaux_cuerpoK;
 		model = glm::translate(model, glm::vec3(2.0f, -3.0f, 5.0f));
 		model = glm::scale(model, glm::vec3(0.15f, 0.15f, 0.15f));
 		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Bateria.RenderModel();
-
-		//silla humilde
+		//Silla humilde
 		model = modelaux_cuerpoK;
 		model = glm::translate(model, glm::vec3(0.0f, -4.5f, -0.5f));
 		model = glm::scale(model, glm::vec3(0.09f, 0.09f, 0.09f));
 		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
-
 
 		//Brazo Izquierdo
 		model = modelaux_cuerpoK;
@@ -2186,7 +2164,6 @@ int main()
 		model = glm::rotate(model, glm::radians((MrotBrazoK/2)), glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Koharu_Brazo_2.RenderModel();
-
 
 		//Pie Izquierdo
 		model = modelaux_cuerpoK;
@@ -2227,10 +2204,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Koharu_Pie_2.RenderModel();
 
-		//// ------------------------------------------------------------------------------------------//
-		//
 		//Koshiro
-		// ------------------------------------------------------------------------------------------//
 		model = glm::mat4(1.0);
 		//poskoshiro = glm::vec3(posXkoshiro + movkoshiro_x, posYkoshiro + movkoshiro_y, posZkoshiro + movkoshiro_z);
 		//model = glm::translate(model, poskoshiro);
@@ -2241,7 +2215,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		koshiro_Cuerpo.RenderModel();
 
-		////Guitarra
+		//Guitarra
 		model = modelaux_cuerpoKS;
 		model = glm::translate(model, glm::vec3(0.8f, -1.3f, 0.7f));
 		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
@@ -2324,9 +2298,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		koshiro_Pie_2.RenderModel();
 
-
-
-		//keynero padoru
+		//KeyFrame de Nero (padoru)
 		model = glm::mat4(1.0);
 		posNero = glm::vec3(posXNero + movNero_x, posYNero + movNero_y, 10+.0f + posZNero + movNero_z);
 		model = glm::translate(model, posNero);
@@ -2338,9 +2310,8 @@ int main()
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		Padoru.RenderModel();
 
-
 		//Extras
-		//------------------------------Primera fila-------------------------------------------------------//
+		//----------------------------------------Primera fila-------------------------------------------------//
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-7.5f, 0.0f, 15.0f));
 		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
@@ -2390,7 +2361,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		elf.RenderModel();
 
-		//------------------------------Segunda fila-------------------------------------------------------//
+		//-------------------------------------Segunda fila----------------------------------------------------//
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-8.0f, 0.0f, 20.0f));
 		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
@@ -2433,7 +2404,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		elf.RenderModel();
 
-		//------------------------------Tercera fila-------------------------------------------------------//
+		//------------------------------------------Tercera fila-----------------------------------------------//
 		
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-8.0f, 0.0f, 25.0f));
@@ -2486,8 +2457,9 @@ int main()
 		Shrek.RenderModel();
 
 
-		//--------------------------------------------Festival-----------------------------------------//
-		//Codigo para las carpas a utilizar
+		//--------------------------------------------Construcción del Festival------------------------------------------------//
+		//Carpas a utilizar
+		//Bebidas internacionales
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-54.0f, -2.0f, 148.0f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
@@ -2503,7 +2475,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Carpa.RenderModel();
 
-		//Codigo para la carga de los modelos de las farolas a utilizar en el festival
+		//Farolas en el festival
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-150.0f, -1.95f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
@@ -2539,30 +2511,55 @@ int main()
 		//faro.UseTexture();
 
 		//Piso de cada una de las secciones del festival
-		//Modelos correspondientes al puesto de tortas
+		//Comida Nacional
+		//Puesto de tortas
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(80.0f, -1.8f, -30.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera.UseTexture();
 		meshList[3]->RenderMesh();
-
-		//Modelos correspondientes al puesto de comida alemana
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(80.0f, -1.8f, -30.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera.UseTexture();
-		meshList[3]->RenderMesh();
-
-		//Modelos correspondientes al puesto de tacos
+		//Puesto de Tacos
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(80.0f, -1.8f, 30.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pasto.UseTexture();
 		meshList[3]->RenderMesh();
+		//Puestos de Mariscos
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(40.0f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera_2.UseTexture();
+		meshList[3]->RenderMesh();
+		
 
+		//Comida Internacional
+		//Comida alemana
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(80.0f, -1.8f, -30.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera.UseTexture();
+		meshList[3]->RenderMesh();
+		//Comida Española
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera_3.UseTexture();
+		meshList[3]->RenderMesh();
+		//Comida Japonesa
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera_4.UseTexture();
+		meshList[3]->RenderMesh();
+
+		//---------Modelos correspondientes a las sillas y mesas-----------//
+		//puesto de tacos
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(67.0f, -1.8f, 12.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
@@ -2602,7 +2599,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
 
-		//Modelos correspondientes al puesto de bebidas nacionales
+		//Bebidas nacionales
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(67.0f, -1.8f, 75.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
@@ -2635,14 +2632,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
-		//Modelos correspondientes al puesto de mariscos
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(40.0f, -1.8f, 137.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera_2.UseTexture();
-		meshList[3]->RenderMesh();
-
+		//Puesto de mariscos
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(87.0f, -1.8f, 113.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
@@ -2695,33 +2685,6 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
 
-		//Seccion de comida internacional
-		//Modelos correspondientes a la seccion de comida española
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -1.8f, 137.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera_3.UseTexture();
-		meshList[3]->RenderMesh();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(25.0f, -1.8f, 117.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(25.0f, -1.8f, 137.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(25.0f, -1.8f, 157.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mesa_B.RenderModel();
-
 		//Modelos correspondientes al seccion del pozole
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-15.0f, -1.8f, 117.0f));
@@ -2748,7 +2711,27 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
-		//Modelos correspondientes a las bebidas internacionales
+		//Seccion de comida internacional
+		//Comida española
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(25.0f, -1.8f, 117.0f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Mesa_B.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(25.0f, -1.8f, 137.0f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Mesa_B.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(25.0f, -1.8f, 157.0f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Mesa_B.RenderModel();
+
+		//Bebidas internacionales
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-28.0f, -1.8f, 113.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
@@ -2819,52 +2802,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
-		//Modelos correspondientes a la cocina japonesa
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, 137.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera_4.UseTexture();
-		meshList[3]->RenderMesh();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, 77.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		pasto.UseTexture();
-		meshList[3]->RenderMesh();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, -43.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera.UseTexture();
-		meshList[3]->RenderMesh();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, 17.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera_2.UseTexture();
-		meshList[3]->RenderMesh();
-
-		//FoodTrucks
-		//Comida Peruana Lista!
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-120.0f, -1.95f, 80.0f));
-		model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Ftruck1.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, 80.0f));
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Ftruck4.RenderModel();
-
-		//Mesas adicionales y sillas adicionales
+		//Comida Peruana
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-110.0f, -1.95f, 60.0f));
 		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
@@ -2908,8 +2846,45 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
 
+		//Comida japonesa
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, 77.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		pasto.UseTexture();
+		meshList[3]->RenderMesh();
 
-		//Comida Italiana Lista!
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, -43.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera.UseTexture();
+		meshList[3]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-112.0f, -1.8f, 17.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_madera_2.UseTexture();
+		meshList[3]->RenderMesh();
+
+		//------------------------------------FoodTrucks-----------------------------//
+		//Comida Peruana
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-120.0f, -1.95f, 80.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck1.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, 80.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ftruck4.RenderModel();
+
+		//Comida Italiana
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-112.0f, -1.6f, 20.0f));
 		model = glm::scale(model, glm::vec3(0.9f, 0.9f, 0.9f));
@@ -2917,7 +2892,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck2.RenderModel();
 
-		//Comida Japonesa Lista!
+		//Comida Japonesa
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-120.0f, -1.95f, 150.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
@@ -2946,8 +2921,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck3.RenderModel();
 
-
-		//Comida alemana Lista!
+		//Comida alemana
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, -60.0f));
 		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
@@ -2962,7 +2936,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		FtruckSP.RenderModel();
 
-		//Comida Española Lista!
+		//Comida Española
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(45.0f, -1.95f, 155.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
@@ -2995,7 +2969,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck5.RenderModel();
 
-		//Escenario
+		//----------------------------Escenario-----------------------------------//
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
@@ -3003,7 +2977,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		escenario.RenderModel();
 
-		//Codigo para los modelos de los reflectores
+		//Reflectores
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(10.0f, 6.7f, 10.0f));
 		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
