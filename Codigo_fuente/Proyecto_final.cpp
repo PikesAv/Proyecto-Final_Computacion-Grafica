@@ -134,6 +134,8 @@ Model Mesa_B;
 Model Silla_R;
 Model Reflector;
 Model Escalera;
+Model Acuario_cilindro;
+Model Medio_cilindro;
 
 //Modelos personajes
 //Arturia Pendragon (Lily)
@@ -848,8 +850,8 @@ int main()
 	//Peces_inf = Model();
 	//Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
 
-	Calendario_azt = Model();
-	Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
+	//Calendario_azt = Model();
+	//Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
 	//Pinguino_img = Model();
 	//Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
 	//Ballena_img = Model();
@@ -865,6 +867,12 @@ int main()
 
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
+
+	Acuario_cilindro = Model();
+	Acuario_cilindro.LoadModel("Models/Acuario_cilindro/Acuario_cilindro.obj");
+	Medio_cilindro = Model();
+	Medio_cilindro.LoadModel("Models/Acuario_cilindro/Medio_cilindro.obj");
+
 
 	//Escaleras
 	Escalera = Model();
@@ -3434,6 +3442,34 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
 		meshList[7]->RenderMesh();
+
+		//Cangrejos
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-86.0f, -18.01f, -258.6f));
+		model = glm::scale(model, glm::vec3(48.0f, 30.0f, 112.4f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Cristal.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Pecera tubular
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(40.0f, -18.01f, -300.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.13f, 0.3f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Acuario_cilindro.RenderModel();
+
+		//Tunel
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(24.0f, -21.2f, -150.6f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.32f, 0.3f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Medio_cilindro.RenderModel();
+
+
 
 		glDisable(GL_BLEND);
 
