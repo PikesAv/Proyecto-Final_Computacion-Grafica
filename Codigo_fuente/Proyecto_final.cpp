@@ -116,6 +116,7 @@ Texture Edificio;
 Texture marmol;
 Texture Pared_blanca;
 Texture Cristal;
+Texture Entradas;
 
 //Texturas animadas
 Texture Firework_O;
@@ -206,7 +207,7 @@ Model Cangrejo_inf;
 Model Orca_inf;
 Model Tiburon_inf;
 
-Model Escudo_img;
+Model Calendario_azt;
 Model Ballena_img;
 Model Pinguino_img;
 Model Orca_img;
@@ -394,10 +395,10 @@ void CrearDado()
 		0.5f,  0.5f,  -0.5f,	0.33f,	0.72f,		-1.0f,	0.0f,	0.0f,
 		0.5f,  0.5f,  0.5f,	    0.02f,	0.72f,		-1.0f,	0.0f,	0.0f,
 		// back
-		-0.5f, -0.5f, -0.5f,	0.02f,  0.26f,		0.0f,	0.0f,	1.0f,
-		0.5f, -0.5f, -0.5f,		0.33f,	0.26f,		0.0f,	0.0f,	1.0f,
-		0.5f,  0.5f, -0.5f,		0.33f,	0.72f,		0.0f,	0.0f,	1.0f,
-		-0.5f,  0.5f, -0.5f,	0.02f,	0.72f,		0.0f,	0.0f,	1.0f,
+		//-0.5f, -0.5f, -0.5f,	0.02f,  0.26f,		0.0f,	0.0f,	1.0f,
+		//0.5f, -0.5f, -0.5f,		0.33f,	0.26f,		0.0f,	0.0f,	1.0f,
+		//0.5f,  0.5f, -0.5f,		0.33f,	0.72f,		0.0f,	0.0f,	1.0f,
+		//-0.5f,  0.5f, -0.5f,	0.02f,	0.72f,		0.0f,	0.0f,	1.0f,
 
 		// left
 		//x		y		z		S		T
@@ -465,10 +466,10 @@ void CrearRecepcion()
 		0.5f,  0.5f,  -0.5f,	1.0f,	0.5f,		-1.0f,	0.0f,	0.0f,
 		0.5f,  0.5f,  0.5f,	    0.0f,	0.5f,		-1.0f,	0.0f,	0.0f,
 		// back
-		-0.5f, -0.5f, -0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,
-		0.5f, -0.5f, -0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,
-		0.5f,  0.5f, -0.5f,		1.0f,	0.5f,		0.0f,	0.0f,	1.0f,
-		-0.5f,  0.5f, -0.5f,	0.0f,	0.5f,		0.0f,	0.0f,	1.0f,
+		//-0.5f, -0.5f, -0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,
+		//0.5f, -0.5f, -0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,
+		//0.5f,  0.5f, -0.5f,		1.0f,	0.5f,		0.0f,	0.0f,	1.0f,
+		//-0.5f,  0.5f, -0.5f,	0.0f,	0.5f,		0.0f,	0.0f,	1.0f,
 
 		// left
 		//x		y		z		S		T
@@ -800,6 +801,9 @@ int main()
 	Ventanal.LoadTextureA();
 	Cristal = Texture("Textures/blue-texture.tga");
 	Cristal.LoadTextureA();
+	Entradas = Texture("Textures/Entradas.tga");
+	Entradas.LoadTextureA();
+
 
 	Edificio = Texture("Textures/Build_texture.tga");
 	Edificio.LoadTextureA();
@@ -833,31 +837,31 @@ int main()
 	//
 
 	//Infografias e imagenes
-	Pinguino_inf = Model();
-	Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
-	Cangrejo_inf = Model();
-	Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
-	Orca_inf = Model();
-	Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
-	Tiburon_inf = Model();
-	Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
-	Peces_inf = Model();
-	Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
+	//Pinguino_inf = Model();
+	//Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
+	//Cangrejo_inf = Model();
+	//Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
+	//Orca_inf = Model();
+	//Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
+	//Tiburon_inf = Model();
+	//Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
+	//Peces_inf = Model();
+	//Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
 
-	//Escudo_img = Model();
-	//Escudo_img.LoadModel("Models/Carteles/Escudo/Escudo_pez.obj");
-	Pinguino_img = Model();
-	Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
-	Ballena_img = Model();
-	Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
-	Orca_img = Model();
-	Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
-	Tiburon_img = Model();
-	Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
-	Pez_img = Model();
-	Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
-	No_flash = Model();
-	No_flash.LoadModel("Models/Carteles/No_fotos.obj");
+	Calendario_azt = Model();
+	Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
+	//Pinguino_img = Model();
+	//Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
+	//Ballena_img = Model();
+	//Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
+	//Orca_img = Model();
+	//Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
+	//Tiburon_img = Model();
+	//Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
+	//Pez_img = Model();
+	//Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
+	//No_flash = Model();
+	//No_flash.LoadModel("Models/Carteles/No_fotos.obj");
 
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
@@ -3169,13 +3173,24 @@ int main()
 		//Entrada principal (ventanal)
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 13.14f, -155.1f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ventanal.UseTexture();
 		meshList[7]->RenderMesh();
 
-		//Acuario parte de la planta blaja
+		//Camino a la escaleras
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 13.14f, -304.7f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Entradas.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Acuario parte de la planta baja
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -18.01f, -250.0f));
 		model = glm::scale(model, glm::vec3(300.0f, 30.0f, 250.0f));
@@ -3360,10 +3375,10 @@ int main()
 
 		//Carga de las imagenes
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(60.0f, 0.0f, -40.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 14.0f, -303.5f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Escudo_img.RenderModel();
+		Calendario_azt.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(40.0f, 0.0f, -40.0f));
