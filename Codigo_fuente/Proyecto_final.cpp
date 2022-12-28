@@ -130,6 +130,8 @@ Texture marmol;
 Texture Pared_blanca;
 Texture Cristal;
 Texture Entradas;
+Texture Azul_gradiente;
+Texture Techo_acuario;
 
 //Texturas animadas
 Texture Firework_O;
@@ -372,6 +374,7 @@ void CreateObjects()
 	calcAverageNormals(vegetacionIndices, 12, vegetacionVertices, 64, 8, 5);
 }
 
+//Creacion de la habitaciones de la recepcion
 void CrearDado()
 {
 	unsigned int cubo_indices[] = {
@@ -423,10 +426,10 @@ void CrearDado()
 
 		// bottom
 		//x		y		z		S		T
-		-0.5f, -0.5f,  0.5f,	0.5f,  1.0f,		0.0f,	-1.0f,	0.0f,
-		0.5f,  -0.5f,  0.5f,	0.83f,	1.0f,		0.0f,	-1.0f,	0.0f,
-		 0.5f,  -0.5f,  -0.5f,	0.83f,	0.74f,		0.0f,	-1.0f,	0.0f,
-		-0.5f, -0.5f,  -0.5f,	0.5f,	0.74f,		0.0f,	-1.0f,	0.0f,
+		//-0.5f, -0.5f,  0.5f,	0.5f,  1.0f,		0.0f,	-1.0f,	0.0f,
+		//0.5f,  -0.5f,  0.5f,	0.83f,	1.0f,		0.0f,	-1.0f,	0.0f,
+		// 0.5f,  -0.5f,  -0.5f,	0.83f,	0.74f,		0.0f,	-1.0f,	0.0f,
+		//-0.5f, -0.5f,  -0.5f,	0.5f,	0.74f,		0.0f,	-1.0f,	0.0f,
 
 		//UP
 		 //x		y		z		S		T
@@ -512,6 +515,7 @@ void CrearRecepcion()
 	meshList.push_back(dado);
 }
 
+//Creacion de la habitacion principal del acuario
 void CrearEntrada()
 {
 	unsigned int cubo_indices[] = {
@@ -570,10 +574,10 @@ void CrearEntrada()
 
 		//UP
 		 //x		y		z		S		T
-		 -0.5f, 0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	-1.0f,	0.0f,
-		 0.5f,  0.5f,  0.5f,	1.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
-		  0.5f, 0.5f,  -0.5f,	1.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
-		 -0.5f, 0.5f,  -0.5f,	0.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
+		 //-0.5f, 0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	-1.0f,	0.0f,
+		 //0.5f,  0.5f,  0.5f,	1.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
+		 // 0.5f, 0.5f,  -0.5f,	1.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
+		 //-0.5f, 0.5f,  -0.5f,	0.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
 
 	};
 
@@ -828,6 +832,10 @@ int main()
 	Edificio.LoadTextureA();
 	Pared_blanca = Texture("Textures/Pared_blanca.tga");
 	Pared_blanca.LoadTextureA();
+	Azul_gradiente = Texture("Textures/Azul_gradiente.tga");
+	Azul_gradiente.LoadTextureA();
+	Techo_acuario = Texture("Textures/Techo_acuario.tga");
+	Techo_acuario.LoadTextureA();
 
 	//Texturas animadas
 	//Firework_G = Texture("Textures/Animadas/Firework_green.tga");
@@ -3212,6 +3220,16 @@ int main()
 		Pared_blanca.UseTexture();
 		meshList[7]->RenderMesh();
 
+		//Techo de la planta baja
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -1.0f, -250.0f));
+		model = glm::scale(model, glm::vec3(300.0f, 0.0f, 300.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Techo_acuario.UseTexture();
+		meshList[7]->RenderMesh();
+
 		//Paredes de la planta baja
 		//Divisiones principales
 		//Division a
@@ -3220,7 +3238,7 @@ int main()
 		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		pasto.UseTexture();
+		Pared_blanca.UseTexture();
 		meshList[7]->RenderMesh();
 
 		//Division e
@@ -3307,7 +3325,7 @@ int main()
 		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		pasto.UseTexture();
+		//pasto.UseTexture();
 		meshList[7]->RenderMesh();
 
 		//Division h
@@ -3459,7 +3477,7 @@ int main()
 
 		//Pecera tubular
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(40.0f, -18.01f, -300.0f));
+		model = glm::translate(model, glm::vec3(40.0f, -18.01f, -250.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.13f, 0.3f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -3474,6 +3492,14 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Medio_cilindro.RenderModel();
 
+		//Pecera ultra enorme
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(108.5f, -16.01f, -354.3f));
+		model = glm::scale(model, glm::vec3(82.0f, 32.0f, 91.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Cristal.UseTexture();
+		meshList[7]->RenderMesh();
 
 
 		glDisable(GL_BLEND);
