@@ -810,6 +810,7 @@ int main()
 	pasto.LoadTextureA();
 	faro = Texture("Textures/tlamp.tga");
 	faro.LoadTextureA();
+	
 	//Acuario
 	pisoTexture = Texture("Textures/Pisos/Floor_texture.tga");
 	pisoTexture.LoadTextureA();
@@ -1951,16 +1952,17 @@ int main()
 		glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
 		glm::vec2 toffset = glm::vec2(0.0f, 0.0f);
 
-
+		//--------------------------------------------Piso Exterior------------------------------------------//
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 38.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -0.5f, 0.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 0.0f, 20.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		pisoTexture.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[2]->RenderMesh();
+
 		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		//BLENDING: Util para la tranparencia o Traslucidez
@@ -3118,8 +3120,8 @@ int main()
 		toffset = glm::vec2(0.0f, 0.0);
 		color = glm::vec3(1.0f, 1.0f, 1.0f);
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -1.8f, -230.0f));
-		model = glm::scale(model, glm::vec3(7.5f, 0.0f, 7.5f));
+		model = glm::translate(model, glm::vec3(0.0f, -0.1f, -200.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 0.0f, 4.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		marmol.UseTexture();
@@ -3127,8 +3129,8 @@ int main()
 
 		//Recepcion
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 13.1f, -230.0f));
-		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 150.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 14.6f, -210.0f));
+		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 100.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Edificio.UseTexture();
@@ -3136,46 +3138,75 @@ int main()
 
 		//Paredes de la recepcion
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 12.8f, -230.0f));
-		model = glm::scale(model, glm::vec3(149.0f, 29.5f, 149.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 14.2f, -210.0f));
+		model = glm::scale(model, glm::vec3(99.5f, 29.5f, 99.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Recepcion.UseTexture();
 		meshList[6]->RenderMesh();
 
-		//Escaleras que conectan a la recepcion con el acuario
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(100.0f, -32.0f, -360.0f));
-		//model = glm::rotate(model, -45 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		//model = glm::rotate(model, 10 * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f));
-		//model = glm::scale(model, glm::vec3(0.f, 0.3f, 0.5f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Escalera.RenderModel();
-
 		//Entrada principal (ventanal)
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 13.14f, -155.1f));
+		model = glm::translate(model, glm::vec3(0.0f, 14.8f, -160.0f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 0.1f));
+		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ventanal.UseTexture();
 		meshList[7]->RenderMesh();
-
-		//Camino a la escaleras
+		
+		// Entrada/salida del Acuario
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 13.14f, -304.7f));
+		model = glm::translate(model, glm::vec3(0.0f, 14.6f, -260.0f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(150.0f, 30.0f, 0.1f));
+		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 0.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Entradas.UseTexture();
 		meshList[7]->RenderMesh();
 
+		//Cubiulo Escaleras
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 14.6f, -330.0f));
+		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 140.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Edificio.UseTexture();
+		meshList[5]->RenderMesh();
+
+		//Piso del cubiculo
+		toffset = glm::vec2(0.0f, 0.0);
+		color = glm::vec3(1.0f, 1.0f, 1.0f);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -0.1f, -280.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 0.0f, 7.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		marmol.UseTexture();
+		meshList[2]->RenderMesh();
+
+		//Escaleras que conectan a la recepcion con el acuario
+		//Entrada
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(30.0f, -33.3f, -372.3f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.7f, 1.5f, 1.8f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Escalera.RenderModel();
+
+		//Salida
+		//Escaleras que conectan a la recepcion con el acuario
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-33.0f, -33.3f, -372.3f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.7f, 1.5f, 1.8f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Escalera.RenderModel();
+
 		//Acuario parte de la planta baja
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -18.01f, -250.0f));
-		model = glm::scale(model, glm::vec3(300.0f, 30.0f, 250.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -17.1f, -250.0f));
+		model = glm::scale(model, glm::vec3(300.0f, 33.0f, 300.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Pared_blanca.UseTexture();
