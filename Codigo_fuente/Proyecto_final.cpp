@@ -855,7 +855,7 @@ int main()
 	//Festival
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
-	Farola = Model();
+	/*Farola = Model();
 	Farola.LoadModel("Models/Farola_2/Farola_2.obj");
 	Carpa = Model();
 	Carpa.LoadModel("Models/Carpa/Carpa.obj");
@@ -864,13 +864,13 @@ int main()
 	Silla_R = Model();
 	Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
 	Mesa_B = Model();
-	Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
+	Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");*/
 	Reflector = Model();
 	Reflector.LoadModel("Models/Reflector/Reflector.obj");
 
 	//FoodTrucks/Comida Mex
 	//Comida Mexicana
-	Comex1 = Model();
+	/*Comex1 = Model();
 	Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
 	Ftruck1 = Model();
 	Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
@@ -883,17 +883,17 @@ int main()
 	Ftruck5 = Model();
 	Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
 	FtruckSP = Model();
-	FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
+	FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");*/
 
 	//Escenario
 	escenario = Model();
 	escenario.LoadModel("Models/Escenario/Escenario.obj");
-	Bateria = Model();
+	/*Bateria = Model();
 	Bateria.LoadModel("Models/Escenario/Bateria.obj");
 	Guitarra = Model();
 	Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
 	Micro = Model();
-	Micro.LoadModel("Models/Escenario/Micro.obj");
+	Micro.LoadModel("Models/Escenario/Micro.obj");*/
 
 	//Acuario
 	//Infografias e imagenes
@@ -1973,8 +1973,8 @@ int main()
 
 		//--------------------------------------------Piso Exterior------------------------------------------//
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-5.0f, -0.5f, 10.0f));
-		model = glm::scale(model, glm::vec3(14.5f, 0.0f, 19.0f));
+		model = glm::translate(model, glm::vec3(-5.0f, -0.5f, 20.0f));
+		model = glm::scale(model, glm::vec3(14.5f, 0.0f, 18.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -2991,7 +2991,7 @@ int main()
 
 		//----------------------------Escenario-----------------------------------//
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -0.5f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -3210,16 +3210,16 @@ int main()
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.7f, 1.5f, 1.8f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Escalera.RenderModel();
+		Escalera.RenderModel();
 
 		//Salida
 		//Escaleras que conectan a la recepcion con el acuario
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-33.0f, -33.3f, -372.3f));
+		model = glm::translate(model, glm::vec3(-33.0f, -70.0f, -372.3f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.7f, 1.5f, 1.8f));
+		model = glm::scale(model, glm::vec3(1.7f, 3.0f, 1.8f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Escalera.RenderModel();
+		Escalera.RenderModel();
 
 		//Acuario parte de la planta baja
 		model = glm::mat4(1.0);
@@ -3249,7 +3249,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pasto.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Division e
 		model = glm::mat4(1.0);
@@ -3258,7 +3258,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Division b
 		model = glm::mat4(1.0);
@@ -3268,7 +3268,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Division c
 		model = glm::mat4(1.0);
@@ -3277,7 +3277,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Division d
 		model = glm::mat4(1.0);
@@ -3287,27 +3287,47 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Division f
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(25.0f, -18.03f, -233.8f));
+		model = glm::translate(model, glm::vec3(-2.0f, -18.03f, 100.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(112.3f, 30.0f, 0.1f));
+		model = glm::scale(model, glm::vec3(170.3f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
 		//meshList[7]->RenderMesh();
 
+		//Division ??
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, -18.03f, -100.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(70.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Division f2
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-22.0f, -18.03f, 100.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(170.3f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
+
 		//Division j
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-75.0f, -18.03f, -300.0f));
+		model = glm::translate(model, glm::vec3(-100.0f, -18.03f, -300.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Division k
 		model = glm::mat4(1.0);
@@ -3317,17 +3337,17 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Division l
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-11.5f, -18.03f, -245.0f));
+		model = glm::translate(model, glm::vec3(-11.5f, -41.0f, -170.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(62.0f, 30.0f, 0.1f));
+		model = glm::scale(model, glm::vec3(180.0f, 70.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Division i
 		model = glm::mat4(1.0);
@@ -3336,7 +3356,16 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pasto.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
+
+		//Division i2
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, -18.03f, -100.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		pasto.UseTexture();
+		meshList[7]->RenderMesh();
 
 		//Division h
 		model = glm::mat4(1.0);
@@ -3345,7 +3374,16 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
+
+		//Division h2
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(70.0f, -18.03f, -90.0f));
+		model = glm::scale(model, glm::vec3(160.0f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Pared_blanca.UseTexture();
+		meshList[7]->RenderMesh();
 
 		//Division g
 		model = glm::mat4(1.0);
@@ -3355,7 +3393,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Division m
 		model = glm::mat4(1.0);
@@ -3365,7 +3403,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Cubo para el NP Nero
 		model = glm::mat4(1.0);
@@ -3464,7 +3502,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Tiburones
 		model = glm::mat4(1.0);
@@ -3473,42 +3511,63 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
-		//Cangrejos
+		//??
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-86.0f, -18.01f, -258.6f));
-		model = glm::scale(model, glm::vec3(48.0f, 30.0f, 112.4f));
+		model = glm::translate(model, glm::vec3(-80.0f, -18.01f, -200.0f));
+		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 112.4f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Pecera tubular
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(40.0f, -18.01f, -250.0f));
-		model = glm::scale(model, glm::vec3(0.3f, 0.13f, 0.3f));
+		model = glm::translate(model, glm::vec3(-12.0f, -28.01f, -35.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.20f, 0.3f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Acuario_cilindro.RenderModel();
+		Acuario_cilindro.RenderModel();
 
 		//Tunel
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(24.0f, -21.2f, -150.6f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.3f, 0.32f, 0.3f));
+		model = glm::translate(model, glm::vec3(-16.8f, -15.0f, 120.0f));
+		model = glm::rotate(model, 05 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.143f, 0.15f, 0.7f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Medio_cilindro.RenderModel();
+		Medio_cilindro.RenderModel();
 
-		//Pecera ultra enorme
+		//Peceras del tunel
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(108.5f, -16.01f, -354.3f));
-		model = glm::scale(model, glm::vec3(82.0f, 32.0f, 91.0f));
+		model = glm::translate(model, glm::vec3(5.5f, -15.0f, 90.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 150.f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
+
+		
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-29.5f, -15.0f, 90.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 150.f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Cristal.UseTexture();
+		meshList[7]->RenderMesh();
+
+		
+
+
+		//Pecera ultra enorme
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(110.0f, -50.5f, 100.3f));
+		model = glm::scale(model, glm::vec3(85.0f, 100.0f, 100.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Cristal.UseTexture();
+		meshList[7]->RenderMesh();
 
 		//Modelos de Decoracion
 		model = glm::mat4(1.0);
@@ -3528,12 +3587,12 @@ int main()
 		//Neptuno.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -30.0f, 280.0f));
+		model = glm::translate(model, glm::vec3(-12.0f, -60.0f, 280.0f));
 		//model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Espectaculo.RenderModel();
+		Espectaculo.RenderModel();
 
 		glDisable(GL_BLEND);
 
