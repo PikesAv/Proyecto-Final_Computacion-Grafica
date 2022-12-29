@@ -2891,14 +2891,14 @@ int main()
 		//------------------------------------FoodTrucks-----------------------------//
 		//Comida Peruana
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-120.0f, -1.95f, 80.0f));
+		model = glm::translate(model, glm::vec3(-120.0f, -1.0f, 80.0f));
 		model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck1.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, 80.0f));
+		model = glm::translate(model, glm::vec3(-125.0f, -0.5f, 80.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -2906,7 +2906,7 @@ int main()
 
 		//Comida Italiana
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-112.0f, -1.6f, 20.0f));
+		model = glm::translate(model, glm::vec3(-112.0f, -0.4f, 20.0f));
 		model = glm::scale(model, glm::vec3(0.9f, 0.9f, 0.9f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -2914,28 +2914,28 @@ int main()
 
 		//Comida Japonesa
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-120.0f, -1.95f, 150.0f));
+		model = glm::translate(model, glm::vec3(-120.0f, -0.5f, 150.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck3.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-120.0f, -1.95f, 125.0f));
+		model = glm::translate(model, glm::vec3(-120.0f, -0.5f, 125.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck3.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-105.0f, -1.95f, 150.0f));
+		model = glm::translate(model, glm::vec3(-105.0f, -0.5f, 150.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		model = glm::rotate(model, 270 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck3.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-105.0f, -1.95f, 125.0f));
+		model = glm::translate(model, glm::vec3(-105.0f, -0.5f, 125.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		model = glm::rotate(model, 270 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -2943,14 +2943,14 @@ int main()
 
 		//Comida alemana
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, -60.0f));
+		model = glm::translate(model, glm::vec3(-125.0f, -0.5f, -60.0f));
 		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ftruck5.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-125.0f, -1.95f, -30.0f));
+		model = glm::translate(model, glm::vec3(-125.0f, 0.0f, -30.0f));
 		model = glm::scale(model, glm::vec3(2.3f, 2.3f, 2.3f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -2958,7 +2958,7 @@ int main()
 
 		//Comida Española
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(45.0f, -1.95f, 155.0f));
+		model = glm::translate(model, glm::vec3(45.0f, -0.5f, 155.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		model = glm::rotate(model, -35 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -2967,7 +2967,7 @@ int main()
 		//Comida Mexicana
 		//Tacos
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(85.0f, -1.95f, 25.0f));
+		model = glm::translate(model, glm::vec3(85.0f, -0.5f, 25.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -2975,7 +2975,7 @@ int main()
 
 		//Tortas
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(85.0f, -1.95f, -30.0f));
+		model = glm::translate(model, glm::vec3(85.0f, -0.5f, -30.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -2983,7 +2983,7 @@ int main()
 
 		//Mariscos
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(65.0f, -1.95f, 155.0f));
+		model = glm::translate(model, glm::vec3(65.0f, -0.5f, 155.0f));
 		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
