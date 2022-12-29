@@ -164,12 +164,12 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		if (action == GLFW_PRESS)
 		{
 			theWindow->keys[key] = true;
-			printf("se presiono la tecla %d'\n", key);
+			//printf("se presiono la tecla %d'\n", key);
 		}
 		else if (action == GLFW_RELEASE)
 		{
 			theWindow->keys[key] = false;
-			printf("se solto la tecla %d'\n", key);
+			//printf("se solto la tecla %d'\n", key);
 		}
 	}
 }

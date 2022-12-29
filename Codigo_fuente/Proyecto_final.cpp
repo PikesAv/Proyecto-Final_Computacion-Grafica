@@ -827,7 +827,7 @@ int main()
 	Recepcion.LoadTextureA();
 	Ventanal = Texture("Textures/Paredes/Ventana.tga");
 	Ventanal.LoadTextureA();
-	Cristal = Texture("Textures/blue-texture.tga");
+	Cristal = Texture("Textures/cilindro_textura.tga");
 	Cristal.LoadTextureA();
 	Entradas = Texture("Textures/Entradas.tga");
 	Entradas.LoadTextureA();
@@ -886,8 +886,8 @@ int main()
 	FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");*/
 
 	//Escenario
-	escenario = Model();
-	escenario.LoadModel("Models/Escenario/Escenario.obj");
+	//escenario = Model();
+	//escenario.LoadModel("Models/Escenario/Escenario.obj");
 	/*Bateria = Model();
 	Bateria.LoadModel("Models/Escenario/Bateria.obj");
 	Guitarra = Model();
@@ -927,17 +927,17 @@ int main()
 	Acuario_cilindro.LoadModel("Models/Acuario_cilindro/Acuario_cilindro.obj");
 	Medio_cilindro = Model();
 	Medio_cilindro.LoadModel("Models/Acuario_cilindro/Medio_cilindro.obj");
-	Espectaculo = Model();
-	Espectaculo.LoadModel("Models/Decoraciones/espec.obj");
+	//Espectaculo = Model();
+	//Espectaculo.LoadModel("Models/Decoraciones/espec.obj");
 
 	//Escaleras
 	Escalera = Model();
 	Escalera.LoadModel("Models/Escaleras/Escaleras.obj");
 	//Decoracion
-	Piano = Model();
-	Piano.LoadModel("Models/Decoraciones/piano.obj");
-	Neptuno = Model();
-	Neptuno.LoadModel("Models/Decoraciones/neptuno.obj");
+	//Piano = Model();
+	//Piano.LoadModel("Models/Decoraciones/piano.obj");
+	//Neptuno = Model();
+	//Neptuno.LoadModel("Models/Decoraciones/neptuno.obj");
 
 
 	////Artoria Pendragon (Lily)
@@ -1980,7 +1980,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		pisoTexture.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		meshList[2]->RenderMesh();
+		//meshList[2]->RenderMesh();
 
 		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
@@ -2539,21 +2539,21 @@ int main()
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 2.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera.UseTexture();
-		meshList[3]->RenderMesh();
+		//meshList[3]->RenderMesh();
 		//Puesto de Tacos
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(80.0f, -0.45f, 35.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pasto.UseTexture();
-		meshList[3]->RenderMesh();
+		//meshList[3]->RenderMesh();
 		//Puestos de Mariscos
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(40.0f, -0.45f, 137.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera_2.UseTexture();
-		meshList[3]->RenderMesh();
+		//meshList[3]->RenderMesh();
 		
 		//Comida Internacional
 		//Comida alemana
@@ -2562,21 +2562,21 @@ int main()
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera.UseTexture();
-		meshList[3]->RenderMesh();
+		//meshList[3]->RenderMesh();
 		//Comida Española
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -0.45f, 137.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera_3.UseTexture();
-		meshList[3]->RenderMesh();
+		//meshList[3]->RenderMesh();
 		//Comida Japonesa
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-112.0f, -0.45f, 137.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera_4.UseTexture();
-		meshList[3]->RenderMesh();
+		//meshList[3]->RenderMesh();
 
 		//---------Modelos correspondientes a las sillas y mesas-----------//
 		//puesto de tacos
@@ -2872,21 +2872,21 @@ int main()
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pasto.UseTexture();
-		meshList[3]->RenderMesh();
+		//meshList[3]->RenderMesh();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-112.0f, -0.45f, -43.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera.UseTexture();
-		meshList[3]->RenderMesh();
+		//meshList[3]->RenderMesh();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-112.0f, -0.45f, 17.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera_2.UseTexture();
-		meshList[3]->RenderMesh();
+		//meshList[3]->RenderMesh();
 
 		//------------------------------------FoodTrucks-----------------------------//
 		//Comida Peruana
@@ -3152,7 +3152,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Edificio.UseTexture();
-		meshList[5]->RenderMesh();
+		//meshList[5]->RenderMesh();
 
 		//Paredes de la recepcion
 		model = glm::mat4(1.0);
@@ -3223,12 +3223,12 @@ int main()
 
 		//Acuario parte de la planta baja
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -17.1f, -250.0f));
-		model = glm::scale(model, glm::vec3(300.0f, 33.0f, 300.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -17.1f, -115.0f));
+		model = glm::scale(model, glm::vec3(300.0f, 33.0f, 565.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Techo de la planta baja
 		model = glm::mat4(1.0);
@@ -3244,130 +3244,23 @@ int main()
 		//Divisiones principales
 		//Division a
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(65.0f, -18.03f, -290.0f));
-		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		pasto.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division e
-		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-25.0f, -18.03f, -290.0f));
 		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
+		pasto.UseTexture();
 		meshList[7]->RenderMesh();
 
 		//Division b
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(55.0f, -18.03f, -302.5f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(25.0f, 30.0f, 0.1f));
+		model = glm::translate(model, glm::vec3(-100.0f, -18.03f, -100.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
+		pasto.UseTexture();
 		meshList[7]->RenderMesh();
 
 		//Division c
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(44.5f, -18.03f, -315.0f));
-		model = glm::scale(model, glm::vec3(20.9f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division d
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(29.5f, -18.03f, -302.5f));
-		model = glm::rotate(model, 70 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(26.6f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division f
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-2.0f, -18.03f, 100.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(170.3f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
-		//meshList[7]->RenderMesh();
-
-		//Division ??
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-100.0f, -18.03f, -100.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(70.0f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division f2
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-22.0f, -18.03f, 100.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(170.3f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division j
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-100.0f, -18.03f, -300.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division k
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-15.8f, -18.03f, -208.0f));
-		model = glm::rotate(model, 55 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division l
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-11.5f, -41.0f, -170.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(180.0f, 70.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division i
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-100.0f, -18.03f, -315.0f));
-		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		pasto.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division i2
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-100.0f, -18.03f, -100.0f));
-		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		pasto.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division h
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(50.0f, -18.03f, -177.5f));
 		model = glm::scale(model, glm::vec3(50.0f, 30.0f, 0.1f));
@@ -3376,30 +3269,10 @@ int main()
 		//Pared_blanca.UseTexture();
 		meshList[7]->RenderMesh();
 
-		//Division h2
+		//Division d
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(70.0f, -18.03f, -90.0f));
 		model = glm::scale(model, glm::vec3(160.0f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division g
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-64.52f, -18.03f, -332.7f));
-		model = glm::rotate(model, -70 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(26.6f, 30.0f, 0.1f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
-		meshList[7]->RenderMesh();
-
-		//Division m
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-90.0f, -18.03f, -325.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Pared_blanca.UseTexture();
