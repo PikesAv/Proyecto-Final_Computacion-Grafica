@@ -190,6 +190,7 @@ Model Pez_img;
 Model No_flash;
 Model Piano;
 Model Neptuno;
+Model HabitatP;
 //----------------------------------------------Modelos de personajes----------------------------------------//
 //Arturia Pendragon (Lily)
 Model Lily_AnteBrazo;
@@ -897,70 +898,72 @@ int main()
 
 	//Acuario
 	//Infografias e imagenes
-	//Pinguino_inf = Model();
-	//Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
-	//Cangrejo_inf = Model();
-	//Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
-	//Orca_inf = Model();
-	//Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
-	//Tiburon_inf = Model();
-	//Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
-	//Peces_inf = Model();
-	//Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
+	/*Pinguino_inf = Model();
+	Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
+	Cangrejo_inf = Model();
+	Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
+	Orca_inf = Model();
+	Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
+	Tiburon_inf = Model();
+	Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
+	Peces_inf = Model();
+	Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
 
-	//Calendario_azt = Model();
-	//Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
-	//Pinguino_img = Model();
-	//Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
-	//Ballena_img = Model();
-	//Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
-	//Orca_img = Model();
-	//Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
-	//Tiburon_img = Model();
-	//Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
-	//Pez_img = Model();
-	//Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
-	//No_flash = Model();
-	//No_flash.LoadModel("Models/Carteles/No_fotos.obj");
+	Calendario_azt = Model();
+	Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
+	Pinguino_img = Model();
+	Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
+	Ballena_img = Model();
+	Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
+	Orca_img = Model();
+	Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
+	Tiburon_img = Model();
+	Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
+	Pez_img = Model();
+	Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
+	No_flash = Model();
+	No_flash.LoadModel("Models/Carteles/No_fotos.obj");*/
 	//Estructuras
 	Acuario_cilindro = Model();
 	Acuario_cilindro.LoadModel("Models/Acuario_cilindro/Acuario_cilindro.obj");
 	Medio_cilindro = Model();
 	Medio_cilindro.LoadModel("Models/Acuario_cilindro/Medio_cilindro.obj");
-	//Espectaculo = Model();
-	//Espectaculo.LoadModel("Models/Decoraciones/espec.obj");
+	/*Espectaculo = Model();
+	Espectaculo.LoadModel("Models/Decoraciones/espec.obj");
+	HabitatP = Model();
+	HabitatP.LoadModel("Models/Habitat/Habitat.obj");*/
 
 	//Escaleras
 	Escalera = Model();
 	Escalera.LoadModel("Models/Escaleras/Escaleras.obj");
 	//Decoracion
-	//Piano = Model();
-	//Piano.LoadModel("Models/Decoraciones/piano.obj");
-	//Neptuno = Model();
-	//Neptuno.LoadModel("Models/Decoraciones/neptuno.obj");
+	/*Piano = Model();
+	Piano.LoadModel("Models/Decoraciones/piano.obj");
+	Neptuno = Model();
+	Neptuno.LoadModel("Models/Decoraciones/neptuno.obj");*/
 
 
 	////Artoria Pendragon (Lily)
-	//Lily_AnteBrazo = Model();
-	//Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
-	//Lily_AnteBrazo_2 = Model();
-	//Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
-	//Lily_Brazo = Model();
-	//Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
-	//Lily_Brazo_2 = Model();
-	//Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
-	//Lily_Pierna = Model();
-	//Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
-	//Lily_Pierna_2 = Model();
-	//Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
-	//Lily_Pie = Model();
-	//Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
-	//Lily_Pie_2 = Model();
-	//Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
-	//Lily_Cabeza = Model();
-	//Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
-	//Lily_Cuerpo = Model();
-	//Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
+	/*Lily_AnteBrazo = Model();
+	Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
+	Lily_AnteBrazo_2 = Model();
+	Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
+	Lily_Brazo = Model();
+	Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
+	Lily_Brazo_2 = Model();
+	Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
+	Lily_Pierna = Model();
+	Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
+	Lily_Pierna_2 = Model();
+	Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
+	Lily_Pie = Model();
+	Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
+	Lily_Pie_2 = Model();
+	Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
+	Lily_Cabeza = Model();
+	Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
+	Lily_Cuerpo = Model();
+	Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");*/
 
 	////nero
 	//Nero_Cuerpo = Model();
@@ -3143,7 +3146,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		marmol.UseTexture();
-		//meshList[2]->RenderMesh();
+		meshList[2]->RenderMesh();
 
 		//Recepcion
 		model = glm::mat4(1.0);
@@ -3152,7 +3155,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Edificio.UseTexture();
-		//meshList[5]->RenderMesh();
+		meshList[5]->RenderMesh();
 
 		//Paredes de la recepcion
 		model = glm::mat4(1.0);
@@ -3161,7 +3164,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Recepcion.UseTexture();
-		//meshList[6]->RenderMesh();
+		meshList[6]->RenderMesh();
 
 		//Entrada principal (ventanal)
 		model = glm::mat4(1.0);
@@ -3171,7 +3174,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ventanal.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 		
 		// Entrada/salida del Acuario
 		model = glm::mat4(1.0);
@@ -3181,7 +3184,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Entradas.UseTexture();
-		//meshList[7]->RenderMesh();
+		meshList[7]->RenderMesh();
 
 		//Cubiulo Escaleras
 		model = glm::mat4(1.0);
@@ -3190,7 +3193,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Edificio.UseTexture();
-		//meshList[5]->RenderMesh();
+		meshList[5]->RenderMesh();
 
 		//Piso del cubiculo
 		toffset = glm::vec2(0.0f, 0.0);
@@ -3288,14 +3291,14 @@ int main()
 		pasto.UseTexture();
 		meshList[7]->RenderMesh();
 
-		//Cubo para el NP Nero
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -60.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(60.0f, 60.0f, 60.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//marmol.UseTexture();
-		//Edificio.UseTexture();
-		//meshList[4]->RenderMesh();
+		////Cubo para el NP Nero
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(0.0f, -60.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(60.0f, 60.0f, 60.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		////marmol.UseTexture();
+		////Edificio.UseTexture();
+		////meshList[4]->RenderMesh();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(75.5f, 6.0f, -200.0f));
@@ -3442,8 +3445,8 @@ int main()
 
 		//Pecera ultra enorme
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(110.0f, -50.5f, 100.3f));
-		model = glm::scale(model, glm::vec3(85.0f, 100.0f, 100.0f));
+		model = glm::translate(model, glm::vec3(107.0f, -50.5f, 66.5f));
+		model = glm::scale(model, glm::vec3(85.0f, 100.0f, 200.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
@@ -3464,7 +3467,7 @@ int main()
 		model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Neptuno.RenderModel();
+		///Neptuno.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-12.0f, -60.0f, 280.0f));
@@ -3473,6 +3476,14 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Espectaculo.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-98.0f, -25.0f, 115.0f));
+		model = glm::rotate(model, 45 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.5f, 3.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		HabitatP.RenderModel();
 
 		glDisable(GL_BLEND);
 
