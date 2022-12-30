@@ -3215,9 +3215,9 @@ int main()
 		//Salida
 		//Escaleras que conectan a la recepcion con el acuario
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-33.0f, -70.0f, -372.3f));
+		model = glm::translate(model, glm::vec3(-33.0f, -33.3f, -372.3f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.7f, 3.0f, 1.8f));
+		model = glm::scale(model, glm::vec3(1.7f, 1.5f, 1.8f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Escalera.RenderModel();
 
@@ -3244,8 +3244,8 @@ int main()
 		//Divisiones principales
 		//Division a
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-25.0f, -18.03f, -290.0f));
-		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 0.1f));
+		model = glm::translate(model, glm::vec3(-15.0f, -18.03f, -310.0f));
+		model = glm::scale(model, glm::vec3(178.6f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pasto.UseTexture();
@@ -3253,16 +3253,16 @@ int main()
 
 		//Division b
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-100.0f, -18.03f, -100.0f));
-		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 0.1f));
+		model = glm::translate(model, glm::vec3(90.0f, -18.03f, -110.0f));
+		model = glm::scale(model, glm::vec3(120.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		pasto.UseTexture();
+		//Pared_blanca.UseTexture();
 		meshList[7]->RenderMesh();
 
 		//Division c
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(50.0f, -18.03f, -177.5f));
+		model = glm::translate(model, glm::vec3(50.0f, -18.03f, -197.2f));
 		model = glm::scale(model, glm::vec3(50.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -3271,11 +3271,21 @@ int main()
 
 		//Division d
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(70.0f, -18.03f, -90.0f));
-		model = glm::scale(model, glm::vec3(160.0f, 30.0f, 0.1f));
+		model = glm::translate(model, glm::vec3(-103.0f, -18.03f, -110.0f));
+		model = glm::scale(model, glm::vec3(93.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Pared_blanca.UseTexture();
+		pasto.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Division e
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-2.0f, -18.03f, -353.8f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(87.3f, 30.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		pasto.UseTexture();
 		meshList[7]->RenderMesh();
 
 		//Cubo para el NP Nero
@@ -3368,28 +3378,28 @@ int main()
 		No_flash.RenderModel();
 
 		//Carga de las peceras
-		//Peces pequeños
+		//Peces pequeños (Pecera 1)
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(139.1f, -18.01f, -230.0f));
+		model = glm::translate(model, glm::vec3(139.1f, -18.01f, -250.0f));
 		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 249.f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
 		meshList[7]->RenderMesh();
 
-		//Tiburones
+		//Tiburones (Pecera 2)
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(50.0f, -18.01f, -233.8f));
+		model = glm::translate(model, glm::vec3(50.0f, -18.01f, -253.5f));
 		model = glm::scale(model, glm::vec3(48.0f, 30.0f, 112.4f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
 		meshList[7]->RenderMesh();
 
-		//??
+		//Pecera 3
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-80.0f, -18.01f, -200.0f));
-		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 112.4f));
+		model = glm::translate(model, glm::vec3(-80.0f, -18.01f, -253.5f));
+		model = glm::scale(model, glm::vec3(48.0f, 30.0f, 112.4f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
@@ -3405,9 +3415,9 @@ int main()
 
 		//Tunel
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-16.8f, -15.0f, 120.0f));
+		model = glm::translate(model, glm::vec3(-16.8f, -15.0f, 111.5f));
 		model = glm::rotate(model, 05 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::scale(model, glm::vec3(0.143f, 0.15f, 0.7f));
+		model = glm::scale(model, glm::vec3(0.143f, 0.15f, 0.66f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Medio_cilindro.RenderModel();
@@ -3429,9 +3439,6 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
 		meshList[7]->RenderMesh();
-
-		
-
 
 		//Pecera ultra enorme
 		model = glm::mat4(1.0);
@@ -3465,7 +3472,7 @@ int main()
 		model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Espectaculo.RenderModel();
+		//Espectaculo.RenderModel();
 
 		glDisable(GL_BLEND);
 
