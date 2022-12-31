@@ -1,10 +1,12 @@
 ﻿  Proyecto_final.cpp
 X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(12,36): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
 X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
-X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1480,23): warning C4305: '+=': truncamiento de 'double' a 'float'
-X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1491,23): warning C4305: '-=': truncamiento de 'double' a 'float'
-X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1970,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1972,43): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(3132,20): warning C4305: '+=': truncamiento de 'double' a 'float'
-X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(3133,19): warning C4305: '-=': truncamiento de 'double' a 'float'
+X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1494,23): warning C4305: '+=': truncamiento de 'double' a 'float'
+X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1505,23): warning C4305: '-=': truncamiento de 'double' a 'float'
+X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1984,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(1986,43): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(3146,20): warning C4305: '+=': truncamiento de 'double' a 'float'
+X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Proyecto_final.cpp(3147,19): warning C4305: '-=': truncamiento de 'double' a 'float'
+  LINK : no se encontró X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Debug\Proyecto_final.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
   Proyecto_final.vcxproj -> X:\Documentos\GitHub\Proyecto-Final_Computacion-Grafica\Codigo_fuente\Debug\Proyecto_final.exe

@@ -198,6 +198,11 @@ Model No_flash;
 Model Piano;
 Model Neptuno;
 Model HabitatP;
+Model coral1;
+Model coral2;
+Model coral3;
+Model coral4;
+
 //----------------------------------------------Modelos de personajes----------------------------------------//
 //Arturia Pendragon (Lily)
 Model Lily_AnteBrazo;
@@ -1001,6 +1006,15 @@ int main()
 	EstrellaM_inf2.LoadModel("Models/Estrella de mar/estrellasinfo2.obj");
 	Grap = Model();
 	Grap.LoadModel("Models/Carteles/Grap.obj");
+
+	coral1 = Model();
+	coral1.LoadModel("Models/Corales/11-exported.obj");
+	coral2 = Model();
+	coral2.LoadModel("Models/Corales/mesh-90.obj");
+	coral3 = Model();
+	coral3.LoadModel("Models/Corales/coralf.obj");
+	coral4 = Model();
+	coral4.LoadModel("Models/Corales/corals.obj");
 
 	//Calendario_azt = Model();
 	//Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
@@ -3240,6 +3254,38 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		marmol.UseTexture();
 		meshList[2]->RenderMesh();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 80.6f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Edificio.UseTexture();
+		coral1.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 80.6f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Edificio.UseTexture();
+		coral2.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 80.6f, 100.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Edificio.UseTexture();
+		coral3.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 100.6f, -200.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Edificio.UseTexture();
+		coral4.RenderModel();
 
 		//Recepcion
 		model = glm::mat4(1.0);
