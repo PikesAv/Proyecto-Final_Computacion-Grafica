@@ -182,6 +182,9 @@ Model Peces_inf;
 Model Cangrejo_inf;
 Model Orca_inf;
 Model Tiburon_inf;
+Model EstrellaM_inf1;
+Model EstrellaM_inf2;
+Model Grap;
 //Modelos de peces utilizados
 
 //Modelos de Decoración
@@ -992,6 +995,12 @@ int main()
 	Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
 	Peces_inf = Model();
 	Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
+	EstrellaM_inf1 = Model();
+	EstrellaM_inf1.LoadModel("Models/Estrella de mar/estrellasinfo.obj");
+	EstrellaM_inf2 = Model();
+	EstrellaM_inf2.LoadModel("Models/Estrella de mar/estrellasinfo2.obj");
+	Grap = Model();
+	Grap.LoadModel("Models/Carteles/Grap.obj");
 
 	//Calendario_azt = Model();
 	//Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
@@ -3472,6 +3481,27 @@ int main()
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Orca_inf.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, -32.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.8f, 2.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		EstrellaM_inf1.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, -32.0f, -275.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.8f, 2.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		EstrellaM_inf2.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-120.0f, -32.0f, -109.5f));
+		model = glm::scale(model, glm::vec3(2.0f, 1.8f, 3.0f));
+		//model = glm::rotate(model, 45 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Grap.RenderModel();
 
 		//Carga de las imagenes
 		model = glm::mat4(1.0);
