@@ -133,6 +133,9 @@ Texture Entradas;
 Texture Azul_gradiente;
 Texture Techo_acuario;
 Texture Fauna_marina;
+Texture Informacion1;
+Texture Informacion2;
+Texture Pared_tunel;
 
 //Texturas animadas
 Texture Firework_O;
@@ -520,7 +523,7 @@ void CrearRecepcion()
 	meshList.push_back(dado);
 }
 
-//Creacion de la habitacion principal del acuario
+//Creacion de las peceras
 void CrearEntrada()
 {
 	unsigned int cubo_indices[] = {
@@ -551,6 +554,77 @@ void CrearEntrada()
 		0.5f, -0.5f,  0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//1
 		0.5f,  0.5f,  0.5f,		1.0f,	1.0f,		0.0f,	0.0f,	1.0f,	//2
 		-0.5f,  0.5f,  0.5f,	0.0f,	1.0f,		0.0f,	0.0f,	1.0f,	//3
+		// right
+		//x		y		z		S		T
+		0.5f, -0.5f,  0.5f,	    0.0f,  0.0f,		-1.0f,	0.0f,	0.0f,
+		0.5f, -0.5f,  -0.5f,	1.0f,	0.0f,		-1.0f,	0.0f,	0.0f,
+		0.5f,  0.5f,  -0.5f,	1.0f,	1.0f,		-1.0f,	0.0f,	0.0f,
+		0.5f,  0.5f,  0.5f,	    0.0f,	1.0f,		-1.0f,	0.0f,	0.0f,
+		// back
+		-0.5f, -0.5f, -0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,
+		0.5f, -0.5f, -0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,
+		0.5f,  0.5f, -0.5f,		1.0f,	1.0f,		0.0f,	0.0f,	1.0f,
+		-0.5f,  0.5f, -0.5f,	0.0f,	1.0f,		0.0f,	0.0f,	1.0f,
+
+		// left
+		//x		y		z		S		T
+		-0.5f, -0.5f,  -0.5f,	0.0f,  0.0f,		-1.0f,	0.0f,	0.0f,
+		-0.5f, -0.5f,  0.5f,	1.0f,	0.0f,		-1.0f,	0.0f,	0.0f,
+		-0.5f,  0.5f,  0.5f,	1.0f,	1.0f,		-1.0f,	0.0f,	0.0f,
+		-0.5f,  0.5f,  -0.5f,	0.0f,	1.0f,		-1.0f,	0.0f,	0.0f,
+
+		// bottom
+		//x		y		z		S		T
+		-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	-1.0f,	0.0f,
+		0.5f,  -0.5f,  0.5f,	1.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
+		 0.5f,  -0.5f,  -0.5f,	1.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
+		-0.5f, -0.5f,  -0.5f,	0.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
+
+		//UP
+		 //x		y		z		S		T
+		 //-0.5f, 0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	-1.0f,	0.0f,
+		 //0.5f,  0.5f,  0.5f,	1.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
+		 // 0.5f, 0.5f,  -0.5f,	1.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
+		 //-0.5f, 0.5f,  -0.5f,	0.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
+
+	};
+
+	Mesh* dado = new Mesh();
+	dado->CreateMesh(cubo_vertices, cubo_indices, 192, 36);
+	meshList.push_back(dado);
+}
+
+//Creacion de la habitacion principal del acuario
+void CrearPlantabaja()
+{
+	unsigned int cubo_indices[] = {
+		// front
+		0, 1, 2,
+		2, 3, 0,
+		// right
+		4, 5, 6,
+		6, 7, 4,
+		// back
+		8, 9, 10,
+		10, 11, 8,
+
+		// left
+		12, 13, 14,
+		14, 15, 12,
+		// bottom
+		16, 17, 18,
+		18, 19, 16,
+		// top
+		20, 21, 22,
+		22, 23, 20,
+	};
+	GLfloat cubo_vertices[] = {
+		// front
+		//x		y		z		S		T			NX		NY		NZ
+		//-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	0.0f,	1.0f,	//0
+		//0.5f, -0.5f,  0.5f,		1.0f,	0.0f,		0.0f,	0.0f,	1.0f,	//1
+		//0.5f,  0.5f,  0.5f,		1.0f,	1.0f,		0.0f,	0.0f,	1.0f,	//2
+		//-0.5f,  0.5f,  0.5f,	0.0f,	1.0f,		0.0f,	0.0f,	1.0f,	//3
 		// right
 		//x		y		z		S		T
 		0.5f, -0.5f,  0.5f,	    0.0f,  0.0f,		-1.0f,	0.0f,	0.0f,
@@ -800,6 +874,7 @@ int main()
 	CreateShaders();
 	CrearRecepcion();
 	CrearEntrada();
+	CrearPlantabaja();
 	CreaTextura();
 
 	//Camara
@@ -843,6 +918,12 @@ int main()
 	Techo_acuario.LoadTextureA();
 	Fauna_marina = Texture("Textures/Fauna_marina.tga");
 	Fauna_marina.LoadTextureA();
+	Informacion1 = Texture("Textures/Informacion.tga");
+	Informacion1.LoadTextureA();
+	Informacion2 = Texture("Textures/Informacion_2.tga");
+	Informacion2.LoadTextureA();
+	Pared_tunel = Texture("Textures/Pared_tunel.tga");
+	Pared_tunel.LoadTextureA();
 
 	//Texturas animadas
 	//Firework_G = Texture("Textures/Animadas/Firework_green.tga");
@@ -3172,7 +3253,6 @@ int main()
 		//Entrada principal (ventanal)
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 14.8f, -160.0f));
-		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -3182,7 +3262,6 @@ int main()
 		// Entrada/salida del Acuario
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 14.6f, -259.3f));
-		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 0.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -3215,6 +3294,26 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Fauna_marina.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Pared con informacion 1
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(49.5f, 14.8f, -329.4f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(140.0f, 31.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Informacion1.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Pared con informacion 2
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-49.5f, 14.8f, -329.3f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(140.0f, 31.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Informacion2.UseTexture();
 		meshList[7]->RenderMesh();
 
 		//Piso del cubiculo
@@ -3253,7 +3352,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Pared_blanca.UseTexture();
-		meshList[7]->RenderMesh();
+		meshList[8]->RenderMesh();
 
 		//Techo de la planta baja
 		model = glm::mat4(1.0);
@@ -3264,6 +3363,17 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Techo_acuario.UseTexture();
 		meshList[7]->RenderMesh();
+
+		//Entrada/salidad del escenario exterior
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -17.1f, 167.4f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(300.0f, 33.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Pared_tunel.UseTexture();
+		meshList[7]->RenderMesh();
+
 
 		// Paredes de la planta baja
 		//Divisiones principales
@@ -3479,19 +3589,19 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Medio_cilindro.RenderModel();
 
-		//Peceras del tunel
+		//Peceras del tunel (Pecera 6)
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(5.5f, -15.0f, 90.0f));
-		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 150.f));
+		model = glm::translate(model, glm::vec3(5.5f, -15.0f, 91.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 152.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
 		meshList[7]->RenderMesh();
 
-		
+		//Pecera 7
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-29.5f, -15.0f, 90.0f));
-		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 150.f));
+		model = glm::translate(model, glm::vec3(-29.5f, -15.0f, 91.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 152.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
