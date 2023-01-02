@@ -49,6 +49,7 @@ Integrantes del equipo.
 //para el sonido
 #include <Irrklang/irrKlang.h>
 using namespace irrklang;
+int Sonido;
 
 const float toRadians = 3.14159265f / 180.0f;
 
@@ -873,7 +874,7 @@ int main()
 	ISoundEngine* engine = createIrrKlangDevice();
 
 	if (!engine) {
-		printf("XD");
+		printf("No se pudo reproducir el audio");
 	}
 	//engine->play2D("Gucci Bucket Hat.mp3", true);
 
@@ -2063,14 +2064,16 @@ int main()
 				pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
 					0.5f, 0.5f,
 					0.0f, 10.0f, -185.0f,
-					0.2f, 0.05f, 0.001f);
+					0.2f, 0.05f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
 					0.5f, 0.5f,
 					0.0f, 10.0f, -225.0f,
-					0.2f, 0.05f, 0.001f);
+					0.2f, 0.05f, 0.0009f);
 				pointLightCount++;
+
+				Sonido = 0;
 			}
 			//Escaleras
 			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
@@ -2079,231 +2082,216 @@ int main()
 				pointLights[0] = PointLight(0.1f, 0.0f, 0.8f,
 					0.2f, 0.5f,
 					0.0f, 10.0f, -300.0f,
-					0.2f, 0.01f, 0.0001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[1] = PointLight(0.9f, 0.0f, 0.0f,
 					0.2f, 0.5f,
 					-20.0f, 10.0f, -375.0f,
-					0.2f, 0.01f, 0.0001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[2] = PointLight(0.5f, 0.2f, 0.8f,
 					0.2f, 0.5f,
 					20.0f, 10.0f, -375.0f,
-					0.2f, 0.01f, 0.0001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
+				Sonido = 1;
 			}
 		}
 		if (camera.getCameraPosition().y <= 0) {
+			//Luces que se encuentran entre la pecera 1 y 2
 			if ((camera.getCameraPosition().x >= 60 && camera.getCameraPosition().x <= 160)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -400))
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					140.0f, 5.0f, -320.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.2f, 0.5f,
 					140.0f, 5.0f, -180.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					0.0f, 5.0f, -150.0f,
-					0.2f, 0.01f, 0.001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
 
+			//Luces que se encuentran entre la pecera 2 y 3
 			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
 				&& (camera.getCameraPosition().z <= -120 && camera.getCameraPosition().z >= -250))
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					-5.0f, 5.0f, -150.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.2f, 0.5f,
 					-5.0f, 5.0f, -250.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
 
-				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
+				pointLights[2] = PointLight(0.0f, 0.3f, 0.9f,
 					0.2f, 0.5f,
 					-5.0f, 5.0f, -70.0f,
-					0.2f, 0.01f, 0.001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
-
+			
+			//Luces que se encuentran al final del recorrido
 			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= -20)
 				&& (camera.getCameraPosition().z <= -120 && camera.getCameraPosition().z >= -250))
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					-100.0f, 5.0f, -350.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.2f, 0.5f,
 					-100.0f, 5.0f, -250.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					-100.0f, 5.0f, -150.0f,
-					0.2f, 0.01f, 0.001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
 
-
-			if ((camera.getCameraPosition().x >= 0 && camera.getCameraPosition().x <= 60)
+			//Luces que se encuentran en direccion a los pinguinos
+			if ((camera.getCameraPosition().x >= 0 && camera.getCameraPosition().x <= 200)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -120))
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					60.0f, 5.0f, -70.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.5f, 0.5f,
 					-5.0f, 5.0f, -250.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
 					60.0f, 5.0f, 100.0f,
-					0.2f, 0.01f, 0.001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
 
-			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 0)
+			//Luces que se encuentran en direccion a la pecera 5
+			if ((camera.getCameraPosition().x >= -200 && camera.getCameraPosition().x <= 0)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -120))
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					-60.0f, 5.0f, -70.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.5f, 0.5f,
 					-5.0f, 5.0f, -250.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
 					-60.0f, 5.0f, 100.0f,
-					0.2f, 0.01f, 0.001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
 
-			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 0)
+			//Luces que se encuentran entre los pinguinos y el recorrido tubular
+			if ((camera.getCameraPosition().x >= -200 && camera.getCameraPosition().x <= 0)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -70))
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					60.0f, 5.0f, 100.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.5f, 0.5f,
 					-5.0f, 5.0f, 30.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
 					-60.0f, 5.0f, 100.0f,
-					0.2f, 0.01f, 0.001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
 
-			if ((camera.getCameraPosition().x >= 0 && camera.getCameraPosition().x <= 60)
+			//Luces que se encuentran entre la pecera 5 y el recorrido tubular
+			if ((camera.getCameraPosition().x >= 0 && camera.getCameraPosition().x <= 200)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -70))
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					60.0f, 5.0f, 100.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.5f, 0.5f,
 					-5.0f, 5.0f, 30.0f,
-					0.2f, 0.001f, 0.001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
 					-60.0f, 5.0f, 100.0f,
-					0.2f, 0.01f, 0.001f);
+					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
 
 		}
 
-		//if ((camera.getCameraPosition().x >= -40 && camera.getCameraPosition().x <= 40)
-		//	&& (camera.getCameraPosition().z >= -40 && camera.getCameraPosition().z <= 40))
-		//{
-		//	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
-		//		0.5f, 0.5f,
-		//		20.0f, 1.5f, -30.0f,
-		//		0.3f, 0.2f, 0.1f);
-		//	pointLightCount++;
+		//Sonido del concierto
+		if (camera.getCameraPosition().y >= 0) {
+			if ((camera.getCameraPosition().x >= -160 && camera.getCameraPosition().x <= 160)
+				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -180))
+			{
+				Sonido = 2;
+			}
+		}
+		//Musica que se estará usando
+		switch (Sonido)
+		{
+			case 0:
+				engine->stopAllSounds();
+				break;
 
-		//	pointLights[1] = PointLight(0.5f, 0.0f, 0.5f,
-		//		0.5f, 0.5f,
-		//		0.0f, 1.5f, -30.0f,
-		//		0.3f, 0.2f, 0.1f);
-		//	pointLightCount++;
+			case 1:
+				if(!engine->isCurrentlyPlaying("Gucci Bucket Hat.mp3")){
+					engine->play2D("Gucci Bucket Hat.mp3", true);
+					engine->setSoundVolume(0.1);
+				}
+				break;
 
-		//	pointLights[2] = PointLight(0.0f, 0.5f, 0.5f,
-		//		0.5f, 0.5f,
-		//		-20.0f, 1.5f, -30.0f,
-		//		0.3f, 0.2f, 0.1f);
-		//	pointLightCount++;
-		//}
-		//else
-		//{
-		//	pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
-		//		0.5f, 0.5f,
-		//		60.0f, 1.5f, -30.0f,
-		//		0.3f, 0.2f, 0.1f);
-		//	pointLightCount++;
-		//}
+			case 2:
+				break;
 
-		////Luces del tipo pointlight en la planta baja del acuario
-		//if ((camera.getCameraPosition().x >= -40 && camera.getCameraPosition().x <= 40)
-		//	&& (camera.getCameraPosition().y >= 0 && camera.getCameraPosition().y <= 40)
-		//	&& (camera.getCameraPosition().z >= -40 && camera.getCameraPosition().z <= 40)) 
-		//{
-		//	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
-		//		0.5f, 0.5f,
-		//		20.0f, 1.5f, -30.0f,
-		//		0.3f, 0.2f, 0.1f);
-		//	pointLightCount++;
-		//}
-		//else
-		//{
-		//	pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
-		//		0.5f, 0.5f,
-		//		60.0f, 1.5f, -30.0f,
-		//		0.3f, 0.2f, 0.1f);
-		//	pointLightCount++;
-		//	//shaderList[0].SetPointLights(pointLights, 0);
+			default:
+				break;
+		}
 
-		//}
 
 		//Matrices para el persona principal
 		//lily
