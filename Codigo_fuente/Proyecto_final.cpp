@@ -990,31 +990,31 @@ int main()
 
 	//Acuario
 	//Infografias e imagenes
-	Pinguino_inf = Model();
-	Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
-	Cangrejo_inf = Model();
-	Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
-	Orca_inf = Model();
-	Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
-	Tiburon_inf = Model();
-	Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
-	Peces_inf = Model();
-	Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
-	EstrellaM_inf1 = Model();
-	EstrellaM_inf1.LoadModel("Models/Estrella de mar/estrellasinfo.obj");
-	EstrellaM_inf2 = Model();
-	EstrellaM_inf2.LoadModel("Models/Estrella de mar/estrellasinfo2.obj");
-	Grap = Model();
-	Grap.LoadModel("Models/Carteles/Grap.obj");
+	//Pinguino_inf = Model();
+	//Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
+	//Cangrejo_inf = Model();
+	//Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
+	//Orca_inf = Model();
+	//Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
+	//Tiburon_inf = Model();
+	//Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
+	//Peces_inf = Model();
+	//Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
+	//EstrellaM_inf1 = Model();
+	//EstrellaM_inf1.LoadModel("Models/Estrella de mar/estrellasinfo.obj");
+	//EstrellaM_inf2 = Model();
+	//EstrellaM_inf2.LoadModel("Models/Estrella de mar/estrellasinfo2.obj");
+	//Grap = Model();
+	//Grap.LoadModel("Models/Carteles/Grap.obj");
 
-	coral1 = Model();
-	coral1.LoadModel("Models/Corales/11-exported.obj");
-	coral2 = Model();
-	coral2.LoadModel("Models/Corales/mesh-90.obj");
-	coral3 = Model();
-	coral3.LoadModel("Models/Corales/coralf.obj");
-	coral4 = Model();
-	coral4.LoadModel("Models/Corales/corals.obj");
+	//coral1 = Model();
+	//coral1.LoadModel("Models/Corales/11-exported.obj");
+	//coral2 = Model();
+	//coral2.LoadModel("Models/Corales/mesh-90.obj");
+	//coral3 = Model();
+	//coral3.LoadModel("Models/Corales/coralf.obj");
+	//coral4 = Model();
+	//coral4.LoadModel("Models/Corales/corals.obj");
 
 	//Calendario_azt = Model();
 	//Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
@@ -1163,24 +1163,23 @@ int main()
 
 	//contador de luces del tipo pointlight
 	unsigned int pointLightCount = 0;
-	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
+	pointLights[0] = PointLight(0.0f, 0.0f, 0.0f,
 		0.5f, 0.5f,
 		20.0f, 1.5f, -30.0f,
 		0.3f, 0.2f, 0.1f);
 	pointLightCount++;
 
-	pointLights[1] = PointLight(0.5f, 0.0f, 0.5f,
+	pointLights[1] = PointLight(0.0f, 0.0f, 0.0f,
 		0.5f, 0.5f,
 		0.0f, 1.5f, -30.0f,
 		0.3f, 0.2f, 0.1f);
 	pointLightCount++;
 
-	pointLights[2] = PointLight(0.0f, 0.5f, 0.5f,
+	pointLights[2] = PointLight(0.0f, 0.0f, 0.0f,
 		0.5f, 0.5f,
 		-20.0f, 1.5f, -30.0f,
 		0.3f, 0.2f, 0.1f);
 	pointLightCount++;
-
 
 	unsigned int spotLightCount = 0;
 	//Contador de luces del tipo spotlight
@@ -1528,9 +1527,15 @@ int main()
 		//Ciclo de Día y Noche
 		//luz direccional, sólo 1 y siempre debe de existir
 		//Sera la luz que ilumine al mundo que tengamos
+		//mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
+		//	ciclo_dia, 1.0,//Va a servir para manejar el ciclo dia y noche
+		//	1.0f, 0.0f, -1.0f);
+
 		mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-			ciclo_dia, 1.0,//Va a servir para manejar el ciclo dia y noche
+			0.1, 1.0,//Va a servir para manejar el ciclo dia y noche
 			1.0f, 0.0f, -1.0f);
+
+		
 		//----------------------------------------------Animaciones----------------------------------------//
 		//Recorrido de Lily por el festival
 		if (AvanzaLX && !AvanzaLZ && Cgiros == 0 && ActivadorRL)
@@ -1995,15 +2000,20 @@ int main()
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
 
+		//información al shader de fuentes de iluminación
+		shaderList[0].SetDirectionalLight(&mainLight);
+		shaderList[0].SetPointLights(pointLights, pointLightCount);
+		//shaderList[0].SetSpotLights(spotLights, spotLightCount);
+		// 
 		//Inicializacion de las luces de tipo spotlight para hacer el show de luces
 		//Inicialización de las luces de tipo pointlghts
 		//----------------------------------------------Ciclo Día y Noche----------------------------------------//
-		if (ciclo_dia < 0.55) {
-			shaderList[0].SetPointLights(pointLights, pointLightCount);
-		}
-		else {
-			shaderList[0].SetPointLights(pointLights, 0);
-		}
+		//if (ciclo_dia < 0.55) {
+		//	shaderList[0].SetPointLights(pointLights, pointLightCount);
+		//}
+		//else {
+		//	shaderList[0].SetPointLights(pointLights, 0);
+		//}
 		//----------------------------------------------Luces en el Festival----------------------------------------//
 		if (luces) {
 			if (conta_show == 1) {
@@ -2043,11 +2053,234 @@ int main()
 		if (!luces) {
 			shaderList[0].SetSpotLights(spotLights, 0);
 		}
+		
+		//Luces de la recepcion del acuario
+		if (camera.getCameraPosition().y >= 0) {
+			//Recepcion
+			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
+				&& (camera.getCameraPosition().z <= 200  && camera.getCameraPosition().z >= -259))
+			{
+				pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
+					0.5f, 0.5f,
+					0.0f, 10.0f, -185.0f,
+					0.2f, 0.05f, 0.001f);
+				pointLightCount++;
 
-		//información al shader de fuentes de iluminación
-		shaderList[0].SetDirectionalLight(&mainLight);
-		//shaderList[0].SetPointLights(pointLights, pointLightCount);
-		//shaderList[0].SetSpotLights(spotLights, spotLightCount);
+				pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
+					0.5f, 0.5f,
+					0.0f, 10.0f, -225.0f,
+					0.2f, 0.05f, 0.001f);
+				pointLightCount++;
+			}
+			//Escaleras
+			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
+				&& (camera.getCameraPosition().z <= -260 && camera.getCameraPosition().z >= -400))
+			{
+				pointLights[0] = PointLight(0.1f, 0.0f, 0.8f,
+					0.2f, 0.5f,
+					0.0f, 10.0f, -300.0f,
+					0.2f, 0.01f, 0.0001f);
+				pointLightCount++;
+
+				pointLights[1] = PointLight(0.9f, 0.0f, 0.0f,
+					0.2f, 0.5f,
+					-20.0f, 10.0f, -375.0f,
+					0.2f, 0.01f, 0.0001f);
+				pointLightCount++;
+
+				pointLights[2] = PointLight(0.5f, 0.2f, 0.8f,
+					0.2f, 0.5f,
+					20.0f, 10.0f, -375.0f,
+					0.2f, 0.01f, 0.0001f);
+				pointLightCount++;
+			}
+		}
+		if (camera.getCameraPosition().y <= 0) {
+			if ((camera.getCameraPosition().x >= 60 && camera.getCameraPosition().x <= 160)
+				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -400))
+			{
+				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
+					0.2f, 0.5f,
+					140.0f, 5.0f, -320.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
+					0.2f, 0.5f,
+					140.0f, 5.0f, -180.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
+					0.2f, 0.5f,
+					0.0f, 5.0f, -150.0f,
+					0.2f, 0.01f, 0.001f);
+				pointLightCount++;
+			}
+
+			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
+				&& (camera.getCameraPosition().z <= -120 && camera.getCameraPosition().z >= -250))
+			{
+				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
+					0.2f, 0.5f,
+					-5.0f, 5.0f, -150.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
+					0.2f, 0.5f,
+					-5.0f, 5.0f, -250.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
+					0.2f, 0.5f,
+					-5.0f, 5.0f, -70.0f,
+					0.2f, 0.01f, 0.001f);
+				pointLightCount++;
+			}
+
+			if ((camera.getCameraPosition().x >= 0 && camera.getCameraPosition().x <= 60)
+				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -120))
+			{
+				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
+					0.2f, 0.5f,
+					60.0f, 5.0f, -70.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
+					0.5f, 0.5f,
+					-5.0f, 5.0f, -250.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
+					0.5f, 0.5f,
+					60.0f, 5.0f, 100.0f,
+					0.2f, 0.01f, 0.001f);
+				pointLightCount++;
+			}
+
+			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 0)
+				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -120))
+			{
+				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
+					0.2f, 0.5f,
+					-60.0f, 5.0f, -70.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
+					0.5f, 0.5f,
+					-5.0f, 5.0f, -250.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
+					0.5f, 0.5f,
+					-60.0f, 5.0f, 100.0f,
+					0.2f, 0.01f, 0.001f);
+				pointLightCount++;
+			}
+
+			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 0)
+				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -70))
+			{
+				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
+					0.2f, 0.5f,
+					60.0f, 5.0f, 100.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
+					0.5f, 0.5f,
+					-5.0f, 5.0f, 30.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
+					0.5f, 0.5f,
+					-60.0f, 5.0f, 100.0f,
+					0.2f, 0.01f, 0.001f);
+				pointLightCount++;
+			}
+
+			if ((camera.getCameraPosition().x >= 0 && camera.getCameraPosition().x <= 60)
+				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -70))
+			{
+				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
+					0.2f, 0.5f,
+					60.0f, 5.0f, 100.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
+					0.5f, 0.5f,
+					-5.0f, 5.0f, 30.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
+					0.5f, 0.5f,
+					-60.0f, 5.0f, 100.0f,
+					0.2f, 0.01f, 0.001f);
+				pointLightCount++;
+			}
+
+		}
+
+		//if ((camera.getCameraPosition().x >= -40 && camera.getCameraPosition().x <= 40)
+		//	&& (camera.getCameraPosition().z >= -40 && camera.getCameraPosition().z <= 40))
+		//{
+		//	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
+		//		0.5f, 0.5f,
+		//		20.0f, 1.5f, -30.0f,
+		//		0.3f, 0.2f, 0.1f);
+		//	pointLightCount++;
+
+		//	pointLights[1] = PointLight(0.5f, 0.0f, 0.5f,
+		//		0.5f, 0.5f,
+		//		0.0f, 1.5f, -30.0f,
+		//		0.3f, 0.2f, 0.1f);
+		//	pointLightCount++;
+
+		//	pointLights[2] = PointLight(0.0f, 0.5f, 0.5f,
+		//		0.5f, 0.5f,
+		//		-20.0f, 1.5f, -30.0f,
+		//		0.3f, 0.2f, 0.1f);
+		//	pointLightCount++;
+		//}
+		//else
+		//{
+		//	pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
+		//		0.5f, 0.5f,
+		//		60.0f, 1.5f, -30.0f,
+		//		0.3f, 0.2f, 0.1f);
+		//	pointLightCount++;
+		//}
+
+		////Luces del tipo pointlight en la planta baja del acuario
+		//if ((camera.getCameraPosition().x >= -40 && camera.getCameraPosition().x <= 40)
+		//	&& (camera.getCameraPosition().y >= 0 && camera.getCameraPosition().y <= 40)
+		//	&& (camera.getCameraPosition().z >= -40 && camera.getCameraPosition().z <= 40)) 
+		//{
+		//	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
+		//		0.5f, 0.5f,
+		//		20.0f, 1.5f, -30.0f,
+		//		0.3f, 0.2f, 0.1f);
+		//	pointLightCount++;
+		//}
+		//else
+		//{
+		//	pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
+		//		0.5f, 0.5f,
+		//		60.0f, 1.5f, -30.0f,
+		//		0.3f, 0.2f, 0.1f);
+		//	pointLightCount++;
+		//	//shaderList[0].SetPointLights(pointLights, 0);
+
+		//}
 
 		//Matrices para el persona principal
 		//lily
