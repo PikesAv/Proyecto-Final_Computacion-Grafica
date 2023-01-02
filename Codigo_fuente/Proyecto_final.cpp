@@ -2140,6 +2140,29 @@ int main()
 				pointLightCount++;
 			}
 
+			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= -20)
+				&& (camera.getCameraPosition().z <= -120 && camera.getCameraPosition().z >= -250))
+			{
+				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
+					0.2f, 0.5f,
+					-100.0f, 5.0f, -350.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
+					0.2f, 0.5f,
+					-100.0f, 5.0f, -250.0f,
+					0.2f, 0.001f, 0.001f);
+				pointLightCount++;
+
+				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
+					0.2f, 0.5f,
+					-100.0f, 5.0f, -150.0f,
+					0.2f, 0.01f, 0.001f);
+				pointLightCount++;
+			}
+
+
 			if ((camera.getCameraPosition().x >= 0 && camera.getCameraPosition().x <= 60)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -120))
 			{
