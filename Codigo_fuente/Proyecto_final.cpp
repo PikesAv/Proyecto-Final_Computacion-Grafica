@@ -202,7 +202,10 @@ Model coral1;
 Model coral2;
 Model coral3;
 Model coral4;
-
+Model coralcy;
+Model recepcion;
+Model GrapeM;
+Model GrapeR;
 //----------------------------------------------Modelos de personajes----------------------------------------//
 //Arturia Pendragon (Lily)
 Model Lily_AnteBrazo;
@@ -1005,14 +1008,22 @@ int main()
 	//Grap = Model();
 	//Grap.LoadModel("Models/Carteles/Grap.obj");
 
-	//coral1 = Model();
-	//coral1.LoadModel("Models/Corales/11-exported.obj");
-	//coral2 = Model();
-	//coral2.LoadModel("Models/Corales/mesh-90.obj");
-	//coral3 = Model();
-	//coral3.LoadModel("Models/Corales/coralf.obj");
-	//coral4 = Model();
-	//coral4.LoadModel("Models/Corales/corals.obj");
+	coral1 = Model();
+	coral1.LoadModel("Models/Corales/11-exported.obj");
+	coral2 = Model();
+	coral2.LoadModel("Models/Corales/mesh-90.obj");
+	coral3 = Model();
+	coral3.LoadModel("Models/Corales/coralf.obj");
+	coral4 = Model();
+	coral4.LoadModel("Models/Corales/corals.obj");
+	coralcy = Model();
+	coralcy.LoadModel("Models/Decoraciones/coralcy.obj");
+	recepcion = Model();
+	recepcion.LoadModel("Models/Decoraciones/recep.obj");
+	GrapeM = Model();
+	GrapeM.LoadModel("Models/Decoraciones/grapem1.obj");
+	GrapeR = Model();
+	GrapeR.LoadModel("Models/Decoraciones/graper.obj");
 
 	//Calendario_azt = Model();
 	//Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
@@ -1033,11 +1044,10 @@ int main()
 	Acuario_cilindro.LoadModel("Models/Acuario_cilindro/Acuario_cilindro.obj");
 	Medio_cilindro = Model();
 	Medio_cilindro.LoadModel("Models/Acuario_cilindro/Medio_cilindro.obj");
-	/*Espectaculo = Model();
+	Espectaculo = Model();
 	Espectaculo.LoadModel("Models/Decoraciones/espec.obj");
 	HabitatP = Model();
-	HabitatP.LoadModel("Models/Habitat/Habitat.obj");*/
-
+	HabitatP.LoadModel("Models/Habitat/Habitat.obj");
 	//Escaleras
 	//Escalera = Model();
 	//Escalera.LoadModel("Models/Escaleras/Escaleras.obj");
@@ -3564,37 +3574,130 @@ int main()
 		marmol.UseTexture();
 		meshList[2]->RenderMesh();
 
+		//Recepcion
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 80.6f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(-2.0f, 0.0f, -243.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 1.15f, 1.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Edificio.UseTexture();
+		recepcion.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(140.0f, -28.0f, -360.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, -60 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 0.7f, 0.65f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		coral1.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 80.6f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(140.0f, -28.0f, -300.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, -60 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.9f, 0.7f, 0.65f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Edificio.UseTexture();
+		coral1.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(140.0f, -28.0f, -250.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, -60 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.7f, 0.65f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		coral1.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(140.0f, -28.0f, -200.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, -60 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.75f, 0.7f, 0.65f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		coral1.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(140.0f, -28.0f, -150.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, -60 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.65f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		coral1.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(6.0f, -25.0f, 40.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		coral2.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 80.6f, 100.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(6.0f, -25.0f, 80.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Edificio.UseTexture();
+		coral2.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(6.0f, -25.0f, 120.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.45f, 0.45f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		coral2.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-35.0f, -30.0f, 40.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		coral3.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 100.6f, -200.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(-35.0f, -30.0f, 80.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		coral3.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-35.0f, -30.0f, 120.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		coral3.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-85.0f, -32.0f, -250.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.6f, 1.5f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		coral4.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(50.0f, -32.0f, -250.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.6f, 1.5f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		coral4.RenderModel();
+
+		//Cilindro
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-21.0f, -25.2f, -52.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 7.0f, 5.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Edificio.UseTexture();
-		coral4.RenderModel();
+		coralcy.RenderModel();
 
 		//Recepcion
 		model = glm::mat4(1.0);
@@ -4033,6 +4136,22 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		HabitatP.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-130.0f, -32.0f, 30.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		GrapeM.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-130.0f, -32.0f, 30.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		GrapeR.RenderModel();
 
 		glDisable(GL_BLEND);
 
