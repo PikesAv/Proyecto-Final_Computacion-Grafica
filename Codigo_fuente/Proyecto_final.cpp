@@ -131,7 +131,6 @@ Texture marmol;
 Texture Pared_blanca;
 Texture Cristal;
 Texture Entradas;
-Texture Azul_gradiente;
 Texture Techo_acuario;
 Texture Fauna_marina;
 Texture Informacion1;
@@ -921,8 +920,6 @@ int main()
 	Edificio.LoadTextureA();
 	Pared_blanca = Texture("Textures/Pared_blanca.tga");
 	Pared_blanca.LoadTextureA();
-	Azul_gradiente = Texture("Textures/Azul_gradiente.tga");
-	Azul_gradiente.LoadTextureA();
 	Techo_acuario = Texture("Textures/Techo_acuario.tga");
 	Techo_acuario.LoadTextureA();
 	Fauna_marina = Texture("Textures/Fauna_marina.tga");
@@ -949,18 +946,18 @@ int main()
 	//Festival
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
-	/*Farola = Model();
+	Farola = Model();
 	Farola.LoadModel("Models/Farola_2/Farola_2.obj");
-	Carpa = Model();
-	Carpa.LoadModel("Models/Carpa/Carpa.obj");
+	//Carpa = Model();
+	//Carpa.LoadModel("Models/Carpa/Carpa.obj");
 	Farola1 = Model();
 	Farola1.LoadModel("Models/Farola_3/farola_3.obj");
-	Silla_R = Model();
-	Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
-	Mesa_B = Model();
-	Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");*/
-	Reflector = Model();
-	Reflector.LoadModel("Models/Reflector/Reflector.obj");
+	//Silla_R = Model();
+	//Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
+	//Mesa_B = Model();
+	//Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
+	//Reflector = Model();
+	//Reflector.LoadModel("Models/Reflector/Reflector.obj");
 
 	//FoodTrucks/Comida Mex
 	//Comida Mexicana
@@ -1019,18 +1016,18 @@ int main()
 
 	//Calendario_azt = Model();
 	//Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
-	Pinguino_img = Model();
-	Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
-	Ballena_img = Model();
-	Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
-	Orca_img = Model();
-	Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
-	Tiburon_img = Model();
-	Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
-	Pez_img = Model();
-	Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
-	No_flash = Model();
-	No_flash.LoadModel("Models/Carteles/No_fotos.obj");
+	//Pinguino_img = Model();
+	//Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
+	//Ballena_img = Model();
+	//Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
+	//Orca_img = Model();
+	//Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
+	//Tiburon_img = Model();
+	//Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
+	//Pez_img = Model();
+	//Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
+	//No_flash = Model();
+	//No_flash.LoadModel("Models/Carteles/No_fotos.obj");
 	//Estructuras
 	Acuario_cilindro = Model();
 	Acuario_cilindro.LoadModel("Models/Acuario_cilindro/Acuario_cilindro.obj");
@@ -1042,8 +1039,8 @@ int main()
 	HabitatP.LoadModel("Models/Habitat/Habitat.obj");*/
 
 	//Escaleras
-	Escalera = Model();
-	Escalera.LoadModel("Models/Escaleras/Escaleras.obj");
+	//Escalera = Model();
+	//Escalera.LoadModel("Models/Escaleras/Escaleras.obj");
 	//Decoracion
 	/*Piano = Model();
 	Piano.LoadModel("Models/Decoraciones/piano.obj");
@@ -2055,11 +2052,60 @@ int main()
 			shaderList[0].SetSpotLights(spotLights, 0);
 		}
 		
-		//Luces de la recepcion del acuario
+
+		//Luces correspondientes al festival de comida y de la recepcion del acuario
 		if (camera.getCameraPosition().y >= 0) {
-			//Recepcion
+			//Luces de la izquierda
+			if ((camera.getCameraPosition().x >= -140 && camera.getCameraPosition().x <= 0)
+				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -100)) {
+				pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
+					0.2f, 0.5f,
+					-133.0f, 5.0f, -73.0f,
+					0.2f, 0.001f, 0.0001f);
+				pointLightCount++;
+
+				pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
+					0.2f, 0.5f,
+					-133.0f, 5.0f, 5.0f,
+					0.2f, 0.001f, 0.0001f);
+				pointLightCount++;
+
+				pointLights[2] = PointLight(1.0f, 1.0f, 1.0f,
+					0.2f, 0.5f,
+					-133.0f, 5.0f, 165.0f,
+					0.2f, 0.001f, 0.0001f);
+				pointLightCount++;
+				
+				Sonido = 2;
+			}
+			//Luces de la derecha
+			if ((camera.getCameraPosition().x >= 0 && camera.getCameraPosition().x <= 140)
+				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -100)) {
+				pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
+					0.2f, 0.5f,
+					100.0f, 5.0f, -60.0f,
+					0.2f, 0.001f, 0.0001f);
+				pointLightCount++;
+
+				pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
+					0.2f, 0.5f,
+					100.0f, 5.0f, 5.0f,
+					0.2f, 0.001f, 0.0001f);
+				pointLightCount++;
+
+				pointLights[2] = PointLight(1.0f, 1.0f, 1.0f,
+					0.2f, 0.5f,
+					100.0f, 5.0f, 165.0f,
+					0.2f, 0.001f, 0.0001f);
+				pointLightCount++;
+
+				Sonido = 2;
+			}
+
+
+			//Recepcion del acuario
 			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
-				&& (camera.getCameraPosition().z <= 200  && camera.getCameraPosition().z >= -259))
+				&& (camera.getCameraPosition().z <= -150  && camera.getCameraPosition().z >= -259))
 			{
 				pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
 					0.5f, 0.5f,
@@ -2073,8 +2119,15 @@ int main()
 					0.2f, 0.05f, 0.0009f);
 				pointLightCount++;
 
+				Sonido = 1;
+			}
+
+			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
+				&& (camera.getCameraPosition().z <= -140 && camera.getCameraPosition().z >= -150))
+			{
 				Sonido = 0;
 			}
+
 			//Escaleras
 			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
 				&& (camera.getCameraPosition().z <= -260 && camera.getCameraPosition().z >= -400))
@@ -2096,7 +2149,7 @@ int main()
 					20.0f, 10.0f, -375.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-				Sonido = 1;
+				//Sonido = 1;
 			}
 		}
 		if (camera.getCameraPosition().y <= 0) {
@@ -2262,15 +2315,7 @@ int main()
 			}
 
 		}
-
-		//Sonido del concierto
-		if (camera.getCameraPosition().y >= 0) {
-			if ((camera.getCameraPosition().x >= -160 && camera.getCameraPosition().x <= 160)
-				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -180))
-			{
-				Sonido = 2;
-			}
-		}
+		
 		//Musica que se estará usando
 		switch (Sonido)
 		{
@@ -2279,13 +2324,17 @@ int main()
 				break;
 
 			case 1:
-				if(!engine->isCurrentlyPlaying("Gucci Bucket Hat.mp3")){
-					engine->play2D("Gucci Bucket Hat.mp3", true);
-					engine->setSoundVolume(0.1);
+				if(!engine->isCurrentlyPlaying("Audio/After You ve Gone.mp3")){
+					engine->play2D("Audio/After You ve Gone.mp3", true);
+					engine->setSoundVolume(0.3);
 				}
 				break;
 
 			case 2:
+				if (!engine->isCurrentlyPlaying("Audio/Christmas Without The Queen.mp3")) {
+					engine->play2D("Audio/Christmas Without The Queen.mp3", true);
+					engine->setSoundVolume(0.3);
+				}
 				break;
 
 			default:
@@ -2327,14 +2376,14 @@ int main()
 
 		//--------------------------------------------Piso Exterior------------------------------------------//
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-5.0f, -0.5f, 20.0f));
-		model = glm::scale(model, glm::vec3(14.5f, 0.0f, 18.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -0.5f, -80.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 0.0f, 25.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		pisoTexture.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		//meshList[2]->RenderMesh();
+		meshList[2]->RenderMesh();
 
 		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
@@ -2851,27 +2900,43 @@ int main()
 		Carpa.RenderModel();
 
 		//Farolas en el festival
+		//Lado izquierdo
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-150.0f, -1.95f, 0.0f));
+		model = glm::translate(model, glm::vec3(-133.0f, -0.5f, -73.0f));
 		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-150.0f, -1.95f, 167.0f));
+		model = glm::translate(model, glm::vec3(-133.0f, -0.5f, 5.0f));
 		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(102.0f, -1.95f, 0.0f));
+		model = glm::translate(model, glm::vec3(-133.0f, -0.5f, 165.0f));
+		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		model = glm::rotate(model, 45 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Farola.RenderModel();
+
+		//Lado derecho
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(100.0f, -0.5f, -60.0f));
 		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(102.0f, -1.95f, 170.0f));
+		model = glm::translate(model, glm::vec3(100.0f, -0.5f, 5.0f));
+		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Farola.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(100.0f, -0.5f, 165.0f));
 		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
 		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -2882,8 +2947,8 @@ int main()
 		model = glm::scale(model, glm::vec3(2.0f, 4.0f, 2.5f));
 		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Farola1.RenderModel();
 		//faro.UseTexture();
+		//Farola1.RenderModel();
 
 		//Piso de cada una de las secciones del festival
 		//Comida Nacional
@@ -2893,21 +2958,21 @@ int main()
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 2.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera.UseTexture();
-		//meshList[3]->RenderMesh();
+		meshList[3]->RenderMesh();
 		//Puesto de Tacos
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(80.0f, -0.45f, 35.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pasto.UseTexture();
-		//meshList[3]->RenderMesh();
+		meshList[3]->RenderMesh();
 		//Puestos de Mariscos
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(40.0f, -0.45f, 137.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera_2.UseTexture();
-		//meshList[3]->RenderMesh();
+		meshList[3]->RenderMesh();
 		
 		//Comida Internacional
 		//Comida alemana
@@ -2916,21 +2981,21 @@ int main()
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera.UseTexture();
-		//meshList[3]->RenderMesh();
+		meshList[3]->RenderMesh();
 		//Comida Española
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -0.45f, 137.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera_3.UseTexture();
-		//meshList[3]->RenderMesh();
+		meshList[3]->RenderMesh();
 		//Comida Japonesa
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-112.0f, -0.45f, 137.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera_4.UseTexture();
-		//meshList[3]->RenderMesh();
+		meshList[3]->RenderMesh();
 
 		//---------Modelos correspondientes a las sillas y mesas-----------//
 		//puesto de tacos
@@ -3226,21 +3291,21 @@ int main()
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pasto.UseTexture();
-		//meshList[3]->RenderMesh();
+		meshList[3]->RenderMesh();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-112.0f, -0.45f, -43.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera.UseTexture();
-		//meshList[3]->RenderMesh();
+		meshList[3]->RenderMesh();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-112.0f, -0.45f, 17.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Piso_madera_2.UseTexture();
-		//meshList[3]->RenderMesh();
+		meshList[3]->RenderMesh();
 
 		//------------------------------------FoodTrucks-----------------------------//
 		//Comida Peruana
@@ -3795,7 +3860,7 @@ int main()
 
 		//Carga de las imagenes
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 14.0f, -303.5f));
+		model = glm::translate(model, glm::vec3(-1.0f, 14.0f, -259.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Calendario_azt.RenderModel();
@@ -3911,8 +3976,8 @@ int main()
 
 		//Peceras del tunel (Pecera 6)
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(5.5f, -15.0f, 91.0f));
-		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 152.5f));
+		model = glm::translate(model, glm::vec3(5.5f, -17.5f, 91.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 33.0f, 152.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
@@ -3920,8 +3985,8 @@ int main()
 
 		//Pecera 7
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-29.5f, -15.0f, 91.0f));
-		model = glm::scale(model, glm::vec3(15.0f, 30.0f, 152.5f));
+		model = glm::translate(model, glm::vec3(-29.5f, -17.5f, 91.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 33.0f, 152.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
