@@ -1,0 +1,32 @@
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 26.12.2022 21:43:30
+
+mtllib pext.mtl
+
+#
+# object Plane001
+#
+
+v  38.4961 0.2378 4.2368
+v  38.4961 0.1685 -11.0789
+v  -32.3582 0.1683 -11.1231
+v  -32.3582 0.2376 4.1925
+# 4 vertices
+
+vn 0.0000 1.0000 -0.0045
+# 1 vertex normals
+
+vt 4.0427 -0.2680 0.5000
+vt 4.0427 1.2636 0.5000
+vt -3.0427 1.2680 0.5000
+vt -3.0427 -0.2636 0.5000
+# 4 texture coords
+
+o Plane001
+g Plane001
+usemtl lido_1_water
+s 1
+f 1/1/1 2/2/1 3/3/1 
+f 3/3/1 4/4/1 1/1/1 
+# 2 faces
+
