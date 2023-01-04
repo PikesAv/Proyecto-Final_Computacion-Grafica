@@ -60,7 +60,7 @@ float toffsetv = 0.0f;
 //Variables globales para el movimiento del personaje principal
 //Lily
 //Movimientos
-float MrotABrazoL, MrotBrazoL, MrotPiernaL, MrotPieL, MAvanzaLX, MAvanzaLZ, Mrota;
+float MrotABrazoL, MrotBrazoL, MrotPiernaL, MrotPieL, MAvanzaLX, MAvanzaLZ, MAvanzaLY, Mrota;
 int Cgiros;
 //Banderas
 bool rotABL, rotBL, rotPL, rotPiesL, AvanzaLX, AvanzaLZ;
@@ -86,6 +86,19 @@ float MrotABrazoKS, MrotBrazoKS, MrotPiernaKS, MrotPieKS;
 //Banderas
 bool rotABKS, rotBKS, rotPKS, rotPiesKS;
 float rotKoshiroOffset;
+
+//Animales peces
+float MpecesSen, Mpeces, MrotPeces;
+bool rotPecesSen, rotPeces, MpecesB;
+float rotpecesOffset, rotpecesSenOffset;
+//anilaes medusas 
+float MmedusasSen, Mmedusas;
+bool MmedusasSenB, MmedusasB;
+float rotmedusasOffset, rotmedusasSenOffset;
+//animales delfin
+float MdelfinSen, MdelfinZ, MdelfinY, MdelfinSallto;
+bool MdelfinSenB, MdelfinB, MdelfinBsalto, ActivadorSsalto;
+float rotdelfinOffset, rotdelfinSenOffset;
 
 //Variables externas para la seleccion de cada opcion
 extern int bandera;
@@ -246,6 +259,24 @@ Model Koharu_Pie_2;
 Model Koharu_Cuerpo;
 //padoru
 Model Padoru;
+//animales acuario
+Model G_pece_1;
+Model G_pece_2;
+Model G_pece_3;
+Model Tiburon_cuerpo;
+Model Tiburon_der_aleta_1;
+Model Tiburon_der_aleta_2;
+Model Tiburon_izq_aleta_1;
+Model Tiburon_izq_aleta_2;
+Model Tiburon_cola_1;
+Model Tiburon_cola_2;
+Model Medusas;
+Model Caracol;
+Model Cangrejo;
+Model Tiburon_2;
+Model Delfin;
+Model Ballena;
+Model Caballito;
 //extras
 Model Lucy;
 Model vik;
@@ -935,14 +966,14 @@ int main()
 	Pared_tunel.LoadTextureA();
 
 	//Texturas animadas
-	//Firework_G = Texture("Textures/Animadas/Firework_green.tga");
-	//Firework_G.LoadTextureA();
-	//Firework_O = Texture("Textures/Animadas/Firework_orange.tga");
-	//Firework_O.LoadTextureA();
-	//Firework_P = Texture("Textures/Animadas/Firework_purple.tga");
-	//Firework_P.LoadTextureA();
-	//Firework_R = Texture("Textures/Animadas/Firework_red.tga");
-	//Firework_R.LoadTextureA();
+	Firework_G = Texture("Textures/Animadas/Firework_green.tga");
+	Firework_G.LoadTextureA();
+	Firework_O = Texture("Textures/Animadas/Firework_orange.tga");
+	Firework_O.LoadTextureA();
+	Firework_P = Texture("Textures/Animadas/Firework_purple.tga");
+	Firework_P.LoadTextureA();
+	Firework_R = Texture("Textures/Animadas/Firework_red.tga");
+	Firework_R.LoadTextureA();
 
 
 	//Declaracion de modelos utilizados
@@ -951,20 +982,20 @@ int main()
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
 	Farola = Model();
 	Farola.LoadModel("Models/Farola_2/Farola_2.obj");
-	//Carpa = Model();
-	//Carpa.LoadModel("Models/Carpa/Carpa.obj");
+	Carpa = Model();
+	Carpa.LoadModel("Models/Carpa/Carpa.obj");
 	Farola1 = Model();
 	Farola1.LoadModel("Models/Farola_3/farola_3.obj");
-	//Silla_R = Model();
-	//Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
-	//Mesa_B = Model();
-	//Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
-	//Reflector = Model();
-	//Reflector.LoadModel("Models/Reflector/Reflector.obj");
+	Silla_R = Model();
+	Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
+	Mesa_B = Model();
+	Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
+	Reflector = Model();
+	Reflector.LoadModel("Models/Reflector/Reflector.obj");
 
 	//FoodTrucks/Comida Mex
 	//Comida Mexicana
-	/*Comex1 = Model();
+	Comex1 = Model();
 	Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
 	Ftruck1 = Model();
 	Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
@@ -977,36 +1008,36 @@ int main()
 	Ftruck5 = Model();
 	Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
 	FtruckSP = Model();
-	FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");*/
+	FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
 
 	//Escenario
-	//escenario = Model();
-	//escenario.LoadModel("Models/Escenario/Escenario.obj");
-	/*Bateria = Model();
+	escenario = Model();
+	escenario.LoadModel("Models/Escenario/Escenario.obj");
+	Bateria = Model();
 	Bateria.LoadModel("Models/Escenario/Bateria.obj");
 	Guitarra = Model();
 	Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
 	Micro = Model();
-	Micro.LoadModel("Models/Escenario/Micro.obj");*/
+	Micro.LoadModel("Models/Escenario/Micro.obj");
 
 	//Acuario
 	//Infografias e imagenes
-	//Pinguino_inf = Model();
-	//Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
-	//Cangrejo_inf = Model();
-	//Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
-	//Orca_inf = Model();
-	//Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
-	//Tiburon_inf = Model();
-	//Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
-	//Peces_inf = Model();
-	//Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
-	//EstrellaM_inf1 = Model();
-	//EstrellaM_inf1.LoadModel("Models/Estrella de mar/estrellasinfo.obj");
-	//EstrellaM_inf2 = Model();
-	//EstrellaM_inf2.LoadModel("Models/Estrella de mar/estrellasinfo2.obj");
-	//Grap = Model();
-	//Grap.LoadModel("Models/Carteles/Grap.obj");
+	Pinguino_inf = Model();
+	Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
+	Cangrejo_inf = Model();
+	Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
+	Orca_inf = Model();
+	Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
+	Tiburon_inf = Model();
+	Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
+	Peces_inf = Model();
+	Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
+	EstrellaM_inf1 = Model();
+	EstrellaM_inf1.LoadModel("Models/Estrella de mar/estrellasinfo.obj");
+	EstrellaM_inf2 = Model();
+	EstrellaM_inf2.LoadModel("Models/Estrella de mar/estrellasinfo2.obj");
+	Grap = Model();
+	Grap.LoadModel("Models/Carteles/Grap.obj");
 
 	coral1 = Model();
 	coral1.LoadModel("Models/Corales/11-exported.obj");
@@ -1025,20 +1056,20 @@ int main()
 	GrapeR = Model();
 	GrapeR.LoadModel("Models/Decoraciones/graper.obj");
 
-	//Calendario_azt = Model();
-	//Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
-	//Pinguino_img = Model();
-	//Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
-	//Ballena_img = Model();
-	//Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
-	//Orca_img = Model();
-	//Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
-	//Tiburon_img = Model();
-	//Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
-	//Pez_img = Model();
-	//Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
-	//No_flash = Model();
-	//No_flash.LoadModel("Models/Carteles/No_fotos.obj");
+	Calendario_azt = Model();
+	Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
+	Pinguino_img = Model();
+	Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
+	Ballena_img = Model();
+	Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
+	Orca_img = Model();
+	Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
+	Tiburon_img = Model();
+	Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
+	Pez_img = Model();
+	Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
+	No_flash = Model();
+	No_flash.LoadModel("Models/Carteles/No_fotos.obj");
 	//Estructuras
 	Acuario_cilindro = Model();
 	Acuario_cilindro.LoadModel("Models/Acuario_cilindro/Acuario_cilindro.obj");
@@ -1049,17 +1080,17 @@ int main()
 	HabitatP = Model();
 	HabitatP.LoadModel("Models/Habitat/Habitat.obj");
 	//Escaleras
-	//Escalera = Model();
-	//Escalera.LoadModel("Models/Escaleras/Escaleras.obj");
+	Escalera = Model();
+	Escalera.LoadModel("Models/Escaleras/Escaleras.obj");
 	//Decoracion
-	/*Piano = Model();
+	Piano = Model();
 	Piano.LoadModel("Models/Decoraciones/piano.obj");
 	Neptuno = Model();
-	Neptuno.LoadModel("Models/Decoraciones/neptuno.obj");*/
+	Neptuno.LoadModel("Models/Decoraciones/neptuno.obj");
 
 
 	////Artoria Pendragon (Lily)
-	/*Lily_AnteBrazo = Model();
+	Lily_AnteBrazo = Model();
 	Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
 	Lily_AnteBrazo_2 = Model();
 	Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
@@ -1078,9 +1109,9 @@ int main()
 	Lily_Cabeza = Model();
 	Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
 	Lily_Cuerpo = Model();
-	Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");*/
+	Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
 
-	////nero
+	//////nero
 	//Nero_Cuerpo = Model();
 	//Nero_Cuerpo.LoadModel("Models/Nero/nero_cuerpo.obj");
 	//Nero_AnteBrazo = Model();
@@ -1092,7 +1123,7 @@ int main()
 	//Nero_Brazo_2 = Model();
 	//Nero_Brazo_2.LoadModel("Models/Nero/nero_brazo_2.obj");
 
-	////koshiro
+	//////koshiro
 	//koshiro_AnteBrazo = Model();
 	//koshiro_AnteBrazo.LoadModel("Models/koshiro/Koshiro_ABrazo_1.obj");
 	//koshiro_AnteBrazo_2 = Model();
@@ -1112,7 +1143,7 @@ int main()
 	//koshiro_Cuerpo = Model();
 	//koshiro_Cuerpo.LoadModel("Models/koshiro/Koshiro_Cuerpo.obj");
 
-	////Koharu
+	//////Koharu
 	//Koharu_AnteBrazo = Model();
 	//Koharu_AnteBrazo.LoadModel("Models/Koharu/Koharu_AnteBrazo_1.obj");
 	//Koharu_AnteBrazo_2 = Model();
@@ -1131,17 +1162,54 @@ int main()
 	//Koharu_Pie_2.LoadModel("Models/Koharu/Koharu_Pie_2.obj");
 	//Koharu_Cuerpo = Model();
 	//Koharu_Cuerpo.LoadModel("Models/Koharu/Koharu_Cuerpo.obj");
-	////padoru
+	//////padoru
 	//Padoru = Model();
 	//Padoru.LoadModel("Models/PAdoru/Nero_Padoru.obj");
 
+	//animales acuario
+	G_pece_1 = Model();
+	G_pece_1.LoadModel("Models/G_Pez1/Peces1.obj");
+	G_pece_2 = Model();
+	G_pece_2.LoadModel("Models/G_Pez2/Peces2.obj");
+	G_pece_3 = Model();
+	G_pece_3.LoadModel("Models/G_Pez3/Peces3.obj");
+	Tiburon_cuerpo = Model();
+	Tiburon_cuerpo.LoadModel("Models/Tiburon_1/Tiburonsin_uhaha.obj");
+	Tiburon_der_aleta_1 = Model();
+	Tiburon_der_aleta_1.LoadModel("Models/Tiburon_1/aletas_der_1.obj");
+	Tiburon_der_aleta_2 = Model();
+	Tiburon_der_aleta_2.LoadModel("Models/Tiburon_1/aletas_der_2.obj");
+	Tiburon_izq_aleta_1 = Model();
+	Tiburon_izq_aleta_1.LoadModel("Models/Tiburon_1/aletas_izq_1.obj");
+	Tiburon_izq_aleta_2 = Model();
+	Tiburon_izq_aleta_2.LoadModel("Models/Tiburon_1/aletas_izq_2.obj");
+	Tiburon_cola_1 = Model();
+	Tiburon_cola_1.LoadModel("Models/Tiburon_1/coleta_1.obj");
+	Tiburon_cola_2 = Model();
+	Tiburon_cola_2.LoadModel("Models/Tiburon_1/coleta_2.obj");
+	Tiburon_2 = Model();
+	Tiburon_2.LoadModel("Models/Tiburon_2/Tiburon.obj");
+	Medusas = Model();
+	Medusas.LoadModel("Models/medusas/medusas.obj");
+	Caracol = Model();
+	Caracol.LoadModel("Models/Cangejro_y_Caracol/caracol.obj");
+	Cangrejo = Model();
+	Cangrejo.LoadModel("Models/Cangejro_y_Caracol/cangrejo.obj");
+	Delfin = Model();
+	Delfin.LoadModel("Models/delfin/delfin.obj");
+	Ballena = Model();
+	Ballena.LoadModel("Models/Ballena/ballena.obj");
+	Caballito = Model();
+	Caballito.LoadModel("Models/Caballito/caballito.obj");
+
+
 	////extras
-	//Lucy = Model();
-	//Lucy.LoadModel("Models/Lucy/Lucy.obj");
-	//vik = Model();
-	//vik.LoadModel("Models/vik/vik.obj");
-	//elf = Model();
-	//elf.LoadModel("Models/elf/elf.obj");
+	/*Lucy = Model();
+	Lucy.LoadModel("Models/Lucy/Lucy.obj");
+	vik = Model();
+	vik.LoadModel("Models/vik/vik.obj");
+	elf = Model();
+	elf.LoadModel("Models/elf/elf.obj");*/
 	//Shrek = Model();
 	//Shrek.LoadModel("Models/Shrek/Shrek.obj");
 
@@ -1236,7 +1304,7 @@ int main()
 	MrotPiernaL = 0.0f;
 	Mrota = 0.0f;
 	rotLilyOffset = 1.0f;
-	rotLilyOffsetM = 0.1f;
+	rotLilyOffsetM = 1.0f;
 	MAvanzaLX = 0.0f;
 	MAvanzaLZ = 0.0f;
 	AvanzaLX = true;
@@ -1269,6 +1337,32 @@ int main()
 	rotBKS = true;
 	rotPKS = true;
 	//---------------------------------------//
+	//peces
+	Mpeces = 0.0f;
+	rotPeces = true;
+	rotpecesSenOffset = 2.0f;
+	rotpecesOffset = 0.5f;
+	Mpeces = 0.0f;
+	MrotPeces = 0.0f;
+	rotPecesSen = true;
+	MpecesB = true;
+	//medusas
+	MmedusasSen = 0.0f;
+	Mmedusas = 0.0f;
+	MmedusasSenB = true;
+	MmedusasB = true;
+	rotmedusasOffset = 0.1f;
+	rotmedusasSenOffset = 0.5f;
+	//delfin
+	MdelfinSen = 0.0f;
+	MdelfinZ = 0.0f;
+	MdelfinY = 0.0f;
+	MdelfinSenB = true;
+	MdelfinB = true;
+	MdelfinBsalto = true;
+	ActivadorSsalto = true;
+	rotdelfinOffset = 0.2f;
+	rotdelfinSenOffset = 1.0f;
 
 	glm::vec3 posNero = glm::vec3(2.0f, 0.0f, 0.0f);
 	//glm::vec3 poskoshiro = glm::vec3(-4.0f, 5.0f + 3.55f, -5.0f);kjh
@@ -1562,7 +1656,7 @@ int main()
 		{
 			if (Mrota < 90.0f)
 			{
-				Mrota += (rotLilyOffsetM*2) * deltaTime;
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
 			}
 			else
 			{
@@ -1595,7 +1689,7 @@ int main()
 
 		if (AvanzaLX && !AvanzaLZ && Cgiros == 2)
 		{
-			if (MAvanzaLX > -85.0f)
+			if (MAvanzaLX > -105.0f)
 			{
 				MAvanzaLX -= rotLilyOffsetM * deltaTime;
 			}
@@ -1619,7 +1713,7 @@ int main()
 		}
 		if (!AvanzaLX && AvanzaLZ && Cgiros == 3)
 		{
-			if (MAvanzaLZ > -75.0f)
+			if (MAvanzaLZ > 0.0f)
 			{
 				MAvanzaLZ -= rotLilyOffsetM * deltaTime;
 			}
@@ -1631,22 +1725,22 @@ int main()
 		}
 		if (!AvanzaLX && !AvanzaLZ && Cgiros == 4)
 		{
-			if (Mrota < 360.0f)
+			if (Mrota > 180.0f)
 			{
-				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
 			}
 			else
 			{
 				AvanzaLX = true;
 				Cgiros = 4;
-				Mrota = 0.0f;
+				//Mrota = 0.0f;
 			}
 		}
 		if (AvanzaLX && !AvanzaLZ && Cgiros == 4)
 		{
-			if (MAvanzaLX < 80.0f)
+			if (MAvanzaLX > -250.0f)
 			{
-				MAvanzaLX += rotLilyOffsetM * deltaTime;
+				MAvanzaLX -= rotLilyOffsetM * deltaTime;
 			}
 			else
 			{
@@ -1656,9 +1750,9 @@ int main()
 		}
 		if (!AvanzaLX && !AvanzaLZ && Cgiros == 5)
 		{
-			if (Mrota < 90.0f)
+			if (Mrota > 90.0f)
 			{
-				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
 			}
 			else
 			{
@@ -1667,7 +1761,7 @@ int main()
 		}
 		if (!AvanzaLX && AvanzaLZ && Cgiros == 5)
 		{
-			if (MAvanzaLZ < 0.0f)
+			if (MAvanzaLZ < 40.0f)
 			{
 				MAvanzaLZ += rotLilyOffsetM * deltaTime;
 			}
@@ -1690,27 +1784,722 @@ int main()
 		}
 		if (AvanzaLX && !AvanzaLZ && Cgiros == 6)
 		{
-			if (MAvanzaLX > 0.0f)
+			if (MAvanzaLX > -370.0f)
 			{
 				MAvanzaLX -= rotLilyOffsetM * deltaTime;
 			}
 			else
 			{
-				AvanzaLX = false;
+				//AvanzaLX = false;
 				Cgiros = 7;
 			}
 		}
-		if (!AvanzaLX && !AvanzaLZ && Cgiros == 7)
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 7)
 		{
-			if (Mrota > -0.0f)
+			if (MAvanzaLX > -410.0f)
+			{
+				MAvanzaLX -= rotLilyOffsetM * deltaTime;
+				MAvanzaLY -= (rotLilyOffsetM / 3) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 8;
+			}
+		}
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 8)
+		{
+			if (Mrota < 270.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 8)
+		{
+			if (MAvanzaLZ > 20.0f)
+			{
+				MAvanzaLZ -= rotLilyOffsetM * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 9;
+			}
+		}
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 9)
+		{
+			if (Mrota < 360.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+				Mrota = 0.0f;
+			}
+		}
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 9)
+		{
+			if (MAvanzaLX < -360.0f)
+			{
+				MAvanzaLX += rotLilyOffsetM * deltaTime;
+				MAvanzaLY -= (rotLilyOffsetM / 2.5) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 10;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 10)
+		{
+			if (Mrota < 90.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 10)
+		{
+			if (MAvanzaLZ < 85.0f)
+			{
+				MAvanzaLZ += rotLilyOffsetM * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 11;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 11)
+		{
+			if (Mrota > 0.0f)
 			{
 				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
 			}
 			else
 			{
 				AvanzaLX = true;
-				Cgiros = 0;
-				ActivadorRL = false; 
+			}
+		}
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 11)
+		{
+			if (MAvanzaLX < -180.0f)
+			{
+				MAvanzaLX += rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 12;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 12)
+		{
+			if (Mrota > -90.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 12)
+		{
+			if (MAvanzaLZ > 20.0f)
+			{
+				MAvanzaLZ -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 13;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 13)
+		{
+			if (Mrota > -180.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+			}
+		}
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 13)
+		{
+			if (MAvanzaLX > -300.0f)
+			{
+				MAvanzaLX -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 14;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 14)
+		{
+			if (Mrota < -90.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 14)
+		{
+			if (MAvanzaLZ > -50.0f)
+			{
+				MAvanzaLZ -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 15;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 15)
+		{
+			if (Mrota < 0.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+			}
+		}
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 15)
+		{
+			if (MAvanzaLX < -120.0f)
+			{
+				MAvanzaLX += rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 16;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 16)
+		{
+			if (Mrota < 90.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 16)
+		{
+			if (MAvanzaLZ < 60.0f)
+			{
+				MAvanzaLZ += rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 17;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 17)
+		{
+			if (Mrota > 0.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+			}
+		}
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 17)
+		{
+			if (MAvanzaLX < 100.0f)
+			{
+				MAvanzaLX += rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 18;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 18)
+		{
+			if (Mrota > -90.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 18)
+		{
+			if (MAvanzaLZ > 20.0f)
+			{
+				MAvanzaLZ -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 19;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 19)
+		{
+			if (Mrota > -180.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+			}
+		}
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 19)
+		{
+			if (MAvanzaLX > -10.0f)
+			{
+				MAvanzaLX -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 20;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 20)
+		{
+			if (Mrota < -90.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 20)
+		{
+			if (MAvanzaLZ > -12.0f)
+			{
+				MAvanzaLZ -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 21;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 21)
+		{
+			if (Mrota < 0.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+			}
+		}
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 21)
+		{
+			if (MAvanzaLX < 140.0f)
+			{
+				MAvanzaLX += rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 22;
+			}
+		}
+
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 22)
+		{
+			if (Mrota < 180.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+			}
+		}
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 22)
+		{
+			if (MAvanzaLX > -10.0f)
+			{
+				MAvanzaLX -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 23;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 23)
+		{
+			if (Mrota < 270.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 23)
+		{
+			if (MAvanzaLZ > -55.0f)
+			{
+				MAvanzaLZ -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 24;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 24)
+		{
+			if (Mrota < 360.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+				Mrota = 0.0f;
+			}
+		}
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 24)
+		{
+			if (MAvanzaLX < 70.0f)
+			{
+				MAvanzaLX += rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 25;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 25)
+		{
+			if (Mrota > -90.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 25)
+		{
+			if (MAvanzaLZ > -85.0f)
+			{
+				MAvanzaLZ -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 26;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 26)
+		{
+			if (Mrota > -180.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+			}
+		}
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 26)
+		{
+			if (MAvanzaLX > -120.0f)
+			{
+				MAvanzaLX -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 27;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 27)
+		{
+			if (Mrota > -270.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 27)
+		{
+			if (MAvanzaLZ < -30.0f)
+			{
+				MAvanzaLZ += rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 28;
+			}
+		}
+
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 28)
+		{
+			if (Mrota < -180.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+			}
+		}
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 28)
+		{
+			if (MAvanzaLX > -170.0f)
+			{
+				MAvanzaLX -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 29;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 29)
+		{
+			if (Mrota < -90.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 29)
+		{
+			if (MAvanzaLZ > -115.0f)
+			{
+				MAvanzaLZ -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 30;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 30)
+		{
+			if (Mrota > -180.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+			}
+		}
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 30)
+		{
+			if (MAvanzaLX > -370.0f)
+			{
+				MAvanzaLX -= rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 31;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 31)
+		{
+			if (Mrota > -270.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 31)
+		{
+			if (MAvanzaLZ < -40.0f)
+			{
+				MAvanzaLZ += rotLilyOffsetM * deltaTime;
+
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 32;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 32)
+		{
+			if (Mrota < -180.0f)
+			{
+				Mrota += (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+			}
+		}
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 32)
+		{
+			if (MAvanzaLX > -410.0f)
+			{
+				MAvanzaLX -= rotLilyOffsetM * deltaTime;
+				MAvanzaLY += (rotLilyOffsetM / 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = false;
+				Cgiros = 33;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 33)
+		{
+			if (Mrota > -270.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = true;
+			}
+		}
+
+		if (!AvanzaLX && AvanzaLZ && Cgiros == 33)
+		{
+			if (MAvanzaLZ < -20.0f)
+			{
+				MAvanzaLZ += rotLilyOffsetM * deltaTime;
+				//MAvanzaLY += (rotLilyOffsetM / 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLZ = false;
+				Cgiros = 34;
+			}
+		}
+
+		if (!AvanzaLX && !AvanzaLZ && Cgiros == 34)
+		{
+			if (Mrota > -360.0f)
+			{
+				Mrota -= (rotLilyOffsetM * 2) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = true;
+
+			}
+		}
+
+		if (AvanzaLX && !AvanzaLZ && Cgiros == 34)
+		{
+			if (MAvanzaLX < -370.0f)
+			{
+				MAvanzaLX += rotLilyOffsetM * deltaTime;
+				MAvanzaLY += (rotLilyOffsetM / 3) * deltaTime;
+			}
+			else
+			{
+				AvanzaLX = false;
+				//Cgiros = 35;
+				ActivadorRL = false;
 				ActivadorML = false;
 			}
 		}
@@ -2408,7 +3197,7 @@ int main()
 		//Cuerpo
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
-		model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 4.0f + MAvanzaLY, 20.0f + MAvanzaLX));
 		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
 		modelaux_cuerpoL = model;
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
@@ -2889,6 +3678,442 @@ int main()
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Shrek.RenderModel();
+
+		//--------------------------------------------acuario animales---------------------------------------------------------//
+		//animales
+		//...........................................pecera entrada 1----------------------------------------------------------//
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(30.0f, -20.0f + 2 * sin(glm::radians(MpecesSen)), -290.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(60.0f, -15.0f + 2 * sin(glm::radians(MpecesSen)), -304.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(30.0f, -15.0f + 2 * sin(glm::radians(MpecesSen)), -283.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(60.0f, -25.0f + 2 * sin(glm::radians(MpecesSen)), -275.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(36.0f, -20.0f + 2 * sin(glm::radians(MpecesSen)), -294.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(65.0f, -15.0f + 2 * sin(glm::radians(MpecesSen)), -308.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(30.0f, -17.0f + 2 * sin(glm::radians(MpecesSen)), -273.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(50.0f, -20.0f + 2 * sin(glm::radians(MpecesSen)), -260.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(45.0f, -15.0f + 2 * sin(glm::radians(MpecesSen)), -210.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(52.0f, -23.0f + 2 * sin(glm::radians(MpecesSen)), -230.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(67.0f, -10.0f + 2 * sin(glm::radians(MpecesSen)), -210.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(43.0f, -10.0f + 2 * sin(glm::radians(MpecesSen)), -230.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(38.0f, -15.0f + 2 * sin(glm::radians(MpecesSen)), -210.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(32.0f, -9.0f + 2 * sin(glm::radians(MpecesSen)), -230.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_1.RenderModel();
+
+		//---------------------------------------------pecera entrada 2--------------------------------------------------------------//
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(30.0f - 128.0f, -20.0f + 2 * sin(glm::radians(MpecesSen)), -290.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(60.0f - 128.0f, -15.0f + 2 * sin(glm::radians(MpecesSen)), -304.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(30.0f - 128.0f, -15.0f + 2 * sin(glm::radians(MpecesSen)), -283.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(60.0f - 128.0f, -25.0f + 2 * sin(glm::radians(MpecesSen)), -275.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(36.0f - 128.0f, -20.0f + 2 * sin(glm::radians(MpecesSen)), -294.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(65.0f - 128.0f, -15.0f + 2 * sin(glm::radians(MpecesSen)), -308.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(30.0f - 128.0f, -17.0f + 2 * sin(glm::radians(MpecesSen)), -273.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(50.0f - 128.0f, -20.0f + 2 * sin(glm::radians(MpecesSen)), -260.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(45.0f - 128.0f, -15.0f + 2 * sin(glm::radians(MpecesSen)), -210.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(52.0f - 128.0f, -23.0f + 2 * sin(glm::radians(MpecesSen)), -230.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(67.0f - 128.0f, -10.0f + 2 * sin(glm::radians(MpecesSen)), -210.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(43.0f - 128.0f, -10.0f + 2 * sin(glm::radians(MpecesSen)), -230.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(38.0f - 128.0f, -15.0f + 2 * sin(glm::radians(MpecesSen)), -210.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(32.0f - 128.0f, -9.0f + 2 * sin(glm::radians(MpecesSen)), -230.0f - Mpeces));
+		model = glm::rotate(model, glm::radians(MrotPeces), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		G_pece_2.RenderModel();
+		//_--------------------------------Pecera 3-----------------------------------------------------------------//
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(120.0f, -20.0f + 2 * sin(glm::radians(MpecesSen)), 45.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ballena.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(105.0f, -25.0f + 2 * sin(glm::radians(MpecesSen)), 25.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Caballito.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(90.0f, -25.0f + 2 * sin(glm::radians(MpecesSen)), 25.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Caballito.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(85.0f, -25.0f + 2 * sin(glm::radians(MpecesSen)), 25.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Caballito.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(97.0f, -25.0f + 2 * sin(glm::radians(MpecesSen)), 25.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Caballito.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(125.0f, -25.0f + 2 * sin(glm::radians(MpecesSen)), 25.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Caballito.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(125.0f, -13.0f + 2 * sin(glm::radians(MdelfinSen)) + MdelfinY, 35.0f + MdelfinZ));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Delfin.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(90.0f, -17.0f + 2 * sin(glm::radians(MdelfinSen)) + MdelfinY, 45.0f + MdelfinZ));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Delfin.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(80.0f, -27.0f + 2 * sin(glm::radians(MdelfinSen)) + MdelfinY, 35.0f + MdelfinZ));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Delfin.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(85.0f, -27.0f + 2 * sin(glm::radians(MdelfinSen)) + MdelfinY, 45.0f + MdelfinZ));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Delfin.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(90.0f, -22.0f + 2 * sin(glm::radians(MdelfinSen)) + MdelfinY, 55.0f + MdelfinZ));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Delfin.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(75.0f, -27.0f + 2 * sin(glm::radians(MdelfinSen)) + MdelfinY, 65.0f + MdelfinZ));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Delfin.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(85.0f, -27.0f + 2 * sin(glm::radians(MdelfinSen)) + MdelfinY, 65.0f + MdelfinZ));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Delfin.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(85.0f, -27.0f + 2 * sin(glm::radians(MdelfinSen)) + MdelfinY, 85.0f + MdelfinZ));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Delfin.RenderModel();
+
+		//-------------------------------------------Pecera 4-----------------------------------------------------//
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(-60.0f, -20.0f + 2 * sin(glm::radians(MpecesSen)), -250.0f + Mpeces));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//G_pece_3.RenderModel();
+
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(-60.0f, -20.0f + 2 * sin(glm::radians(MmedusasSen)), -250.0f + Mmedusas));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Medusas.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(30.0f, -20.0f + 2 * sin(glm::radians(MdelfinSen)) + MdelfinY, -250.0f + MdelfinZ));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Delfin.RenderModel();
+
+		model = glm::mat4(1.0);
+		color = glm::vec3(0.0f, 0.0f, 0.3f);
+		//model = glm::translate(model, glm::vec3(0.0f + MAvanzaLZ, 2.7f, 20.0f + MAvanzaLX));
+		model = glm::translate(model, glm::vec3(-60.0f, -20.0f + 2 * sin(glm::radians(MdelfinSen)) + MdelfinY, -250.0f + MdelfinZ));
+		model = glm::rotate(model, glm::radians(Mrota), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Tiburon_2.RenderModel();
 
 
 		//--------------------------------------------Construcción del Festival------------------------------------------------//
