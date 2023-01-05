@@ -168,6 +168,7 @@ Texture Informacion2;
 Texture Pared_tunel;
 Texture Tunel_textura;
 Texture Agua;
+Texture Piso_acuario;
 
 //Texturas animadas
 Texture Firework_O;
@@ -735,10 +736,10 @@ void CrearPlantabaja()
 
 		// bottom
 		//x		y		z		S		T
-		-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	-1.0f,	0.0f,
-		0.5f,  -0.5f,  0.5f,	1.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
-		 0.5f,  -0.5f,  -0.5f,	1.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
-		-0.5f, -0.5f,  -0.5f,	0.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
+		//-0.5f, -0.5f,  0.5f,	0.0f,  0.0f,		0.0f,	-1.0f,	0.0f,
+		//0.5f,  -0.5f,  0.5f,	1.0f,	0.0f,		0.0f,	-1.0f,	0.0f,
+		// 0.5f,  -0.5f,  -0.5f,	1.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
+		//-0.5f, -0.5f,  -0.5f,	0.0f,	1.0f,		0.0f,	-1.0f,	0.0f,
 
 		//UP
 		 //x		y		z		S		T
@@ -1019,6 +1020,8 @@ int main()
 	Tunel_textura.LoadTextureA();
 	Agua = Texture("Textures/Water.tga");
 	Agua.LoadTextureA();
+	Piso_acuario = Texture("Textures/Piso_acuario.tga");
+	Piso_acuario.LoadTextureA();
 
 	//Texturas animadas
 	Firework_G = Texture("Textures/Animadas/Firework_green.tga");
@@ -1035,113 +1038,113 @@ int main()
 	//Festival
 	cartel_M = Model();
 	cartel_M.LoadModel("Models/Construccion/maistro.obj");
-	Farola = Model();
-	Farola.LoadModel("Models/Farola_2/Farola_2.obj");
-	Carpa = Model();
-	Carpa.LoadModel("Models/Carpa/Carpa.obj");
-	Farola1 = Model();
-	Farola1.LoadModel("Models/Farola_3/farola_3.obj");
+	//Farola = Model();
+	//Farola.LoadModel("Models/Farola_2/Farola_2.obj");
+	//Carpa = Model();
+	//Carpa.LoadModel("Models/Carpa/Carpa.obj");
+	//Farola1 = Model();
+	//Farola1.LoadModel("Models/Farola_3/farola_3.obj");
 	Silla_R = Model();
 	Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
 	Mesa_B = Model();
 	Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
-	Reflector = Model();
-	Reflector.LoadModel("Models/Reflector/Reflector.obj");
+	//Reflector = Model();
+	//Reflector.LoadModel("Models/Reflector/Reflector.obj");
 
 	//FoodTrucks/Comida Mex
 	//Comida Mexicana
-	Comex1 = Model();
-	Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
-	Ftruck1 = Model();
-	Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
-	Ftruck2 = Model();
-	Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
-	Ftruck3 = Model();
-	Ftruck3.LoadModel("Models/FoodTrucks/Ft3/yatai.obj");
-	Ftruck4 = Model();
-	Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
-	Ftruck5 = Model();
-	Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
-	FtruckSP = Model();
-	FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
+	//Comex1 = Model();
+	//Comex1.LoadModel("Models/Comida Mex/Puesto1/comex1.obj");
+	//Ftruck1 = Model();
+	//Ftruck1.LoadModel("Models/FoodTrucks/Ft1/ft1.obj");
+	//Ftruck2 = Model();
+	//Ftruck2.LoadModel("Models/FoodTrucks/Ft2/ft2.obj");
+	//Ftruck3 = Model();
+	//Ftruck3.LoadModel("Models/FoodTrucks/Ft3/yatai.obj");
+	//Ftruck4 = Model();
+	//Ftruck4.LoadModel("Models/FoodTrucks/Ft4/gerobak.obj");
+	//Ftruck5 = Model();
+	//Ftruck5.LoadModel("Models/FoodTrucks/Ft5/ft5.obj");
+	//FtruckSP = Model();
+	//FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
 
 	//Escenario
-	escenario = Model();
-	escenario.LoadModel("Models/Escenario/Escenario.obj");
-	Bateria = Model();
-	Bateria.LoadModel("Models/Escenario/Bateria.obj");
-	Guitarra = Model();
-	Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
-	Micro = Model();
-	Micro.LoadModel("Models/Escenario/Micro.obj");
+	//escenario = Model();
+	//escenario.LoadModel("Models/Escenario/Escenario.obj");
+	//Bateria = Model();
+	//Bateria.LoadModel("Models/Escenario/Bateria.obj");
+	//Guitarra = Model();
+	//Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
+	//Micro = Model();
+	//Micro.LoadModel("Models/Escenario/Micro.obj");
 
 	//Acuario
 	//Infografias e imagenes
-	Pinguino_inf = Model();
-	Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
-	Cangrejo_inf = Model();
-	Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
-	Orca_inf = Model();
-	Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
-	Tiburon_inf = Model();
-	Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
-	Peces_inf = Model();
-	Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
-	EstrellaM_inf1 = Model();
-	EstrellaM_inf1.LoadModel("Models/Estrella de mar/estrellasinfo.obj");
-	EstrellaM_inf2 = Model();
-	EstrellaM_inf2.LoadModel("Models/Estrella de mar/estrellasinfo2.obj");
-	Grap = Model();
-	Grap.LoadModel("Models/Carteles/Grap.obj");
+	//Pinguino_inf = Model();
+	//Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
+	//Cangrejo_inf = Model();
+	//Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
+	//Orca_inf = Model();
+	//Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
+	//Tiburon_inf = Model();
+	//Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
+	//Peces_inf = Model();
+	//Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
+	//EstrellaM_inf1 = Model();
+	//EstrellaM_inf1.LoadModel("Models/Estrella de mar/estrellasinfo.obj");
+	//EstrellaM_inf2 = Model();
+	//EstrellaM_inf2.LoadModel("Models/Estrella de mar/estrellasinfo2.obj");
+	//Grap = Model();
+	//Grap.LoadModel("Models/Carteles/Grap.obj");
 
-	coral1 = Model();
-	coral1.LoadModel("Models/Corales/11-exported.obj");
-	coral2 = Model();
-	coral2.LoadModel("Models/Corales/mesh-90.obj");
-	coral3 = Model();
-	coral3.LoadModel("Models/Corales/coralf.obj");
-	coral4 = Model();
-	coral4.LoadModel("Models/Corales/corals.obj");
-	coralcy = Model();
-	coralcy.LoadModel("Models/Decoraciones/coralcy.obj");
-	recepcion = Model();
-	recepcion.LoadModel("Models/Decoraciones/recep.obj");
-	GrapeM = Model();
-	GrapeM.LoadModel("Models/Decoraciones/grapem1.obj");
-	GrapeR = Model();
-	GrapeR.LoadModel("Models/Decoraciones/graper.obj");
+	//coral1 = Model();
+	//coral1.LoadModel("Models/Corales/11-exported.obj");
+	//coral2 = Model();
+	//coral2.LoadModel("Models/Corales/mesh-90.obj");
+	//coral3 = Model();
+	//coral3.LoadModel("Models/Corales/coralf.obj");
+	//coral4 = Model();
+	//coral4.LoadModel("Models/Corales/corals.obj");
+	//coralcy = Model();
+	//coralcy.LoadModel("Models/Decoraciones/coralcy.obj");
+	//recepcion = Model();
+	//recepcion.LoadModel("Models/Decoraciones/recep.obj");
+	//GrapeM = Model();
+	//GrapeM.LoadModel("Models/Decoraciones/grapem1.obj");
+	//GrapeR = Model();
+	//GrapeR.LoadModel("Models/Decoraciones/graper.obj");
 
-	Calendario_azt = Model();
-	Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
-	Pinguino_img = Model();
-	Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
-	Ballena_img = Model();
-	Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
-	Orca_img = Model();
-	Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
-	Tiburon_img = Model();
-	Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
-	Pez_img = Model();
-	Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
-	No_flash = Model();
-	No_flash.LoadModel("Models/Carteles/No_fotos.obj");
+	//Calendario_azt = Model();
+	//Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
+	//Pinguino_img = Model();
+	//Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
+	//Ballena_img = Model();
+	//Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
+	//Orca_img = Model();
+	//Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
+	//Tiburon_img = Model();
+	//Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
+	//Pez_img = Model();
+	//Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
+	//No_flash = Model();
+	//No_flash.LoadModel("Models/Carteles/No_fotos.obj");
+
 	//--------NUEVO------------//
-	delfin1 = Model();
-	delfin1.LoadModel("Models/Carteles/espdelf1.obj");
-	delfin2 = Model();
-	delfin2.LoadModel("Models/Carteles/espdelf2.obj");
-	delfin3 = Model();
-	delfin3.LoadModel("Models/Carteles/espdelf3.obj");
-	delfin4 = Model();
-	delfin4.LoadModel("Models/Carteles/espdelf4.obj");
-	delfin5 = Model();
-	delfin5.LoadModel("Models/Carteles/espdelf5.obj");
+	//delfin1 = Model();
+	//delfin1.LoadModel("Models/Carteles/espdelf1.obj");
+	//delfin2 = Model();
+	//delfin2.LoadModel("Models/Carteles/espdelf2.obj");
+	//delfin3 = Model();
+	//delfin3.LoadModel("Models/Carteles/espdelf3.obj");
+	//delfin4 = Model();
+	//delfin4.LoadModel("Models/Carteles/espdelf4.obj");
+	//delfin5 = Model();
+	//delfin5.LoadModel("Models/Carteles/espdelf5.obj");
 
-	estrella = Model();
-	estrella.LoadModel("Models/Estrellas/PRI_Starfish.obj");
-	estrella1 = Model();
-	estrella1.LoadModel("Models/Estrellas/star.obj");
-
+	//estrella = Model();
+	//estrella.LoadModel("Models/Estrellas/PRI_Starfish.obj");
+	//estrella1 = Model();
+	//estrella1.LoadModel("Models/Estrellas/star.obj");
 
 	paredaq = Model();
 	paredaq.LoadModel("Models/Decoraciones/ppaq.obj");
@@ -1153,166 +1156,168 @@ int main()
 	Acuario_cilindro.LoadModel("Models/Acuario_cilindro/Acuario_cilindro.obj");
 	Medio_cilindro = Model();
 	Medio_cilindro.LoadModel("Models/Acuario_cilindro/Medio_cilindro.obj");
-	Espectaculo = Model();
-	Espectaculo.LoadModel("Models/Decoraciones/espectaculo1.obj");
-	HabitatP = Model();
-	HabitatP.LoadModel("Models/Habitat/Habitat.obj");
+	//Espectaculo = Model();
+	//Espectaculo.LoadModel("Models/Decoraciones/espectaculo1.obj");
+	//HabitatP = Model();
+	//HabitatP.LoadModel("Models/Habitat/Habitat.obj");
 	
 	//---------NUEVO-----------//
 	//Thomas = Model();
 	//Thomas.LoadModel("Models/Nueva carpeta/tomas.obj");
-	isla = Model();
-	isla.LoadModel("Models/Decoraciones/isla.obj");
-	truss = Model();
-	truss.LoadModel("Models/Decoraciones/truss.obj");
-	fence = Model();
-	fence.LoadModel("Models/Decoraciones/fence.obj");
-	fence1 = Model();
-	fence1.LoadModel("Models/Decoraciones/mfence.obj");
+	//isla = Model();
+	//isla.LoadModel("Models/Decoraciones/isla.obj");
+	//truss = Model();
+	//truss.LoadModel("Models/Decoraciones/truss.obj");
+	//fence = Model();
+	//fence.LoadModel("Models/Decoraciones/fence.obj");
+	//fence1 = Model();
+	//fence1.LoadModel("Models/Decoraciones/mfence.obj");
 
 	//Bancas
-	banca1 = Model();
-	banca1.LoadModel("Models/Decoraciones/brench1.obj");
-	banca2 = Model();
-	banca2.LoadModel("Models/Decoraciones/brench2.obj");
-	banca3 = Model();
-	banca3.LoadModel("Models/Decoraciones/brench3.obj");
-	banca4 = Model();
-	banca4.LoadModel("Models/Decoraciones/brench4.obj");
+	//banca1 = Model();
+	//banca1.LoadModel("Models/Decoraciones/brench1.obj");
+	//banca2 = Model();
+	//banca2.LoadModel("Models/Decoraciones/brench2.obj");
+	//banca3 = Model();
+	//banca3.LoadModel("Models/Decoraciones/brench3.obj");
+	//banca4 = Model();
+	//banca4.LoadModel("Models/Decoraciones/brench4.obj");
 
 	//Velvet
-	Velvet = Model();
-	Velvet.LoadModel("Models/Decoraciones/Velvet.obj");
-	velvet1 = Model();
-	velvet1.LoadModel("Models/Decoraciones/Velvet1.obj");
+	//Velvet = Model();
+	//Velvet.LoadModel("Models/Decoraciones/Velvet.obj");
+	//velvet1 = Model();
+	//velvet1.LoadModel("Models/Decoraciones/Velvet1.obj");
 
 	//--------------------//
 	//Escaleras
 	Escalera = Model();
 	Escalera.LoadModel("Models/Escaleras/Escaleras.obj");
+
 	//Decoracion
-	Piano = Model();
-	Piano.LoadModel("Models/Decoraciones/piano.obj");
-	Neptuno = Model();
-	Neptuno.LoadModel("Models/Decoraciones/neptuno.obj");
+	//Piano = Model();
+	//Piano.LoadModel("Models/Decoraciones/piano.obj");
+	//Neptuno = Model();
+	//Neptuno.LoadModel("Models/Decoraciones/neptuno.obj");
 
 
 	//Artoria Pendragon (Lily)
-	Lily_AnteBrazo = Model();
-	Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
-	Lily_AnteBrazo_2 = Model();
-	Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
-	Lily_Brazo = Model();
-	Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
-	Lily_Brazo_2 = Model();
-	Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
-	Lily_Pierna = Model();
-	Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
-	Lily_Pierna_2 = Model();
-	Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
-	Lily_Pie = Model();
-	Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
-	Lily_Pie_2 = Model();
-	Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
-	Lily_Cabeza = Model();
-	Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
-	Lily_Cuerpo = Model();
-	Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
+	//Lily_AnteBrazo = Model();
+	//Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
+	//Lily_AnteBrazo_2 = Model();
+	//Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
+	//Lily_Brazo = Model();
+	//Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
+	//Lily_Brazo_2 = Model();
+	//Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
+	//Lily_Pierna = Model();
+	//Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
+	//Lily_Pierna_2 = Model();
+	//Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
+	//Lily_Pie = Model();
+	//Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
+	//Lily_Pie_2 = Model();
+	//Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
+	//Lily_Cabeza = Model();
+	//Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
+	//Lily_Cuerpo = Model();
+	//Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
 
 	////nero
-	Nero_Cuerpo = Model();
-	Nero_Cuerpo.LoadModel("Models/Nero/nero_cuerpo.obj");
-	Nero_AnteBrazo = Model();
-	Nero_AnteBrazo.LoadModel("Models/Nero/nero_antebrazo_1.obj");
-	Nero_AnteBrazo_2 = Model();
-	Nero_AnteBrazo_2.LoadModel("Models/Nero/nero_antebrazo_2.obj");
-	Nero_Brazo = Model();
-	Nero_Brazo.LoadModel("Models/Nero/nero_brazo_1.obj");
-	Nero_Brazo_2 = Model();
-	Nero_Brazo_2.LoadModel("Models/Nero/nero_brazo_2.obj");
+	//Nero_Cuerpo = Model();
+	//Nero_Cuerpo.LoadModel("Models/Nero/nero_cuerpo.obj");
+	//Nero_AnteBrazo = Model();
+	//Nero_AnteBrazo.LoadModel("Models/Nero/nero_antebrazo_1.obj");
+	//Nero_AnteBrazo_2 = Model();
+	//Nero_AnteBrazo_2.LoadModel("Models/Nero/nero_antebrazo_2.obj");
+	//Nero_Brazo = Model();
+	//Nero_Brazo.LoadModel("Models/Nero/nero_brazo_1.obj");
+	//Nero_Brazo_2 = Model();
+	//Nero_Brazo_2.LoadModel("Models/Nero/nero_brazo_2.obj");
 
 	////koshiro
-	koshiro_AnteBrazo = Model();
-	koshiro_AnteBrazo.LoadModel("Models/koshiro/Koshiro_ABrazo_1.obj");
-	koshiro_AnteBrazo_2 = Model();
-	koshiro_AnteBrazo_2.LoadModel("Models/koshiro/Koshiro_ABrazo_2.obj");
-	koshiro_Brazo = Model();
-	koshiro_Brazo.LoadModel("Models/koshiro/Koshiro_Brazo_1.obj");
-	koshiro_Brazo_2 = Model();
-	koshiro_Brazo_2.LoadModel("Models/koshiro/Koshiro_Brazo_2.obj");
-	koshiro_Pierna = Model();
-	koshiro_Pierna.LoadModel("Models/koshiro/Koshiro_Pierna_1.obj");
-	koshiro_Pierna_2 = Model();
-	koshiro_Pierna_2.LoadModel("Models/koshiro/Koshiro_Pierna_2.obj");
-	koshiro_Pie = Model();
-	koshiro_Pie.LoadModel("Models/koshiro/Koshiro_Pie_1.obj");
-	koshiro_Pie_2 = Model();
-	koshiro_Pie_2.LoadModel("Models/koshiro/Koshiro_Pie_2.obj");
-	koshiro_Cuerpo = Model();
-	koshiro_Cuerpo.LoadModel("Models/koshiro/Koshiro_Cuerpo.obj");
+	//koshiro_AnteBrazo = Model();
+	//koshiro_AnteBrazo.LoadModel("Models/koshiro/Koshiro_ABrazo_1.obj");
+	//koshiro_AnteBrazo_2 = Model();
+	//koshiro_AnteBrazo_2.LoadModel("Models/koshiro/Koshiro_ABrazo_2.obj");
+	//koshiro_Brazo = Model();
+	//koshiro_Brazo.LoadModel("Models/koshiro/Koshiro_Brazo_1.obj");
+	//koshiro_Brazo_2 = Model();
+	//koshiro_Brazo_2.LoadModel("Models/koshiro/Koshiro_Brazo_2.obj");
+	//koshiro_Pierna = Model();
+	//koshiro_Pierna.LoadModel("Models/koshiro/Koshiro_Pierna_1.obj");
+	//koshiro_Pierna_2 = Model();
+	//koshiro_Pierna_2.LoadModel("Models/koshiro/Koshiro_Pierna_2.obj");
+	//koshiro_Pie = Model();
+	//koshiro_Pie.LoadModel("Models/koshiro/Koshiro_Pie_1.obj");
+	//koshiro_Pie_2 = Model();
+	//koshiro_Pie_2.LoadModel("Models/koshiro/Koshiro_Pie_2.obj");
+	//koshiro_Cuerpo = Model();
+	//koshiro_Cuerpo.LoadModel("Models/koshiro/Koshiro_Cuerpo.obj");
 
 	////Koharu
-	Koharu_AnteBrazo = Model();
-	Koharu_AnteBrazo.LoadModel("Models/Koharu/Koharu_AnteBrazo_1.obj");
-	Koharu_AnteBrazo_2 = Model();
-	Koharu_AnteBrazo_2.LoadModel("Models/Koharu/Koharu_AnteBrazo_2.obj");
-	Koharu_Brazo = Model();
-	Koharu_Brazo.LoadModel("Models/Koharu/Koharu_Brazo_1.obj");
-	Koharu_Brazo_2 = Model();
-	Koharu_Brazo_2.LoadModel("Models/Koharu/Koharu_Brazo_2.obj");
-	Koharu_Pierna = Model();
-	Koharu_Pierna.LoadModel("Models/Koharu/Koharu_Pierna_1.obj");
-	Koharu_Pierna_2 = Model();
-	Koharu_Pierna_2.LoadModel("Models/Koharu/Koharu_Pierna_2.obj");
-	Koharu_Pie = Model();
-	Koharu_Pie.LoadModel("Models/Koharu/Koharu_Pie_1.obj");
-	Koharu_Pie_2 = Model();
-	Koharu_Pie_2.LoadModel("Models/Koharu/Koharu_Pie_2.obj");
-	Koharu_Cuerpo = Model();
-	Koharu_Cuerpo.LoadModel("Models/Koharu/Koharu_Cuerpo.obj");
+	//Koharu_AnteBrazo = Model();
+	//Koharu_AnteBrazo.LoadModel("Models/Koharu/Koharu_AnteBrazo_1.obj");
+	//Koharu_AnteBrazo_2 = Model();
+	//Koharu_AnteBrazo_2.LoadModel("Models/Koharu/Koharu_AnteBrazo_2.obj");
+	//Koharu_Brazo = Model();
+	//Koharu_Brazo.LoadModel("Models/Koharu/Koharu_Brazo_1.obj");
+	//Koharu_Brazo_2 = Model();
+	//Koharu_Brazo_2.LoadModel("Models/Koharu/Koharu_Brazo_2.obj");
+	//Koharu_Pierna = Model();
+	//Koharu_Pierna.LoadModel("Models/Koharu/Koharu_Pierna_1.obj");
+	//Koharu_Pierna_2 = Model();
+	//Koharu_Pierna_2.LoadModel("Models/Koharu/Koharu_Pierna_2.obj");
+	//Koharu_Pie = Model();
+	//Koharu_Pie.LoadModel("Models/Koharu/Koharu_Pie_1.obj");
+	//Koharu_Pie_2 = Model();
+	//Koharu_Pie_2.LoadModel("Models/Koharu/Koharu_Pie_2.obj");
+	//Koharu_Cuerpo = Model();
+	//Koharu_Cuerpo.LoadModel("Models/Koharu/Koharu_Cuerpo.obj");
+	
 	////padoru
-	Padoru = Model();
-	Padoru.LoadModel("Models/PAdoru/Nero_Padoru.obj");
+	//Padoru = Model();
+	//Padoru.LoadModel("Models/PAdoru/Nero_Padoru.obj");
 
 	//animales acuario
-	G_pece_1 = Model();
-	G_pece_1.LoadModel("Models/G_Pez1/Peces1.obj");
-	G_pece_2 = Model();
-	G_pece_2.LoadModel("Models/G_Pez2/Peces2.obj");
-	G_pece_3 = Model();
-	G_pece_3.LoadModel("Models/G_Pez3/Peces3.obj");
-	Tiburon_cuerpo = Model();
-	Tiburon_cuerpo.LoadModel("Models/Tiburon_1/Tiburonsin_uhaha.obj");
-	Tiburon_der_aleta_1 = Model();
-	Tiburon_der_aleta_1.LoadModel("Models/Tiburon_1/aletas_der_1.obj");
-	Tiburon_der_aleta_2 = Model();
-	Tiburon_der_aleta_2.LoadModel("Models/Tiburon_1/aletas_der_2.obj");
-	Tiburon_izq_aleta_1 = Model();
-	Tiburon_izq_aleta_1.LoadModel("Models/Tiburon_1/aletas_izq_1.obj");
-	Tiburon_izq_aleta_2 = Model();
-	Tiburon_izq_aleta_2.LoadModel("Models/Tiburon_1/aletas_izq_2.obj");
-	Tiburon_cola_1 = Model();
-	Tiburon_cola_1.LoadModel("Models/Tiburon_1/coleta_1.obj");
-	Tiburon_cola_2 = Model();
-	Tiburon_cola_2.LoadModel("Models/Tiburon_1/coleta_2.obj");
-	Tiburon_2 = Model();
-	Tiburon_2.LoadModel("Models/Tiburon_2/Tiburon.obj");
-	Medusas = Model();
-	Medusas.LoadModel("Models/medusas/medusas.obj");
-	Delfin = Model();
-	Delfin.LoadModel("Models/delfin/delfin.obj");
-	Ballena = Model();
-	Ballena.LoadModel("Models/Ballena/ballena.obj");
-	Caballito = Model();
-	Caballito.LoadModel("Models/Caballito/caballito.obj");
-	Pinguino_E = Model();
-	Pinguino_E.LoadModel("Models/Pingus/grapem1.obj");
-	Pinguino_E_aleta_der = Model();
-	Pinguino_E_aleta_der.LoadModel("Models/Pingus/Pengu_Aleta_der.obj");
-	Pinguino_E_aleta_izq = Model();
-	Pinguino_E_aleta_izq.LoadModel("Models/Pingus/Pengu_Aleta_izq.obj");
-	Pinguino_E_aleta_cuerpo = Model();
-	Pinguino_E_aleta_cuerpo.LoadModel("Models/Pingus/Pengu_cuerpo.obj");
+	//G_pece_1 = Model();
+	//G_pece_1.LoadModel("Models/G_Pez1/Peces1.obj");
+	//G_pece_2 = Model();
+	//G_pece_2.LoadModel("Models/G_Pez2/Peces2.obj");
+	//G_pece_3 = Model();
+	//G_pece_3.LoadModel("Models/G_Pez3/Peces3.obj");
+	//Tiburon_cuerpo = Model();
+	//Tiburon_cuerpo.LoadModel("Models/Tiburon_1/Tiburonsin_uhaha.obj");
+	//Tiburon_der_aleta_1 = Model();
+	//Tiburon_der_aleta_1.LoadModel("Models/Tiburon_1/aletas_der_1.obj");
+	//Tiburon_der_aleta_2 = Model();
+	//Tiburon_der_aleta_2.LoadModel("Models/Tiburon_1/aletas_der_2.obj");
+	//Tiburon_izq_aleta_1 = Model();
+	//Tiburon_izq_aleta_1.LoadModel("Models/Tiburon_1/aletas_izq_1.obj");
+	//Tiburon_izq_aleta_2 = Model();
+	//Tiburon_izq_aleta_2.LoadModel("Models/Tiburon_1/aletas_izq_2.obj");
+	//Tiburon_cola_1 = Model();
+	//Tiburon_cola_1.LoadModel("Models/Tiburon_1/coleta_1.obj");
+	//Tiburon_cola_2 = Model();
+	//Tiburon_cola_2.LoadModel("Models/Tiburon_1/coleta_2.obj");
+	//Tiburon_2 = Model();
+	//Tiburon_2.LoadModel("Models/Tiburon_2/Tiburon.obj");
+	//Medusas = Model();
+	//Medusas.LoadModel("Models/medusas/medusas.obj");
+	//Delfin = Model();
+	//Delfin.LoadModel("Models/delfin/delfin.obj");
+	//Ballena = Model();
+	//Ballena.LoadModel("Models/Ballena/ballena.obj");
+	//Caballito = Model();
+	//Caballito.LoadModel("Models/Caballito/caballito.obj");
+	//Pinguino_E = Model();
+	//Pinguino_E.LoadModel("Models/Pingus/grapem1.obj");
+	//Pinguino_E_aleta_der = Model();
+	//Pinguino_E_aleta_der.LoadModel("Models/Pingus/Pengu_Aleta_der.obj");
+	//Pinguino_E_aleta_izq = Model();
+	//Pinguino_E_aleta_izq.LoadModel("Models/Pingus/Pengu_Aleta_izq.obj");
+	//Pinguino_E_aleta_cuerpo = Model();
+	//Pinguino_E_aleta_cuerpo.LoadModel("Models/Pingus/Pengu_cuerpo.obj");
 
 	////extras
 	//Lucy = Model();
@@ -3270,10 +3275,6 @@ int main()
 			}
 		}
 
-
-
-
-
 		//EX
 		if (MEXRB && ActivadorKS)
 		{
@@ -3466,18 +3467,18 @@ int main()
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
-					140.0f, 5.0f, -320.0f,
-					0.2f, 0.001f, 0.0009f);
+					90.0f, 5.0f, -340.0f,
+					0.17f, 0.001f, 0.0009f);
 				pointLightCount++;
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.2f, 0.5f,
-					140.0f, 5.0f, -180.0f,
-					0.2f, 0.001f, 0.0009f);
+					95.0f, 5.0f, -160.0f,
+					0.1f, 0.001f, 0.0009f);
 				pointLightCount++;
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					0.0f, 5.0f, -150.0f,
-					0.2f, 0.01f, 0.0009f);
+					0.17f, 0.001f, 0.0009f);
 				pointLightCount++;
 				Sonido = 0;
 			}
@@ -3487,18 +3488,18 @@ int main()
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
-					-5.0f, 5.0f, -150.0f,
-					0.2f, 0.001f, 0.0009f);
+					-15.0f, 5.0f, -150.0f,
+					0.17f, 0.001f, 0.0009f);
 				pointLightCount++;
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.2f, 0.5f,
-					-5.0f, 5.0f, -250.0f,
-					0.2f, 0.001f, 0.0009f);
+					-15.0f, 5.0f, -250.0f,
+					0.17f, 0.001f, 0.0009f);
 				pointLightCount++;
 				pointLights[2] = PointLight(0.0f, 0.3f, 0.9f,
 					0.2f, 0.5f,
-					-5.0f, 5.0f, -70.0f,
-					0.2f, 0.01f, 0.0009f);
+					-15.0f, 5.0f, -70.0f,
+					0.17f, 0.001f, 0.0009f);
 				pointLightCount++;
 			}
 			//Luces que se encuentran al final del recorrido
@@ -3507,58 +3508,58 @@ int main()
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
-					-100.0f, 5.0f, -350.0f,
-					0.2f, 0.001f, 0.0009f);
+					-130.0f, 5.0f, -350.0f,
+					0.17f, 0.001f, 0.0009f);
 				pointLightCount++;
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.2f, 0.5f,
-					-100.0f, 5.0f, -250.0f,
-					0.2f, 0.001f, 0.0009f);
+					-130.0f, 5.0f, -250.0f,
+					0.17f, 0.001f, 0.0009f);
 				pointLightCount++;
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
-					-100.0f, 5.0f, -150.0f,
-					0.2f, 0.01f, 0.0009f);
+					-130.0f, 5.0f, -150.0f,
+					0.17f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
-			//Luces que se encuentran en direccion a los pinguinos
+			//Luces que se encuentran en direccion a la pecera mas grande
 			if ((camera.getCameraPosition().x >= 0 && camera.getCameraPosition().x <= 200)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -120))
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
-					60.0f, 5.0f, -70.0f,
-					0.2f, 0.001f, 0.0009f);
+					110.0f, 5.0f, -75.0f,
+					0.17f, 0.001f, 0.0009f);
 				pointLightCount++;
-				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
-					0.5f, 0.5f,
-					-5.0f, 5.0f, -250.0f,
-					0.2f, 0.001f, 0.0009f);
+				pointLights[1] = PointLight(0.0f, 0.3f, 0.9f,
+					0.2f, 0.5f,
+					-15.0f, 5.0f, -70.0f,
+					0.17f, 0.001f, 0.0009f);
 				pointLightCount++;
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
-					60.0f, 5.0f, 100.0f,
-					0.2f, 0.01f, 0.0009f);
+					45.0f, 5.0f, 100.0f,
+					0.17f, 0.001f, 0.0009f);
 				pointLightCount++;
 			}
-			//Luces que se encuentran en direccion a la pecera 5
+			//Luces que se encuentran en direccion a los pinguinos
 			if ((camera.getCameraPosition().x >= -200 && camera.getCameraPosition().x <= 0)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -120))
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
-					-60.0f, 5.0f, -70.0f,
-					0.2f, 0.001f, 0.0009f);
+					-90.0f, 5.0f, -70.0f,
+					0.17f, 0.01f, 0.0009f);
 				pointLightCount++;
-				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
+				pointLights[1] = PointLight(0.0f, 0.3f, 0.9f,
 					0.5f, 0.5f,
-					-5.0f, 5.0f, -250.0f,
-					0.2f, 0.001f, 0.0009f);
+					-15.0f, 5.0f, -100.0f,
+					0.17f, 0.01f, 0.0009f);
 				pointLightCount++;
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
-					-60.0f, 5.0f, 100.0f,
-					0.2f, 0.01f, 0.0009f);
+					-90.0f, 5.0f, 100.0f,
+					0.17f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
 			//Luces que se encuentran entre los pinguinos y el recorrido tubular
@@ -3568,17 +3569,17 @@ int main()
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					60.0f, 5.0f, 100.0f,
-					0.2f, 0.01f, 0.0009f);
+					0.17f, 0.01f, 0.0009f);
 				pointLightCount++;
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.5f, 0.5f,
 					-5.0f, 5.0f, 30.0f,
-					0.2f, 0.01f, 0.0009f);
+					0.17f, 0.01f, 0.0009f);
 				pointLightCount++;
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
-					-60.0f, 5.0f, 100.0f,
-					0.2f, 0.01f, 0.0009f);
+					-90.0f, 5.0f, 100.0f,
+					0.17f, 0.01f, 0.0009f);
 				pointLightCount++;
 				spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
 					0.5f, 1.0f,
@@ -3596,18 +3597,18 @@ int main()
 			{
 				pointLights[0] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
-					60.0f, 5.0f, 100.0f,
-					0.2f, 0.01f, 0.0009f);
+					45.0f, 5.0f, 100.0f,
+					0.17f, 0.01f, 0.0009f);
 				pointLightCount++;
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.5f, 0.5f,
 					-5.0f, 5.0f, 30.0f,
-					0.2f, 0.01f, 0.0009f);
+					0.17f, 0.01f, 0.0009f);
 				pointLightCount++;
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
 					-60.0f, 5.0f, 100.0f,
-					0.2f, 0.01f, 0.0009f);
+					0.17f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
 			//Luces que se encuentran entre la pecera 5 y el recorrido tubular
@@ -3618,7 +3619,7 @@ int main()
 					0.5f, 1.0f,
 					40.0f, -13.0f, 360.0f,
 					-15.0f, -5.0f, -1.0f,
-					0.2f, 0.01f, 0.0001f,
+					0.17f, 0.01f, 0.0001f,
 					200.0f);
 				spotLightCount++;
 
@@ -3626,7 +3627,7 @@ int main()
 					0.5f, 1.0f,
 					-60.0f, -13.0f, 360.0f,
 					15.0f, -5.0f, -1.0f,
-					0.2f, 0.01f, 0.0001f,
+					0.17f, 0.01f, 0.0001f,
 					200.0f);
 				spotLightCount++;
 
@@ -3638,7 +3639,6 @@ int main()
 			}
 
 		}
-
 		//Musica que se estará usando
 		//switch (Sonido)
 		//{
@@ -3718,7 +3718,7 @@ int main()
 		//-----------------------------Objetos sin canal alfa------------------------------//
 		//--------------------------------------------Piso Exterior------------------------------------------//
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -0.5f, -80.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -0.5f, -35.0f));
 		model = glm::scale(model, glm::vec3(15.0f, 0.0f, 25.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
@@ -6027,17 +6027,17 @@ int main()
 		//Carpas a utilizar
 		//Bebidas internacionales
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-54.0f, -2.0f, 148.0f));
+		model = glm::translate(model, glm::vec3(-54.0f, -1.0f, 148.0f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.8f, 1.0f, 1.6f));
+		model = glm::scale(model, glm::vec3(0.8f, 1.3f, 1.6f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Carpa.RenderModel();
 
 		//Mariscos
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(80.0f, -2.0f, 110.0f));
+		model = glm::translate(model, glm::vec3(80.0f, -1.0f, 110.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.1f, 1.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(1.1f, 1.3f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Carpa.RenderModel();
 
@@ -6045,19 +6045,19 @@ int main()
 		//Lado izquierdo
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-133.0f, -0.5f, -73.0f));
-		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		model = glm::scale(model, glm::vec3(0.95f, 1.45f, 0.95f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-133.0f, -0.5f, 5.0f));
-		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		model = glm::scale(model, glm::vec3(0.95f, 1.45f, 0.95f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-133.0f, -0.5f, 165.0f));
-		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		model = glm::scale(model, glm::vec3(0.95f, 1.45f, 0.95f));
 		model = glm::rotate(model, 45 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
@@ -6065,21 +6065,21 @@ int main()
 		//Lado derecho
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(100.0f, -0.5f, -60.0f));
-		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		model = glm::scale(model, glm::vec3(0.95f, 1.45f, 0.95f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(100.0f, -0.5f, 5.0f));
-		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		model = glm::scale(model, glm::vec3(0.95f, 1.45f, 0.95f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(100.0f, -0.5f, 165.0f));
-		model = glm::scale(model, glm::vec3(0.75f, 0.85f, 0.75f));
+		model = glm::scale(model, glm::vec3(0.95f, 1.45f, 0.95f));
 		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
@@ -6089,7 +6089,7 @@ int main()
 		//puesto de tacos
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(67.0f, -0.5f, 12.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
@@ -6102,20 +6102,20 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(67.0f, -0.5f, 30.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(60.0f, -0.5f, 12.0f));
-		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));		
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(67.0f, -0.5f, 48.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
@@ -6129,40 +6129,40 @@ int main()
 		//Bebidas nacionales
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(67.0f, -0.5f, 75.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(67.0f, -0.5f, 102.5f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(85.0f, -0.5f, 99.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(85.0f, -0.5f, 86.9f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(85.0f, -0.5f, 74.6f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		//Puesto de mariscos
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(87.0f, -0.5f, 113.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
@@ -6175,7 +6175,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(68.0f, -0.5f, 113.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
@@ -6188,7 +6188,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(87.0f, -0.5f, 133.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
@@ -6201,7 +6201,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(87.0f, -0.5f, 153.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
@@ -6215,25 +6215,25 @@ int main()
 		//Modelos correspondientes al seccion del pozole
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-15.0f, -0.5f, 117.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-15.0f, -0.5f, 137.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-15.0f, -0.5f, 157.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(3.0f, -0.5f, 110.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
@@ -6242,89 +6242,89 @@ int main()
 		//Comida española
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(25.0f, -0.5f, 117.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(25.0f, -0.5f, 137.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(25.0f, -0.5f, 157.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		//Bebidas internacionales
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-28.0f, -0.5f, 113.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-28.0f, -0.5f, 133.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-28.0f, -0.5f, 153.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-41.0f, -0.5f, 162.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-54.0f, -0.5f, 162.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-67.0f, -0.5f, 162.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-80.0f, -0.5f, 162.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-82.0f, -0.5f, 113.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-82.0f, -0.5f, 133.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-82.0f, -0.5f, 153.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
@@ -6332,7 +6332,7 @@ int main()
 		//Comida Peruana
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-110.0f, -0.5f, 60.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
@@ -6361,7 +6361,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-110.0f, -0.5f, 95.0f));
-		model = glm::scale(model, glm::vec3(0.08f, 0.08f, 0.06f));
+		model = glm::scale(model, glm::vec3(0.08f, 0.1f, 0.06f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Mesa_B.RenderModel();
@@ -6920,7 +6920,7 @@ int main()
 
 		//Pared con informacion 1
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(49.5f, 24.3f, -329.4f));
+		model = glm::translate(model, glm::vec3(49.5f, 25.1f, -329.4f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(140.0f, 52.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -6930,7 +6930,7 @@ int main()
 
 		//Pared con informacion 2
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-49.5f, 24.3f, -329.3f));
+		model = glm::translate(model, glm::vec3(-49.5f, 25.1f, -329.3f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(140.0f, 52.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -7354,31 +7354,9 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Reflector.RenderModel();
 
-		//-----------------------------Objetos con canal alfa------------------------------//
-		//Pisicina espectaculo
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-12.0f, -57.0f, 316.5f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::rotate(model, -180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::scale(model, glm::vec3(100.0f, 20.0f, 100.0f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Cristal.UseTexture();
-		meshList[7]->RenderMesh();
-		//---------------------//
-		
-		// Entrada/salida del Acuario
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 24.3f, -259.3f));
-		model = glm::scale(model, glm::vec3(100.0f, 50.0f, 0.0f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Entradas.UseTexture();
-		meshList[7]->RenderMesh();
-
 		//****************************//
 		//Seguridad de las escaleras
-		
+
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(25.0f, -0.1f, -348.0f));
 		model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
@@ -7601,7 +7579,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Velvet.RenderModel();
-	
+
 		//Parte de Grape
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-120.0f, -34.5f, 20.0f));
@@ -7681,7 +7659,6 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		paredaq.RenderModel();
 
-
 		//peceras en frente de las bancas
 		//Pecera a la derecha cuando se entra
 		model = glm::mat4(1.0);
@@ -7699,7 +7676,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		paredaq.RenderModel();
-		
+
 		//pared enfrente de los carteles de ASAGOD
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-54.2f, -35.0f, -250.0f));
@@ -7716,7 +7693,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		paredaq.RenderModel();
-		
+
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-78.8f, -35.0f, -198.85f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
@@ -7754,21 +7731,71 @@ int main()
 
 		//Estrellas
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-105.0f, -10.0f, -250.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(-121.5f, -10.0f, -250.0f));
+		model = glm::rotate(model, -110 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));		
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		estrella.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-105.0f, -10.0f, -240.0f));
+		model = glm::translate(model, glm::vec3(-56.5f, -10.0f, -240.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		estrella1.RenderModel();
 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(13.0f, -13.0f, -280.0f));
+		model = glm::rotate(model, -110 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		estrella.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(73.7f, -10.0f, -240.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		estrella1.RenderModel();
+
+
+
+
+		//-----------------------------Objetos con canal alfa------------------------------//
+		//Pisicina espectaculo
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-12.0f, -57.0f, 316.5f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, -180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(100.0f, 20.0f, 100.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Cristal.UseTexture();
+		meshList[7]->RenderMesh();
+		//---------------------//
+		
+		// Entrada/salida del Acuario
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 24.3f, -259.3f));
+		model = glm::scale(model, glm::vec3(100.0f, 50.0f, 0.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Entradas.UseTexture();
+		meshList[7]->RenderMesh();
+
+		//Piso de la planta baja
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.5f, -33.5f, -114.7f));
+		model = glm::scale(model, glm::vec3(300.0f, 0.0f, 566.0f));
+		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Piso_acuario.UseTexture();
+		meshList[7]->RenderMesh();
 
 		//Techo de la planta baja
 		model = glm::mat4(1.0);
