@@ -9,6 +9,7 @@ bool ActivadorK = false;
 bool change = false;
 bool esce = false;
 bool luces = false;
+bool dia = false;
 
 Window::Window()
 {
@@ -123,6 +124,15 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		change = false;
 	}
 	
+	//Hacer de noche el escenario
+	if (key == GLFW_KEY_Z) {
+		dia = true;
+	}
+
+	if (key == GLFW_KEY_X) {
+		dia = false;
+	}
+
 
 	//Teclas para iniciar el show de luces
 	if (key == GLFW_KEY_P)

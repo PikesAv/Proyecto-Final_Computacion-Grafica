@@ -102,7 +102,7 @@ float rotdelfinOffset, rotdelfinSenOffset;
 
 //Variables externas para la seleccion de cada opcion
 extern int bandera;
-extern bool ActivadorRL, ActivadorML, ActivadorN, ActivadorKS, ActivadorK,change, luces, esce;
+extern bool ActivadorRL, ActivadorML, ActivadorN, ActivadorKS, ActivadorK,change, luces, esce, dia;
 
 //Variables correspondientes para el ciclo del día y noche
 int conta_dia;
@@ -150,6 +150,8 @@ Texture Fauna_marina;
 Texture Informacion1;
 Texture Informacion2;
 Texture Pared_tunel;
+Texture Tunel_textura;
+Texture Agua;
 
 //Texturas animadas
 Texture Firework_O;
@@ -942,7 +944,7 @@ int main()
 	CreaTextura();
 
 	//Camara
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 1.5f, 0.5f);
+	camera = Camera(glm::vec3(0.0f, 3.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 1.5f, 0.5f);
 
 	//Declaracion de texturas
 	//Festival
@@ -990,6 +992,10 @@ int main()
 	Informacion2.LoadTextureA();
 	Pared_tunel = Texture("Textures/Pared_tunel.tga");
 	Pared_tunel.LoadTextureA();
+	Tunel_textura = Texture("Textures/Tunel_textura.tga");
+	Tunel_textura.LoadTextureA();
+	Agua = Texture("Textures/Water.tga");
+	Agua.LoadTextureA();
 
 	//Texturas animadas
 	Firework_G = Texture("Textures/Animadas/Firework_green.tga");
@@ -1012,12 +1018,12 @@ int main()
 	//Carpa.LoadModel("Models/Carpa/Carpa.obj");
 	//Farola1 = Model();
 	//Farola1.LoadModel("Models/Farola_3/farola_3.obj");
-	//Silla_R = Model();
-	//Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
+	Silla_R = Model();
+	Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
 	//Mesa_B = Model();
 	//Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
-	//Reflector = Model();
-	//Reflector.LoadModel("Models/Reflector/Reflector.obj");
+	Reflector = Model();
+	Reflector.LoadModel("Models/Reflector/Reflector.obj");
 
 	//FoodTrucks/Comida Mex
 	//Comida Mexicana
@@ -1075,8 +1081,8 @@ int main()
 	//coral4.LoadModel("Models/Corales/corals.obj");
 	//coralcy = Model();
 	//coralcy.LoadModel("Models/Decoraciones/coralcy.obj");
-	//recepcion = Model();
-	//recepcion.LoadModel("Models/Decoraciones/recep.obj");
+	recepcion = Model();
+	recepcion.LoadModel("Models/Decoraciones/recep.obj");
 	//GrapeM = Model();
 	//GrapeM.LoadModel("Models/Decoraciones/grapem1.obj");
 	//GrapeR = Model();
@@ -1699,18 +1705,20 @@ int main()
 		uniformColor = shaderList[0].getColorLocation();
 		uniformTextureOffset = shaderList[0].getOffsetLocation();
 
-
-		//Ciclo de Día y Noche
-		//luz direccional, sólo 1 y siempre debe de existir
-		//Sera la luz que ilumine al mundo que tengamos
-		//mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-		//	ciclo_dia, 1.0,//Va a servir para manejar el ciclo dia y noche
-		//	1.0f, 0.0f, -1.0f);
-
-		mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-			0.1, 1.0,//Va a servir para manejar el ciclo dia y noche
-			1.0f, 0.0f, -1.0f);
-
+		//Mantendrá el escenario con el skybox correspondiente a la noche
+		if (dia) {
+			mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
+				0.1, 1.0,//Va a servir para manejar el ciclo dia y noche
+				1.0f, 0.0f, -1.0f);
+		}
+		if (!dia) {
+			//Ciclo de Día y Noche
+			//luz direccional, sólo 1 y siempre debe de existir
+			//Sera la luz que ilumine al mundo que tengamos
+			mainLight = DirectionalLight(0.75f, 0.75f, 0.75f,
+				ciclo_dia, 0.5,//Va a servir para manejar el ciclo dia y noche
+				1.0f, 0.0f, -1.0f);
+		}
 		
 		//----------------------------------------------Animaciones----------------------------------------//
 		//Recorrido de Lily por el festival
@@ -2936,7 +2944,6 @@ int main()
 					-133.0f, 5.0f, -73.0f,
 					0.2f, 0.001f, 0.0001f);
 				pointLightCount++;
-
 				pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
 					0.2f, 0.5f,
 					-133.0f, 5.0f, 5.0f,
@@ -2948,7 +2955,6 @@ int main()
 					-133.0f, 5.0f, 165.0f,
 					0.2f, 0.001f, 0.0001f);
 				pointLightCount++;
-
 				Sonido = 2;
 			}
 			//Luces de la derecha del festival
@@ -2959,23 +2965,19 @@ int main()
 					100.0f, 5.0f, -60.0f,
 					0.2f, 0.001f, 0.0001f);
 				pointLightCount++;
-
 				pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
 					0.2f, 0.5f,
 					100.0f, 5.0f, 5.0f,
 					0.2f, 0.001f, 0.0001f);
 				pointLightCount++;
-
 				pointLights[2] = PointLight(1.0f, 1.0f, 1.0f,
 					0.2f, 0.5f,
 					100.0f, 5.0f, 165.0f,
 					0.2f, 0.001f, 0.0001f);
 				pointLightCount++;
-
 				Sonido = 2;
 			}
-
-
+		 
 			//Recepcion del acuario
 			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
 				&& (camera.getCameraPosition().z <= -150 && camera.getCameraPosition().z >= -259))
@@ -2985,28 +2987,23 @@ int main()
 					-20.0f, 30.0f, -180.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[1] = PointLight(0.5f, 0.5f, 0.5f,
 					0.5f, 0.5f,
 					1.5f, 7.0f, -235.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[2] = PointLight(0.85f, 0.85f, 0.85f,
 					0.5f, 0.5f,
 					20.0f, 30.0f, -190.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 				Sonido = 1;
 			}
-
 			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
 				&& (camera.getCameraPosition().z <= -140 && camera.getCameraPosition().z >= -150))
 			{
 				Sonido = 0;
 			}
-
 			//Escaleras
 			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
 				&& (camera.getCameraPosition().z <= -260 && camera.getCameraPosition().z >= -400))
@@ -3016,13 +3013,11 @@ int main()
 					0.0f, 10.0f, -300.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[1] = PointLight(0.9f, 0.0f, 0.0f,
 					0.2f, 0.5f,
 					-20.0f, 10.0f, -375.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[2] = PointLight(0.5f, 0.2f, 0.8f,
 					0.2f, 0.5f,
 					20.0f, 10.0f, -375.0f,
@@ -3030,7 +3025,6 @@ int main()
 				pointLightCount++;
 				Sonido = 1;
 			}
-
 		}
 		if (camera.getCameraPosition().y <= 0) {
 			//Luces que se encuentran entre la pecera 1 y 2
@@ -3042,22 +3036,18 @@ int main()
 					140.0f, 5.0f, -320.0f,
 					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.2f, 0.5f,
 					140.0f, 5.0f, -180.0f,
 					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					0.0f, 5.0f, -150.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 				Sonido = 0;
 			}
-
 			//Luces que se encuentran entre la pecera 2 y 3
 			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
 				&& (camera.getCameraPosition().z <= -120 && camera.getCameraPosition().z >= -300))
@@ -3067,20 +3057,17 @@ int main()
 					-5.0f, 5.0f, -150.0f,
 					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.2f, 0.5f,
 					-5.0f, 5.0f, -250.0f,
 					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[2] = PointLight(0.0f, 0.3f, 0.9f,
 					0.2f, 0.5f,
 					-5.0f, 5.0f, -70.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
-
 			//Luces que se encuentran al final del recorrido
 			if ((camera.getCameraPosition().x >= -140 && camera.getCameraPosition().x <= -60)
 				&& (camera.getCameraPosition().z <= -120 && camera.getCameraPosition().z >= -400))
@@ -3090,20 +3077,17 @@ int main()
 					-100.0f, 5.0f, -350.0f,
 					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.2f, 0.5f,
 					-100.0f, 5.0f, -250.0f,
 					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.2f, 0.5f,
 					-100.0f, 5.0f, -150.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
-
 			//Luces que se encuentran en direccion a los pinguinos
 			if ((camera.getCameraPosition().x >= 0 && camera.getCameraPosition().x <= 200)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -120))
@@ -3113,21 +3097,17 @@ int main()
 					60.0f, 5.0f, -70.0f,
 					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.5f, 0.5f,
 					-5.0f, 5.0f, -250.0f,
 					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
 					60.0f, 5.0f, 100.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 			}
-
 			//Luces que se encuentran en direccion a la pecera 5
 			if ((camera.getCameraPosition().x >= -200 && camera.getCameraPosition().x <= 0)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -120))
@@ -3137,20 +3117,17 @@ int main()
 					-60.0f, 5.0f, -70.0f,
 					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.5f, 0.5f,
 					-5.0f, 5.0f, -250.0f,
 					0.2f, 0.001f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
 					-60.0f, 5.0f, 100.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
 			}
-
 			//Luces que se encuentran entre los pinguinos y el recorrido tubular
 			if ((camera.getCameraPosition().x >= -200 && camera.getCameraPosition().x <= 0)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -70))
@@ -3160,19 +3137,16 @@ int main()
 					60.0f, 5.0f, 100.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.5f, 0.5f,
 					-5.0f, 5.0f, 30.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
 					-60.0f, 5.0f, 100.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 				spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
 					0.5f, 1.0f,
 					-140.0f, 1.0f, 22.0f,
@@ -3180,11 +3154,9 @@ int main()
 					0.2f, 0.01f, 0.001f,
 					40.0f);
 				spotLightCount++;
-
 				shaderList[0].SetSpotLights(spotLights, 1);
 				spotLights[0].SetFlash(glm::vec3(-130.0f, -10.0f, 30.0f), glm::vec3(0.0f, -1.0f, 0.0f));
 			}
-
 			//Luces que se encuentran entre la pecera 5 y el recorrido tubular
 			if ((camera.getCameraPosition().x >= 0 && camera.getCameraPosition().x <= 200)
 				&& (camera.getCameraPosition().z <= 200 && camera.getCameraPosition().z >= -70))
@@ -3194,18 +3166,42 @@ int main()
 					60.0f, 5.0f, 100.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[1] = PointLight(0.1f, 0.2f, 1.0f,
 					0.5f, 0.5f,
 					-5.0f, 5.0f, 30.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
-
 				pointLights[2] = PointLight(0.4f, 0.6f, 1.0f,
 					0.5f, 0.5f,
 					-60.0f, 5.0f, 100.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
+			}
+			//Luces que se encuentran entre la pecera 5 y el recorrido tubular
+			if ((camera.getCameraPosition().x >= -100 && camera.getCameraPosition().x <= 100)
+				&& (camera.getCameraPosition().z <= 400 && camera.getCameraPosition().z >= 150))
+			{
+				spotLights[0] = SpotLight(0.8f, 0.8f, 0.8f,
+					0.5f, 1.0f,
+					40.0f, -13.0f, 360.0f,
+					-15.0f, -5.0f, -1.0f,
+					0.2f, 0.01f, 0.0001f,
+					200.0f);
+				spotLightCount++;
+
+				spotLights[1] = SpotLight(0.8f, 0.8f, 0.8f,
+					0.5f, 1.0f,
+					-60.0f, -13.0f, 360.0f,
+					15.0f, -5.0f, -1.0f,
+					0.2f, 0.01f, 0.0001f,
+					200.0f);
+				spotLightCount++;
+
+
+				shaderList[0].SetSpotLights(spotLights, 2);
+				spotLights[0].SetFlash(glm::vec3(-130.0f, -13.0f, 30.0f), glm::vec3(-1.0f, -1.0f, -1.0f));
+				spotLights[1].SetFlash(glm::vec3(-130.0f, -13.0f, 30.0f), glm::vec3(1.0f, -1.0f, -1.0f));
+
 			}
 
 		}
@@ -3431,7 +3427,7 @@ int main()
 		//Silla humilde
 		model = modelaux_cuerpoK;
 		model = glm::translate(model, glm::vec3(0.0f, -4.5f, -0.5f));
-		model = glm::scale(model, glm::vec3(0.09f, 0.09f, 0.09f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		//model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
@@ -3826,52 +3822,6 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Farola.RenderModel();
 
-		//Piso de cada una de las secciones del festival
-		//Comida Nacional
-		//Puesto de tortas
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(80.0f, -0.45f, -15.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 2.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera.UseTexture();
-		meshList[3]->RenderMesh();
-		//Puesto de Tacos
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(80.0f, -0.45f, 35.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		pasto.UseTexture();
-		meshList[3]->RenderMesh();
-		//Puestos de Mariscos
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(40.0f, -0.45f, 137.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera_2.UseTexture();
-		meshList[3]->RenderMesh();
-
-		//Comida Internacional
-		//Comida alemana
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(80.0f, -0.45f, -30.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera.UseTexture();
-		meshList[3]->RenderMesh();
-		//Comida Española
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -0.45f, 137.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera_3.UseTexture();
-		meshList[3]->RenderMesh();
-		//Comida Japonesa
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-112.0f, -0.45f, 137.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera_4.UseTexture();
-		meshList[3]->RenderMesh();
 
 		//---------Modelos correspondientes a las sillas y mesas-----------//
 		//puesto de tacos
@@ -3883,7 +3833,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(60.0f, -0.5f, 30.0f));
-		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
@@ -3896,7 +3846,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(60.0f, -0.5f, 12.0f));
-		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));		
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
@@ -3909,7 +3859,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(60.0f, -0.5f, 48.0f));
-		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
@@ -3956,7 +3906,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(80.0f, -0.5f, 113.0f));
-		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
@@ -3969,7 +3919,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(60.0f, -0.5f, 113.0f));
-		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
@@ -3982,7 +3932,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(79.0f, -0.5f, 133.0f));
-		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
@@ -3995,7 +3945,7 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(79.0f, -0.5f, 153.0f));
-		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
@@ -4127,21 +4077,21 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-113.0f, -0.5f, 65.0f));
-		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, -180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-107.0f, -0.5f, 65.0f));
-		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, -180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-110.0f, -0.5f, 55.0f));
-		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -4156,32 +4106,10 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-110.0f, -0.5f, 100.0f));
-		model = glm::scale(model, glm::vec3(0.17f, 0.17f, 0.17f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, -180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Silla_R.RenderModel();
-
-		//Comida japonesa
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-112.0f, -0.45f, 77.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		pasto.UseTexture();
-		meshList[3]->RenderMesh();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-112.0f, -0.45f, -43.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera.UseTexture();
-		meshList[3]->RenderMesh();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-112.0f, -0.45f, 17.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 0.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Piso_madera_2.UseTexture();
-		meshList[3]->RenderMesh();
 
 		//------------------------------------FoodTrucks-----------------------------//
 		//Comida Peruana
@@ -4343,7 +4271,7 @@ int main()
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-2.0f, 0.0f, -243.0f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.5f, 1.15f, 1.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 1.9f, 1.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		recepcion.RenderModel();
@@ -4466,20 +4394,22 @@ int main()
 
 		//Recepcion
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 14.6f, -210.0f));
-		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 100.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 24.3f, -210.0f));
+		model = glm::scale(model, glm::vec3(100.0f, 50.0f, 100.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Edificio.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[5]->RenderMesh();
 
 		//Paredes de la recepcion
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 14.2f, -210.0f));
-		model = glm::scale(model, glm::vec3(99.5f, 29.5f, 99.5f));
+		model = glm::translate(model, glm::vec3(0.0f, 24.3f, -210.0f));
+		model = glm::scale(model, glm::vec3(99.5f, 39.0f, 99.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Recepcion.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[6]->RenderMesh();
 
 		//--------------------------------------------acuario animales---------------------------------------------------------//
@@ -4918,7 +4848,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//Tiburon_2.RenderModel();
 
-				//HABITAD DE LOS PINGUINOS
+		//HABITAD DE LOS PINGUINOS
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-98.0f, -25.0f, 115.0f));
 		model = glm::rotate(model, 45 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
@@ -5132,19 +5062,20 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		banca3.RenderModel();
 		//--------------------//
-				//Cubiulo Escaleras
+		//Cubiulo Escaleras
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 14.6f, -330.0f));
-		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 140.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 24.3f, -330.0f));
+		model = glm::scale(model, glm::vec3(100.0f, 50.0f, 140.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Edificio.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[5]->RenderMesh();
 
 		//Paredes de las escaleras
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 14.2f, -329.5f));
-		model = glm::scale(model, glm::vec3(99.5f, 29.5f, 141.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 24.3f, -329.5f));
+		model = glm::scale(model, glm::vec3(99.5f, 39.0f, 141.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Recepcion.UseTexture();
@@ -5152,9 +5083,9 @@ int main()
 
 		//Pared de las escaleras
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 14.8f, -397.5f));
+		model = glm::translate(model, glm::vec3(0.0f, 24.3f, -397.5f));
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(100.0f, 31.0f, 0.1f));
+		model = glm::scale(model, glm::vec3(100.0f, 52.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Fauna_marina.UseTexture();
@@ -5162,9 +5093,9 @@ int main()
 
 		//Pared con informacion 1
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(49.5f, 14.8f, -329.4f));
+		model = glm::translate(model, glm::vec3(49.5f, 24.3f, -329.4f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(140.0f, 31.0f, 0.1f));
+		model = glm::scale(model, glm::vec3(140.0f, 52.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Informacion1.UseTexture();
@@ -5172,9 +5103,9 @@ int main()
 
 		//Pared con informacion 2
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-49.5f, 14.8f, -329.3f));
+		model = glm::translate(model, glm::vec3(-49.5f, 24.3f, -329.3f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(140.0f, 31.0f, 0.1f));
+		model = glm::scale(model, glm::vec3(140.0f, 52.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Informacion2.UseTexture();
@@ -5216,6 +5147,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Pared_blanca.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[8]->RenderMesh();
 
 		// Paredes de la planta baja
@@ -5227,6 +5159,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Pared_blanca.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[7]->RenderMesh();
 
 		//Division b
@@ -5236,6 +5169,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Pared_blanca.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[7]->RenderMesh();
 
 		//Division c
@@ -5245,6 +5179,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Pared_blanca.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[7]->RenderMesh();
 
 		//Division d
@@ -5254,6 +5189,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Pared_blanca.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[7]->RenderMesh();
 
 		//Division e
@@ -5264,6 +5200,7 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Pared_blanca.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[7]->RenderMesh();
 
 		model = glm::mat4(1.0);
@@ -5573,7 +5510,22 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		isla.RenderModel();
 
+		//Reflectores del espectaculo
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-59.4f, -13.0f, 363.2f));
+		model = glm::rotate(model, 225 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::rotate(model, -20 * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.3f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Reflector.RenderModel();
 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(34.0f, -13.0f, 364.6f));
+		model = glm::rotate(model, 135 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::rotate(model, -20 * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.3f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Reflector.RenderModel();
 
 		//-----------------------------Objetos con canal alfa------------------------------//
 		//Pisicina espectaculo
@@ -5590,8 +5542,8 @@ int main()
 		
 		// Entrada/salida del Acuario
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 14.6f, -259.3f));
-		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 24.3f, -259.3f));
+		model = glm::scale(model, glm::vec3(100.0f, 50.0f, 0.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Entradas.UseTexture();
@@ -5609,8 +5561,8 @@ int main()
 
 		//Peces pequeños (Pecera 1)
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(139.1f, -18.01f, -250.0f));
-		model = glm::scale(model, glm::vec3(20.0f, 30.0f, 249.f));
+		model = glm::translate(model, glm::vec3(139.1f, -17.5f, -250.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 33.0f, 249.f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
@@ -5618,8 +5570,8 @@ int main()
 
 		//Pecera 3
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-80.0f, -18.01f, -253.5f));
-		model = glm::scale(model, glm::vec3(48.0f, 30.0f, 112.4f));
+		model = glm::translate(model, glm::vec3(-80.0f, -17.5f, -253.5f));
+		model = glm::scale(model, glm::vec3(48.0f, 33.0f, 112.4f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
@@ -5627,8 +5579,8 @@ int main()
 
 		//Tiburones (Pecera 2)
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(50.0f, -18.01f, -253.5f));
-		model = glm::scale(model, glm::vec3(48.0f, 30.0f, 112.4f));
+		model = glm::translate(model, glm::vec3(50.0f, -17.5f, -253.5f));
+		model = glm::scale(model, glm::vec3(48.0f, 33.0f, 112.4f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Cristal.UseTexture();
@@ -5637,8 +5589,8 @@ int main()
 		//Entrada principal (ventanal)
 		toffset = glm::vec2(0.0f, 0.0f);
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 14.8f, -160.0f));
-		model = glm::scale(model, glm::vec3(100.0f, 30.0f, 0.1f));
+		model = glm::translate(model, glm::vec3(0.0f, 24.3f, -160.0f));
+		model = glm::scale(model, glm::vec3(100.0f, 50.0f, 0.1f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ventanal.UseTexture();
@@ -5682,6 +5634,17 @@ int main()
 		Cristal.UseTexture();
 		meshList[7]->RenderMesh();
 
+		//Parte faltante del tunel
+		toffset = glm::vec2(0.0f, 0.0f);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-12.0f, -17.1f, 15.0f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(21.0f, 33.0f, 0.1f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tunel_textura.UseTexture();
+		meshList[7]->RenderMesh();
+
 		//Pecera ultra enorme
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(107.0f, -50.5f, 66.5f));
@@ -5699,8 +5662,6 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Acuario_cilindro.RenderModel();
 
-
-
 		//Textura animada de los fuegos artificiales
 		//textura con movimiento
 		//Importantes porque la variable uniform no podemos modificarla directamente
@@ -5714,50 +5675,59 @@ int main()
 		if (toffsetv < 0.0)
 			toffsetv = 1;
 
-		//Carga de la textura de los fuegos artificiales
-		toffset = glm::vec2(0.0f, toffsetv);
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(11.0f, 5.3f, -12.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Firework_O.UseTexture();
-		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		meshList[8]->RenderMesh();
+		////Carga de la textura de los fuegos artificiales
+		//toffset = glm::vec2(0.0f, toffsetv);
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(11.0f, 5.3f, -12.0f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		//glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Firework_O.UseTexture();
+		////Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		//meshList[8]->RenderMesh();
 
-		toffset = glm::vec2(0.0f, toffsetv);
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-11.0f, 5.3f, -12.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Firework_P.UseTexture();
-		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		meshList[8]->RenderMesh();
+		//toffset = glm::vec2(0.0f, toffsetv);
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(-11.0f, 5.3f, -12.0f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		//glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Firework_P.UseTexture();
+		////Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		//meshList[8]->RenderMesh();
 
-		toffset = glm::vec2(0.0f, toffsetv);
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(11.0f, 5.3f, 11.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Firework_G.UseTexture();
-		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		meshList[8]->RenderMesh();
+		//toffset = glm::vec2(0.0f, toffsetv);
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(11.0f, 5.3f, 11.0f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		//glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Firework_G.UseTexture();
+		////Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		//meshList[8]->RenderMesh();
 
-		toffset = glm::vec2(0.0f, toffsetv);
+		//toffset = glm::vec2(0.0f, toffsetv);
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(-11.0f, 5.3f, 11.0f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		//glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//Firework_R.UseTexture();
+		////Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		//meshList[8]->RenderMesh();
+
+		toffset = glm::vec2(toffsetu, toffsetv);
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-11.0f, 5.3f, 11.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::translate(model, glm::vec3(-12.0f, -46.9f, 316.5f));
+		model = glm::scale(model, glm::vec3(5.0f, 0.0f, 5.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Firework_R.UseTexture();
-		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		meshList[8]->RenderMesh();
+		Agua.UseTexture();
+		meshList[3]->RenderMesh();
 
 		glDisable(GL_BLEND);
 
