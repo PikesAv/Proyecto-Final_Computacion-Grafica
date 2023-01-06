@@ -51,6 +51,9 @@ Integrantes del equipo.
 using namespace irrklang;
 int Sonido;
 
+ISoundEngine* engine = createIrrKlangDevice();
+
+
 const float toRadians = 3.14159265f / 180.0f;
 
 //Variables para poder animar la textura
@@ -949,15 +952,14 @@ void animate(void)
 
 int main()
 {
-	mainWindow = Window(1366, 768); // 1280, 1024 or 1024, 768
-	mainWindow.Initialise();
-
-	ISoundEngine* engine = createIrrKlangDevice();
-
+	//Musica de espera mientras empieza el programa
 	if (!engine) {
 		printf("No se pudo reproducir el audio");
 	}
-	//engine->play2D("Gucci Bucket Hat.mp3", true);
+	engine->play2D("Audio/No Chance in Hell.mp3", true);
+
+	mainWindow = Window(1366, 768); // 1280, 1024 or 1024, 768
+	mainWindow.Initialise();
 
 	CreateObjects();
 	CrearDado();
@@ -1044,10 +1046,10 @@ int main()
 	//Carpa.LoadModel("Models/Carpa/Carpa.obj");
 	//Farola1 = Model();
 	//Farola1.LoadModel("Models/Farola_3/farola_3.obj");
-	Silla_R = Model();
-	Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
-	Mesa_B = Model();
-	Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
+	//Silla_R = Model();
+	//Silla_R.LoadModel("Models/Silla/Silla_roja.obj");
+	//Mesa_B = Model();
+	//Mesa_B.LoadModel("Models/Mesa/Mesa_blanca.obj");
 	//Reflector = Model();
 	//Reflector.LoadModel("Models/Reflector/Reflector.obj");
 
@@ -1184,10 +1186,10 @@ int main()
 	//banca4.LoadModel("Models/Decoraciones/brench4.obj");
 
 	//Velvet
-	//Velvet = Model();
-	//Velvet.LoadModel("Models/Decoraciones/Velvet.obj");
-	//velvet1 = Model();
-	//velvet1.LoadModel("Models/Decoraciones/Velvet1.obj");
+	Velvet = Model();
+	Velvet.LoadModel("Models/Decoraciones/Velvet.obj");
+	velvet1 = Model();
+	velvet1.LoadModel("Models/Decoraciones/Velvet1.obj");
 
 	//--------------------//
 	//Escaleras
@@ -1197,8 +1199,8 @@ int main()
 	//Decoracion
 	//Piano = Model();
 	//Piano.LoadModel("Models/Decoraciones/piano.obj");
-	//Neptuno = Model();
-	//Neptuno.LoadModel("Models/Decoraciones/neptuno.obj");
+	Neptuno = Model();
+	Neptuno.LoadModel("Models/Decoraciones/neptuno.obj");
 
 
 	//Artoria Pendragon (Lily)
@@ -1699,6 +1701,10 @@ int main()
 	KeyFrameK[24].movkoshiro_y = 0.0f;
 	KeyFrameK[24].movkoshiro_z = 0.0f;
 	KeyFrameK[24].giroNero = 0.0f;
+
+
+	engine->stopAllSounds();
+
 
 	//Loop mientras no se cierra la ventana
 	while (!mainWindow.getShouldClose())
@@ -3457,6 +3463,16 @@ int main()
 					20.0f, 10.0f, -375.0f,
 					0.2f, 0.01f, 0.0009f);
 				pointLightCount++;
+
+				spotLights[0] = SpotLight(0.8f, 0.8f, 0.8f,
+					0.5f, 1.0f,
+					5.5f, 33.0f, -322.0f,
+					0.0f, -1.0f, 0.0f,
+					0.2f, 0.01f, 0.001f,
+					40.0f);
+				spotLightCount++;
+				shaderList[0].SetSpotLights(spotLights, 1);
+				spotLights[0].SetFlash(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f));
 				Sonido = 1;
 			}
 		}
@@ -3480,7 +3496,7 @@ int main()
 					0.0f, 5.0f, -150.0f,
 					0.17f, 0.001f, 0.0009f);
 				pointLightCount++;
-				Sonido = 0;
+				Sonido = 3;
 			}
 			//Luces que se encuentran entre la pecera 2 y 3
 			if ((camera.getCameraPosition().x >= -60 && camera.getCameraPosition().x <= 60)
@@ -3631,35 +3647,47 @@ int main()
 					200.0f);
 				spotLightCount++;
 
-
 				shaderList[0].SetSpotLights(spotLights, 2);
 				spotLights[0].SetFlash(glm::vec3(-130.0f, -13.0f, 30.0f), glm::vec3(-1.0f, -1.0f, -1.0f));
 				spotLights[1].SetFlash(glm::vec3(-130.0f, -13.0f, 30.0f), glm::vec3(1.0f, -1.0f, -1.0f));
 
 			}
 
+			if ((camera.getCameraPosition().x >= -100 && camera.getCameraPosition().x <= 100)
+				&& (camera.getCameraPosition().z <= -300 && camera.getCameraPosition().z >= -400))
+			{
+				Sonido = 0;
+			}
+
 		}
+		
 		//Musica que se estará usando
-		//switch (Sonido)
-		//{
-		//	case 0:
-		//		engine->stopAllSounds();
-		//		break;
-		//	case 1:
-		//		if(!engine->isCurrentlyPlaying("Audio/After You ve Gone.mp3")){
-		//			engine->play2D("Audio/After You ve Gone.mp3", true);
-		//			engine->setSoundVolume(0.3);
-		//		}
-		//		break;
-		//	case 2:
-		//		if (!engine->isCurrentlyPlaying("Audio/Christmas Without The Queen.mp3")) {
-		//			engine->play2D("Audio/Christmas Without The Queen.mp3", true);
-		//			engine->setSoundVolume(0.3);
-		//		}
-		//		break;
-		//	default:
-		//		break;
-		//}
+		switch (Sonido)
+		{
+			case 0:
+				engine->stopAllSounds();
+				break;
+			case 1:
+				if(!engine->isCurrentlyPlaying("Audio/After You ve Gone.mp3")){
+					engine->play2D("Audio/After You ve Gone.mp3", true);
+					engine->setSoundVolume(0.5);
+				}
+				break;
+			case 2:
+				if (!engine->isCurrentlyPlaying("Audio/Musica_festival.mp3")) {
+					engine->play2D("Audio/Musica_festival.mp3", true);
+					engine->setSoundVolume(0.5);
+				}
+				break;
+			case 3:
+				if (!engine->isCurrentlyPlaying("Audio/Musica_acuario.mp3")) {
+					engine->play2D("Audio/Musica_acuario.mp3", true);
+					engine->setSoundVolume(0.5);
+				}
+				break;
+			default:
+				break;
+		}
 
 		//Matrices para el persona principal
 		//lily
@@ -3718,8 +3746,8 @@ int main()
 		//-----------------------------Objetos sin canal alfa------------------------------//
 		//--------------------------------------------Piso Exterior------------------------------------------//
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -0.5f, -35.0f));
-		model = glm::scale(model, glm::vec3(15.0f, 0.0f, 25.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -0.5f, -52.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 0.0f, 26.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -7173,9 +7201,9 @@ int main()
 		Piano.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-40.0f, -1.5f, -170.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
+		model = glm::translate(model, glm::vec3(5.0f, -1.5f, -315.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Neptuno.RenderModel();
@@ -7789,7 +7817,7 @@ int main()
 
 		//Piso de la planta baja
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.5f, -33.5f, -114.7f));
+		model = glm::translate(model, glm::vec3(0.0f, -33.5f, -114.7f));
 		model = glm::scale(model, glm::vec3(300.0f, 0.0f, 566.0f));
 		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -7799,7 +7827,7 @@ int main()
 
 		//Techo de la planta baja
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.5f, -1.0f, -114.7f));
+		model = glm::translate(model, glm::vec3(0.0f, -1.0f, -114.7f));
 		model = glm::scale(model, glm::vec3(300.0f, 0.0f, 566.0f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -7987,6 +8015,7 @@ int main()
 	engine->drop();
 	return 0;
 }
+
 
 void inputKeyframes(bool* keys)
 {
