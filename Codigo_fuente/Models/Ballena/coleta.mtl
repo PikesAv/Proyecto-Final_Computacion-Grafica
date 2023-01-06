@@ -1,7 +1,7 @@
 # Blender MTL File: 'None'
 # Material Count: 1
 
-newmtl Material.015
+newmtl Material.013
 Ns 280.198474
 Ka 0.144928 0.144928 0.144928
 Kd 0.174396 0.009299 0.800000
@@ -10,3 +10,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
+map_Kd C:\\Users\\jorge\\Desktop\\Acurario Sin animaciones completas\\Proyecto-Final_Computacion-Grafica\\Codigo_fuente\\Textures\\BallenaM.jpg

@@ -1,4 +1,4 @@
-# Blender MTL File: 'tiburonsin.blend'
+# Blender MTL File: 'None'
 # Material Count: 2
 
 newmtl Material.002
@@ -10,6 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
+map_Kd C:\\Users\\jorge\\Desktop\\Acurario Sin animaciones completas\\Proyecto-Final_Computacion-Grafica\\Codigo_fuente\\Textures\\Shark_NM.tga
 
 newmtl Material.003
 Ns 625.000015
@@ -20,3 +21,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
+map_Kd C:\\Users\\jorge\\Desktop\\Acurario Sin animaciones completas\\Proyecto-Final_Computacion-Grafica\\Codigo_fuente\\Textures\\Shark_TXTR.tga

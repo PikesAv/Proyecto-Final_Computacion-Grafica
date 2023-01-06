@@ -1,7 +1,7 @@
 # Blender MTL File: 'None'
 # Material Count: 1
 
-newmtl Material.003
+newmtl Material.001
 Ns 225.000000
 Ka 0.579710 0.579710 0.579710
 Kd 0.389445 0.623545 0.800000
@@ -10,3 +10,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
+map_Kd C:\\Users\\jorge\\Desktop\\Acurario Sin animaciones completas\\Proyecto-Final_Computacion-Grafica\\Codigo_fuente\\Textures\\Shark_NM.tga

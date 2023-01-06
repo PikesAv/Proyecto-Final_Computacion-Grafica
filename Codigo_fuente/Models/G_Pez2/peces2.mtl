@@ -10,6 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
+map_Kd C:\\Users\\jorge\\Desktop\\Acurario Sin animaciones completas\\Proyecto-Final_Computacion-Grafica\\Codigo_fuente\\Textures\\TropicalFish06.jpg
 
 newmtl 02___Default
 Ns 900.000000
@@ -20,6 +21,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.520000
 d 1.000000
 illum 2
+map_Kd C:\\Users\\jorge\\Desktop\\Acurario Sin animaciones completas\\Proyecto-Final_Computacion-Grafica\\Codigo_fuente\\Textures\\TropicalFish07.jpg
 
 newmtl 03___Default
 Ns 900.000000
@@ -30,6 +32,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.520000
 d 1.000000
 illum 2
+map_Kd C:\\Users\\jorge\\Desktop\\Acurario Sin animaciones completas\\Proyecto-Final_Computacion-Grafica\\Codigo_fuente\\Textures\\TropicalFish08.jpg
 
 newmtl 04___Default
 Ns 900.000000
@@ -40,6 +43,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.520000
 d 1.000000
 illum 2
+map_Kd C:\\Users\\jorge\\Desktop\\Acurario Sin animaciones completas\\Proyecto-Final_Computacion-Grafica\\Codigo_fuente\\Textures\\TropicalFish09.jpg
 
 newmtl 05___Default
 Ns 900.000000
@@ -50,3 +54,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.520000
 d 1.000000
 illum 2
+map_Kd C:\\Users\\jorge\\Desktop\\Acurario Sin animaciones completas\\Proyecto-Final_Computacion-Grafica\\Codigo_fuente\\Textures\\TropicalFish10.jpg

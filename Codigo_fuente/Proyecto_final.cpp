@@ -89,6 +89,7 @@ float MrotABrazoKS, MrotBrazoKS, MrotPiernaKS, MrotPieKS;
 //Banderas
 bool rotABKS, rotBKS, rotPKS, rotPiesKS;
 float rotKoshiroOffset;
+bool ActivadorAnimales;
 
 //Animales peces
 float MpecesSen, Mpeces, MrotPeces;
@@ -323,6 +324,9 @@ Model Cangrejo;
 Model Tiburon_2;
 Model Delfin;
 Model Ballena;
+Model Ballena_aleta_der;
+Model Ballena_aleta_izq;
+Model Ballena_coleta;
 Model Caballito;
 Model Pinguino_E;
 Model Pinguino_E_aleta_der;
@@ -1071,82 +1075,82 @@ int main()
 	//FtruckSP.LoadModel("Models/FoodTrucks/Especial/ftsp.obj");
 
 	//Escenario
-	//escenario = Model();
-	//escenario.LoadModel("Models/Escenario/Escenario.obj");
-	//Bateria = Model();
-	//Bateria.LoadModel("Models/Escenario/Bateria.obj");
-	//Guitarra = Model();
-	//Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
-	//Micro = Model();
-	//Micro.LoadModel("Models/Escenario/Micro.obj");
+	/*escenario = Model();
+	escenario.LoadModel("Models/Escenario/Escenario.obj");
+	Bateria = Model();
+	Bateria.LoadModel("Models/Escenario/Bateria.obj");
+	Guitarra = Model();
+	Guitarra.LoadModel("Models/Escenario/guitarra_uno.obj");
+	Micro = Model();
+	Micro.LoadModel("Models/Escenario/Micro.obj");*/
 
 	//Acuario
 	//Infografias e imagenes
-	//Pinguino_inf = Model();
-	//Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
-	//Cangrejo_inf = Model();
-	//Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
-	//Orca_inf = Model();
-	//Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
-	//Tiburon_inf = Model();
-	//Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
-	//Peces_inf = Model();
-	//Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
-	//EstrellaM_inf1 = Model();
-	//EstrellaM_inf1.LoadModel("Models/Estrella de mar/estrellasinfo.obj");
-	//EstrellaM_inf2 = Model();
-	//EstrellaM_inf2.LoadModel("Models/Estrella de mar/estrellasinfo2.obj");
-	//Grap = Model();
-	//Grap.LoadModel("Models/Carteles/Grap.obj");
+	Pinguino_inf = Model();
+	Pinguino_inf.LoadModel("Models/Pinguinos/Pinguino_inf.obj");
+	Cangrejo_inf = Model();
+	Cangrejo_inf.LoadModel("Models/Cangrejo/Cangrejo_inf.obj");
+	Orca_inf = Model();
+	Orca_inf.LoadModel("Models/Orcas/Orca_inf.obj");
+	Tiburon_inf = Model();
+	Tiburon_inf.LoadModel("Models/Tiburones/Tiburon_inf.obj");
+	Peces_inf = Model();
+	Peces_inf.LoadModel("Models/Peces/Peces_inf.obj");
+	EstrellaM_inf1 = Model();
+	EstrellaM_inf1.LoadModel("Models/Estrella de mar/estrellasinfo.obj");
+	EstrellaM_inf2 = Model();
+	EstrellaM_inf2.LoadModel("Models/Estrella de mar/estrellasinfo2.obj");
+	Grap = Model();
+	Grap.LoadModel("Models/Carteles/Grap.obj");
 
-	//coral1 = Model();
-	//coral1.LoadModel("Models/Corales/11-exported.obj");
-	//coral2 = Model();
-	//coral2.LoadModel("Models/Corales/mesh-90.obj");
-	//coral3 = Model();
-	//coral3.LoadModel("Models/Corales/coralf.obj");
-	//coral4 = Model();
-	//coral4.LoadModel("Models/Corales/corals.obj");
-	//coralcy = Model();
-	//coralcy.LoadModel("Models/Decoraciones/coralcy.obj");
-	//recepcion = Model();
-	//recepcion.LoadModel("Models/Decoraciones/recep.obj");
-	//GrapeM = Model();
-	//GrapeM.LoadModel("Models/Decoraciones/grapem1.obj");
-	//GrapeR = Model();
-	//GrapeR.LoadModel("Models/Decoraciones/graper.obj");
+	coral1 = Model();
+	coral1.LoadModel("Models/Corales/11-exported.obj");
+	coral2 = Model();
+	coral2.LoadModel("Models/Corales/mesh-90.obj");
+	coral3 = Model();
+	coral3.LoadModel("Models/Corales/coralf.obj");
+	coral4 = Model();
+	coral4.LoadModel("Models/Corales/corals.obj");
+	coralcy = Model();
+	coralcy.LoadModel("Models/Decoraciones/coralcy.obj");
+	recepcion = Model();
+	recepcion.LoadModel("Models/Decoraciones/recep.obj");
+	GrapeM = Model();
+	GrapeM.LoadModel("Models/Decoraciones/grapem1.obj");
+	GrapeR = Model();
+	GrapeR.LoadModel("Models/Decoraciones/graper.obj");
 
-	//Calendario_azt = Model();
-	//Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
-	//Pinguino_img = Model();
-	//Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
-	//Ballena_img = Model();
-	//Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
-	//Orca_img = Model();
-	//Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
-	//Tiburon_img = Model();
-	//Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
-	//Pez_img = Model();
-	//Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
-	//No_flash = Model();
-	//No_flash.LoadModel("Models/Carteles/No_fotos.obj");
+	Calendario_azt = Model();
+	Calendario_azt.LoadModel("Models/Carteles/Calendario_azteca.obj");
+	Pinguino_img = Model();
+	Pinguino_img.LoadModel("Models/Carteles/Pinguino_imagen.obj");
+	Ballena_img = Model();
+	Ballena_img.LoadModel("Models/Carteles/Ballena_imagen.obj");
+	Orca_img = Model();
+	Orca_img.LoadModel("Models/Carteles/Orca_imagen.obj");
+	Tiburon_img = Model();
+	Tiburon_img.LoadModel("Models/Carteles/Tiburon_imagen.obj");
+	Pez_img = Model();
+	Pez_img.LoadModel("Models/Carteles/Pez_imagen.obj");
+	No_flash = Model();
+	No_flash.LoadModel("Models/Carteles/No_fotos.obj");
 
 	//--------NUEVO------------//
-	//delfin1 = Model();
-	//delfin1.LoadModel("Models/Carteles/espdelf1.obj");
-	//delfin2 = Model();
-	//delfin2.LoadModel("Models/Carteles/espdelf2.obj");
-	//delfin3 = Model();
-	//delfin3.LoadModel("Models/Carteles/espdelf3.obj");
-	//delfin4 = Model();
-	//delfin4.LoadModel("Models/Carteles/espdelf4.obj");
-	//delfin5 = Model();
-	//delfin5.LoadModel("Models/Carteles/espdelf5.obj");
+	delfin1 = Model();
+	delfin1.LoadModel("Models/Carteles/espdelf1.obj");
+	delfin2 = Model();
+	delfin2.LoadModel("Models/Carteles/espdelf2.obj");
+	delfin3 = Model();
+	delfin3.LoadModel("Models/Carteles/espdelf3.obj");
+	delfin4 = Model();
+	delfin4.LoadModel("Models/Carteles/espdelf4.obj");
+	delfin5 = Model();
+	delfin5.LoadModel("Models/Carteles/espdelf5.obj");
 
-	//estrella = Model();
-	//estrella.LoadModel("Models/Estrellas/PRI_Starfish.obj");
-	//estrella1 = Model();
-	//estrella1.LoadModel("Models/Estrellas/star.obj");
+	estrella = Model();
+	estrella.LoadModel("Models/Estrellas/PRI_Starfish.obj");
+	estrella1 = Model();
+	estrella1.LoadModel("Models/Estrellas/star.obj");
 
 	paredaq = Model();
 	paredaq.LoadModel("Models/Decoraciones/ppaq.obj");
@@ -1158,32 +1162,32 @@ int main()
 	Acuario_cilindro.LoadModel("Models/Acuario_cilindro/Acuario_cilindro.obj");
 	Medio_cilindro = Model();
 	Medio_cilindro.LoadModel("Models/Acuario_cilindro/Medio_cilindro.obj");
-	//Espectaculo = Model();
-	//Espectaculo.LoadModel("Models/Decoraciones/espectaculo1.obj");
-	//HabitatP = Model();
-	//HabitatP.LoadModel("Models/Habitat/Habitat.obj");
+	Espectaculo = Model();
+	Espectaculo.LoadModel("Models/Decoraciones/espectaculo1.obj");
+	HabitatP = Model();
+	HabitatP.LoadModel("Models/Habitat/Habitat.obj");
 	
 	//---------NUEVO-----------//
 	//Thomas = Model();
 	//Thomas.LoadModel("Models/Nueva carpeta/tomas.obj");
-	//isla = Model();
-	//isla.LoadModel("Models/Decoraciones/isla.obj");
-	//truss = Model();
-	//truss.LoadModel("Models/Decoraciones/truss.obj");
-	//fence = Model();
-	//fence.LoadModel("Models/Decoraciones/fence.obj");
-	//fence1 = Model();
-	//fence1.LoadModel("Models/Decoraciones/mfence.obj");
+	isla = Model();
+	isla.LoadModel("Models/Decoraciones/isla.obj");
+	truss = Model();
+	truss.LoadModel("Models/Decoraciones/truss.obj");
+	fence = Model();
+	fence.LoadModel("Models/Decoraciones/fence.obj");
+	fence1 = Model();
+	fence1.LoadModel("Models/Decoraciones/mfence.obj");
 
 	//Bancas
-	//banca1 = Model();
-	//banca1.LoadModel("Models/Decoraciones/brench1.obj");
-	//banca2 = Model();
-	//banca2.LoadModel("Models/Decoraciones/brench2.obj");
-	//banca3 = Model();
-	//banca3.LoadModel("Models/Decoraciones/brench3.obj");
-	//banca4 = Model();
-	//banca4.LoadModel("Models/Decoraciones/brench4.obj");
+	banca1 = Model();
+	banca1.LoadModel("Models/Decoraciones/brench1.obj");
+	banca2 = Model();
+	banca2.LoadModel("Models/Decoraciones/brench2.obj");
+	banca3 = Model();
+	banca3.LoadModel("Models/Decoraciones/brench3.obj");
+	banca4 = Model();
+	banca4.LoadModel("Models/Decoraciones/brench4.obj");
 
 	//Velvet
 	Velvet = Model();
@@ -1204,26 +1208,26 @@ int main()
 
 
 	//Artoria Pendragon (Lily)
-	//Lily_AnteBrazo = Model();
-	//Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
-	//Lily_AnteBrazo_2 = Model();
-	//Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
-	//Lily_Brazo = Model();
-	//Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
-	//Lily_Brazo_2 = Model();
-	//Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
-	//Lily_Pierna = Model();
-	//Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
-	//Lily_Pierna_2 = Model();
-	//Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
-	//Lily_Pie = Model();
-	//Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
-	//Lily_Pie_2 = Model();
-	//Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
-	//Lily_Cabeza = Model();
-	//Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
-	//Lily_Cuerpo = Model();
-	//Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
+	Lily_AnteBrazo = Model();
+	Lily_AnteBrazo.LoadModel("Models/Lily/Lily_AnteBrazo_1.obj");
+	Lily_AnteBrazo_2 = Model();
+	Lily_AnteBrazo_2.LoadModel("Models/Lily/Lily_AnteBrazo_2.obj");
+	Lily_Brazo = Model();
+	Lily_Brazo.LoadModel("Models/Lily/Lily_Brazo_1.obj");
+	Lily_Brazo_2 = Model();
+	Lily_Brazo_2.LoadModel("Models/Lily/Lily_Brazo_2.obj");
+	Lily_Pierna = Model();
+	Lily_Pierna.LoadModel("Models/Lily/Lily_Pierna_1.obj");
+	Lily_Pierna_2 = Model();
+	Lily_Pierna_2.LoadModel("Models/Lily/Lily_Pierna_2.obj");
+	Lily_Pie = Model();
+	Lily_Pie.LoadModel("Models/Lily/LilY_Pie_1.obj");
+	Lily_Pie_2 = Model();
+	Lily_Pie_2.LoadModel("Models/Lily/Lily_Pie_2.obj");
+	Lily_Cabeza = Model();
+	Lily_Cabeza.LoadModel("Models/Lily/Lily_Cabeza.obj");
+	Lily_Cuerpo = Model();
+	Lily_Cuerpo.LoadModel("Models/Lily/Lily_Cuerpo.obj");
 
 	////nero
 	//Nero_Cuerpo = Model();
@@ -1282,44 +1286,50 @@ int main()
 	//Padoru.LoadModel("Models/PAdoru/Nero_Padoru.obj");
 
 	//animales acuario
-	//G_pece_1 = Model();
-	//G_pece_1.LoadModel("Models/G_Pez1/Peces1.obj");
-	//G_pece_2 = Model();
-	//G_pece_2.LoadModel("Models/G_Pez2/Peces2.obj");
-	//G_pece_3 = Model();
-	//G_pece_3.LoadModel("Models/G_Pez3/Peces3.obj");
-	//Tiburon_cuerpo = Model();
-	//Tiburon_cuerpo.LoadModel("Models/Tiburon_1/Tiburonsin_uhaha.obj");
-	//Tiburon_der_aleta_1 = Model();
-	//Tiburon_der_aleta_1.LoadModel("Models/Tiburon_1/aletas_der_1.obj");
-	//Tiburon_der_aleta_2 = Model();
-	//Tiburon_der_aleta_2.LoadModel("Models/Tiburon_1/aletas_der_2.obj");
-	//Tiburon_izq_aleta_1 = Model();
-	//Tiburon_izq_aleta_1.LoadModel("Models/Tiburon_1/aletas_izq_1.obj");
-	//Tiburon_izq_aleta_2 = Model();
-	//Tiburon_izq_aleta_2.LoadModel("Models/Tiburon_1/aletas_izq_2.obj");
-	//Tiburon_cola_1 = Model();
-	//Tiburon_cola_1.LoadModel("Models/Tiburon_1/coleta_1.obj");
-	//Tiburon_cola_2 = Model();
-	//Tiburon_cola_2.LoadModel("Models/Tiburon_1/coleta_2.obj");
-	//Tiburon_2 = Model();
-	//Tiburon_2.LoadModel("Models/Tiburon_2/Tiburon.obj");
-	//Medusas = Model();
-	//Medusas.LoadModel("Models/medusas/medusas.obj");
-	//Delfin = Model();
-	//Delfin.LoadModel("Models/delfin/delfin.obj");
-	//Ballena = Model();
-	//Ballena.LoadModel("Models/Ballena/ballena.obj");
-	//Caballito = Model();
-	//Caballito.LoadModel("Models/Caballito/caballito.obj");
-	//Pinguino_E = Model();
-	//Pinguino_E.LoadModel("Models/Pingus/grapem1.obj");
-	//Pinguino_E_aleta_der = Model();
-	//Pinguino_E_aleta_der.LoadModel("Models/Pingus/Pengu_Aleta_der.obj");
-	//Pinguino_E_aleta_izq = Model();
-	//Pinguino_E_aleta_izq.LoadModel("Models/Pingus/Pengu_Aleta_izq.obj");
-	//Pinguino_E_aleta_cuerpo = Model();
-	//Pinguino_E_aleta_cuerpo.LoadModel("Models/Pingus/Pengu_cuerpo.obj");
+	/*G_pece_1 = Model();
+	G_pece_1.LoadModel("Models/G_Pez1/Peces1.obj");
+	G_pece_2 = Model();
+	G_pece_2.LoadModel("Models/G_Pez2/Peces2.obj");
+	G_pece_3 = Model();
+	G_pece_3.LoadModel("Models/G_Pez3/Peces3.obj");*/
+	Tiburon_cuerpo = Model();
+	Tiburon_cuerpo.LoadModel("Models/Tiburon_1/Tiburonsin_uhaha.obj");
+	Tiburon_der_aleta_1 = Model();
+	Tiburon_der_aleta_1.LoadModel("Models/Tiburon_1/aletas_der_1.obj");
+	Tiburon_der_aleta_2 = Model();
+	Tiburon_der_aleta_2.LoadModel("Models/Tiburon_1/aletas_der_2.obj");
+	Tiburon_izq_aleta_1 = Model();
+	Tiburon_izq_aleta_1.LoadModel("Models/Tiburon_1/aletas_izq_1.obj");
+	Tiburon_izq_aleta_2 = Model();
+	Tiburon_izq_aleta_2.LoadModel("Models/Tiburon_1/aletas_izq_2.obj");
+	Tiburon_cola_1 = Model();
+	Tiburon_cola_1.LoadModel("Models/Tiburon_1/coleta_1.obj");
+	Tiburon_cola_2 = Model();
+	Tiburon_cola_2.LoadModel("Models/Tiburon_1/coleta_2.obj");
+	Tiburon_2 = Model();
+	Tiburon_2.LoadModel("Models/Tiburon_2/Tiburon.obj");
+	Medusas = Model();
+	Medusas.LoadModel("Models/medusas/medusas.obj");
+	Delfin = Model();
+	Delfin.LoadModel("Models/delfin/delfin.obj");
+	Ballena = Model();
+	Ballena.LoadModel("Models/Ballena/ballena.obj");
+	Ballena_aleta_der = Model();
+	Ballena_aleta_der.LoadModel("Models/Ballena/aletas_der.obj");
+	Ballena_aleta_izq = Model();
+	Ballena_aleta_izq.LoadModel("Models/Ballena/aletas_izq.obj");
+	Ballena_coleta = Model();
+	Ballena_coleta.LoadModel("Models/Ballena/coleta.obj");
+	Caballito = Model();
+	Caballito.LoadModel("Models/Caballito/caballito.obj");
+	/*Pinguino_E = Model();
+	Pinguino_E.LoadModel("Models/Pingus/grapem1.obj");
+	Pinguino_E_aleta_der = Model();
+	Pinguino_E_aleta_der.LoadModel("Models/Pingus/Pengu_Aleta_der.obj");
+	Pinguino_E_aleta_izq = Model();
+	Pinguino_E_aleta_izq.LoadModel("Models/Pingus/Pengu_Aleta_izq.obj");
+	Pinguino_E_aleta_cuerpo = Model();
+	Pinguino_E_aleta_cuerpo.LoadModel("Models/Pingus/Pengu_cuerpo.obj");*/
 
 	////extras
 	//Lucy = Model();
@@ -1513,7 +1523,8 @@ int main()
 	MEXR = 0.0f;
 	MEXRB = true;
 	MEXOffset = 0.5;
-
+	//acivadoranimales
+	ActivadorAnimales = false;
 	glm::vec3 posNero = glm::vec3(2.0f, 0.0f, 0.0f);
 	//glm::vec3 poskoshiro = glm::vec3(-4.0f, 5.0f + 3.55f, -5.0f);kjh
 	
@@ -1874,7 +1885,7 @@ int main()
 		}
 		if (!AvanzaLX && AvanzaLZ && Cgiros == 3)
 		{
-			if (MAvanzaLZ > 0.0f)
+			if (MAvanzaLZ > -2.0f)
 			{
 				MAvanzaLZ -= rotLilyOffsetM * deltaTime;
 			}
@@ -1894,12 +1905,12 @@ int main()
 			{
 				AvanzaLX = true;
 				Cgiros = 4;
-				//Mrota = 0.0f;
+		
 			}
 		}
 		if (AvanzaLX && !AvanzaLZ && Cgiros == 4)
 		{
-			if (MAvanzaLX > -250.0f)
+			if (MAvanzaLX > -240.0f)
 			{
 				MAvanzaLX -= rotLilyOffsetM * deltaTime;
 			}
@@ -1951,7 +1962,7 @@ int main()
 			}
 			else
 			{
-				//AvanzaLX = false;
+				ActivadorAnimales=true;
 				Cgiros = 7;
 			}
 		}
@@ -2110,7 +2121,7 @@ int main()
 
 		if (AvanzaLX && !AvanzaLZ && Cgiros == 13)
 		{
-			if (MAvanzaLX > -300.0f)
+			if (MAvanzaLX > -320.0f)
 			{
 				MAvanzaLX -= rotLilyOffsetM * deltaTime;
 
@@ -2392,7 +2403,7 @@ int main()
 		}
 		if (AvanzaLX && !AvanzaLZ && Cgiros == 24)
 		{
-			if (MAvanzaLX < 70.0f)
+			if (MAvanzaLX < 60.0f)
 			{
 				MAvanzaLX += rotLilyOffsetM * deltaTime;
 
@@ -2627,7 +2638,6 @@ int main()
 			if (MAvanzaLZ < -20.0f)
 			{
 				MAvanzaLZ += rotLilyOffsetM * deltaTime;
-				//MAvanzaLY += (rotLilyOffsetM / 2) * deltaTime;
 			}
 			else
 			{
@@ -2946,7 +2956,7 @@ int main()
 
 		//acuario
 		//peces
-		if (rotPecesSen && ActivadorKS)
+		if (rotPecesSen && ActivadorAnimales)
 		{
 			if (MpecesSen < 50.0f)
 			{
@@ -2957,7 +2967,7 @@ int main()
 				rotPecesSen = false;
 			}
 		}
-		if (!rotPecesSen && ActivadorKS)
+		if (!rotPecesSen && ActivadorAnimales)
 		{
 			if (MpecesSen > 0.0f)
 			{
@@ -2970,7 +2980,7 @@ int main()
 		}
 		//--------------------
 
-		if (rotPeces && MpecesB && ActivadorKS)
+		if (rotPeces && MpecesB && ActivadorAnimales)
 		{
 			if (Mpeces < 50.0f)
 			{
@@ -3018,7 +3028,7 @@ int main()
 			}
 		}
 		//mmedusas
-		if (MmedusasSenB && ActivadorKS)
+		if (MmedusasSenB && ActivadorAnimales)
 		{
 			if (MmedusasSen < 100.0f)
 			{
@@ -3029,7 +3039,7 @@ int main()
 				MmedusasSenB = false;
 			}
 		}
-		if (!MmedusasSenB && ActivadorKS)
+		if (!MmedusasSenB && ActivadorAnimales)
 		{
 			if (MmedusasSen > 0.0f)
 			{
@@ -3041,7 +3051,7 @@ int main()
 			}
 		}
 
-		if (MmedusasB && ActivadorKS)
+		if (MmedusasB && ActivadorAnimales)
 		{
 			if (Mmedusas < 50.0f)
 			{
@@ -3053,7 +3063,7 @@ int main()
 				Rmedusas = 180;
 			}
 		}
-		if (!MmedusasB && ActivadorKS)
+		if (!MmedusasB && ActivadorAnimales)
 		{
 			if (Mmedusas > 0.0f)
 			{
@@ -3068,7 +3078,7 @@ int main()
 		//delfin
 		//senoidal
 
-		if (MdelfinSenB && ActivadorKS)
+		if (MdelfinSenB && ActivadorAnimales)
 		{
 			if (MdelfinSen < 50.0f)
 			{
@@ -3079,7 +3089,7 @@ int main()
 				MdelfinSenB = false;
 			}
 		}
-		if (!MdelfinSenB && ActivadorKS)
+		if (!MdelfinSenB && ActivadorAnimales)
 		{
 			if (MdelfinSen > 0.0f)
 			{
@@ -3092,7 +3102,7 @@ int main()
 		}
 		//arriba avance y abajo
 
-		if (MdelfinBY && MdelfinB && ActivadorKS)
+		if (MdelfinBY && MdelfinB && ActivadorAnimales)
 		{
 			if (MdelfinY < 40.0f)
 			{
@@ -3105,7 +3115,7 @@ int main()
 			}
 		}
 
-		if (MdelfinB && !MdelfinBY && ActivadorKS)
+		if (MdelfinB && !MdelfinBY && ActivadorAnimales)
 		{
 			if (MdelfinZ < 80.0f)
 			{
@@ -3118,7 +3128,7 @@ int main()
 			}
 		}
 
-		if (!MdelfinB && !MdelfinBY && ActivadorKS)
+		if (!MdelfinB && !MdelfinBY && ActivadorAnimales)
 		{
 			if (MdelfinY > 0.0f)
 			{
@@ -3134,7 +3144,7 @@ int main()
 		}
 
 		//movimiento del salto 
-		if (MdelfinBS && ActivadorKS)
+		if (MdelfinBS && ActivadorAnimales)
 		{
 			if (MdelfinZS < 50.0f)
 			{
@@ -3147,7 +3157,7 @@ int main()
 		}
 
 		//salto
-		if (MdelfinBsalto && ActivadorKS)
+		if (MdelfinBsalto && ActivadorAnimales)
 		{
 			if (MdelfinSalto < 25.0f)
 			{
@@ -3159,7 +3169,7 @@ int main()
 			}
 		}
 
-		if (!MdelfinBsalto && ActivadorKS)
+		if (!MdelfinBsalto && ActivadorAnimales)
 		{
 			if (MdelfinSalto > 0.0f)
 			{
@@ -3173,7 +3183,7 @@ int main()
 
 		//Tiburon
 
-		if (MTiburonSenB && ActivadorKS)
+		if (MTiburonSenB && ActivadorAnimales)
 		{
 			if (MTiburonSen < 80.0f)
 			{
@@ -3184,7 +3194,7 @@ int main()
 				MTiburonSenB = false;
 			}
 		}
-		if (!MTiburonSenB && ActivadorKS)
+		if (!MTiburonSenB && ActivadorAnimales)
 		{
 			if (MTiburonSen > 0.0f)
 			{
@@ -3196,7 +3206,7 @@ int main()
 			}
 		}
 
-		if (MTiburonB && ActivadorKS)
+		if (MTiburonB && ActivadorAnimales)
 		{
 			if (MTiburon < 50.0f)
 			{
@@ -3209,7 +3219,7 @@ int main()
 		}
 
 		//Caballitos
-		if (MCaballitosSenB && ActivadorKS)
+		if (MCaballitosSenB && ActivadorAnimales)
 		{
 			if (MCaballitosSen < 80.0f)
 			{
@@ -3220,7 +3230,7 @@ int main()
 				MCaballitosSenB = false;
 			}
 		}
-		if (!MCaballitosSenB && ActivadorKS)
+		if (!MCaballitosSenB && ActivadorAnimales)
 		{
 			if (MCaballitosSen > 0.0f)
 			{
@@ -3232,7 +3242,7 @@ int main()
 			}
 		}
 
-		if (MCaballitosB && ActivadorKS)
+		if (MCaballitosB && ActivadorAnimales)
 		{
 			if (MCaballitos < 15.0f)
 			{
@@ -3245,7 +3255,7 @@ int main()
 		}
 
 		//pinguinos
-		if (MPinguinosSenB && ActivadorKS)
+		if (MPinguinosSenB && ActivadorAnimales)
 		{
 			if (MPinguinosSen < 15.0f)
 			{
@@ -3257,7 +3267,7 @@ int main()
 			}
 		}
 
-		if (!MPinguinosSenB && ActivadorKS)
+		if (!MPinguinosSenB && ActivadorAnimales)
 		{
 			if (MPinguinosSen > -15.0f)
 			{
@@ -3269,7 +3279,7 @@ int main()
 			}
 		}
 
-		if (MPinguinosB && ActivadorKS)
+		if (MPinguinosB && ActivadorAnimales)
 		{
 			if (MPinguinos < 10.0f)
 			{
@@ -3282,7 +3292,7 @@ int main()
 		}
 
 		//EX
-		if (MEXRB && ActivadorKS)
+		if (MEXRB && ActivadorAnimales)
 		{
 			if (MEXR < 20.0f)
 			{
@@ -3293,7 +3303,7 @@ int main()
 				MEXRB = false;
 			}
 		}
-		if (!MEXRB && ActivadorKS)
+		if (!MEXRB && ActivadorAnimales)
 		{
 			if (MEXR > 0.0f)
 			{
@@ -3716,10 +3726,10 @@ int main()
 		glm::mat4 modelaux_piernaKS(1.0);
 		glm::mat4 modelaux_pierna2KS(1.0);
 		//tiburon
-		glm::mat4 modelaux_cuerpoTub(1.0);
-		glm::mat4 modelaux_AletaTibu(1.0);
-		glm::mat4 modelaux_Coleta1Tub(1.0);
-		glm::mat4 modelaux_Coleta2Tub(1.0);
+		glm::mat4 modelaux_cuerpoTib(1.0);
+		glm::mat4 modelaux_AletaTib(1.0);
+		glm::mat4 modelaux_Coleta1Tib(1.0);
+		glm::mat4 modelaux_Coleta2Tib(1.0);
 		//ballena
 		glm::mat4 modelaux_cuerpoBall(1.0);
 		glm::mat4 modelaux_AletaBall(1.0);
@@ -4520,8 +4530,28 @@ int main()
 		model = glm::translate(model, glm::vec3(120.0f, -65.0f + 2 * sin(glm::radians(MdelfinSen)) + MdelfinY, 45.0f + MdelfinZ));
 		model = glm::rotate(model, glm::radians(Rdelfin / 2), glm::vec3(-1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		modelaux_cuerpoBall=model;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Ballena.RenderModel();
+
+		//aleta der
+		model = modelaux_cuerpoBall;
+		model = glm::translate(model, glm::vec3(-50.0f, -20.0f, -12.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ballena_aleta_der.RenderModel();
+		//aleta izq
+		model = modelaux_cuerpoBall;
+		model = glm::translate(model, glm::vec3(50.0f, -20.0f, -12.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 0.0f, -1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ballena_aleta_izq.RenderModel();
+		//coleta
+		model = modelaux_cuerpoBall;
+		model = glm::translate(model, glm::vec3(40.0f, 0.0f, -320.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ballena_coleta.RenderModel();
 
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
@@ -4698,8 +4728,48 @@ int main()
 		model = glm::translate(model, glm::vec3(140.0f, -15.0f + 2 * sin(glm::radians(MdelfinSen)), -300.0f + MTiburon));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		modelaux_cuerpoTib = model;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Tiburon_cuerpo.RenderModel();
+
+		//aleta der
+		model = modelaux_cuerpoTib;
+		model = glm::translate(model, glm::vec3(-4.0f, -5.7f, 45.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_der_aleta_1.RenderModel();
+		//
+		model = modelaux_cuerpoTib;
+		model = glm::translate(model, glm::vec3(7.0f, -2.0f, 22.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 0.0f, -1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_der_aleta_2.RenderModel();
+		//aleta izq
+		model = modelaux_cuerpoTib;
+		model = glm::translate(model, glm::vec3(-11.0f, -6.0f, 44.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_izq_aleta_1.RenderModel();
+		//
+		model = modelaux_cuerpoTib;
+		model = glm::translate(model, glm::vec3(-15.0f, -2.0f, 18.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 0.0f, -1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_izq_aleta_2.RenderModel();
+		
+		//coleta
+		model = modelaux_cuerpoTib;
+		model = glm::translate(model, glm::vec3(-10.0f, 4.0f, 59.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		modelaux_Coleta1Tib=model;
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_cola_1.RenderModel();
+
+		model = modelaux_Coleta1Tib ;
+		model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 20.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_cola_2.RenderModel();
 
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
@@ -4768,8 +4838,48 @@ int main()
 		model = glm::translate(model, glm::vec3(140.0f, -15.0f, -185.0f + MTiburon));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		modelaux_cuerpoTib = model;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Tiburon_cuerpo.RenderModel();
+
+		//aleta der
+		model = modelaux_cuerpoTib;
+		model = glm::translate(model, glm::vec3(-4.0f, -5.7f, 45.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_der_aleta_1.RenderModel();
+		//
+		model = modelaux_cuerpoTib;
+		model = glm::translate(model, glm::vec3(7.0f, -2.0f, 22.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 0.0f, -1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_der_aleta_2.RenderModel();
+		//aleta izq
+		model = modelaux_cuerpoTib;
+		model = glm::translate(model, glm::vec3(-11.0f, -6.0f, 44.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_izq_aleta_1.RenderModel();
+		//
+		model = modelaux_cuerpoTib;
+		model = glm::translate(model, glm::vec3(-15.0f, -2.0f, 18.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 0.0f, -1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_izq_aleta_2.RenderModel();
+
+		//coleta
+		model = modelaux_cuerpoTib;
+		model = glm::translate(model, glm::vec3(-10.0f, 4.0f, 59.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		modelaux_Coleta1Tib = model;
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_cola_1.RenderModel();
+
+		model = modelaux_Coleta1Tib;
+		model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 20.0f));
+		model = glm::rotate(model, MEXR * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Tiburon_cola_2.RenderModel();
 
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
@@ -5765,32 +5875,32 @@ int main()
 
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
-		model = glm::translate(model, glm::vec3(10.0f - MdelfinZS, -55.0f + MdelfinSalto, 290.0f));
+		model = glm::translate(model, glm::vec3(10.0f - MdelfinZS, -56.0f + MdelfinSalto, 290.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::scale(model, glm::vec3(0.15f, 0.15f, 0.15f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Delfin.RenderModel();
 
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
-		model = glm::translate(model, glm::vec3(-40.0f, -55.0f + MdelfinSalto, 290.0f + MdelfinZS));
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::translate(model, glm::vec3(-40.0f, -56.0f + MdelfinSalto, 290.0f + MdelfinZS));
+		model = glm::scale(model, glm::vec3(0.15f, 0.15f, 0.15f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Delfin.RenderModel();
 
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
-		model = glm::translate(model, glm::vec3(-40.0f + MdelfinZS, -55.0f + MdelfinSalto, 340.0f));
+		model = glm::translate(model, glm::vec3(-40.0f + MdelfinZS, -56.0f + MdelfinSalto, 340.0f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::scale(model, glm::vec3(0.15f, 0.15f, 0.15f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Delfin.RenderModel();
 
 		model = glm::mat4(1.0);
 		color = glm::vec3(0.0f, 0.0f, 0.3f);
-		model = glm::translate(model, glm::vec3(10.0f, -55.0f + MdelfinSalto, 340.0f - MdelfinZS));
+		model = glm::translate(model, glm::vec3(10.0f, -56.0f + MdelfinSalto, 340.0f - MdelfinZS));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::scale(model, glm::vec3(0.15f, 0.15f, 0.15f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Delfin.RenderModel();
 
