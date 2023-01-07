@@ -1,3 +1,11 @@
-# Proyecto-Final_Computacion-Grafica
+#Proyecto-Final_Computacion-Grafica
+#Computacion Grafica e Interaccion Humano-Computadora
+#Semestre 2023-1
 
-El presente repositorio tiene como funcion en presentar los avances del proyecto final de la materia de Computacion Grafica e Interaccion Humano-Computadora
+Grupo 3.
+Equipo 1.
+
+#Integrantes del equipo.
+	-Chavez García Jesús Ángel
+	-Hernández Hernández Pedro Daniel
+	-Marín Barrera Jorge Jair
