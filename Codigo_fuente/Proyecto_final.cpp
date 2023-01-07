@@ -248,13 +248,9 @@ Model coralcy;
 Model recepcion;
 Model GrapeM;
 Model GrapeR;
-//----NUEVO----//
 Model delfin1;
 Model delfin2;
 Model delfin3;
-Model delfin4;
-Model delfin5;
-
 Model banca1;
 Model banca2;
 Model banca3;
@@ -267,9 +263,6 @@ Model truss;
 Model fence;
 Model fence1;
 Model paredaq;
-//-------------//
-
-
 //----------------------------------------------Modelos de personajes----------------------------------------//
 //Arturia Pendragon (Lily)
 Model Lily_AnteBrazo;
@@ -1142,10 +1135,6 @@ int main()
 	delfin2.LoadModel("Models/Carteles/espdelf2.obj");
 	delfin3 = Model();
 	delfin3.LoadModel("Models/Carteles/espdelf3.obj");
-	delfin4 = Model();
-	delfin4.LoadModel("Models/Carteles/espdelf4.obj");
-	delfin5 = Model();
-	delfin5.LoadModel("Models/Carteles/espdelf5.obj");
 	estrella = Model();
 	estrella.LoadModel("Models/Estrellas/PRI_Starfish.obj");
 	estrella1 = Model();
@@ -4199,52 +4188,6 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		elf.RenderModel();
 
-		////------------------------------------------Tercera fila-----------------------------------------------//
-
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(-8.0f*2, 2.0f - 2 * sin(glm::radians(SaltoE)), 25.0f));
-		//model = glm::scale(model, glm::vec3(4.0f*2, 4.0f*2, 4.0f*2));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Lucy.RenderModel();
-
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(-5.5f*2, 2.0f - 2 * sin(glm::radians(SaltoE)), 25.0f));
-		//model = glm::scale(model, glm::vec3(6.0f*2, 6.0f*2, 6.0f*2));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//vik.RenderModel();
-
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(-3.0f*2, 2.0f - 2 * sin(glm::radians(SaltoE)), 25.0f));
-		//model = glm::scale(model, glm::vec3(0.15f*2, 0.15f*2, 0.15f*2));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//elf.RenderModel();
-
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(3.0f*2, 2.0f - 2 * sin(glm::radians(SaltoE)), 25.0f));
-		//model = glm::scale(model, glm::vec3(4.0f*2, 4.0f*2, 4.0f*2));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Lucy.RenderModel();
-
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(5.5f*2, 2.0f - 2 * sin(glm::radians(SaltoE)), 25.0f));
-		//model = glm::scale(model, glm::vec3(6.0f*2, 6.0f*2, 6.0f*2));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//vik.RenderModel();
-
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(8.0f*2, 0.0f + 2 * sin(glm::radians(SaltoE)), 25.0f));
-		//model = glm::scale(model, glm::vec3(0.15f*2, 0.15f*2, 0.15f*2));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//elf.RenderModel();
-
-		////extras acuario----------------------------------------------------------------------------------//
-
 		//pecera peces
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f , -34.0f, -150.0f));
@@ -4263,14 +4206,12 @@ int main()
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(80.0f, -34.0f, -50.0f));
 		model = glm::scale(model, glm::vec3(4.0f * 2, 4.0f * 2, 4.0f * 2));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Lucy.RenderModel();
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(90.0f, -34.0f, -50.0f));
 		model = glm::scale(model, glm::vec3(4.0f * 2, 4.0f * 2, 4.0f * 2));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Lucy.RenderModel();
 
@@ -4278,7 +4219,6 @@ int main()
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-120.0f, -34.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.15f * 2, 0.15f * 2, 0.15f * 2));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		elf.RenderModel();
 
@@ -6940,9 +6880,9 @@ int main()
 
 		//-------------NUEVO------------//
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 100.0f, 30.0f));
+		model = glm::translate(model, glm::vec3(-140.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::scale(model, glm::vec3(100.0f, 100.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Thomas.RenderModel();
@@ -7651,7 +7591,7 @@ int main()
 		Velvet.RenderModel();
 		//der
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-15.0f, -0.1f, -340.0f));
+		model = glm::translate(model, glm::vec3(-15.0f, -0.1f, -335.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.5f, 2.1f, 1.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -7659,7 +7599,7 @@ int main()
 		Velvet.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-15.0f, -0.1f, -330.0f));
+		model = glm::translate(model, glm::vec3(-15.0f, -0.1f, -325.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.5f, 2.1f, 1.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -7667,7 +7607,7 @@ int main()
 		Velvet.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-15.0f, -0.1f, -320.0f));
+		model = glm::translate(model, glm::vec3(-15.0f, -0.1f, -315.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.5f, 2.1f, 1.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -7675,7 +7615,7 @@ int main()
 		Velvet.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-15.0f, -0.1f, -310.0f));
+		model = glm::translate(model, glm::vec3(-15.0f, -0.1f, -305.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.5f, 2.1f, 1.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -7683,7 +7623,7 @@ int main()
 		Velvet.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-15.0f, -0.1f, -300.0f));
+		model = glm::translate(model, glm::vec3(-15.0f, -0.1f, -295.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.5f, 2.1f, 1.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
@@ -7757,7 +7697,7 @@ int main()
 
 		//Parte de Grape
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-128.0f, -34.5f, 20.0f));
+		model = glm::translate(model, glm::vec3(-120.0f, -34.5f, 20.0f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.5f, 2.1f, 1.5f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
